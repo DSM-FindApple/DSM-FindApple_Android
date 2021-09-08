@@ -1,4 +1,4 @@
-package com.findapple.dsm_findapple_android
+package com.findapple.presentation
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

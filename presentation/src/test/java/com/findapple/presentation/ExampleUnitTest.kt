@@ -1,4 +1,4 @@
-package com.findapple.dsm_findapple_android
+package com.findapple.presentation
 
 import org.junit.Test
 
