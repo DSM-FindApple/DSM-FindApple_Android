@@ -8,7 +8,7 @@ android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "com.findapple.dsm_findapple_android"
+        applicationId "com.findapple.findapple"
         minSdk 26
         targetSdk 31
         versionCode 1
@@ -51,4 +51,7 @@ dependencies {
     kaptTest 'com.google.dagger:dagger-compiler:2.23.1'
     implementation 'com.google.dagger:dagger:2.35.1'
     implementation 'com.google.dagger:dagger-android-support:2.23.1'
+
+    implementation project(':data')
+    implementation project(':domain')
 }
