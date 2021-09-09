@@ -1,13 +1,13 @@
 package com.findapple.domain.auth.service
 
-import com.findapple.domain.auth.request.LoginRequest
-import com.findapple.domain.auth.request.RegisterRequest
-import com.findapple.domain.auth.response.LoginResponse
+import com.findapple.domain.auth.`object`.RegisterObject
+import com.findapple.domain.auth.entity.Auth
+import com.findapple.domain.auth.entity.Token
 import com.findapple.domain.base.Result
 import io.reactivex.Single
 
 interface AuthService {
-    fun login(loginRequestData:LoginRequest): Single<Result<LoginResponse>>
+    fun login(loginRequestData: Auth): Single<Result<Token>>
 
-    fun register(registerRequest: RegisterRequest): Single<Result<Unit>>
+    fun register(registerRequest: RegisterObject): Single<Result<Unit>>
 }

@@ -1,9 +1,9 @@
 package com.findapple.domain.auth.service
 
+import com.findapple.domain.auth.`object`.RegisterObject
+import com.findapple.domain.auth.entity.Auth
+import com.findapple.domain.auth.entity.Token
 import com.findapple.domain.auth.repository.AuthRepository
-import com.findapple.domain.auth.request.LoginRequest
-import com.findapple.domain.auth.request.RegisterRequest
-import com.findapple.domain.auth.response.LoginResponse
 import com.findapple.domain.base.Result
 import com.findapple.domain.errorhandler.ErrorHandler
 import com.findapple.domain.toResult
@@ -13,9 +13,9 @@ class AuthServiceImpl(
     private val authRepository: AuthRepository,
     private val errorHandler: ErrorHandler
 ) : AuthService {
-    override fun login(loginRequestData: LoginRequest): Single<Result<LoginResponse>> =
+    override fun login(loginRequestData: Auth): Single<Result<Token>> =
         authRepository.login(loginRequestData).toResult(errorHandler)
 
-    override fun register(registerRequest: RegisterRequest): Single<Result<Unit>> =
+    override fun register(registerRequest: RegisterObject): Single<Result<Unit>> =
         authRepository.register(registerRequest).toResult(errorHandler)
 }
