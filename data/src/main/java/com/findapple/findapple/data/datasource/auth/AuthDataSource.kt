@@ -6,7 +6,7 @@ import com.findapple.findapple.data.entity.AuthData
 import io.reactivex.Single
 
 interface AuthDataSource {
-    fun login(loginRequest: AuthData):Single<LoginResponse>
+    fun login(loginRequest: AuthData): Single<LoginResponse>
 
-    fun register(registerRequest: RegisterObjectData):Single<Unit>
+    fun register(registerRequest: RegisterObjectData): Single<Unit>
 }
