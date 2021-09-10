@@ -44,16 +44,20 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     // 카카오 로그인
-    implementation "com.kakao.sdk:v2-user:2.7.0"
+    implementation "com.kakao.sdk:v2-user-rx:2.7.0"
 
     // dagger2
-    def daggerVer = 2.35 // or latest version
+    def daggerVer = '2.35.1' // or latest version
 
     implementation "com.google.dagger:dagger:$daggerVer"
     implementation "com.google.dagger:dagger-android-support:$daggerVer"
     kapt "com.google.dagger:dagger-android-processor:$daggerVer"
     kapt "com.google.dagger:dagger-compiler:$daggerVer"
-    kaptTest 'com.google.dagger:dagger-compiler:2.23.1'
+    kaptTest 'com.google.dagger:dagger-compiler:2.35'
+
+    // navigation ui
+    implementation "androidx.navigation:navigation-fragment-ktx:2.3.5"
+    implementation "androidx.navigation:navigation-ui-ktx:2.3.5"
 
     implementation project(':data')
     implementation project(':domain')
