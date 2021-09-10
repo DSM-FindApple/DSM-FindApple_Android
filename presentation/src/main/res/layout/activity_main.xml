@@ -7,8 +7,12 @@
     tools:context="com.findapple.findapple.presentation.MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/main_fragment_container_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="androidx.navigation.fragment.NavHostFragment"/>
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_graph"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

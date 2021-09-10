@@ -4,8 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="presentation/src/main/res/drawable/shape_border_yellow_100.xml" value="0.1824074074074074" />
-        <entry key="presentation/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="presentation/src/main/res/layout/activity_main.xml" value="0.24035054644059498" />
         <entry key="presentation/src/main/res/layout/fragment_auth.xml" value="0.18888888888888888" />
+        <entry key="presentation/src/main/res/layout/fragment_splash.xml" value="0.1861080237626444" />
       </map>
     </option>
   </component>
