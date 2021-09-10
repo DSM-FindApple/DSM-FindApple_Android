@@ -1,4 +1,4 @@
-package com.findapple.findapple.presentation
+package com.findapple.findapple.presentation.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

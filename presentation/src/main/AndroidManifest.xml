@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DSMFindAppleAndroid">
         <activity
-            android:name="com.findapple.findapple.presentation.MainActivity"
+            android:name="com.findapple.findapple.presentation.main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
