@@ -27,8 +27,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = "1.8"
     }
 }
 
@@ -43,14 +44,16 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     // 카카오 로그인
-    implementation "com.kakao.sdk:v2-user:2.7.0"
 
     // dagger2
-    kapt 'com.google.dagger:dagger-android-processor:2.23.1'
-    kapt 'com.google.dagger:dagger-compiler:2.23.1'
+
+    def daggerVer = 2.25 // or latest version
+
+    implementation "com.google.dagger:dagger:$daggerVer"
+    implementation "com.google.dagger:dagger-android-support:$daggerVer"
+    kapt "com.google.dagger:dagger-android-processor:$daggerVer"
+    kapt "com.google.dagger:dagger-compiler:$daggerVer"
     kaptTest 'com.google.dagger:dagger-compiler:2.23.1'
-    implementation 'com.google.dagger:dagger:2.35.1'
-    implementation 'com.google.dagger:dagger-android-support:2.23.1'
 
     implementation project(':data')
     implementation project(':domain')

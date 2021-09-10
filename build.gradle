@@ -12,14 +12,14 @@ buildscript {
         // in the individual module build.gradle files
     }
 }
+
 allprojects {
     repositories {
-        //카카오 sdk 레포지토리 설정
+        google()
+        mavenCentral()
         maven { url 'https://devrepo.kakao.com/nexus/content/groups/public/' }
     }
 }
-
-
 
 task clean(type: Delete) {
     delete rootProject.buildDir
