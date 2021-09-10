@@ -3,6 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.features.AuthFragment" >
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/blue_100"
+    tools:context=".presentation.features.AuthFragment">
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:background="@drawable/shape_border_yellow_100"
+    app:layout_constraintBottom_toBottomOf="parent">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/kakao_login_medium_wide"
+        android:layout_gravity="center"/>
+</FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
