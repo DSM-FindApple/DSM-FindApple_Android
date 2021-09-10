@@ -16,4 +16,8 @@ class AuthRepositoryImpl(private val authDataSource: AuthDataSource) : AuthRepos
 
     override fun register(registerRequest: RegisterObject): Single<Unit> =
         authDataSource.register(registerRequest.toDataEntity())
+
+    override fun refreshToken(): Single<Unit> =
+        authDataSource.refreshToken()
+
 }

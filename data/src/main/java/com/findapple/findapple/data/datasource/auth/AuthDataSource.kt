@@ -9,4 +9,6 @@ interface AuthDataSource {
     fun login(loginRequest: AuthData): Single<LoginResponse>
 
     fun register(registerRequest: RegisterObjectData): Single<Unit>
+
+    fun refreshToken(): Single<Unit>
 }

@@ -10,4 +10,6 @@ interface AuthService {
     fun login(loginRequestData: Auth): Single<Result<Token>>
 
     fun register(registerRequest: RegisterObject): Single<Result<Unit>>
+
+    fun refreshToken(): Single<Result<Unit>>
 }

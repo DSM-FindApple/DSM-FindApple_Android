@@ -9,4 +9,6 @@ interface AuthRepository {
     fun login(loginRequest: Auth): Single<Token>
 
     fun register(registerRequest: RegisterObject): Single<Unit>
+
+    fun refreshToken(): Single<Unit>
 }
