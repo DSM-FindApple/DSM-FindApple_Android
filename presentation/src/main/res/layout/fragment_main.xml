@@ -13,10 +13,12 @@
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/main_fragment_container"
             android:name="androidx.navigation.fragment.NavHostFragment"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             app:defaultNavHost="true"
             app:layout_constraintBottom_toTopOf="@+id/main_bottom_nv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:navGraph="@navigation/nav_main_graph" />
 
@@ -29,7 +31,7 @@
             app:itemIconTint="@drawable/selector_bottom_color"
             app:itemTextColor="@drawable/selector_bottom_color"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:menu="@menu/menu_bottom_nav" />
+            app:menu="@menu/navigation" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
