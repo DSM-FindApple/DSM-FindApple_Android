@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".presentation.main.MainFragment">
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
+<layout>
+    <data>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/yellow_500"
-        app:itemBackground="@drawable/bottom_nav_tab_background"
-        app:itemRippleColor="@color/white"
-        app:itemTextColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/menu_bottom_nav" />
+        android:layout_height="match_parent"
+        tools:context=".presentation.main.MainFragment">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/yellow_500"
+            app:itemBackground="@drawable/bottom_nav_tab_background"
+            app:itemIconTint="@drawable/selector_bottom_color"
+            app:itemTextColor="@drawable/selector_bottom_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:menu="@menu/menu_bottom_nav" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -5,6 +5,7 @@
       <map>
         <entry key="presentation/src/main/res/drawable/bottom_nav_tab_background.xml" value="0.27870370370370373" />
         <entry key="presentation/src/main/res/drawable/ic_baseline_person_24.xml" value="0.27870370370370373" />
+        <entry key="presentation/src/main/res/drawable/selector_bottom_color.xml" value="0.27870370370370373" />
         <entry key="presentation/src/main/res/drawable/shape_border_yellow_100.xml" value="0.1824074074074074" />
         <entry key="presentation/src/main/res/layout/activity_main.xml" value="0.24035054644059498" />
         <entry key="presentation/src/main/res/layout/fragment_auth.xml" value="0.18888888888888888" />
