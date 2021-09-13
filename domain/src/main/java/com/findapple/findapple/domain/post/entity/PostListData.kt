@@ -10,7 +10,7 @@ data class PostListData(
     val actionTime: Date,
     val writeTime: Date,
     val category: String,
-    val latitude: Long,
-    val longitude: Long,
+    val latitude: Double,
+    val longitude: Double,
     val images: List<String>
 )
