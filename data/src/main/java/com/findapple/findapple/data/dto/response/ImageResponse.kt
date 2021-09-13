@@ -1,5 +1,5 @@
 package com.findapple.findapple.data.dto.response
 
-data class ImagesResponse(
+data class ImageResponse(
     val image: String
 )
