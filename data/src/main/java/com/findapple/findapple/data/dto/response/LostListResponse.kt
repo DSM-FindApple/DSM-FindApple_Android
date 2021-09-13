@@ -1,5 +1,6 @@
 package com.findapple.findapple.data.dto.response
 
+import com.findapple.findapple.domain.post.entity.PostListData
 import java.util.*
 
 data class LostListResponse(
@@ -14,3 +15,17 @@ data class LostListResponse(
     val longitude: Double,
     val images: List<ImageResponse>
 )
+
+fun LostListResponse.toEntity() =
+    PostListData(
+        id = lostId,
+        title = title,
+        userName = userName,
+        detailInfo = detailInfo,
+        actionTime = lostAt,
+        writeTime = writeAt,
+        category = category,
+        latitude = latitude,
+        longitude = longitude,
+        images = images.toStringList()
+    )

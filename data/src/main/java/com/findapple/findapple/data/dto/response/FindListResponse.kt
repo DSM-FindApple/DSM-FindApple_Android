@@ -17,10 +17,6 @@ data class FindListResponse(
 )
 
 fun FindListResponse.toEntity(): PostListData {
-    val entityImages = ArrayList<String>()
-    for (i in this.images) {
-        entityImages.add(i.image)
-    }
     return PostListData(
         id = findId,
         title = title,
@@ -31,6 +27,6 @@ fun FindListResponse.toEntity(): PostListData {
         category = category,
         latitude = latitude,
         longitude = longitude,
-        images = entityImages
+        images = images.toStringList()
     )
 }
