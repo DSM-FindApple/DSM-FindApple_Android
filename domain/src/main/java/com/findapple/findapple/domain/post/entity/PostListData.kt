@@ -12,5 +12,5 @@ data class PostListData(
     val category: String,
     val latitude: Long,
     val longitude: Long,
-    val images: ListImage
+    val images: List<String>
 )
