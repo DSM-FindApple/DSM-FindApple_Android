@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         tools:context=".presentation.main.MainFragment">
 
-        <androidx.fragment.app.FragmentContainerView
+        <fragment
             android:id="@+id/main_fragment_container"
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="0dp"
