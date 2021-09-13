@@ -14,8 +14,8 @@ fun RegisterObject.toDataEntity() =
     RegisterObjectData(
         id = auth.id,
         nickname = auth.nickname,
-        longitude = userInfo.longitude,
-        latitude = userInfo.latitude
+        longitude = locationInfo.longitude,
+        latitude = locationInfo.latitude
     )
 
 fun RegisterObjectData.toRegisterRequest() =
