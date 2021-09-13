@@ -1,4 +1,4 @@
-package com.findapple.findapple.domain.lost.entity
+package com.findapple.findapple.domain.post.entity
 
 data class ListImage(val images: List<Image>)
 

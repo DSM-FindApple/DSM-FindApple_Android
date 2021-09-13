@@ -1,8 +1,8 @@
-package com.findapple.findapple.domain.lost.entity
+package com.findapple.findapple.domain.post.entity
 
 import java.util.*
 
-data class LostFindListData(
+data class PostListData(
     val id: Int,
     val title: String,
     val userName: String,
