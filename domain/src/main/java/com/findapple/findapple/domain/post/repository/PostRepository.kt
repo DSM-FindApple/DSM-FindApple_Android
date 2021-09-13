@@ -5,4 +5,6 @@ import io.reactivex.Single
 
 interface PostRepository {
     fun getPostList(isLostList: Boolean): Single<PostListData>
+
+    fun postFeed(isLost: Boolean): Single<Unit>
 }

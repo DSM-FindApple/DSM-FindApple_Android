@@ -13,4 +13,7 @@ class PostServiceImpl(
 ) : PostService {
     override fun getPostList(isLostList: Boolean): Single<Result<PostListData>> =
         postRepository.getPostList(isLostList).toResult(errorHandler)
+
+    override fun postFeed(isLost: Boolean): Single<Result<Unit>> =
+        postRepository.postFeed(isLost).toResult(errorHandler)
 }

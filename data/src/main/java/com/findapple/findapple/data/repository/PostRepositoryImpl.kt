@@ -10,4 +10,9 @@ class PostRepositoryImpl(private val dataSource: PostDataSource) : PostRepositor
     override fun getPostList(isLostList: Boolean): Single<PostListData> =
         if (isLostList) dataSource.getLostList().map { it.toEntity() } else dataSource.getFindList()
             .map { it.toEntity() }
+
+    override fun postFeed(isLost: Boolean): Single<Unit> {
+        
+    }
+
 }
