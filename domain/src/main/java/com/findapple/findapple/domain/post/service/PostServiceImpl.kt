@@ -2,6 +2,7 @@ package com.findapple.findapple.domain.post.service
 
 import com.findapple.findapple.domain.base.Result
 import com.findapple.findapple.domain.errorhandler.ErrorHandler
+import com.findapple.findapple.domain.post.`object`.PostDataObject
 import com.findapple.findapple.domain.post.entity.PostListData
 import com.findapple.findapple.domain.post.repository.PostRepository
 import com.findapple.findapple.domain.toResult
@@ -14,6 +15,6 @@ class PostServiceImpl(
     override fun getPostList(isLostList: Boolean): Single<Result<PostListData>> =
         postRepository.getPostList(isLostList).toResult(errorHandler)
 
-    override fun postFeed(isLost: Boolean): Single<Result<Unit>> =
+    override fun postFeed(request: PostDataObject,isLost: Boolean): Single<Result<Unit>> =
         postRepository.postFeed(isLost).toResult(errorHandler)
 }

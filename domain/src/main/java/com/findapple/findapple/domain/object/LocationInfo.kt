@@ -1,3 +1,3 @@
 package com.findapple.findapple.domain.`object`
 
-data class LocationInfo(val longitude: Long, val latitude: Long)
+data class LocationInfo(val longitude: Double, val latitude: Double)

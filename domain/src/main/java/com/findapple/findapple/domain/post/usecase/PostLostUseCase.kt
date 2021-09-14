@@ -12,5 +12,5 @@ class PostLostUseCase(
     compositeDisposable: CompositeDisposable
 ) : UseCase<PostDataObject, Result<Unit>>(compositeDisposable) {
     override fun create(data: PostDataObject): Single<Result<Unit>> =
-        postService.postFeed(true)
+        postService.postFeed(data, true)
 }

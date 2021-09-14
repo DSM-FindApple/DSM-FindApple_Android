@@ -1,6 +1,5 @@
 package com.findapple.findapple.data.repository
 
-import com.findapple.findapple.data.`object`.toDataEntity
 import com.findapple.findapple.data.datasource.auth.AuthDataSource
 import com.findapple.findapple.data.dto.response.toEntity
 import com.findapple.findapple.data.entity.toDataEntity
@@ -15,7 +14,7 @@ class AuthRepositoryImpl(private val authDataSource: AuthDataSource) : AuthRepos
         authDataSource.login(loginRequest.toDataEntity()).map { it.toEntity() }
 
     override fun register(registerRequest: RegisterObject): Single<Unit> =
-        authDataSource.register(registerRequest.toDataEntity())
+        authDataSource.register(registerRequest)
 
     override fun refreshToken(): Single<Unit> =
         authDataSource.refreshToken()
