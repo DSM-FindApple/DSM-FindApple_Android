@@ -16,5 +16,5 @@ class PostServiceImpl(
         postRepository.getPostList(isLostList).toResult(errorHandler)
 
     override fun postFeed(request: PostDataObject,isLost: Boolean): Single<Result<Unit>> =
-        postRepository.postFeed(isLost).toResult(errorHandler)
+        postRepository.postFeed(request,isLost).toResult(errorHandler)
 }
