@@ -27,4 +27,6 @@ abstract class BaseFragment<T : ViewDataBinding>(private val layoutId: Int) : Fr
         binding.lifecycleOwner = viewLifecycleOwner
         //binding.setVariable(BR.vm,viewModel)
     }
+
+    abstract fun observeEvent()
 }
