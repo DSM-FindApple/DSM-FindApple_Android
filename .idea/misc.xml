@@ -4,8 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="presentation/src/main/res/drawable/bottom_nav_tab_background.xml" value="0.27870370370370373" />
+        <entry key="presentation/src/main/res/drawable/ic_baseline_location_searching_24.xml" value="0.25925925925925924" />
         <entry key="presentation/src/main/res/drawable/ic_baseline_person_24.xml" value="0.27870370370370373" />
         <entry key="presentation/src/main/res/drawable/selector_bottom_color.xml" value="0.27870370370370373" />
+        <entry key="presentation/src/main/res/drawable/shape_border_gray_500.xml" value="0.25925925925925924" />
+        <entry key="presentation/src/main/res/drawable/shape_border_white.xml" value="0.25925925925925924" />
         <entry key="presentation/src/main/res/drawable/shape_border_yellow_100.xml" value="0.1824074074074074" />
         <entry key="presentation/src/main/res/layout/activity_main.xml" value="0.24035054644059498" />
         <entry key="presentation/src/main/res/layout/fragment_auth.xml" value="0.18888888888888888" />
@@ -20,8 +23,5 @@
     </option>
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
-  <component name="ProjectPlainTextFileTypeManager">
-    <file url="file://$PROJECT_DIR$/domain/src/main/java/com/findapple/findapple/domain/auth/object/UserInfo.kt" />
-  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK" />
 </project>
