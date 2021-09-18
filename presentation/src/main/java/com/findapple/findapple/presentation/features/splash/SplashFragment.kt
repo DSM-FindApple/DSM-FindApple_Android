@@ -16,4 +16,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>(R.layout.fragment_spl
         super.onViewCreated(view, savedInstanceState)
         findNavController().navigate(R.id.action_splashFragment_to_mainFragment)
     }
+
+    override fun observeEvent() {
+    }
 }

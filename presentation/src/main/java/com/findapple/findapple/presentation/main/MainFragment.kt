@@ -27,4 +27,8 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
         )
     }
 
+    override fun observeEvent() {
+
+    }
+
 }
