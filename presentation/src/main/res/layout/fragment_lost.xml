@@ -59,7 +59,8 @@
                     android:layout_marginStart="14dp"
                     android:textSize="18sp"
                     android:textColor="@color/black"
-                    tools:text="용산구 경기동"/>
+                    tools:text="용산구 경기동"
+                    android:fontFamily="@font/cookieRunBold"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
