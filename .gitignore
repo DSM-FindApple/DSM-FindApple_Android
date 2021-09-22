@@ -5,3 +5,5 @@ presentation/src/main/res/values/key.xml
 .gradle/buildOutputCleanup/buildOutputCleanup.lock
 
 .gradle/buildOutputCleanup/outputFiles.bin
+
+.idea/assetWizardSettings.xml
