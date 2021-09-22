@@ -4,7 +4,7 @@
     <item
         android:id="@+id/lost_fragment"
         android:title="@string/lost"
-        android:icon="@drawable/ic_baseline_search_24"/>
+        android:icon="@drawable/ic_baseline_search_24" />
 
     <item
         android:id="@+id/find_fragment"

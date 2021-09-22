@@ -27,6 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/yellow_500"
+            android:theme="@style/Widget.BottomNavigationView"
             app:itemBackground="@drawable/bottom_nav_tab_background"
             app:itemIconTint="@drawable/selector_bottom_color"
             app:itemTextColor="@drawable/selector_bottom_color"

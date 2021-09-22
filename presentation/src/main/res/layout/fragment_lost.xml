@@ -10,7 +10,9 @@
         android:layout_height="match_parent"
         android:gravity="bottom"
         app:umanoDragView="@id/lost_list_cl"
-        app:umanoPanelHeight="100dp"
+        app:umanoPanelHeight="150dp"
+        app:umanoOverlay="true"
+        app:umanoShadowHeight="0dp"
         tools:context=".presentation.features.lost.LostFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout

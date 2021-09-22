@@ -14,4 +14,9 @@
         <item name="android:windowActionBarOverlay">true</item>
         <!-- Customize your theme here. -->
     </style>
+    
+    <style name="Widget.BottomNavigationView"
+        parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="fontFamily">@font/cookie_run_bold</item>
+    </style>
 </resources>
