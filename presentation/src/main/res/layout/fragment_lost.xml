@@ -4,24 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
-    <androidx.slidingpanelayout.widget.SlidingPaneLayout
+    <com.sothree.slidinguppanel.SlidingUpPanelLayout
         android:id="@+id/lost_spl"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="bottom"
-        app:umanoDragView="@id/lost_back_wv"
-        app:umanoOverlay="false"
-        app:umanoPanelHeight="70dp"
+        app:umanoDragView="@id/lost_list_cl"
+        app:umanoPanelHeight="100dp"
         tools:context=".presentation.features.lost.LostFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/lost_list"
+            android:id="@+id/lost_back_wv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <WebView
+                android:id="@+id/lost_wv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/lost_list_cl"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/shape_border_white">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/lost_list_cl"
+                android:id="@+id/lost_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_border_yellow_100"
@@ -91,17 +102,5 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/lost_back_wv"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <WebView
-                android:id="@+id/lost_wv"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </androidx.slidingpanelayout.widget.SlidingPaneLayout>
+    </com.sothree.slidinguppanel.SlidingUpPanelLayout>
 </layout>

@@ -1,3 +1,7 @@
 
 presentation/src/main/res/values/key.xml
 /.gradle/7.0.2/
+
+.gradle/buildOutputCleanup/buildOutputCleanup.lock
+
+.gradle/buildOutputCleanup/outputFiles.bin
