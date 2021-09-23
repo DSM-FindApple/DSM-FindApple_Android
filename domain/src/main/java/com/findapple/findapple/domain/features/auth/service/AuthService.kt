@@ -1,8 +1,8 @@
-package com.findapple.findapple.domain.auth.service
+package com.findapple.findapple.domain.features.auth.service
 
-import com.findapple.findapple.domain.auth.`object`.RegisterObject
-import com.findapple.findapple.domain.auth.entity.Auth
-import com.findapple.findapple.domain.auth.entity.Token
+import com.findapple.findapple.domain.features.auth.`object`.RegisterObject
+import com.findapple.findapple.domain.features.auth.entity.Auth
+import com.findapple.findapple.domain.features.auth.entity.Token
 import com.findapple.findapple.domain.base.Result
 import io.reactivex.Single
 

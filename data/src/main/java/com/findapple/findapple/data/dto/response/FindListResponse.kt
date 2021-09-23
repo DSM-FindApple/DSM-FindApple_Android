@@ -1,6 +1,6 @@
 package com.findapple.findapple.data.dto.response
 
-import com.findapple.findapple.domain.post.entity.PostListData
+import com.findapple.findapple.domain.features.post.entity.PostListData
 import java.util.*
 
 data class FindListResponse(

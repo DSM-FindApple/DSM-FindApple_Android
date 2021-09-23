@@ -1,7 +1,7 @@
-package com.findapple.findapple.domain.auth.usecase
+package com.findapple.findapple.domain.features.auth.usecase
 
-import com.findapple.findapple.domain.auth.`object`.RegisterObject
-import com.findapple.findapple.domain.auth.service.AuthService
+import com.findapple.findapple.domain.features.auth.`object`.RegisterObject
+import com.findapple.findapple.domain.features.auth.service.AuthService
 import com.findapple.findapple.domain.base.Result
 import com.findapple.findapple.domain.base.UseCase
 import io.reactivex.Single

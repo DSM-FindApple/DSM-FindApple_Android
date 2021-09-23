@@ -2,7 +2,7 @@ package com.findapple.findapple.presentation.features.lost.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.findapple.findapple.domain.post.usecase.GetLostListUseCase
+import com.findapple.findapple.domain.features.post.usecase.GetLostListUseCase
 
 class LostViewModelFactory(private val getLostListUseCase: GetLostListUseCase) :
     ViewModelProvider.Factory {

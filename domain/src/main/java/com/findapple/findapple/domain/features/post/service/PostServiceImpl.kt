@@ -1,10 +1,10 @@
-package com.findapple.findapple.domain.post.service
+package com.findapple.findapple.domain.features.post.service
 
 import com.findapple.findapple.domain.base.Result
 import com.findapple.findapple.domain.errorhandler.ErrorHandler
-import com.findapple.findapple.domain.post.`object`.PostDataObject
-import com.findapple.findapple.domain.post.entity.PostListData
-import com.findapple.findapple.domain.post.repository.PostRepository
+import com.findapple.findapple.domain.features.post.`object`.PostDataObject
+import com.findapple.findapple.domain.features.post.entity.PostListData
+import com.findapple.findapple.domain.features.post.repository.PostRepository
 import com.findapple.findapple.domain.toResult
 import io.reactivex.Single
 

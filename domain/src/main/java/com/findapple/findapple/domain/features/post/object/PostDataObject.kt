@@ -1,4 +1,4 @@
-package com.findapple.findapple.domain.post.`object`
+package com.findapple.findapple.domain.features.post.`object`
 
 import com.findapple.findapple.domain.`object`.LocationInfo
 import java.io.File

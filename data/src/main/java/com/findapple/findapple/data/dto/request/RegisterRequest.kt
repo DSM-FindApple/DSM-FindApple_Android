@@ -1,6 +1,6 @@
 package com.findapple.findapple.data.dto.request
 
-import com.findapple.findapple.domain.auth.`object`.RegisterObject
+import com.findapple.findapple.domain.features.auth.`object`.RegisterObject
 
 data class RegisterRequest(
     val kakaoId: String,

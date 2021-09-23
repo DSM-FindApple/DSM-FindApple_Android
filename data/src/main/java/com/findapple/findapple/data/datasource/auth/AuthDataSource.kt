@@ -2,7 +2,7 @@ package com.findapple.findapple.data.datasource.auth
 
 import com.findapple.findapple.data.dto.response.LoginResponse
 import com.findapple.findapple.data.entity.AuthData
-import com.findapple.findapple.domain.auth.`object`.RegisterObject
+import com.findapple.findapple.domain.features.auth.`object`.RegisterObject
 import io.reactivex.Single
 
 interface AuthDataSource {

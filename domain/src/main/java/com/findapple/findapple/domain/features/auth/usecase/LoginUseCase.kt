@@ -1,8 +1,8 @@
-package com.findapple.findapple.domain.auth.usecase
+package com.findapple.findapple.domain.features.auth.usecase
 
-import com.findapple.findapple.domain.auth.entity.Auth
-import com.findapple.findapple.domain.auth.entity.Token
-import com.findapple.findapple.domain.auth.service.AuthService
+import com.findapple.findapple.domain.features.auth.entity.Auth
+import com.findapple.findapple.domain.features.auth.entity.Token
+import com.findapple.findapple.domain.features.auth.service.AuthService
 import com.findapple.findapple.domain.base.UseCase
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable

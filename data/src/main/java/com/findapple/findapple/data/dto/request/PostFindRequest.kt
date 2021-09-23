@@ -1,6 +1,6 @@
 package com.findapple.findapple.data.dto.request
 
-import com.findapple.findapple.domain.post.`object`.PostDataObject
+import com.findapple.findapple.domain.features.post.`object`.PostDataObject
 import java.io.File
 import java.util.*
 

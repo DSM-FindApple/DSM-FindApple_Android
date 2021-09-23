@@ -5,7 +5,7 @@ import com.findapple.findapple.data.dto.response.LoginResponse
 import com.findapple.findapple.data.entity.AuthData
 import com.findapple.findapple.data.entity.toLoginRequest
 import com.findapple.findapple.data.remote.AuthApi
-import com.findapple.findapple.domain.auth.`object`.RegisterObject
+import com.findapple.findapple.domain.features.auth.`object`.RegisterObject
 import io.reactivex.Single
 
 class AuthDataSourceImpl(private val authApi: AuthApi) : AuthDataSource {

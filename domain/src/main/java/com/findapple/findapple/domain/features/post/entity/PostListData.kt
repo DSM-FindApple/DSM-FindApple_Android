@@ -1,4 +1,4 @@
-package com.findapple.findapple.domain.post.entity
+package com.findapple.findapple.domain.features.post.entity
 
 import java.util.*
 

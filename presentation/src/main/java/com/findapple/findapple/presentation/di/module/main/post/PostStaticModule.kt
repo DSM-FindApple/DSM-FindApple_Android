@@ -5,11 +5,11 @@ import com.findapple.findapple.data.datasource.post.PostDataSourceImpl
 import com.findapple.findapple.data.remote.PostApi
 import com.findapple.findapple.data.repository.PostRepositoryImpl
 import com.findapple.findapple.domain.errorhandler.ErrorHandler
-import com.findapple.findapple.domain.post.repository.PostRepository
-import com.findapple.findapple.domain.post.service.PostService
-import com.findapple.findapple.domain.post.service.PostServiceImpl
-import com.findapple.findapple.domain.post.usecase.GetFindListUseCase
-import com.findapple.findapple.domain.post.usecase.GetLostListUseCase
+import com.findapple.findapple.domain.features.post.repository.PostRepository
+import com.findapple.findapple.domain.features.post.service.PostService
+import com.findapple.findapple.domain.features.post.service.PostServiceImpl
+import com.findapple.findapple.domain.features.post.usecase.GetFindListUseCase
+import com.findapple.findapple.domain.features.post.usecase.GetLostListUseCase
 import com.findapple.findapple.presentation.di.scope.MainFragmentScope
 import dagger.Module
 import dagger.Provides
