@@ -1,19 +1,21 @@
 package com.findapple.findapple.presentation.features.find
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import com.findapple.findapple.R
+import com.findapple.findapple.databinding.FragmentFindBinding
+import com.findapple.findapple.presentation.base.BaseFragment
+import com.findapple.findapple.presentation.base.BaseViewModel
+import com.findapple.findapple.presentation.features.find.viewmodel.FindViewModel
+import com.findapple.findapple.presentation.features.find.viewmodel.FindViewModelFactory
+import javax.inject.Inject
 
-class FindFragment : Fragment() {
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_find, container, false)
+class FindFragment : BaseFragment<FragmentFindBinding>(R.layout.fragment_find) {
+    @Inject
+    lateinit var viewModelFactory: FindViewModelFactory
+    override val viewModel: BaseViewModel by lazy {
+        ViewModelProvider(this, viewModelFactory).get(FindViewModel::class.java)
     }
 
+    override fun observeEvent() {
+    }
 }
