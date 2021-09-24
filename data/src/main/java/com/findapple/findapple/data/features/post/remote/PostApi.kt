@@ -1,9 +1,9 @@
-package com.findapple.findapple.data.remote
+package com.findapple.findapple.data.features.post.remote
 
-import com.findapple.findapple.data.dto.request.PostFindRequest
-import com.findapple.findapple.data.dto.request.PostLostRequest
-import com.findapple.findapple.data.dto.response.FindListResponse
-import com.findapple.findapple.data.dto.response.LostListResponse
+import com.findapple.findapple.data.features.post.dto.request.PostFindRequest
+import com.findapple.findapple.data.features.post.dto.request.PostLostRequest
+import com.findapple.findapple.data.features.post.dto.response.FindListResponse
+import com.findapple.findapple.data.features.post.dto.response.LostListResponse
 import io.reactivex.Single
 import retrofit2.http.Body
 import retrofit2.http.GET

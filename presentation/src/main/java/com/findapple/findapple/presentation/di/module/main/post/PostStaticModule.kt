@@ -2,7 +2,7 @@ package com.findapple.findapple.presentation.di.module.main.post
 
 import com.findapple.findapple.data.features.mypage.datasource.PostDataSource
 import com.findapple.findapple.data.features.mypage.datasource.PostDataSourceImpl
-import com.findapple.findapple.data.remote.PostApi
+import com.findapple.findapple.data.features.post.remote.PostApi
 import com.findapple.findapple.data.features.post.repository.PostRepositoryImpl
 import com.findapple.findapple.domain.errorhandler.ErrorHandler
 import com.findapple.findapple.domain.features.post.repository.PostRepository
