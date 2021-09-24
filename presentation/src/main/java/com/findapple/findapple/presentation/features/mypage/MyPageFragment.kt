@@ -17,6 +17,8 @@ class MyPageFragment : BaseFragment<FragmentMypageBinding>(R.layout.fragment_myp
         ViewModelProvider(this,viewModelFactory).get(MyPageViewModel::class.java)
     }
 
+
+
     override fun observeEvent() {
         TODO("Not yet implemented")
     }

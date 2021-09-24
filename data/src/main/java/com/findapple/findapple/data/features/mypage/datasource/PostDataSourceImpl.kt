@@ -1,8 +1,9 @@
 package com.findapple.findapple.data.features.mypage.datasource
 
-import com.findapple.findapple.data.dto.request.*
-import com.findapple.findapple.data.dto.response.FindListResponse
-import com.findapple.findapple.data.dto.response.LostListResponse
+import com.findapple.findapple.data.features.post.dto.request.toFindRequest
+import com.findapple.findapple.data.features.post.dto.request.toLostRequest
+import com.findapple.findapple.data.features.post.dto.response.FindListResponse
+import com.findapple.findapple.data.features.post.dto.response.LostListResponse
 import com.findapple.findapple.data.features.post.remote.PostApi
 import com.findapple.findapple.domain.features.post.`object`.PostDataObject
 import io.reactivex.Single

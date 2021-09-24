@@ -1,8 +1,8 @@
 package com.findapple.findapple.data.features.auth.repository
 
 import com.findapple.findapple.data.features.auth.datasource.AuthDataSource
-import com.findapple.findapple.data.dto.response.toEntity
-import com.findapple.findapple.data.entity.toDataEntity
+import com.findapple.findapple.data.features.auth.dto.response.toEntity
+import com.findapple.findapple.data.features.auth.entity.toDataEntity
 import com.findapple.findapple.domain.features.auth.`object`.RegisterObject
 import com.findapple.findapple.domain.features.auth.entity.Auth
 import com.findapple.findapple.domain.features.auth.entity.Token
