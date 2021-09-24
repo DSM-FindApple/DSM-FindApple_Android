@@ -2,9 +2,10 @@ package com.findapple.findapple.presentation.features.mypage.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.findapple.findapple.domain.features.mypage.usecase.GetUserUseCase
 
-class MyPageViewModelFactory:ViewModelProvider.Factory {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        TODO("Not yet implemented")
-    }
+class MyPageViewModelFactory(private val getUserUseCase: GetUserUseCase) :
+    ViewModelProvider.Factory {
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T =
+        modelClass.getConstructor(GetUserUseCase::class.java).newInstance(getUserUseCase)
 }
