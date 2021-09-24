@@ -1,4 +1,6 @@
 package com.findapple.findapple.presentation.features.mypage.viewmodel
 
-class MyPageViewModel {
+import com.findapple.findapple.presentation.base.BaseViewModel
+
+class MyPageViewModel: BaseViewModel() {
 }
