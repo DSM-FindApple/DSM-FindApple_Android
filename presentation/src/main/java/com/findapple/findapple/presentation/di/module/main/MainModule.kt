@@ -1,5 +1,6 @@
 package com.findapple.findapple.presentation.di.module.main
 
+import com.findapple.findapple.presentation.di.module.main.mypage.MyPageStaticModule
 import com.findapple.findapple.presentation.di.module.main.post.PostStaticModule
 import com.findapple.findapple.presentation.di.scope.MainFragmentScope
 import com.findapple.findapple.presentation.features.chat.ChattingFragment
@@ -24,6 +25,6 @@ abstract class MainModule {
     abstract fun chattingFragment(): ChattingFragment
 
     @MainFragmentScope
-    @ContributesAndroidInjector(modules = [])
+    @ContributesAndroidInjector(modules = [MyPageStaticModule::class])
     abstract fun mypageFragment(): MyPageFragment
 }
