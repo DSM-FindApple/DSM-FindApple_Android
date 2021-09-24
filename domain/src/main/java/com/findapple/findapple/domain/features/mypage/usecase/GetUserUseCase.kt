@@ -1,5 +1,6 @@
 package com.findapple.findapple.domain.features.mypage.usecase
 
+import com.findapple.findapple.domain.base.Result
 import com.findapple.findapple.domain.base.UseCase
 import com.findapple.findapple.domain.features.mypage.entity.User
 import com.findapple.findapple.domain.features.mypage.service.UserService
