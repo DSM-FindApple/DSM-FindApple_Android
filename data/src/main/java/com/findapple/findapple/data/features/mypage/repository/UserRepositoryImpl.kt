@@ -1,4 +1,4 @@
-package com.findapple.findapple.data.repository
+package com.findapple.findapple.data.features.mypage.repository
 
 import com.findapple.findapple.domain.features.mypage.entity.User
 import com.findapple.findapple.domain.features.mypage.repository.UserRepository

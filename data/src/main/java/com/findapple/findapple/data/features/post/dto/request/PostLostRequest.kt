@@ -1,4 +1,4 @@
-package com.findapple.findapple.data.dto.request
+package com.findapple.findapple.data.features.post.dto.request
 
 import com.findapple.findapple.domain.features.post.`object`.PostDataObject
 import java.io.File

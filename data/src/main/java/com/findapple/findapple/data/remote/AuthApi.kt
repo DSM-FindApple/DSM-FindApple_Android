@@ -1,6 +1,6 @@
 package com.findapple.findapple.data.remote
 
-import com.findapple.findapple.data.dto.request.LoginRequest
+import com.findapple.findapple.data.features.auth.dto.request.LoginRequest
 import com.findapple.findapple.data.dto.request.RegisterRequest
 import com.findapple.findapple.data.dto.response.LoginResponse
 import io.reactivex.Single

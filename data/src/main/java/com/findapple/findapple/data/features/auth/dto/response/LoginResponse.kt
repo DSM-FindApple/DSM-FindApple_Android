@@ -1,4 +1,4 @@
-package com.findapple.findapple.data.dto.response
+package com.findapple.findapple.data.features.auth.dto.response
 
 import com.findapple.findapple.domain.features.auth.entity.Token
 

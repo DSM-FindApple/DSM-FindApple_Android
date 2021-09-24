@@ -1,4 +1,4 @@
-package com.findapple.findapple.data.dto.response
+package com.findapple.findapple.data.features.post.dto.response
 
 import com.findapple.findapple.domain.features.post.entity.PostListData
 import java.util.*

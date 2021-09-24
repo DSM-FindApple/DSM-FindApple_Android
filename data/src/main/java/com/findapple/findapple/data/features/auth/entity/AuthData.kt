@@ -1,6 +1,6 @@
-package com.findapple.findapple.data.entity
+package com.findapple.findapple.data.features.auth.entity
 
-import com.findapple.findapple.data.dto.request.LoginRequest
+import com.findapple.findapple.data.features.auth.dto.request.LoginRequest
 import com.findapple.findapple.domain.features.auth.entity.Auth
 
 data class AuthData(val id: String, var nickname: String)

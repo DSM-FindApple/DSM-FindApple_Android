@@ -1,4 +1,4 @@
-package com.findapple.findapple.data.datasource.auth
+package com.findapple.findapple.data.features.auth.datasource
 
 import com.findapple.findapple.data.dto.response.LoginResponse
 import com.findapple.findapple.data.entity.AuthData

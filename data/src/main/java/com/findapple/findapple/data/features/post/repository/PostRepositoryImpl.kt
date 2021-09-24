@@ -1,6 +1,6 @@
-package com.findapple.findapple.data.repository
+package com.findapple.findapple.data.features.post.repository
 
-import com.findapple.findapple.data.datasource.post.PostDataSource
+import com.findapple.findapple.data.features.mypage.datasource.PostDataSource
 import com.findapple.findapple.data.dto.response.toEntity
 import com.findapple.findapple.domain.features.post.`object`.PostDataObject
 import com.findapple.findapple.domain.features.post.entity.PostListData

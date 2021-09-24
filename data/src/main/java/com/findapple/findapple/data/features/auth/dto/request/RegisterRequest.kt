@@ -1,4 +1,4 @@
-package com.findapple.findapple.data.dto.request
+package com.findapple.findapple.data.features.auth.dto.request
 
 import com.findapple.findapple.domain.features.auth.`object`.RegisterObject
 

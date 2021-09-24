@@ -1,9 +1,10 @@
-package com.findapple.findapple.data.datasource.auth
+package com.findapple.findapple.data.features.auth.datasource
 
 import com.findapple.findapple.data.dto.request.toRequest
 import com.findapple.findapple.data.dto.response.LoginResponse
 import com.findapple.findapple.data.entity.AuthData
 import com.findapple.findapple.data.entity.toLoginRequest
+import com.findapple.findapple.data.features.auth.datasource.AuthDataSource
 import com.findapple.findapple.data.remote.AuthApi
 import com.findapple.findapple.domain.features.auth.`object`.RegisterObject
 import io.reactivex.Single
