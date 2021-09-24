@@ -7,11 +7,12 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
 import com.findapple.findapple.BR
 
 abstract class BaseFragment<T : ViewDataBinding>(private val layoutId: Int) : Fragment() {
     lateinit var binding: T
-    abstract val viewModel: BaseViewModel
+    abstract val viewModel: ViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
