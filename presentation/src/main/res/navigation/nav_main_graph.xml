@@ -22,7 +22,7 @@
         tools:layout="@layout/fragment_chatting" />
     <fragment
         android:id="@+id/mypage_fragment"
-        android:name="com.findapple.findapple.presentation.features.mypage.MypageFragment"
+        android:name="com.findapple.findapple.presentation.features.mypage.MyPageFragment"
         android:label="MypageFragment"
         tools:layout="@layout/fragment_mypage" />
 </navigation>

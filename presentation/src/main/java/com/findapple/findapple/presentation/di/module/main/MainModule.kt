@@ -5,7 +5,7 @@ import com.findapple.findapple.presentation.di.scope.MainFragmentScope
 import com.findapple.findapple.presentation.features.chat.ChattingFragment
 import com.findapple.findapple.presentation.features.find.FindFragment
 import com.findapple.findapple.presentation.features.lost.LostFragment
-import com.findapple.findapple.presentation.features.mypage.MypageFragment
+import com.findapple.findapple.presentation.features.mypage.MyPageFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -25,5 +25,5 @@ abstract class MainModule {
 
     @MainFragmentScope
     @ContributesAndroidInjector(modules = [])
-    abstract fun mypageFragment(): MypageFragment
+    abstract fun mypageFragment(): MyPageFragment
 }
