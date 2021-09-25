@@ -12,7 +12,7 @@
         app:umanoOverlay="true"
         app:umanoPanelHeight="150dp"
         app:umanoShadowHeight="0dp"
-        tools:context=".presentation.features.lost.LostFragment">
+        tools:context=".features.lost.LostFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/lost_back_wv"

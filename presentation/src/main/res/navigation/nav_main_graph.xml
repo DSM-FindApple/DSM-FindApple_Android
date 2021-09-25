@@ -7,22 +7,22 @@
 
     <fragment
         android:id="@+id/lost_fragment"
-        android:name="com.findapple.findapple.presentation.features.lost.LostFragment"
+        android:name="com.findapple.presentation.features.lost.LostFragment"
         android:label="LostFragment"
         tools:layout="@layout/fragment_lost" />
     <fragment
         android:id="@+id/find_fragment"
-        android:name="com.findapple.findapple.presentation.features.find.FindFragment"
+        android:name="com.findapple.presentation.features.find.FindFragment"
         android:label="findFragment"
         tools:layout="@layout/fragment_find" />
     <fragment
         android:id="@+id/chat_fragment"
-        android:name="com.findapple.findapple.presentation.features.chat.ChattingFragment"
+        android:name="com.findapple.presentation.features.chat.ChattingFragment"
         android:label="ChattingFragment"
         tools:layout="@layout/fragment_chatting" />
     <fragment
         android:id="@+id/mypage_fragment"
-        android:name="com.findapple.findapple.presentation.features.mypage.MyPageFragment"
+        android:name="com.findapple.presentation.features.mypage.MyPageFragment"
         android:label="MypageFragment"
         tools:layout="@layout/fragment_mypage" />
 </navigation>

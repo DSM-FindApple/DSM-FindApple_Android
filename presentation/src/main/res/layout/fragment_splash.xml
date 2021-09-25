@@ -5,7 +5,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/blue_100"
-        tools:context=".presentation.features.splash.SplashFragment">
+        tools:context=".features.splash.SplashFragment">
 
         <ImageView
             android:layout_width="80dp"
