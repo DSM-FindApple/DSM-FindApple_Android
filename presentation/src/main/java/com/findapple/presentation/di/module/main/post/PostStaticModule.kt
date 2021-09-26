@@ -1,15 +1,15 @@
 package com.findapple.presentation.di.module.main.post
 
-import com.findapple.presentation.data.features.mypage.datasource.PostDataSource
-import com.findapple.presentation.data.features.mypage.datasource.PostDataSourceImpl
-import com.findapple.presentation.data.features.post.remote.PostApi
-import com.findapple.presentation.data.features.post.repository.PostRepositoryImpl
-import com.findapple.presentation.domain.errorhandler.ErrorHandler
-import com.findapple.presentation.domain.features.post.repository.PostRepository
-import com.findapple.presentation.domain.features.post.service.PostService
-import com.findapple.presentation.domain.features.post.service.PostServiceImpl
-import com.findapple.presentation.domain.features.post.usecase.GetFindListUseCase
-import com.findapple.presentation.domain.features.post.usecase.GetLostListUseCase
+import com.findapple.data.features.mypage.datasource.PostDataSource
+import com.findapple.data.features.mypage.datasource.PostDataSourceImpl
+import com.findapple.data.features.post.remote.PostApi
+import com.findapple.data.features.post.repository.PostRepositoryImpl
+import com.findapple.domain.errorhandler.ErrorHandler
+import com.findapple.domain.features.post.repository.PostRepository
+import com.findapple.domain.features.post.service.PostService
+import com.findapple.domain.features.post.service.PostServiceImpl
+import com.findapple.domain.features.post.usecase.GetFindListUseCase
+import com.findapple.domain.features.post.usecase.GetLostListUseCase
 import com.findapple.presentation.di.scope.MainFragmentScope
 import dagger.Module
 import dagger.Provides

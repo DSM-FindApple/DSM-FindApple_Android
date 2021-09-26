@@ -1,7 +1,10 @@
 package com.findapple.presentation.di.module.main
 
+import com.findapple.presentation.di.module.main.mypage.MyPageModule
 import com.findapple.presentation.di.module.main.mypage.MyPageStaticModule
 import com.findapple.presentation.di.module.main.post.PostStaticModule
+import com.findapple.presentation.di.module.main.post.find.FindModule
+import com.findapple.presentation.di.module.main.post.lost.LostModule
 import com.findapple.presentation.di.scope.MainFragmentScope
 import com.findapple.presentation.features.chat.ChattingFragment
 import com.findapple.presentation.features.find.FindFragment
@@ -13,11 +16,11 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class MainModule {
     @MainFragmentScope
-    @ContributesAndroidInjector(modules = [PostStaticModule::class])
+    @ContributesAndroidInjector(modules = [LostModule::class, PostStaticModule::class])
     abstract fun lostFragment(): LostFragment
 
     @MainFragmentScope
-    @ContributesAndroidInjector(modules = [PostStaticModule::class])
+    @ContributesAndroidInjector(modules = [FindModule::class, PostStaticModule::class])
     abstract fun findFragment(): FindFragment
 
     @MainFragmentScope
@@ -25,8 +28,8 @@ abstract class MainModule {
     abstract fun chattingFragment(): ChattingFragment
 
     @MainFragmentScope
-    @ContributesAndroidInjector(modules = [MyPageStaticModule::class])
+    @ContributesAndroidInjector(modules = [MyPageModule::class, MyPageStaticModule::class])
     abstract fun mypageFragment(): MyPageFragment
 
-    
+
 }

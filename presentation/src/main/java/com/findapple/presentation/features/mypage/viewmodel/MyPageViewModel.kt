@@ -1,10 +1,10 @@
 package com.findapple.presentation.features.mypage.viewmodel
 
-import com.findapple.presentation.domain.features.mypage.usecase.GetUserUseCase
+import com.findapple.domain.features.mypage.usecase.GetUserUseCase
 import com.findapple.presentation.base.BaseViewModel
-import com.findapple.presentation.domain.base.Result
-import com.findapple.presentation.domain.errorhandler.Error
-import com.findapple.presentation.domain.features.mypage.entity.User
+import com.findapple.domain.base.Result
+import com.findapple.domain.errorhandler.Error
+import com.findapple.domain.features.mypage.entity.User
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
 

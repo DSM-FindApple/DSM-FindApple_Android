@@ -16,7 +16,7 @@ class MyPageFragment : BaseFragment<FragmentMypageBinding>(R.layout.fragment_myp
     lateinit var viewModelFactory: MyPageViewModelFactory
 
     override val viewModel: MyPageViewModel by lazy {
-        ViewModelProvider(this,viewModelFactory).get(MyPageViewModel::class.java)
+        ViewModelProvider(this, viewModelFactory).get(MyPageViewModel::class.java)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -25,7 +25,6 @@ class MyPageFragment : BaseFragment<FragmentMypageBinding>(R.layout.fragment_myp
     }
 
     override fun observeEvent() {
-        TODO("Not yet implemented")
     }
 
 }

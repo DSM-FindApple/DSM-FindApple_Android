@@ -2,7 +2,7 @@ package com.findapple.presentation.features.mypage.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.findapple.presentation.domain.features.mypage.usecase.GetUserUseCase
+import com.findapple.domain.features.mypage.usecase.GetUserUseCase
 
 class MyPageViewModelFactory(private val getUserUseCase: GetUserUseCase) :
     ViewModelProvider.Factory {

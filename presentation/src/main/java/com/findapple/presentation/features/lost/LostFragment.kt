@@ -18,7 +18,6 @@ class LostFragment : BackPressFinishFragment<FragmentLostBinding>(R.layout.fragm
     }
 
     override fun observeEvent() {
-        TODO("Not yet implemented")
     }
 
 

@@ -1,7 +1,7 @@
 package com.findapple.presentation.di.module
 
-import com.findapple.presentation.data.base.ErrorHandlerImpl
-import com.findapple.presentation.domain.errorhandler.ErrorHandler
+import com.findapple.data.base.ErrorHandlerImpl
+import com.findapple.domain.errorhandler.ErrorHandler
 import dagger.Module
 import dagger.Provides
 import io.reactivex.disposables.CompositeDisposable

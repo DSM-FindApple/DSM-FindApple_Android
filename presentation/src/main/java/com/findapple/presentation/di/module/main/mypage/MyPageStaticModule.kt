@@ -1,11 +1,11 @@
 package com.findapple.presentation.di.module.main.mypage
 
-import com.findapple.presentation.data.features.mypage.repository.UserRepositoryImpl
-import com.findapple.presentation.domain.errorhandler.ErrorHandler
-import com.findapple.presentation.domain.features.mypage.repository.UserRepository
-import com.findapple.presentation.domain.features.mypage.service.UserService
-import com.findapple.presentation.domain.features.mypage.service.UserServiceImpl
-import com.findapple.presentation.domain.features.mypage.usecase.GetUserUseCase
+import com.findapple.data.features.mypage.repository.UserRepositoryImpl
+import com.findapple.domain.errorhandler.ErrorHandler
+import com.findapple.domain.features.mypage.repository.UserRepository
+import com.findapple.domain.features.mypage.service.UserService
+import com.findapple.domain.features.mypage.service.UserServiceImpl
+import com.findapple.domain.features.mypage.usecase.GetUserUseCase
 import com.findapple.presentation.di.scope.MainFragmentScope
 import dagger.Module
 import dagger.Provides

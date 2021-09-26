@@ -12,7 +12,7 @@ import androidx.navigation.findNavController
 import com.findapple.presentation.R
 import dagger.android.support.DaggerFragment
 
-abstract class BaseFragment<T : ViewDataBinding>(private val layoutId: Int) : Fragment() {
+abstract class BaseFragment<T : ViewDataBinding>(private val layoutId: Int) : DaggerFragment() {
     lateinit var binding: T
     abstract val viewModel: BaseViewModel
 
