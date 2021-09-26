@@ -10,7 +10,9 @@ import com.findapple.presentation.features.chat.ChattingFragment
 import com.findapple.presentation.features.find.FindFragment
 import com.findapple.presentation.features.lost.LostFragment
 import com.findapple.presentation.features.mypage.MyPageFragment
+import com.findapple.presentation.main.viewmodel.MainViewModelFactory
 import dagger.Module
+import dagger.Provides
 import dagger.android.ContributesAndroidInjector
 
 @Module
@@ -30,6 +32,4 @@ abstract class MainModule {
     @MainFragmentScope
     @ContributesAndroidInjector(modules = [MyPageModule::class, MyPageStaticModule::class])
     abstract fun mypageFragment(): MyPageFragment
-
-
 }

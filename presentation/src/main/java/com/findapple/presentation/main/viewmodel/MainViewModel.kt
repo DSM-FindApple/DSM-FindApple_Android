@@ -1,4 +1,6 @@
 package com.findapple.presentation.main.viewmodel
 
-class MainViewModel {
+import com.findapple.presentation.base.BaseViewModel
+
+class MainViewModel : BaseViewModel() {
 }

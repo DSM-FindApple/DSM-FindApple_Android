@@ -12,7 +12,7 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class MainActivityModule {
     @FragmentScope
-    @ContributesAndroidInjector(modules = [MainModule::class])
+    @ContributesAndroidInjector(modules = [MainModule::class, MainStaticModule::class])
     abstract fun mainFragment(): MainFragment
 
     @FragmentScope
