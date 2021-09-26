@@ -8,10 +8,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
+import androidx.navigation.findNavController
+import com.findapple.presentation.R
+import dagger.android.support.DaggerFragment
 
 abstract class BaseFragment<T : ViewDataBinding>(private val layoutId: Int) : Fragment() {
     lateinit var binding: T
-    abstract val viewModel: ViewModel
+    abstract val viewModel: BaseViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,7 +28,15 @@ abstract class BaseFragment<T : ViewDataBinding>(private val layoutId: Int) : Fr
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.lifecycleOwner = viewLifecycleOwner
+        observeLogin()
+        observeEvent()
         //binding.setVariable(BR.vm,viewModel)
+    }
+
+    private fun observeLogin(){
+        viewModel.needLogin.observe(viewLifecycleOwner,{
+            requireActivity().findNavController(R.id.main_activity_container).navigate(R.id.action_mainFragment_to_authFragment)
+        })
     }
 
     abstract fun observeEvent()

@@ -2,6 +2,6 @@ package com.findapple.presentation.base
 
 import androidx.databinding.ViewDataBinding
 
-abstract class BackPressFinishFragment<T : ViewDataBinding>(private val layoutId: Int) :
+abstract class BackPressFinishFragment<T : ViewDataBinding>(layoutId: Int) :
     BaseFragment<T>(layoutId) {
 }

@@ -6,14 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.findapple.presentation.R
+import com.findapple.presentation.base.BaseFragment
+import com.findapple.presentation.base.BaseViewModel
+import com.findapple.presentation.databinding.FragmentAuthBinding
 
-class AuthFragment : Fragment() {
+class AuthFragment : BaseFragment<FragmentAuthBinding>(R.layout.fragment_auth) {
+    override val viewModel: BaseViewModel
+        get() = TODO("Not yet implemented")
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_auth, container, false)
+    override fun observeEvent() {
+        TODO("Not yet implemented")
     }
+
 }

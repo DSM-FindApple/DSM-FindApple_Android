@@ -27,4 +27,6 @@ abstract class MainModule {
     @MainFragmentScope
     @ContributesAndroidInjector(modules = [MyPageStaticModule::class])
     abstract fun mypageFragment(): MyPageFragment
+
+    
 }
