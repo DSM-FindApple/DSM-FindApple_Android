@@ -1,11 +1,13 @@
 package com.findapple.presentation.di.module.main.auth
 
-import com.findapple.presentation.di.scope.AuthFragmentScope
-import com.findapple.presentation.features.auth.AuthFragment
+import com.findapple.presentation.di.scope.FragmentScope
+import com.findapple.presentation.features.auth.viewmodel.AuthViewModelFactory
 import dagger.Module
-import dagger.android.ContributesAndroidInjector
+import dagger.Provides
 
 @Module
-abstract class AuthModule {
-
+class AuthModule {
+    @FragmentScope
+    @Provides
+    fun provideAuthViewModelFactory(): AuthViewModelFactory = AuthViewModelFactory()
 }
