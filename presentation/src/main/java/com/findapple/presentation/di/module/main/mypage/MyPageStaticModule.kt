@@ -1,5 +1,8 @@
 package com.findapple.presentation.di.module.main.mypage
 
+import com.findapple.data.features.mypage.UserApi
+import com.findapple.data.features.mypage.datasource.UserDataSource
+import com.findapple.data.features.mypage.datasource.UserDataSourceImpl
 import com.findapple.data.features.mypage.repository.UserRepositoryImpl
 import com.findapple.domain.errorhandler.ErrorHandler
 import com.findapple.domain.features.mypage.repository.UserRepository
@@ -31,6 +34,10 @@ class MyPageStaticModule {
     @MainFragmentScope
     @Provides
     fun provideUserRepository(
-        //todo make datasource
-    ): UserRepository = UserRepositoryImpl()
+        dataSource: UserDataSource
+    ): UserRepository = UserRepositoryImpl(dataSource)
+
+    @MainFragmentScope
+    @Provides
+    fun provideUserDataSource(api: UserApi): UserDataSource = UserDataSourceImpl(api)
 }
