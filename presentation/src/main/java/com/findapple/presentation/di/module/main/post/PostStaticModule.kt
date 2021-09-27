@@ -1,7 +1,7 @@
 package com.findapple.presentation.di.module.main.post
 
-import com.findapple.data.features.mypage.datasource.PostDataSource
-import com.findapple.data.features.mypage.datasource.PostDataSourceImpl
+import com.findapple.data.features.post.datasource.PostDataSource
+import com.findapple.data.features.post.datasource.PostDataSourceImpl
 import com.findapple.data.features.post.remote.PostApi
 import com.findapple.data.features.post.repository.PostRepositoryImpl
 import com.findapple.domain.errorhandler.ErrorHandler

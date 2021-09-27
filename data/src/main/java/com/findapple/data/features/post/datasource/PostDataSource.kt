@@ -1,4 +1,4 @@
-package com.findapple.data.features.mypage.datasource
+package com.findapple.data.features.post.datasource
 
 import com.findapple.data.features.post.dto.response.FindListResponse
 import com.findapple.data.features.post.dto.response.LostListResponse
