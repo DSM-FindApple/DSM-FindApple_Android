@@ -24,5 +24,9 @@
         android:id="@+id/mypage_fragment"
         android:name="com.findapple.presentation.features.mypage.MyPageFragment"
         android:label="MypageFragment"
-        tools:layout="@layout/fragment_mypage" />
+        tools:layout="@layout/fragment_mypage" >
+        <action
+            android:id="@+id/action_mypageFragment_to_lost_fragment"
+            app:destination="@id/lost_fragment"/>
+    </fragment>
 </navigation>

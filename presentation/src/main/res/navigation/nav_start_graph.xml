@@ -20,7 +20,12 @@
         android:id="@+id/authFragment"
         android:name="com.findapple.presentation.features.auth.AuthFragment"
         android:label="fragment_auth"
-        tools:layout="@layout/fragment_auth" />
+        tools:layout="@layout/fragment_auth">
+        <action
+            android:id="@+id/action_authFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+
+    </fragment>
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.findapple.presentation.main.MainFragment"

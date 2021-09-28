@@ -10,6 +10,7 @@ import io.reactivex.observers.DisposableSingleObserver
 
 class MyPageViewModel(private val getUserUseCase: GetUserUseCase) : BaseViewModel() {
 
+    
     fun getUserInfo() {
         getUserUseCase.execute(
             data = Unit,
@@ -20,14 +21,12 @@ class MyPageViewModel(private val getUserUseCase: GetUserUseCase) : BaseViewMode
 
                         }
                         is Result.Failure -> {
-                            needLogin.call()
                             if (t.reason == Error.UnAuthorized) {
                                 needLogin.call()
                             }
                         }
                     }
                 }
-
                 override fun onError(e: Throwable) {
                     e.printStackTrace()
                 }

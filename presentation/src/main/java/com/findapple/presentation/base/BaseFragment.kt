@@ -9,6 +9,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.findapple.presentation.R
 import dagger.android.support.DaggerFragment
 
@@ -33,10 +34,15 @@ abstract class BaseFragment<T : ViewDataBinding>(private val layoutId: Int) : Da
         //binding.setVariable(BR.vm,viewModel)
     }
 
-    private fun observeLogin(){
-        viewModel.needLogin.observe(viewLifecycleOwner,{
-            requireActivity().findNavController(R.id.main_activity_container).navigate(R.id.action_mainFragment_to_authFragment)
+    private fun observeLogin() {
+        viewModel.needLogin.observe(viewLifecycleOwner, {
+            requireActivity().findNavController(R.id.main_activity_container)
+                .navigate(R.id.action_mainFragment_to_authFragment)
         })
+    }
+
+    open fun onBackPressed() {
+        findNavController().navigateUp()
     }
 
     abstract fun observeEvent()
