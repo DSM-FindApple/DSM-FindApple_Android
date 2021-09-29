@@ -20,12 +20,7 @@
         android:id="@+id/authFragment"
         android:name="com.findapple.presentation.features.auth.AuthFragment"
         android:label="fragment_auth"
-        tools:layout="@layout/fragment_auth">
-        <action
-            android:id="@+id/action_authFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
-
-    </fragment>
+        tools:layout="@layout/fragment_auth" />
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.findapple.presentation.main.MainFragment"
@@ -34,6 +29,8 @@
         <action
             android:id="@+id/action_mainFragment_to_authFragment"
             app:destination="@+id/authFragment"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@id/mainFragment"
             app:popUpToInclusive="false" />
     </fragment>

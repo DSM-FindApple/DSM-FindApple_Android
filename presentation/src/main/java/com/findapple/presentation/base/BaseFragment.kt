@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import com.findapple.presentation.BR
 import com.findapple.presentation.R
 import dagger.android.support.DaggerFragment
 
@@ -31,7 +33,10 @@ abstract class BaseFragment<T : ViewDataBinding>(private val layoutId: Int) : Da
         binding.lifecycleOwner = viewLifecycleOwner
         observeLogin()
         observeEvent()
-        //binding.setVariable(BR.vm,viewModel)
+        requireActivity().onBackPressedDispatcher.addCallback {
+            onBackPressed()
+        }
+        binding.setVariable(BR.vm, viewModel)
     }
 
     private fun observeLogin() {
