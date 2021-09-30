@@ -5,15 +5,14 @@ import androidx.lifecycle.MutableLiveData
 import com.findapple.domain.features.mypage.usecase.GetUserUseCase
 import com.findapple.presentation.base.BaseViewModel
 import com.findapple.domain.base.Result
-import com.findapple.domain.errorhandler.Error
 import com.findapple.domain.features.mypage.entity.User
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
 
 class MyPageViewModel(private val getUserUseCase: GetUserUseCase) : BaseViewModel() {
 
-    private val _userInfo = MutableLiveData<User>()
-    val userInfo: LiveData<User> get() = _userInfo
+    private val _userProfile = MutableLiveData<User>()
+    val userProfile: LiveData<User> get() = _userProfile
 
 
 
@@ -24,7 +23,7 @@ class MyPageViewModel(private val getUserUseCase: GetUserUseCase) : BaseViewMode
                 override fun onSuccess(t: Result<User>) {
                     when (t) {
                         is Result.Success -> {
-                            _userInfo.value = t.value
+                            _userProfile.value = t.value
                         }
                         is Result.Failure -> {
 
