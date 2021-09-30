@@ -12,10 +12,12 @@ import com.findapple.presentation.base.BaseViewModel
 import com.findapple.presentation.databinding.FragmentAuthBinding
 import com.findapple.presentation.features.auth.viewmodel.AuthViewModel
 import com.findapple.presentation.features.auth.viewmodel.AuthViewModelFactory
+import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.user.UserApiClient
 import com.kakao.sdk.user.rx
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.rxkotlin.addTo
 import javax.inject.Inject
 
@@ -33,20 +35,25 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>(R.layout.fragment_auth) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val afterLogined: DisposableSingleObserver<OAuthToken> =
+            object : DisposableSingleObserver<OAuthToken>() {
+                override fun onSuccess(t: OAuthToken) {
+                }
+
+                override fun onError(e: Throwable) {
+                }
+
+            }
         binding.authLoginBtn.setOnClickListener {
-            if(UserApiClient.instance.isKakaoTalkLoginAvailable(requireContext())){
+            if (UserApiClient.instance.isKakaoTalkLoginAvailable(requireContext())) {
                 UserApiClient.rx.loginWithKakaoTalk(requireContext())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe({
-
-                    }, {
-
-                    })
-                    .addTo(compositeDisposable)
-            }else{
-                UserApiClient.instance.loginWithKakaoAccount(requireContext()) { token, error ->
-
-                }
+                    .subscribe(afterLogined)
+            } else {
+                UserApiClient.rx.loginWithKakaoAccount(requireContext())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(afterLogined)
             }
 
         }
