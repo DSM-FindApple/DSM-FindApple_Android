@@ -36,27 +36,31 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>(R.layout.fragment_auth) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val afterLogined: DisposableSingleObserver<OAuthToken> =
+        val afterLogin: DisposableSingleObserver<OAuthToken> =
             object : DisposableSingleObserver<OAuthToken>() {
                 override fun onSuccess(t: OAuthToken) {
 
                 }
 
                 override fun onError(e: Throwable) {
+
                 }
 
             }
-        binding.authLoginBtn.setOnClickListener {
-            if (UserApiClient.instance.isKakaoTalkLoginAvailable(requireContext())) {
-                UserApiClient.rx.loginWithKakaoTalk(requireContext())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(afterLogined)
-            } else {
-                UserApiClient.rx.loginWithKakaoAccount(requireContext())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(afterLogined)
-            }
+        binding.run {
+            authLoginBtn.setOnClickListener {
+                if (UserApiClient.instance.isKakaoTalkLoginAvailable(requireContext())) {
+                    UserApiClient.rx.loginWithKakaoTalk(requireContext())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(afterLogin)
+                } else {
+                    UserApiClient.rx.loginWithKakaoAccount(requireContext())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(afterLogin)
+                }
 
+            }
+            authLoginVp.adapter = AuthAdapter()
         }
     }
 
