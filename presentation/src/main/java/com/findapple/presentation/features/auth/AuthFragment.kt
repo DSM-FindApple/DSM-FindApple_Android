@@ -12,6 +12,8 @@ import com.findapple.presentation.base.BaseViewModel
 import com.findapple.presentation.databinding.FragmentAuthBinding
 import com.findapple.presentation.features.auth.viewmodel.AuthViewModel
 import com.findapple.presentation.features.auth.viewmodel.AuthViewModelFactory
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.user.UserApiClient
 import com.kakao.sdk.user.rx
@@ -61,6 +63,8 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>(R.layout.fragment_auth) {
 
             }
             authLoginVp.adapter = AuthAdapter()
+            TabLayoutMediator(authLoginTl, authLoginVp) { tab, position ->
+            }.attach()
         }
     }
 
