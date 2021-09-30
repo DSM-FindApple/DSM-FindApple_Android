@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -9,14 +10,14 @@
             type="com.findapple.presentation.features.mypage.viewmodel.MyPageViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/mypage_header_main_cl"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="wrap_content"
             android:background="@color/yellow_200"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -31,6 +32,7 @@
                 tools:src="@drawable/img_fineapple_kingwangjjang" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/mypage_header_profile_name_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -39,15 +41,48 @@
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/mypage_header_profile_iv"
                 app:layout_constraintTop_toTopOf="@id/mypage_header_profile_iv"
-                tools:text="김재원"/>
+                tools:text="김재원" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/mypage_header_profile_post_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/cookie_run_regular"
+                app:layout_constraintStart_toEndOf="@+id/mypage_header_profile_iv"
+                app:layout_constraintTop_toBottomOf="@+id/mypage_header_profile_name_tv"
+                tools:text="분실물 게시물 : 0개 / 습득물 게시물 : 0개" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="55dp"
+                android:layout_height="80dp"
+                android:layout_marginVertical="30dp"
+                app:layout_constraintBottom_toTopOf="@+id/appCompatTextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/mypage_header_profile_post_tv"
+                tools:src="@drawable/ic_fineapple_basic" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/appCompatTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/cookie_run_bold"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="파인애플왕국 국민" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_baseline_more_vert_24"
+                android:layout_margin="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_margin="20dp"/>
+                app:srcCompat="@drawable/ic_baseline_more_vert_24" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
