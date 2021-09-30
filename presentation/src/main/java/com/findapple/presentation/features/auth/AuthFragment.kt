@@ -39,6 +39,7 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>(R.layout.fragment_auth) {
         val afterLogined: DisposableSingleObserver<OAuthToken> =
             object : DisposableSingleObserver<OAuthToken>() {
                 override fun onSuccess(t: OAuthToken) {
+
                 }
 
                 override fun onError(e: Throwable) {
