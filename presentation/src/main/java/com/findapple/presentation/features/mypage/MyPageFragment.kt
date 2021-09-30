@@ -3,6 +3,7 @@ package com.findapple.presentation.features.mypage
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.findapple.presentation.R
 import com.findapple.presentation.databinding.FragmentMypageBinding
 import com.findapple.presentation.base.BaseFragment
@@ -19,9 +20,14 @@ class MyPageFragment : BaseFragment<FragmentMypageBinding>(R.layout.fragment_myp
         ViewModelProvider(this, viewModelFactory).get(MyPageViewModel::class.java)
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getUserInfo()
+        binding.mypageRv.run {
+            adapter = MyPageAdapter(viewModel)
+            layoutManager = LinearLayoutManager(context)
+        }
     }
 
     override fun observeEvent() {
