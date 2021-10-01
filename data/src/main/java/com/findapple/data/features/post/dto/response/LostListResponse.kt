@@ -1,6 +1,6 @@
 package com.findapple.data.features.post.dto.response
 
-import com.findapple.domain.features.post.entity.PostListData
+import com.findapple.domain.features.post.entity.Post
 import java.util.*
 
 data class LostListResponse(
@@ -16,8 +16,12 @@ data class LostListResponse(
     val images: List<ImageResponse>
 )
 
+fun List<LostListResponse>.toEntity(): List<Post> =
+    this.map { it.toEntity() }
+
+
 fun LostListResponse.toEntity() =
-    PostListData(
+    Post(
         id = lostId,
         title = title,
         userName = userName,

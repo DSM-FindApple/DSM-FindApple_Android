@@ -2,7 +2,7 @@ package com.findapple.domain.features.post.entity
 
 import java.util.*
 
-data class PostListData(
+data class Post(
     val id: Int,
     val title: String,
     val userName: String,

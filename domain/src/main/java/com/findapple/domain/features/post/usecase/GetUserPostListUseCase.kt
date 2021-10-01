@@ -7,11 +7,11 @@ import com.findapple.domain.features.post.service.PostService
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 
-class GetLostListUseCase(
+class GetUserPostListUseCase(
     private val postService: PostService,
     compositeDisposable: CompositeDisposable
 ) :
-    UseCase<Unit, Result<List<Post>>>(compositeDisposable) {
-    override fun create(data: Unit): Single<Result<List<Post>>> =
-        postService.getPostList(true)
+    UseCase<Unit, Result<Post>>(compositeDisposable) {
+    override fun create(data: Unit): Single<Result<Post>> =
+        postService.getUserPostList()
 }

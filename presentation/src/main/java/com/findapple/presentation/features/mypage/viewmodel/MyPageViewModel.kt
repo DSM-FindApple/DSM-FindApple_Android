@@ -6,7 +6,7 @@ import com.findapple.domain.features.mypage.usecase.GetUserUseCase
 import com.findapple.presentation.base.BaseViewModel
 import com.findapple.domain.base.Result
 import com.findapple.domain.features.mypage.entity.User
-import com.findapple.domain.features.post.entity.PostListData
+import com.findapple.domain.features.post.entity.Post
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
 
@@ -15,8 +15,8 @@ class MyPageViewModel(private val getUserUseCase: GetUserUseCase) : BaseViewMode
     private val _userProfile = MutableLiveData<User>()
     val userProfile: LiveData<User> get() = _userProfile
 
-    private val _userPost = MutableLiveData<List<PostListData>>()
-    val userPost: LiveData<List<PostListData>> get() = _userPost
+    private val _userPost = MutableLiveData<List<Post>>()
+    val userPost: LiveData<List<Post>> get() = _userPost
 
     fun getUserInfo() {
         getUserUseCase.execute(
