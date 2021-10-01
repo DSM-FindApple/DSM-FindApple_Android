@@ -9,6 +9,8 @@ import com.findapple.domain.features.mypage.repository.UserRepository
 import com.findapple.domain.features.mypage.service.UserService
 import com.findapple.domain.features.mypage.service.UserServiceImpl
 import com.findapple.domain.features.mypage.usecase.GetUserUseCase
+import com.findapple.domain.features.post.service.PostService
+import com.findapple.domain.features.post.usecase.GetUserPostListUseCase
 import com.findapple.presentation.di.scope.MainFragmentScope
 import dagger.Module
 import dagger.Provides
@@ -16,6 +18,13 @@ import io.reactivex.disposables.CompositeDisposable
 
 @Module
 class MyPageStaticModule {
+
+    @MainFragmentScope
+    @Provides
+    fun provideUserPostListUseCase(
+        postService: PostService,
+        compositeDisposable: CompositeDisposable
+    ): GetUserPostListUseCase = GetUserPostListUseCase(postService, compositeDisposable)
 
     @MainFragmentScope
     @Provides
