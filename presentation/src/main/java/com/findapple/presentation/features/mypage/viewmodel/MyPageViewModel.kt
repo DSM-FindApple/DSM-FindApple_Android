@@ -1,5 +1,6 @@
 package com.findapple.presentation.features.mypage.viewmodel
 
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.findapple.domain.features.mypage.usecase.GetUserUseCase
@@ -22,7 +23,15 @@ class MyPageViewModel(
     private val _userPost = MutableLiveData<List<Post>>()
     val userPost: LiveData<List<Post>> get() = _userPost
 
-    fun getUserInfo() {
+    override fun apply(event: Lifecycle.Event) {
+        when (event) {
+            Lifecycle.Event.ON_CREATE -> {
+                getUserInfo()
+            }
+        }
+    }
+
+    private fun getUserInfo() {
         getUserUseCase.execute(
             data = Unit,
             singleObserver = object : DisposableSingleObserver<Result<User>>() {
@@ -44,4 +53,6 @@ class MyPageViewModel(
             AndroidSchedulers.mainThread()
         )
     }
+
+
 }

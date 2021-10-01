@@ -23,7 +23,6 @@ class MyPageFragment : BaseFragment<FragmentMypageBinding>(R.layout.fragment_myp
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getUserInfo()
         binding.mypageRv.run {
             adapter = MyPageAdapter(viewModel)
             layoutManager = LinearLayoutManager(context)

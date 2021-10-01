@@ -2,10 +2,10 @@ package com.findapple.presentation.base
 
 import androidx.lifecycle.ViewModel
 
-abstract class BaseViewModel : ViewModel() {
+abstract class BaseViewModel : ViewModel(), LifeCycleCallback {
     val needLogin = SingleLiveEvent<Unit>()
 
-    fun startLogin(){
+    fun startLogin() {
         needLogin.call()
     }
 }

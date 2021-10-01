@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.activity.addCallback
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.lifecycle.Lifecycle
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.findapple.presentation.BR
@@ -16,6 +17,10 @@ import dagger.android.support.DaggerFragment
 abstract class BaseFragment<T : ViewDataBinding>(private val layoutId: Int) : DaggerFragment() {
     lateinit var binding: T
     abstract val viewModel: BaseViewModel
+
+    private val lifeCycleOwner by lazy {
+        LifeCycleOwner(viewModel)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,6 +40,32 @@ abstract class BaseFragment<T : ViewDataBinding>(private val layoutId: Int) : Da
             onBackPressed()
         }
         binding.setVariable(BR.vm, viewModel)
+        notifyEvent(Lifecycle.Event.ON_CREATE)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        notifyEvent(Lifecycle.Event.ON_START)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        notifyEvent(Lifecycle.Event.ON_RESUME)
+    }
+
+    override fun onPause() {
+        notifyEvent(Lifecycle.Event.ON_PAUSE)
+        super.onPause()
+    }
+
+    override fun onStop() {
+        notifyEvent(Lifecycle.Event.ON_STOP)
+        super.onStop()
+    }
+
+    override fun onDestroy() {
+        notifyEvent(Lifecycle.Event.ON_DESTROY)
+        super.onDestroy()
     }
 
     private fun observeLogin() {
@@ -49,4 +80,8 @@ abstract class BaseFragment<T : ViewDataBinding>(private val layoutId: Int) : Da
     }
 
     abstract fun observeEvent()
+
+    private fun notifyEvent(event: Lifecycle.Event) {
+        lifeCycleOwner.notifyEvent(event)
+    }
 }
