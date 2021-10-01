@@ -17,7 +17,4 @@ class PostServiceImpl(
 
     override fun postFeed(request: PostDataObject, isLost: Boolean): Single<Result<Unit>> =
         postRepository.postFeed(request, isLost).toResult(errorHandler)
-
-    override fun getUserPostList(): Single<Result<Post>> =
-        postRepository.userPostList().toResult(errorHandler)
 }

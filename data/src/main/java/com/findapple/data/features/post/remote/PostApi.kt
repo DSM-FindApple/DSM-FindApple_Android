@@ -18,9 +18,6 @@ interface PostApi {
     @GET("/find")
     fun getFindList(): Single<List<FindListResponse>>
 
-    @GET("/mypage")
-    fun getUserPostList(): Single<List<UserPostListResponse>>
-
     @POST("/find")
     fun postFind(@Part body: PostFindRequest): Single<Unit> //todo body 바꾸기
 

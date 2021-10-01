@@ -16,9 +16,6 @@ class PostDataSourceImpl(private val postApi: PostApi) : PostDataSource {
     override fun getFindList(): Single<List<FindListResponse>> =
         postApi.getFindList()
 
-    override fun getUserPostList(): Single<List<UserPostListResponse>> =
-        postApi.getUserPostList()
-
     override fun postFind(request: PostDataObject): Single<Unit> =
         postApi.postFind(request.toFindRequest())
 

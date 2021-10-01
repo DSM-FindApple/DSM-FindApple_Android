@@ -11,8 +11,6 @@ interface PostDataSource {
 
     fun getFindList(): Single<List<FindListResponse>>
 
-    fun getUserPostList(): Single<List<UserPostListResponse>>
-
     fun postFind(request: PostDataObject): Single<Unit>
 
     fun postLost(request: PostDataObject): Single<Unit>

@@ -10,6 +10,4 @@ interface PostService {
     fun getPostList(isLostList: Boolean): Single<Result<List<Post>>>
 
     fun postFeed(request: PostDataObject,isLost: Boolean): Single<Result<Unit>>
-
-    fun getUserPostList(): Single<Result<Post>>
 }
