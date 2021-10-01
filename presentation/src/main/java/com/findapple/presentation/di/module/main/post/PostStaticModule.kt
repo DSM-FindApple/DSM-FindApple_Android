@@ -20,21 +20,6 @@ class PostStaticModule {
 
     @MainFragmentScope
     @Provides
-    fun provideLostListUseCase(
-        service: PostService,
-        compositeDisposable: CompositeDisposable
-    ): GetLostListUseCase = GetLostListUseCase(service, compositeDisposable)
-
-    @MainFragmentScope
-    @Provides
-    fun provideFindListUseCase(
-        service: PostService,
-        compositeDisposable: CompositeDisposable
-    ): GetFindListUseCase = GetFindListUseCase(service, compositeDisposable)
-
-
-    @MainFragmentScope
-    @Provides
     fun postService(
         repository: PostRepository,
         errorHandler: ErrorHandler

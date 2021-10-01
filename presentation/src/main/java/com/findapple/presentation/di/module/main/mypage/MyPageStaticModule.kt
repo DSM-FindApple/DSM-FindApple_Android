@@ -9,7 +9,9 @@ import com.findapple.domain.features.mypage.repository.UserRepository
 import com.findapple.domain.features.mypage.service.UserService
 import com.findapple.domain.features.mypage.service.UserServiceImpl
 import com.findapple.domain.features.mypage.usecase.GetUserUseCase
+import com.findapple.domain.features.post.repository.PostRepository
 import com.findapple.domain.features.post.service.PostService
+import com.findapple.domain.features.post.service.PostServiceImpl
 import com.findapple.domain.features.post.usecase.GetUserPostListUseCase
 import com.findapple.presentation.di.scope.MainFragmentScope
 import dagger.Module
@@ -32,6 +34,7 @@ class MyPageStaticModule {
         userService: UserService,
         compositeDisposable: CompositeDisposable
     ): GetUserUseCase = GetUserUseCase(userService, compositeDisposable)
+
 
     @MainFragmentScope
     @Provides
