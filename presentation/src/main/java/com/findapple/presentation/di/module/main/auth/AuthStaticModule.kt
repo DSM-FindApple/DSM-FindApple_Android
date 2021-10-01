@@ -4,6 +4,7 @@ import com.findapple.data.features.auth.datasource.AuthDataSource
 import com.findapple.data.features.auth.datasource.AuthDataSourceImpl
 import com.findapple.data.features.auth.remote.AuthApi
 import com.findapple.data.features.auth.repository.AuthRepositoryImpl
+import com.findapple.data.local.sharedpref.LocalStorage
 import com.findapple.domain.errorhandler.ErrorHandler
 import com.findapple.domain.features.auth.repository.AuthRepository
 import com.findapple.domain.features.auth.service.AuthService
@@ -41,8 +42,9 @@ class AuthStaticModule {
     @FragmentScope
     @Provides
     fun provideAuthRepository(
-        authDataSource: AuthDataSource
-    ): AuthRepository = AuthRepositoryImpl(authDataSource)
+        authDataSource: AuthDataSource,
+        localStorage: LocalStorage
+    ): AuthRepository = AuthRepositoryImpl(authDataSource,localStorage)
 
     @FragmentScope
     @Provides

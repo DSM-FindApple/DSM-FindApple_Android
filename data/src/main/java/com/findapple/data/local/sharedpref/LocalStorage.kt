@@ -6,4 +6,8 @@ interface LocalStorage {
     fun getToken(access: Boolean): String
 
     fun clearToken()
+
+    fun saveString(key: String, content: String)
+
+    fun getString(key: String): String
 }

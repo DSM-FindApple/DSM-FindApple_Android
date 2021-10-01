@@ -12,12 +12,23 @@ class SharedPreferStorage(private val context: Context) : LocalStorage {
         }
     }
 
+
     override fun getToken(access: Boolean): String =
         "Bearer" + getPref(context).getString(getTokenType(access), "").toString()
 
     override fun clearToken() {
         getPref(context).edit().clear().apply()
     }
+
+    override fun saveString(key: String, content: String) {
+        getPref(context).edit().let {
+            it.putString(key, content)
+            it.apply()
+        }
+    }
+
+    override fun getString(key: String): String =
+        getPref(context).getString(key, "").toString()
 
     private fun getPref(context: Context): SharedPreferences =
         PreferenceManager.getDefaultSharedPreferences(context)
