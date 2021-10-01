@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="vm"
             type="com.findapple.presentation.features.mypage.viewmodel.MyPageViewModel" />
@@ -27,6 +29,7 @@
                 android:layout_height="45dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
+                android:visibility="@{vm.userProfile==null?View.GONE:View.VISIBLE}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:src="@drawable/img_fineapple_kingwangjjang" />
@@ -36,12 +39,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/cookie_run_bold"
                 android:text="@{vm.userProfile.name.length()>0?vm.userProfile.name:`로그인이 필요합니다`}"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/mypage_header_profile_iv"
-                app:layout_constraintTop_toTopOf="@id/mypage_header_profile_iv"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:text="김재원" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -58,6 +62,7 @@
                 android:layout_width="55dp"
                 android:layout_height="80dp"
                 android:layout_marginVertical="30dp"
+                android:visibility="@{vm.userProfile==null?View.GONE:View.VISIBLE}"
                 app:layout_constraintBottom_toTopOf="@+id/appCompatTextView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -72,6 +77,7 @@
                 android:fontFamily="@font/cookie_run_bold"
                 android:textColor="@color/black"
                 android:textSize="20sp"
+                android:visibility="@{vm.userProfile==null?View.GONE:View.VISIBLE}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -81,9 +87,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
+                android:visibility="@{vm.userProfile==null?View.GONE:View.VISIBLE}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_baseline_more_vert_24" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_border_blue_500"
+                android:fontFamily="@font/cookie_run_bold"
+                android:onClick="@{()->vm.startLogin()}"
+                android:text="@string/do_login"
+                android:layout_marginEnd="20dp"
+                android:visibility="@{vm.userProfile==null?View.VISIBLE:View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -102,6 +122,7 @@
                 android:layout_marginStart="20dp"
                 android:drawablePadding="3dp"
                 android:fontFamily="@font/cookie_run_regular"
+                android:padding="5dp"
                 android:text="@string/findappe_level"
                 app:drawableEndCompat="@drawable/ic_baseline_help_24"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -115,6 +136,7 @@
                 android:fontFamily="@font/cookie_run_bold"
                 android:textColor="@color/black"
                 android:textSize="20sp"
+                android:visibility="@{vm.userProfile==null?View.GONE:View.VISIBLE}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

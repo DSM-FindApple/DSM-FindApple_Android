@@ -7,4 +7,5 @@
     <string name="chatting">채팅</string>
     <string name="mypage">마이페이지</string>
     <string name="findappe_level">파인애플 지수</string>
+    <string name="do_login">로그인하기</string>
 </resources>

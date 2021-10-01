@@ -14,8 +14,6 @@ class MyPageViewModel(private val getUserUseCase: GetUserUseCase) : BaseViewMode
     private val _userProfile = MutableLiveData<User>()
     val userProfile: LiveData<User> get() = _userProfile
 
-
-
     fun getUserInfo() {
         getUserUseCase.execute(
             data = Unit,
