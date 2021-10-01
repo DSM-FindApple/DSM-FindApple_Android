@@ -63,7 +63,7 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>(R.layout.fragment_auth) {
 
             }
             authLoginVp.adapter = AuthAdapter()
-            TabLayoutMediator(authLoginTl, authLoginVp) { tab, position ->
+            TabLayoutMediator(authLoginTl, authLoginVp) { _, _ ->
             }.attach()
         }
     }

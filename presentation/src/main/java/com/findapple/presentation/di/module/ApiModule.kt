@@ -1,5 +1,6 @@
 package com.findapple.presentation.di.module
 
+import com.findapple.data.features.auth.remote.AuthApi
 import com.findapple.data.features.mypage.UserApi
 import com.findapple.data.features.post.remote.PostApi
 import dagger.Module
@@ -14,6 +15,7 @@ class ApiModule {
         private val baseUrl = "https://"
         private val postUrl = "${baseUrl}/post"
         private val userUrl = "${baseUrl}/user"
+        private val authUrl = "${baseUrl}/auth"
     }
 
     @Provides
@@ -25,4 +27,9 @@ class ApiModule {
     @Singleton
     fun provideUserApi(retrofit: Retrofit.Builder): UserApi =
         retrofit.baseUrl(userUrl).build().create(UserApi::class.java)
+
+    @Provides
+    @Singleton
+    fun provideAuthApi(retrofit: Retrofit.Builder): AuthApi =
+        retrofit.baseUrl(authUrl).build().create(AuthApi::class.java)
 }
