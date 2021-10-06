@@ -3,7 +3,6 @@ package com.findapple.presentation.di.app
 import com.findapple.data.local.sharedpref.LocalStorage
 import com.findapple.presentation.R
 import com.findapple.presentation.di.component.DaggerAppComponent
-import com.google.firebase.messaging.FirebaseMessaging
 import com.kakao.sdk.common.KakaoSdk
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
