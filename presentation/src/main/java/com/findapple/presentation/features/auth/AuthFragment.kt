@@ -68,6 +68,14 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>(R.layout.fragment_auth) {
         }
     }
 
+    private fun getUserInfo(){
+        UserApiClient.instance.me { user, error ->
+            if(user != null){
+
+            }
+        }
+    }
+
     override fun observeEvent() {
     }
 
