@@ -66,9 +66,6 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>(R.layout.fragment_auth) {
         UserApiClient.instance.me { user, _ ->
             if (user != null) {
                 viewModel.login(user.id.toString(), user.kakaoAccount?.profile?.nickname.toString())
-                onBackPressed()
-            } else {
-                
             }
         }
     }

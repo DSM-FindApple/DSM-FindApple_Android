@@ -1,6 +1,5 @@
 package com.findapple.domain.features.auth.service
 
-import com.findapple.domain.features.auth.`object`.RegisterObject
 import com.findapple.domain.features.auth.entity.Auth
 import com.findapple.domain.features.auth.entity.Token
 import com.findapple.domain.base.Result
