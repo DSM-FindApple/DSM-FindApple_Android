@@ -16,9 +16,6 @@ class AuthServiceImpl(
     override fun login(loginRequestData: Auth): Single<Result<Token>> =
         authRepository.login(loginRequestData).toResult(errorHandler)
 
-    override fun register(registerRequest: RegisterObject): Single<Result<Unit>> =
-        authRepository.register(registerRequest).toResult(errorHandler)
-
     override fun refreshToken(): Single<Result<Unit>> =
         authRepository.refreshToken().toResult(errorHandler)
 }

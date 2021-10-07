@@ -10,7 +10,6 @@ import com.findapple.domain.features.auth.repository.AuthRepository
 import com.findapple.domain.features.auth.service.AuthService
 import com.findapple.domain.features.auth.service.AuthServiceImpl
 import com.findapple.domain.features.auth.usecase.LoginUseCase
-import com.findapple.domain.features.auth.usecase.RegisterUseCase
 import com.findapple.presentation.di.scope.FragmentScope
 import dagger.Module
 import dagger.Provides
@@ -24,13 +23,6 @@ class AuthStaticModule {
         authService: AuthService,
         compositeDisposable: CompositeDisposable
     ): LoginUseCase = LoginUseCase(authService, compositeDisposable)
-
-    @FragmentScope
-    @Provides
-    fun provideRegisterUseCase(
-        authService: AuthService,
-        compositeDisposable: CompositeDisposable
-    ): RegisterUseCase = RegisterUseCase(authService, compositeDisposable)
 
     @FragmentScope
     @Provides

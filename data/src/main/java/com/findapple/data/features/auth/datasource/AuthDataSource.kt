@@ -8,7 +8,5 @@ import io.reactivex.Single
 interface AuthDataSource {
     fun login(loginRequest: AuthData): Single<LoginResponse>
 
-    fun register(registerRequest: RegisterObject): Single<Unit>
-
     fun refreshToken(): Single<Unit>
 }
