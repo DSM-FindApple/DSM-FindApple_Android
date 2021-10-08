@@ -3,6 +3,7 @@ package com.findapple.presentation.features.auth.viewmodel
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LiveData
 import com.findapple.domain.base.Result
+import com.findapple.domain.errorhandler.Error
 import com.findapple.domain.features.auth.entity.Auth
 import com.findapple.domain.features.auth.entity.Token
 import com.findapple.domain.features.auth.usecase.LoginUseCase
@@ -44,7 +45,11 @@ class AuthViewModel(
     }
 
     private fun onLoginError(result: Result.Failure<Token>) {
-
+        when (result.reason) {
+            Error.UnAuthorized -> {
+                needLogin.call()
+            }
+        }
     }
 
 }
