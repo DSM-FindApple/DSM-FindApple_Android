@@ -13,6 +13,6 @@ interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun saveUserData(info: UserEntity)
 
-    @Query("Select * From UserEntity")
+    @Query("SELECT * FROM UserEntity")
     fun getUserData(): Single<UserEntity>
 }
