@@ -13,8 +13,8 @@ import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.user.UserApiClient
 import com.kakao.sdk.user.rx
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
+import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class AuthFragment : BaseFragment<FragmentAuthBinding>(R.layout.fragment_auth) {
@@ -26,35 +26,12 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>(R.layout.fragment_auth) {
         ViewModelProvider(this, viewModelFactory).get(AuthViewModel::class.java)
     }
 
-    @Inject
-    lateinit var compositeDisposable: CompositeDisposable
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val afterLogin: DisposableSingleObserver<OAuthToken> =
-            object : DisposableSingleObserver<OAuthToken>() {
-                override fun onSuccess(t: OAuthToken) {
-                    getUserInfo()
-                }
-
-                override fun onError(e: Throwable) {
-
-                }
-
-            }
         binding.run {
             authLoginBtn.setOnClickListener {
-                if (UserApiClient.instance.isKakaoTalkLoginAvailable(requireContext())) {
-                    UserApiClient.rx.loginWithKakaoTalk(requireContext())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(afterLogin)
-                } else {
-                    UserApiClient.rx.loginWithKakaoAccount(requireContext())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(afterLogin)
-                }
-
+                startKakaoLogin()
             }
             authLoginVp.adapter = AuthAdapter()
             TabLayoutMediator(authLoginTl, authLoginVp) { _, _ ->
@@ -75,9 +52,39 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>(R.layout.fragment_auth) {
     }
 
     override fun observeEvent() {
-        viewModel.doneLogin.observe(viewLifecycleOwner, {
-            onBackPressed()
-        })
+        viewModel.run {
+            doneLogin.observe(viewLifecycleOwner, {
+                onBackPressed()
+            })
+            errorMessage.observe(viewLifecycleOwner, {
+                snackBarComment(it)
+            })
+        }
+    }
+
+    private lateinit var kakaoLoginDisposable: DisposableSingleObserver<OAuthToken>
+
+    private fun startKakaoLogin() {
+        kakaoLoginDisposable =
+            object : DisposableSingleObserver<OAuthToken>() {
+                override fun onSuccess(t: OAuthToken) {
+                    getUserInfo()
+                }
+
+                override fun onError(e: Throwable) {
+                    snackBarComment("카카오로그인에 실패했습니다")
+                }
+            }
+        if (UserApiClient.instance.isKakaoTalkLoginAvailable(requireContext())) {
+            UserApiClient.rx.loginWithKakaoTalk(requireContext())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread()).subscribe(kakaoLoginDisposable)
+        } else {
+            UserApiClient.rx.loginWithKakaoAccount(requireContext())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(kakaoLoginDisposable)
+        }
     }
 
 }

@@ -24,6 +24,9 @@ class AuthViewModel(
     private val _doneLogin = SingleLiveEvent<Unit>()
     val doneLogin: LiveData<Unit> get() = _doneLogin
 
+    private val _errorMessage = SingleLiveEvent<String>()
+    val errorMessage: LiveData<String> get() = _errorMessage
+
     fun login(id: Long, nickname: String, profileImageUrl: String) {
         loginUseCase.execute(
             Auth(id, nickname),
@@ -35,6 +38,7 @@ class AuthViewModel(
                             saveUserInfo(User(id, nickname, profileImageUrl))
                         }
                         is Result.Failure -> {
+                            doOnError(t)
                         }
                     }
                 }
@@ -45,6 +49,18 @@ class AuthViewModel(
             },
             AndroidSchedulers.mainThread()
         )
+    }
+
+    private fun doOnError(result: Result.Failure<Token>) {
+        when (result.reason) {
+            Error.Network -> {
+                _errorMessage.value = "인터넷 연결상태를 확인해주세요"
+            }
+            Error.InternalServer -> {
+                _errorMessage.value = "서버사용량이 많습니다"
+            }
+            else -> _errorMessage.value = "알수없는 오류가 발생했습니다"
+        }
     }
 
     private fun saveUserInfo(user: User) {

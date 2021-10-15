@@ -12,6 +12,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.findapple.presentation.BR
 import com.findapple.presentation.R
+import com.google.android.material.snackbar.Snackbar
 import dagger.android.support.DaggerFragment
 
 abstract class BaseFragment<T : ViewDataBinding>(private val layoutId: Int) : DaggerFragment() {
@@ -83,5 +84,9 @@ abstract class BaseFragment<T : ViewDataBinding>(private val layoutId: Int) : Da
 
     private fun notifyEvent(event: Lifecycle.Event) {
         lifeCycleOwner.notifyEvent(event)
+    }
+
+    fun snackBarComment(comment: String){
+        Snackbar.make(binding.root, comment, Snackbar.LENGTH_SHORT).show()
     }
 }
