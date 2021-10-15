@@ -9,4 +9,12 @@
     <string name="findappe_level">파인애플 지수</string>
     <string name="do_login">로그인하기</string>
     <string name="no_post">등록하신 게시물이 아직 없네요\n 게시물을 등록하시면 여기에 나타납니다</string>
+    <string name="findapple_level_comment">파인애플에서 잃어버린 물건을 찾아주면 파인애플지수를 높여줘요! 파인애플지수는 다음과같은 상황에 받을 수 있어요</string>
+    <string name="findapple_level_point_situation"><![CDATA[1. 습득물 게시물을 게시하였을때 -> 1점 \n2. 분실자와 채팅을 시작 했을때 -> 2점\n3. 분실자의 물건을 전달할 날짜를 정했을때 -> 3점\n4. 분실자가 물건전달받음을 확인했을때 -> 4점]]></string>
+    <string name="findapple_level_citizen">파인애플왕국 국민</string>
+    <string name="findapple_level_citizen_range">파인애플 지수: 0 ~ 11</string>
+    <string name="findapple_level_king">파인애플왕국 국왕</string>
+    <string name="findapple_level_king_range">파인애플 지수: 12 ~ 40</string>
+    <string name="findapple_level_kingwangjjang">파인애플왕국 킹왕짱 국왕</string>
+    <string name="findapple_level_kingwangjjang_range">파인애플 지수: 41 ~</string>
 </resources>

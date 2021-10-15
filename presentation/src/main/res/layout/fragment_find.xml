@@ -81,8 +81,8 @@
                     app:layout_constraintStart_toEndOf="@id/lost_location_tv" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="40dp"
+                    android:layout_height="60dp"
                     android:layout_marginEnd="15dp"
                     android:src="@drawable/ic_fineapple_love"
                     app:layout_constraintBottom_toBottomOf="parent"

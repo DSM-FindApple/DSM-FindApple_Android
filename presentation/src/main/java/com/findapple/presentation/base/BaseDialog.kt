@@ -1,5 +1,7 @@
 package com.findapple.presentation.base
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +11,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.DialogFragment
 
-abstract class BaseDialog<B: ViewDataBinding>(@LayoutRes private val layoutResId: Int): DialogFragment() {
+abstract class BaseDialog<B : ViewDataBinding>(@LayoutRes private val layoutResId: Int) :
+    DialogFragment() {
     lateinit var binding: B
 
     override fun onCreateView(
@@ -21,7 +24,9 @@ abstract class BaseDialog<B: ViewDataBinding>(@LayoutRes private val layoutResId
         binding.lifecycleOwner = this
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        dialog!!.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
 }

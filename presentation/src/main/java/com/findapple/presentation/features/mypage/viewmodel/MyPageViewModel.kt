@@ -8,6 +8,7 @@ import com.findapple.presentation.base.BaseViewModel
 import com.findapple.domain.entity.User
 import com.findapple.domain.features.post.entity.Post
 import com.findapple.domain.features.mypage.usecase.GetUserPostListUseCase
+import com.findapple.presentation.base.SingleLiveEvent
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
 
@@ -21,6 +22,9 @@ class MyPageViewModel(
 
     private val _userPost = MutableLiveData<List<Post>>()
     val userPost: LiveData<List<Post>> get() = _userPost
+
+    private val _showFindAppleLevelDetail = SingleLiveEvent<Unit>()
+    val showFindAppleLevelDetail: LiveData<Unit> get() = _showFindAppleLevelDetail
 
     override fun apply(event: Lifecycle.Event) {
         when (event) {
@@ -49,5 +53,8 @@ class MyPageViewModel(
         )
     }
 
+    fun showFindAppleLevelDetail(){
+        _showFindAppleLevelDetail.call()
+    }
 
 }
