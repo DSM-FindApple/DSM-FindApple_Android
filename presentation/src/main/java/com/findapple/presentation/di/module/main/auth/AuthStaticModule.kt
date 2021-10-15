@@ -4,12 +4,14 @@ import com.findapple.data.features.auth.datasource.AuthDataSource
 import com.findapple.data.features.auth.datasource.AuthDataSourceImpl
 import com.findapple.data.features.auth.remote.AuthApi
 import com.findapple.data.features.auth.repository.AuthRepositoryImpl
+import com.findapple.data.local.database.dao.UserDao
 import com.findapple.data.local.sharedpref.LocalStorage
 import com.findapple.domain.errorhandler.ErrorHandler
 import com.findapple.domain.features.auth.repository.AuthRepository
 import com.findapple.domain.features.auth.service.AuthService
 import com.findapple.domain.features.auth.service.AuthServiceImpl
 import com.findapple.domain.features.auth.usecase.LoginUseCase
+import com.findapple.domain.features.auth.usecase.SaveUserUseCase
 import com.findapple.presentation.di.scope.FragmentScope
 import dagger.Module
 import dagger.Provides
@@ -26,6 +28,13 @@ class AuthStaticModule {
 
     @FragmentScope
     @Provides
+    fun provideSaveUserUseCase(
+        repository: AuthRepository,
+        compositeDisposable: CompositeDisposable
+    ): SaveUserUseCase = SaveUserUseCase(repository, compositeDisposable)
+
+    @FragmentScope
+    @Provides
     fun provideAuthService(
         authRepository: AuthRepository,
         errorHandler: ErrorHandler
@@ -36,11 +45,12 @@ class AuthStaticModule {
     fun provideAuthRepository(
         authDataSource: AuthDataSource,
         localStorage: LocalStorage
-    ): AuthRepository = AuthRepositoryImpl(authDataSource,localStorage)
+    ): AuthRepository = AuthRepositoryImpl(authDataSource, localStorage)
 
     @FragmentScope
     @Provides
     fun provideAuthDataSource(
-        authApi: AuthApi
-    ): AuthDataSource = AuthDataSourceImpl(authApi)
+        authApi: AuthApi,
+        userDao: UserDao
+    ): AuthDataSource = AuthDataSourceImpl(authApi, userDao)
 }

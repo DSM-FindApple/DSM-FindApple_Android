@@ -1,7 +1,7 @@
 package com.findapple.domain.features.mypage.usecase
 
 import com.findapple.domain.base.UseCase
-import com.findapple.domain.features.mypage.entity.User
+import com.findapple.domain.entity.User
 import com.findapple.domain.features.mypage.repository.UserRepository
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable

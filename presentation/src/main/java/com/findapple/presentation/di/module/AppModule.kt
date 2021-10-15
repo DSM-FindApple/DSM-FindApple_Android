@@ -12,7 +12,8 @@ import javax.inject.Singleton
         (NetWorkModule::class),
         (ApiModule::class),
         (LocalModule::class),
-        (BaseModule::class)
+        (BaseModule::class),
+        (DatabaseModule::class)
     ]
 )
 class AppModule {

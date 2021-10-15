@@ -1,7 +1,7 @@
 package com.findapple.data.features.mypage.repository
 
 import com.findapple.data.features.mypage.datasource.UserDataSource
-import com.findapple.domain.features.mypage.entity.User
+import com.findapple.domain.entity.User
 import com.findapple.domain.features.mypage.repository.UserRepository
 import com.findapple.domain.features.post.entity.Post
 import io.reactivex.Single

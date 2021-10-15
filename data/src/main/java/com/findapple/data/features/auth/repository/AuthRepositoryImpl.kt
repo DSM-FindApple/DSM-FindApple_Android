@@ -4,6 +4,7 @@ import com.findapple.data.features.auth.datasource.AuthDataSource
 import com.findapple.data.features.auth.dto.response.toEntity
 import com.findapple.data.features.auth.entity.toDataEntity
 import com.findapple.data.local.sharedpref.LocalStorage
+import com.findapple.domain.entity.User
 import com.findapple.domain.features.auth.entity.Auth
 import com.findapple.domain.features.auth.entity.Token
 import com.findapple.domain.features.auth.repository.AuthRepository
@@ -19,5 +20,8 @@ class AuthRepositoryImpl(
 
     override fun refreshToken(): Single<Unit> =
         authDataSource.refreshToken()
+
+    override fun saveUserInfo(user: User): Single<Unit> =
+        authDataSource.saveUserInfo(user)
 
 }

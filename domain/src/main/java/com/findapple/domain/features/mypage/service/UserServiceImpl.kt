@@ -2,7 +2,6 @@ package com.findapple.domain.features.mypage.service
 
 import com.findapple.domain.base.Result
 import com.findapple.domain.errorhandler.ErrorHandler
-import com.findapple.domain.features.mypage.entity.User
 import com.findapple.domain.features.mypage.repository.UserRepository
 import com.findapple.domain.features.post.entity.Post
 import com.findapple.domain.toResult
@@ -12,9 +11,6 @@ class UserServiceImpl(
     private val repository: UserRepository,
     private val errorHandler: ErrorHandler
 ) : UserService {
-    override fun getUserInfo(): Single<Result<User>> =
-        repository.getUserInfo().toResult(errorHandler)
-
     override fun getUserPostList(): Single<Result<List<Post>>> =
         repository.userPostList().toResult(errorHandler)
 }

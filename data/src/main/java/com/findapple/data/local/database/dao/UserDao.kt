@@ -11,7 +11,7 @@ import io.reactivex.Single
 interface UserDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun saveUserData(info: UserEntity)
+    fun saveUserData(info: UserEntity):Single<Unit>
 
     @Query("SELECT * FROM UserEntity")
     fun getUserData(): Single<UserEntity>

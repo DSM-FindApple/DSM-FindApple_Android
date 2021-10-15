@@ -1,9 +1,7 @@
 package com.findapple.domain.features.mypage.entity
 
-data class User(
-    val name: String,
+data class UserDetail(
     val lostPostCount: Int,
-    val profileImage: String,
     val findPostCount: Int,
-    val fineAppleLevel: Int
+    val findAppleLevel: Int
 )

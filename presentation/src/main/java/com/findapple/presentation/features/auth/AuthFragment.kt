@@ -65,12 +65,19 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>(R.layout.fragment_auth) {
     private fun getUserInfo() {
         UserApiClient.instance.me { user, _ ->
             if (user != null) {
-                viewModel.login(user.id.toString(), user.kakaoAccount?.profile?.nickname.toString())
+                viewModel.login(
+                    user.id,
+                    user.kakaoAccount?.profile?.nickname.toString(),
+                    user.kakaoAccount?.profile?.profileImageUrl.toString()
+                )
             }
         }
     }
 
     override fun observeEvent() {
+        viewModel.doneLogin.observe(viewLifecycleOwner, {
+            onBackPressed()
+        })
     }
 
 }
