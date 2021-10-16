@@ -2,15 +2,16 @@ package com.findapple.domain.service
 
 import com.findapple.domain.BaseTest
 import com.findapple.domain.entity.User
-import com.findapple.domain.errorhandler.ErrorHandler
 import com.findapple.domain.features.auth.repository.AuthRepository
 import com.findapple.domain.features.auth.usecase.SaveUserUseCase
 import com.findapple.domain.features.mypage.repository.UserRepository
 import com.findapple.domain.features.mypage.usecase.GetUserUseCase
+import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
+import org.mockito.Mockito.`when`
 
 class UserServiceTest : BaseTest() {
 
@@ -19,9 +20,6 @@ class UserServiceTest : BaseTest() {
 
     @Mock
     private lateinit var authRepository: AuthRepository
-
-    @Mock
-    private lateinit var errorHandler: ErrorHandler
 
     private lateinit var getUserUseCase: GetUserUseCase
 
@@ -35,12 +33,19 @@ class UserServiceTest : BaseTest() {
     }
 
     @Test
-    fun `사용자 정보 저장`() {
+    fun `사용자 정보 저장 성공`() {
         val user = User(
             id = 123123,
             name = "김재원",
             profileImage = "profileimage.png"
         )
+        `when`(authRepository.saveUserInfo(user))
+            .thenReturn(Single.just(Unit))
+
+        saveUserUseCase.create(user)
+            .test().assertValue(Unit)
     }
+
+    
 
 }
