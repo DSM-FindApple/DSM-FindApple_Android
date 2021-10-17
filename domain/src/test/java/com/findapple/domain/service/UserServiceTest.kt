@@ -46,6 +46,18 @@ class UserServiceTest : BaseTest() {
             .test().assertValue(Unit)
     }
 
-    
+    @Test
+    fun `사용자 정보 불러오기 성공`() {
+        val user = User(
+            id = 123123,
+            name = "김재원",
+            profileImage = "profileimage.png"
+        )
+        `when`(userRepository.getUserInfo())
+            .thenReturn(Single.just(user))
+
+        getUserUseCase.create(Unit)
+            .test().assertValue(user)
+    }
 
 }
