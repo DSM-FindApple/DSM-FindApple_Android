@@ -15,11 +15,13 @@ class MainActivity : DaggerAppCompatActivity() {
         requestPermission()
     }
 
-    private fun requestPermission(){
-        val permissions = ArrayList<String>().apply {
-            add(Manifest.permission.ACCESS_FINE_LOCATION)
-            add(Manifest.permission.ACCESS_COARSE_LOCATION)
-        }
+    private val PERMISSION_REQUEST_CODE = 2104
+
+    private fun requestPermission() {
+        val permissions = arrayOf(
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.ACCESS_COARSE_LOCATION
+        )
         if (ActivityCompat.checkSelfPermission(
                 this,
                 Manifest.permission.ACCESS_FINE_LOCATION
@@ -28,7 +30,7 @@ class MainActivity : DaggerAppCompatActivity() {
                 Manifest.permission.ACCESS_COARSE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED
         ) {
-            ActivityCompat.requestPermissions(this, permissions)
+            ActivityCompat.requestPermissions(this, permissions, PERMISSION_REQUEST_CODE)
         }
     }
 }
