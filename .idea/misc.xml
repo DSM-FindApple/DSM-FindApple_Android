@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="presentation/src/main/res/drawable/bottom_nav_tab_background.xml" value="0.27870370370370373" />
+        <entry key="presentation/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.23425925925925925" />
         <entry key="presentation/src/main/res/drawable/ic_baseline_location_searching_24.xml" value="0.25925925925925924" />
         <entry key="presentation/src/main/res/drawable/ic_baseline_more_vert_24.xml" value="0.29384615384615387" />
         <entry key="presentation/src/main/res/drawable/ic_baseline_person_24.xml" value="0.27870370370370373" />
@@ -22,7 +23,7 @@
         <entry key="presentation/src/main/res/layout/dialog_findapple_level.xml" value="0.30844599597066863" />
         <entry key="presentation/src/main/res/layout/fragment_auth.xml" value="0.18888888888888888" />
         <entry key="presentation/src/main/res/layout/fragment_chatting.xml" value="0.28229166666666666" />
-        <entry key="presentation/src/main/res/layout/fragment_find.xml" value="0.1" />
+        <entry key="presentation/src/main/res/layout/fragment_find.xml" value="0.2391304347826087" />
         <entry key="presentation/src/main/res/layout/fragment_lost.xml" value="0.1" />
         <entry key="presentation/src/main/res/layout/fragment_main.xml" value="0.1" />
         <entry key="presentation/src/main/res/layout/fragment_mypage.xml" value="0.28229166666666666" />
