@@ -6,10 +6,15 @@ import com.findapple.data.features.auth.entity.toLoginRequest
 import com.findapple.data.features.auth.remote.AuthApi
 import com.findapple.data.local.database.dao.UserDao
 import com.findapple.data.local.database.entity.toDatabaseEntity
+import com.findapple.data.local.sharedpref.LocalStorage
 import com.findapple.domain.entity.User
 import io.reactivex.Single
 
-class AuthDataSourceImpl(private val authApi: AuthApi, private val userDao: UserDao) :
+class AuthDataSourceImpl(
+    private val authApi: AuthApi,
+    private val userDao: UserDao,
+    private val localStorage: LocalStorage
+) :
     AuthDataSource {
     override fun login(loginRequest: AuthData): Single<LoginResponse> =
         authApi.login(loginRequest.toLoginRequest())
@@ -17,6 +22,9 @@ class AuthDataSourceImpl(private val authApi: AuthApi, private val userDao: User
     override fun refreshToken(): Single<Unit> =
         authApi.refreshToken()
 
-    override fun saveUserInfo(user: User): Single<Unit> =
-        userDao.saveUserData(user.toDatabaseEntity())
+    override fun saveUserInfo(user: User): Single<Unit> {
+        localStorage.saveLong("user_id", user.id)
+        return userDao.saveUserData(user.toDatabaseEntity())
+    }
+
 }
