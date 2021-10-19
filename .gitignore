@@ -7,3 +7,4 @@ presentation/src/main/res/values/key.xml
 .gradle/buildOutputCleanup/outputFiles.bin
 
 .idea/assetWizardSettings.xml
+/.gradle/

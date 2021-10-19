@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="vm"
+            type="com.findapple.presentation.features.lost.viewmodel.LostViewModel" />
+    </data>
+
     <com.sothree.slidinguppanel.SlidingUpPanelLayout
         android:id="@+id/lost_spl"
         android:layout_width="match_parent"
@@ -65,6 +72,7 @@
                     android:layout_marginStart="14dp"
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/cookie_run_bold"
+                    android:text="@{vm.townName}"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     app:layout_constraintStart_toEndOf="@id/lost_location_ic"
@@ -76,7 +84,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:fontFamily="@font/cookie_run_regular"
-                    android:text="에서 잃어버렸어요"
+                    android:text="@string/lost_at"
                     app:layout_constraintBottom_toBottomOf="@id/lost_location_tv"
                     app:layout_constraintStart_toEndOf="@id/lost_location_tv" />
 
@@ -96,7 +104,9 @@
                     android:layout_marginTop="3dp"
                     android:layout_marginBottom="10dp"
                     android:fontFamily="@font/cookie_run_regular"
+                    android:text="@{vm.cityName}"
                     android:textColor="@color/blue_500"
+                    android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@id/lost_location_tv"
                     app:layout_constraintTop_toBottomOf="@id/lost_location_tv"

@@ -13,6 +13,7 @@ import com.findapple.presentation.base.BaseViewModel
 import com.findapple.presentation.base.WebViewFragment
 import com.findapple.presentation.features.find.viewmodel.FindViewModel
 import com.findapple.presentation.features.find.viewmodel.FindViewModelFactory
+import com.findapple.presentation.main.viewmodel.MainViewModel
 import javax.inject.Inject
 
 class FindFragment : WebViewFragment<FragmentFindBinding>(R.layout.fragment_find) {
@@ -22,6 +23,9 @@ class FindFragment : WebViewFragment<FragmentFindBinding>(R.layout.fragment_find
         ViewModelProvider(this, viewModelFactory).get(FindViewModel::class.java)
     }
 
+    @Inject
+    lateinit var mainViewModel: MainViewModel
+
     override val webViewUrl = "https://find-apple-client.vercel.app"
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -29,5 +33,6 @@ class FindFragment : WebViewFragment<FragmentFindBinding>(R.layout.fragment_find
     }
 
     override fun observeEvent() {
+        mainViewModel
     }
 }

@@ -51,6 +51,7 @@ class AuthStaticModule {
     @Provides
     fun provideAuthDataSource(
         authApi: AuthApi,
-        userDao: UserDao
-    ): AuthDataSource = AuthDataSourceImpl(authApi, userDao)
+        userDao: UserDao,
+        localStorage: LocalStorage
+    ): AuthDataSource = AuthDataSourceImpl(authApi, userDao, localStorage)
 }

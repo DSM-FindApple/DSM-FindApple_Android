@@ -8,6 +8,7 @@ import androidx.core.app.ActivityCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
+import com.findapple.domain.entity.Location
 import com.findapple.presentation.R
 import com.findapple.presentation.databinding.FragmentMainBinding
 import com.findapple.presentation.base.BaseFragment
@@ -20,10 +21,7 @@ import javax.inject.Inject
 class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
 
     @Inject
-    lateinit var viewModelFactory: MainViewModelFactory
-    override val viewModel: MainViewModel by lazy {
-        ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
-    }
+    override lateinit var viewModel: MainViewModel
 
     lateinit var fusedLocationClient: FusedLocationProviderClient
 
@@ -36,9 +34,10 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
             )
         )
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
+        checkLocation()
     }
 
-    fun checkLocationPermission() {
+    private fun checkLocation() {
         if (ActivityCompat.checkSelfPermission(
                 requireActivity(),
                 Manifest.permission.ACCESS_FINE_LOCATION
@@ -50,7 +49,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
             return
         } else {
             fusedLocationClient.lastLocation.addOnSuccessListener {
-
+                viewModel.location.value = Location(it?.longitude, it?.latitude)
             }
         }
     }

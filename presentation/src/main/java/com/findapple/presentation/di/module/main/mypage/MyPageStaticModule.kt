@@ -5,6 +5,7 @@ import com.findapple.data.features.mypage.datasource.UserDataSource
 import com.findapple.data.features.mypage.datasource.UserDataSourceImpl
 import com.findapple.data.features.mypage.repository.UserRepositoryImpl
 import com.findapple.data.local.database.dao.UserDao
+import com.findapple.data.local.sharedpref.LocalStorage
 import com.findapple.domain.errorhandler.ErrorHandler
 import com.findapple.domain.features.mypage.repository.UserRepository
 import com.findapple.domain.features.mypage.service.UserService
@@ -48,5 +49,5 @@ class MyPageStaticModule {
 
     @MainFragmentScope
     @Provides
-    fun provideUserDataSource(api: UserApi, userDao: UserDao): UserDataSource = UserDataSourceImpl(api, userDao)
+    fun provideUserDataSource(api: UserApi, userDao: UserDao, localStorage: LocalStorage): UserDataSource = UserDataSourceImpl(api, userDao, localStorage)
 }

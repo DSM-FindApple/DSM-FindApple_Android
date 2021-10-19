@@ -15,8 +15,6 @@ class UserDataSourceImpl(private val api: UserApi, private val userDao: UserDao,
         return userDao.getUserData(id).map { it.toEntity() }
     }
 
-
-
     override fun getUserPostList(): Single<List<Post>> =
         api.getUserPostList().map { it.toEntity() }
 }
