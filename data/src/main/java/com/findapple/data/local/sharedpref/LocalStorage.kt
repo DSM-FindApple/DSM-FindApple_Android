@@ -10,4 +10,8 @@ interface LocalStorage {
     fun saveString(key: String, content: String)
 
     fun getString(key: String): String
+
+    fun saveLong(key: String, data: Long)
+
+    fun getLong(key: String): Long
 }

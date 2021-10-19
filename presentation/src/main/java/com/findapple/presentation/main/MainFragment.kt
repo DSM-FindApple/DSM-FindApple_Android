@@ -55,11 +55,6 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
         }
     }
 
-    fun getUserLocation() {
-
-    }
-
-
     override fun observeEvent() {
 
     }

@@ -5,7 +5,6 @@ import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import com.findapple.presentation.R
 import com.findapple.presentation.databinding.FragmentLostBinding
-import com.findapple.presentation.base.BackPressFinishFragment
 import com.findapple.presentation.base.WebViewFragment
 import com.findapple.presentation.features.lost.viewmodel.LostViewModel
 import com.findapple.presentation.features.lost.viewmodel.LostViewModelFactory
