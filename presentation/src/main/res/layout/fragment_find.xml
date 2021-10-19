@@ -4,36 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <com.sothree.slidinguppanel.SlidingUpPanelLayout
-        android:id="@+id/lost_spl"
+        android:id="@+id/find_spl"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="bottom"
-        app:umanoDragView="@id/lost_list_cl"
+        app:umanoDragView="@id/find_list_cl"
         app:umanoOverlay="true"
         app:umanoPanelHeight="150dp"
         app:umanoShadowHeight="0dp"
-        tools:context=".features.lost.LostFragment">
+        tools:context=".features.find.FindFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/lost_back_wv"
+            android:id="@+id/find_back_cl"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <WebView
-                android:id="@+id/lost_wv"
+                android:id="@+id/find_wv"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/lost_list_cl"
+            android:id="@+id/find_list_cl"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/shape_border_white">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/lost_list"
+                android:id="@+id/find_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_border_blue_100"
@@ -48,18 +48,18 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageView
-                    android:id="@+id/lost_location_ic"
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/find_location_ic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:src="@drawable/ic_baseline_location_searching_24"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView"
+                    app:layout_constraintBottom_toBottomOf="@+id/find_city_tv"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/lost_location_tv" />
+                    app:layout_constraintTop_toTopOf="@+id/find_location_tv" />
 
                 <TextView
-                    android:id="@+id/lost_location_tv"
+                    android:id="@+id/find_location_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="14dp"
@@ -67,7 +67,7 @@
                     android:fontFamily="@font/cookie_run_bold"
                     android:textColor="@color/black"
                     android:textSize="18sp"
-                    app:layout_constraintStart_toEndOf="@id/lost_location_ic"
+                    app:layout_constraintStart_toEndOf="@id/find_location_ic"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="용산구 경기동" />
 
@@ -76,11 +76,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:fontFamily="@font/cookie_run_regular"
-                    android:text="에서 주웠어요"
-                    app:layout_constraintBottom_toBottomOf="@id/lost_location_tv"
-                    app:layout_constraintStart_toEndOf="@id/lost_location_tv" />
+                    android:text="@string/find_at"
+                    app:layout_constraintBottom_toBottomOf="@id/find_location_tv"
+                    app:layout_constraintStart_toEndOf="@id/find_location_tv" />
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="40dp"
                     android:layout_height="60dp"
                     android:layout_marginEnd="15dp"
@@ -90,7 +90,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/find_city_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="3dp"
@@ -98,8 +98,8 @@
                     android:fontFamily="@font/cookie_run_regular"
                     android:textColor="@color/blue_500"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="@id/lost_location_tv"
-                    app:layout_constraintTop_toBottomOf="@id/lost_location_tv"
+                    app:layout_constraintStart_toStartOf="@id/find_location_tv"
+                    app:layout_constraintTop_toBottomOf="@id/find_location_tv"
                     tools:text="서울특별시" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -108,7 +108,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/lost_list_cl" />
+                app:layout_constraintTop_toBottomOf="@id/find_list_cl" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
