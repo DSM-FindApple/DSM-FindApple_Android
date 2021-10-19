@@ -55,7 +55,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/lost_location_ic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -88,7 +88,7 @@
                     app:layout_constraintBottom_toBottomOf="@id/lost_location_tv"
                     app:layout_constraintStart_toEndOf="@id/lost_location_tv" />
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="40dp"
                     android:layout_height="60dp"
                     android:layout_marginEnd="15dp"

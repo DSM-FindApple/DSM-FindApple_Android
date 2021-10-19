@@ -1,5 +1,6 @@
 package com.findapple.data.features.post.dto.response
 
+import com.findapple.domain.entity.Location
 import com.findapple.domain.features.post.entity.Post
 import java.util.*
 
@@ -28,7 +29,6 @@ fun UserPostListResponse.toEntity() =
         actionTime,
         writeTime,
         category,
-        latitude,
-        longitude,
+        location = Location(longitude, latitude),
         images
     )

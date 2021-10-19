@@ -4,6 +4,7 @@ import android.location.Geocoder
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
+import com.findapple.domain.entity.Location
 import com.findapple.presentation.R
 import com.findapple.presentation.databinding.FragmentLostBinding
 import com.findapple.presentation.base.WebViewFragment
@@ -36,17 +37,21 @@ class LostFragment : WebViewFragment<FragmentLostBinding>(R.layout.fragment_lost
 
     override fun observeEvent() {
         mainViewModel.location.observe(viewLifecycleOwner, {
-            val address = geocoder.getFromLocation(it.latitude!!, it.longitude!!, 1)
-            if (!CollectionUtils.isEmpty(address)) {
-                val fetchAddress = address[0]
-                if (fetchAddress.maxAddressLineIndex > -1) {
-                    viewModel.run {
-                        cityName.value = fetchAddress.adminArea
-                        townName.value = fetchAddress.thoroughfare
-                    }
+            setLocationText(it)
+        })
+    }
+
+    private fun setLocationText(location: Location) {
+        val address = geocoder.getFromLocation(location.latitude!!, location.longitude!!, 1)
+        if (!CollectionUtils.isEmpty(address)) {
+            val fetchAddress = address[0]
+            if (fetchAddress.maxAddressLineIndex > -1) {
+                viewModel.run {
+                    cityName.value = fetchAddress.adminArea
+                    townName.value = fetchAddress.thoroughfare
                 }
             }
-        })
+        }
     }
 
 

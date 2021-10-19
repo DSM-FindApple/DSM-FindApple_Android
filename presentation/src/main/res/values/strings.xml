@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">DSM-FindApple-Android</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="lost">분실물</string>
     <string name="find">습득물</string>
     <string name="chatting">채팅</string>

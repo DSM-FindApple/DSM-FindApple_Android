@@ -1,5 +1,6 @@
 package com.findapple.domain.features.post.entity
 
+import com.findapple.domain.entity.Location
 import java.util.*
 
 data class Post(
@@ -10,7 +11,6 @@ data class Post(
     val actionTime: Date,
     val writeTime: Date,
     val category: String,
-    val latitude: Double,
-    val longitude: Double,
+    val location: Location,
     val images: List<String>
 )

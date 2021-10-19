@@ -1,5 +1,6 @@
 package com.findapple.data.features.post.dto.response
 
+import com.findapple.domain.entity.Location
 import com.findapple.domain.features.post.entity.Post
 import java.util.*
 
@@ -29,7 +30,6 @@ fun LostListResponse.toEntity() =
         actionTime = lostAt,
         writeTime = writeAt,
         category = category,
-        latitude = latitude,
-        longitude = longitude,
+        location = Location(longitude, latitude),
         images = images.toStringList()
     )
