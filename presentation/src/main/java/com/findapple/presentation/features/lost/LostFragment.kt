@@ -1,20 +1,18 @@
 package com.findapple.presentation.features.lost
 
 import android.location.Geocoder
-import android.os.Bundle
-import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import com.findapple.domain.entity.Location
 import com.findapple.presentation.R
+import com.findapple.presentation.base.BaseFragment
 import com.findapple.presentation.databinding.FragmentLostBinding
-import com.findapple.presentation.base.WebViewFragment
 import com.findapple.presentation.features.lost.viewmodel.LostViewModel
 import com.findapple.presentation.features.lost.viewmodel.LostViewModelFactory
 import com.findapple.presentation.main.viewmodel.MainViewModel
 import com.google.android.gms.common.util.CollectionUtils
 import javax.inject.Inject
 
-class LostFragment : WebViewFragment<FragmentLostBinding>(R.layout.fragment_lost) {
+class LostFragment : BaseFragment<FragmentLostBinding>(R.layout.fragment_lost) {
 
     @Inject
     lateinit var viewModelFactory: LostViewModelFactory
@@ -25,12 +23,6 @@ class LostFragment : WebViewFragment<FragmentLostBinding>(R.layout.fragment_lost
 
     @Inject
     lateinit var mainViewModel: MainViewModel
-
-    override val webViewUrl = "https://find-apple-client.vercel.app"
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setWebView(binding.lostWv)
-    }
 
     override fun observeEvent() {
         mainViewModel.location.observe(viewLifecycleOwner, {

@@ -7,15 +7,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.findapple.domain.entity.Location
 import com.findapple.presentation.R
+import com.findapple.presentation.base.BaseFragment
 import com.findapple.presentation.databinding.FragmentFindBinding
-import com.findapple.presentation.base.WebViewFragment
 import com.findapple.presentation.features.find.viewmodel.FindViewModel
 import com.findapple.presentation.features.find.viewmodel.FindViewModelFactory
 import com.findapple.presentation.main.viewmodel.MainViewModel
 import com.google.android.gms.common.util.CollectionUtils
 import javax.inject.Inject
 
-class FindFragment : WebViewFragment<FragmentFindBinding>(R.layout.fragment_find) {
+class FindFragment : BaseFragment<FragmentFindBinding>(R.layout.fragment_find) {
     @Inject
     lateinit var viewModelFactory: FindViewModelFactory
     override val viewModel: FindViewModel by lazy {
@@ -27,10 +27,8 @@ class FindFragment : WebViewFragment<FragmentFindBinding>(R.layout.fragment_find
 
     lateinit var geocoder: Geocoder
 
-    override val webViewUrl = "https://find-apple-client.vercel.app"
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setWebView(binding.findWv)
         geocoder = Geocoder(context)
     }
 

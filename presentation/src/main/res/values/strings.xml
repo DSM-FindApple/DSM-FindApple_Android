@@ -15,7 +15,7 @@
     <string name="findapple_level_king_range">파인애플 지수: 12 ~ 40</string>
     <string name="findapple_level_kingwangjjang">파인애플왕국 킹왕짱 국왕</string>
     <string name="findapple_level_kingwangjjang_range">파인애플 지수: 41 ~</string>
-    <string name="find_at">에서 주웠어요</string>
+    <string name="find_at">에서 찾았어요</string>
     <string name="lost_at">에서 잃어버렸어요</string>
     <string name="start_post">게시물 작성</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>

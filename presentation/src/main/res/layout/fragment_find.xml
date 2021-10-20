@@ -33,7 +33,8 @@
                 <WebView
                     android:id="@+id/find_wv"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    app:setWebView="@{`https://find-apple-client.vercel.app`}" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 

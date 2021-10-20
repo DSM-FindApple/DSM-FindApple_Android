@@ -13,6 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <com.sothree.slidinguppanel.SlidingUpPanelLayout
             android:id="@+id/lost_spl"
             android:layout_width="match_parent"
@@ -32,7 +33,8 @@
                 <WebView
                     android:id="@+id/lost_wv"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    app:setWebView="@{`https://find-apple-client.vercel.app`}" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -126,16 +128,17 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:backgroundTint="@color/blue_400"
+            android:contentDescription="@string/start_post"
             android:src="@drawable/ic_baseline_edit_24"
-            app:elevation="5dp"
             app:borderWidth="0dp"
+            app:elevation="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:contentDescription="@string/start_post" />
+            app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
