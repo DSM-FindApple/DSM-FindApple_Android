@@ -1,5 +1,7 @@
 package com.findapple.presentation.features.find.post
 
+import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import com.findapple.presentation.R
 import com.findapple.presentation.base.BaseFragment
@@ -15,6 +17,13 @@ class PostFindFragment : BaseFragment<FragmentPostFindBinding>(R.layout.fragment
 
     override val viewModel: PostFindViewModel by lazy {
         ViewModelProvider(this, viewModelFactory).get(PostFindViewModel::class.java)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.postFindTb.setNavigationOnClickListener {
+            onBackPressed()
+        }
     }
 
     override fun observeEvent() {
