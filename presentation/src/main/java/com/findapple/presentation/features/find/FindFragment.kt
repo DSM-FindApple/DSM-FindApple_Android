@@ -2,16 +2,12 @@ package com.findapple.presentation.features.find
 
 import android.location.Geocoder
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.webkit.WebView
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.findapple.domain.entity.Location
 import com.findapple.presentation.R
 import com.findapple.presentation.databinding.FragmentFindBinding
-import com.findapple.presentation.base.BaseFragment
-import com.findapple.presentation.base.BaseViewModel
 import com.findapple.presentation.base.WebViewFragment
 import com.findapple.presentation.features.find.viewmodel.FindViewModel
 import com.findapple.presentation.features.find.viewmodel.FindViewModelFactory
@@ -42,6 +38,14 @@ class FindFragment : WebViewFragment<FragmentFindBinding>(R.layout.fragment_find
         mainViewModel.location.observe(viewLifecycleOwner, {
             setLocationText(it)
         })
+        viewModel.startPostFind.observe(viewLifecycleOwner, {
+            startPost()
+        })
+    }
+
+    private fun startPost() {
+        requireActivity().findNavController(R.id.main_activity_container)
+            .navigate(R.id.action_findFragment_to_postFindFragment)
     }
 
     private fun setLocationText(location: Location) {

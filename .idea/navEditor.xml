@@ -84,6 +84,15 @@
                             <option name="y" value="-57" />
                           </Point>
                         </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_findFragment_to_postFindFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
                       </LayoutPositions>
                     </value>
                   </entry>
@@ -95,6 +104,15 @@
                             <option name="x" value="44" />
                             <option name="y" value="-82" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_lostFragment_to_postLostFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -111,9 +129,26 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="post_find_fragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="576" />
+                            <option name="y" value="-57" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                 </map>
               </option>
             </LayoutPositions>
+          </value>
+        </entry>
+        <entry key="nav_post_graph.xml">
+          <value>
+            <LayoutPositions />
           </value>
         </entry>
         <entry key="nav_start_graph.xml">
