@@ -49,7 +49,9 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
             return
         } else {
             fusedLocationClient.lastLocation.addOnSuccessListener {
-                viewModel.location.value = Location(it?.longitude, it?.latitude)
+                if(it!=null){
+                    viewModel.location.value = Location(it.longitude, it.latitude)
+                }
             }
         }
     }

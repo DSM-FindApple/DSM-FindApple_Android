@@ -26,13 +26,10 @@ class LostFragment : WebViewFragment<FragmentLostBinding>(R.layout.fragment_lost
     @Inject
     lateinit var mainViewModel: MainViewModel
 
-    lateinit var geocoder: Geocoder
-
     override val webViewUrl = "https://find-apple-client.vercel.app"
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setWebView(binding.lostWv)
-        geocoder = Geocoder(context)
     }
 
     override fun observeEvent() {
@@ -42,6 +39,7 @@ class LostFragment : WebViewFragment<FragmentLostBinding>(R.layout.fragment_lost
     }
 
     private fun setLocationText(location: Location) {
+        val geocoder = Geocoder(context)
         val address = geocoder.getFromLocation(location.latitude!!, location.longitude!!, 1)
         if (!CollectionUtils.isEmpty(address)) {
             val fetchAddress = address[0]

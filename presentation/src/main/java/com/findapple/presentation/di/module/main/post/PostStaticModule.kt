@@ -10,6 +10,7 @@ import com.findapple.domain.features.post.service.PostService
 import com.findapple.domain.features.post.service.PostServiceImpl
 import com.findapple.domain.features.post.usecase.GetFindListUseCase
 import com.findapple.domain.features.post.usecase.GetLostListUseCase
+import com.findapple.presentation.di.scope.FragmentScope
 import com.findapple.presentation.di.scope.MainFragmentScope
 import dagger.Module
 import dagger.Provides
@@ -18,20 +19,20 @@ import io.reactivex.disposables.CompositeDisposable
 @Module
 class PostStaticModule {
 
-    @MainFragmentScope
+    @FragmentScope
     @Provides
     fun postService(
         repository: PostRepository,
         errorHandler: ErrorHandler
     ): PostService = PostServiceImpl(repository, errorHandler)
 
-    @MainFragmentScope
+    @FragmentScope
     @Provides
     fun postRepository(
         dataSource: PostDataSource
     ): PostRepository = PostRepositoryImpl(dataSource)
 
-    @MainFragmentScope
+    @FragmentScope
     @Provides
     fun postDataSource(
         api: PostApi
