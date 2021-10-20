@@ -45,7 +45,7 @@ class FindFragment : WebViewFragment<FragmentFindBinding>(R.layout.fragment_find
 
     private fun startPost() {
         requireActivity().findNavController(R.id.main_activity_container)
-            .navigate(R.id.action_findFragment_to_postFindFragment)
+            .navigate(R.id.action_mainFragment_to_postFindFragment)
     }
 
     private fun setLocationText(location: Location) {

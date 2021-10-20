@@ -9,30 +9,13 @@
         android:id="@+id/lost_fragment"
         android:name="com.findapple.presentation.features.lost.LostFragment"
         android:label="LostFragment"
-        tools:layout="@layout/fragment_lost" >
-        <action
-            android:id="@+id/action_lostFragment_to_postLostFragment"/>
-    </fragment>
+        tools:layout="@layout/fragment_lost" />
 
     <fragment
         android:id="@+id/find_fragment"
         android:name="com.findapple.presentation.features.find.FindFragment"
         android:label="findFragment"
-        tools:layout="@layout/fragment_find" >
-        <action
-            android:id="@+id/action_findFragment_to_postFindFragment"
-            app:destination="@id/post_find_fragment"
-            app:enterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"
-            app:popUpTo="@id/mainFragment"
-            app:popUpToInclusive="false"/>
-
-    </fragment>
-    <fragment
-        android:id="@+id/post_find_fragment"
-        android:name="com.findapple.presentation.features.find.post.PostFindFragment"
-        android:label="PostFindFragment"
-        tools:layout="@layout/fragment_post_find"/>
+        tools:layout="@layout/fragment_find" />
     <fragment
         android:id="@+id/chat_fragment"
         android:name="com.findapple.presentation.features.chat.ChattingFragment"
