@@ -2,6 +2,7 @@ package com.findapple.presentation.features.lost
 
 import android.location.Geocoder
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.findapple.domain.entity.Location
 import com.findapple.presentation.R
 import com.findapple.presentation.base.BaseFragment
@@ -28,6 +29,9 @@ class LostFragment : BaseFragment<FragmentLostBinding>(R.layout.fragment_lost) {
         mainViewModel.location.observe(viewLifecycleOwner, {
             setLocationText(it)
         })
+        viewModel.startPostLost.observe(viewLifecycleOwner, {
+            startPost()
+        })
     }
 
     private fun setLocationText(location: Location) {
@@ -42,6 +46,11 @@ class LostFragment : BaseFragment<FragmentLostBinding>(R.layout.fragment_lost) {
                 }
             }
         }
+    }
+
+    private fun startPost() {
+        requireActivity().findNavController(R.id.main_activity_container)
+            .navigate(R.id.action_mainFragment_to_postLostFragment)
     }
 
 

@@ -26,15 +26,18 @@ class PostFragment : BaseFragment<FragmentPostBinding>(R.layout.fragment_post) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.postTb.setNavigationOnClickListener {
-            onBackPressed()
-        }
-        binding.postFindCategoryRv.run {
-            val layoutManager = LinearLayoutManager(requireContext()).apply {
-                orientation = LinearLayoutManager.HORIZONTAL
+        binding.run {
+            postTb.setNavigationOnClickListener {
+                onBackPressed()
             }
-            adapter = categoryAdapter
-            setLayoutManager(layoutManager)
+            postFindCategoryRv.run {
+                val layoutManager = LinearLayoutManager(requireContext()).apply {
+                    orientation = LinearLayoutManager.HORIZONTAL
+                }
+                adapter = categoryAdapter
+                setLayoutManager(layoutManager)
+            }
+            isLost = (arguments?.get("isLost") ?: true) as Boolean?
         }
     }
 

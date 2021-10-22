@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/cookie_run_bold"
-                android:text="@string/post_find"
+                android:text="@{isLost?@string/post_lost:@string/post_find}"
                 android:textColor="@color/black"
                 android:textSize="19sp" />
         </androidx.appcompat.widget.Toolbar>
@@ -44,7 +44,7 @@
             android:layout_marginHorizontal="5dp"
             android:layout_marginTop="5dp"
             android:fontFamily="@font/cookie_run_regular"
-            android:hint="@string/post_find_title_hint"
+            android:hint="@{isLost?@string/post_lost_title_hint:@string/post_find_title_hint}"
             app:layout_constraintTop_toBottomOf="@id/post_tb" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -64,8 +64,8 @@
             android:layout_marginStart="3dp"
             android:layout_marginTop="3dp"
             android:fontFamily="@font/cookie_run_regular"
-            android:textColor="@color/black"
             android:text="@{vm.clickedCategoryTitle}"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@id/post_category_tv"
             app:layout_constraintTop_toBottomOf="@id/post_find_title_et" />
 
@@ -83,6 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="5dp"
             android:fontFamily="@font/cookie_run_regular"
+            android:gravity="top"
             android:hint="@string/post_find_description_hint"
             app:layout_constraintTop_toBottomOf="@+id/post_find_category_rv" />
 
