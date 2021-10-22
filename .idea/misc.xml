@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../layout/custom_preview.xml" value="0.25833333333333336" />
         <entry key="presentation/src/main/res/drawable/bottom_nav_tab_background.xml" value="0.27870370370370373" />
         <entry key="presentation/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.1578125" />
         <entry key="presentation/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.23425925925925925" />

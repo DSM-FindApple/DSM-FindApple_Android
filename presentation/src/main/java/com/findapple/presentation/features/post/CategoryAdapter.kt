@@ -3,14 +3,13 @@ package com.findapple.presentation.features.post
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.findapple.presentation.R
 import com.findapple.presentation.databinding.ItemCategoryBinding
 import com.findapple.presentation.features.post.model.Category
 import com.findapple.presentation.features.post.viewModel.PostViewModel
 
-class CategoryAdapter(private val vm: PostViewModel) :
+class CategoryAdapter(private val viewModel: PostViewModel) :
     RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
     private val categories =
         arrayListOf(
@@ -30,10 +29,8 @@ class CategoryAdapter(private val vm: PostViewModel) :
                 title = category.title
                 val icon = context.getDrawable(category.iconResId)
                 categoryIv.setImageDrawable(icon)
-                categoryCl.setOnClickListener {
-                    category.selected = !category.selected
-                    vm.categoryClicked(position)
-                }
+                setPosition(position)
+                vm = viewModel
             }
         }
     }

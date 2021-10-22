@@ -45,7 +45,7 @@
 
     <fragment
         android:id="@+id/postFindFragment"
-        android:name="com.findapple.presentation.features.post.PostFindFragment"
+        android:name="com.findapple.presentation.features.post.PostFragment"
         android:label="PostFindFragment"
         tools:layout="@layout/fragment_post" />
 </navigation>

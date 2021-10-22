@@ -23,4 +23,5 @@
     <string name="post_find">습득물 등록</string>
     <string name="post_find_title_hint">습득하신 물건의 이름을 적어주세요 ex)에어팟</string>
     <string name="post_find_description_hint">상세한 설명을 적어주세요 ex) 축구팀 케이스를 끼워뒀고요, 축구팀 마크에 기스가 나있어요</string>
+    <string name="category">카테고리</string>
 </resources>

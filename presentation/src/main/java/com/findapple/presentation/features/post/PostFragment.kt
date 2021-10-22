@@ -11,7 +11,7 @@ import com.findapple.presentation.features.post.viewModel.PostViewModel
 import com.findapple.presentation.features.post.viewModel.PostViewModelFactory
 import javax.inject.Inject
 
-class PostFindFragment : BaseFragment<FragmentPostBinding>(R.layout.fragment_post) {
+class PostFragment : BaseFragment<FragmentPostBinding>(R.layout.fragment_post) {
 
     @Inject
     lateinit var viewModelFactory: PostViewModelFactory
@@ -20,20 +20,38 @@ class PostFindFragment : BaseFragment<FragmentPostBinding>(R.layout.fragment_pos
         ViewModelProvider(this, viewModelFactory).get(PostViewModel::class.java)
     }
 
+    private val categoryAdapter by lazy {
+        CategoryAdapter(viewModel)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.postFindTb.setNavigationOnClickListener {
+        binding.postTb.setNavigationOnClickListener {
             onBackPressed()
         }
         binding.postFindCategoryRv.run {
             val layoutManager = LinearLayoutManager(requireContext()).apply {
                 orientation = LinearLayoutManager.HORIZONTAL
             }
-            adapter = CategoryAdapter(viewModel)
+            adapter = categoryAdapter
             setLayoutManager(layoutManager)
         }
     }
 
     override fun observeEvent() {
+        viewModel.run {
+            clickedCategoryIndex.observe(viewLifecycleOwner, {
+                if (preClickedCategoryIndex.value == null) { // when first clicked
+                    preClickedCategoryIndex.value = it
+                }
+                if (preClickedCategoryIndex.value != null) {
+                    categoryAdapter.notifyItemChanged(preClickedCategoryIndex.value!!, Unit)
+                }
+                if (it != null) {
+                    categoryAdapter.notifyItemChanged(it, Unit)
+                    preClickedCategoryIndex.value = it
+                }
+            })
+        }
     }
 }

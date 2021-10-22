@@ -5,6 +5,14 @@
     <data>
 
         <variable
+            name="vm"
+            type="com.findapple.presentation.features.post.viewModel.PostViewModel" />
+
+        <variable
+            name="position"
+            type="Integer" />
+
+        <variable
             name="title"
             type="String" />
     </data>
@@ -20,7 +28,8 @@
             android:id="@+id/category_cl"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/gray_100">
+            android:background="@{vm.clickedCategoryIndex==position?@color/blue_100:@color/gray_100}"
+            android:onClick="@{()->vm.categoryClicked(position, title)}">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/category_iv"
