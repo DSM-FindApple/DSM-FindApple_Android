@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
+import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Lifecycle
@@ -15,7 +16,8 @@ import com.findapple.presentation.R
 import com.google.android.material.snackbar.Snackbar
 import dagger.android.support.DaggerFragment
 
-abstract class BaseFragment<T : ViewDataBinding>(private val layoutId: Int) : DaggerFragment() {
+abstract class BaseFragment<T : ViewDataBinding>(@LayoutRes private val layoutId: Int) :
+    DaggerFragment() {
     lateinit var binding: T
     abstract val viewModel: BaseViewModel
 
@@ -86,7 +88,7 @@ abstract class BaseFragment<T : ViewDataBinding>(private val layoutId: Int) : Da
         lifeCycleOwner.notifyEvent(event)
     }
 
-    fun snackBarComment(comment: String){
+    fun snackBarComment(comment: String) {
         Snackbar.make(binding.root, comment, Snackbar.LENGTH_SHORT).show()
     }
 }
