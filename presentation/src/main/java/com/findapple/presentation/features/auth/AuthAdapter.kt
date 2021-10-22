@@ -12,10 +12,10 @@ class AuthAdapter : RecyclerView.Adapter<AuthAdapter.AuthViewHolder>() {
 
     inner class AuthViewHolder(private val binding: ItemWelcomeAuthBinding, context: Context) :
         RecyclerView.ViewHolder(binding.root) {
-        val iconBasic = context.resources.getDrawable(R.drawable.ic_fineapple_basic)
-        val iconSmile = context.resources.getDrawable(R.drawable.ic_fineapple_smile)
-        val iconKingWang = context.resources.getDrawable(R.drawable.img_fineapple_kingwangjjang)
-        val iconLove = context.resources.getDrawable(R.drawable.ic_fineapple_love)
+        private val iconBasic = context.resources.getDrawable(R.drawable.ic_fineapple_basic)
+        private val iconSmile = context.resources.getDrawable(R.drawable.ic_fineapple_smile)
+        private val iconKingWang = context.resources.getDrawable(R.drawable.img_fineapple_kingwangjjang)
+        private val iconLove = context.resources.getDrawable(R.drawable.ic_fineapple_love)
 
 
         fun bind(position: Int) {

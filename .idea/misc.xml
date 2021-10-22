@@ -18,6 +18,7 @@
         <entry key="presentation/src/main/res/drawable/shape_border_gray_500.xml" value="0.25925925925925924" />
         <entry key="presentation/src/main/res/drawable/shape_border_white.xml" value="0.25925925925925924" />
         <entry key="presentation/src/main/res/drawable/shape_border_yellow_100.xml" value="0.1824074074074074" />
+        <entry key="presentation/src/main/res/drawable/shape_category.xml" value="0.2712962962962963" />
         <entry key="presentation/src/main/res/drawable/shape_mypage_header.xml" value="0.29384615384615387" />
         <entry key="presentation/src/main/res/font/font.xml" value="0.25925925925925924" />
         <entry key="presentation/src/main/res/layout/activity_main.xml" value="0.24035054644059498" />
@@ -30,6 +31,7 @@
         <entry key="presentation/src/main/res/layout/fragment_mypage.xml" value="0.28229166666666666" />
         <entry key="presentation/src/main/res/layout/fragment_post_find.xml" value="0.28229166666666666" />
         <entry key="presentation/src/main/res/layout/fragment_splash.xml" value="0.1861080237626444" />
+        <entry key="presentation/src/main/res/layout/item_category.xml" value="0.28229166666666666" />
         <entry key="presentation/src/main/res/layout/item_mypage.xml" value="0.28229166666666666" />
         <entry key="presentation/src/main/res/layout/item_mypage_header.xml" value="0.28229166666666666" />
         <entry key="presentation/src/main/res/layout/item_welcome_auth.xml" value="0.2740740740740741" />

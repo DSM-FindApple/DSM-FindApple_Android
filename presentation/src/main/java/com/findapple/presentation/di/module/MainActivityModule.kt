@@ -8,7 +8,7 @@ import com.findapple.presentation.di.module.post.find.PostFindModule
 import com.findapple.presentation.di.module.post.find.PostFindStaticModule
 import com.findapple.presentation.di.scope.FragmentScope
 import com.findapple.presentation.features.auth.AuthFragment
-import com.findapple.presentation.features.find.post.PostFindFragment
+import com.findapple.presentation.features.post.PostFindFragment
 import com.findapple.presentation.features.splash.SplashFragment
 import com.findapple.presentation.main.MainFragment
 import dagger.Module
