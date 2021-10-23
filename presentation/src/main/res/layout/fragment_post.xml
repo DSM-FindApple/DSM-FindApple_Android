@@ -37,56 +37,79 @@
                 android:textSize="19sp" />
         </androidx.appcompat.widget.Toolbar>
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/post_find_title_et"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="5dp"
-            android:layout_marginTop="5dp"
-            android:fontFamily="@font/cookie_run_regular"
-            android:hint="@{isLost?@string/post_lost_title_hint:@string/post_find_title_hint}"
-            app:layout_constraintTop_toBottomOf="@id/post_tb" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/post_category_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="3dp"
-            android:fontFamily="@font/cookie_run_regular"
-            android:text="@string/category"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/post_find_title_et" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="3dp"
-            android:layout_marginTop="3dp"
-            android:fontFamily="@font/cookie_run_regular"
-            android:text="@{vm.clickedCategoryTitle}"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toEndOf="@id/post_category_tv"
-            app:layout_constraintTop_toBottomOf="@id/post_find_title_et" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/post_find_category_rv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/post_category_tv" />
+            app:layout_constraintTop_toBottomOf="@id/post_tb">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/post_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/cookie_run_regular"
+                    android:hint="@{isLost?@string/post_lost_title_hint:@string/post_find_title_hint}"
+                    app:layout_constraintTop_toBottomOf="@id/post_tb" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/post_category_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="3dp"
+                        android:fontFamily="@font/cookie_run_regular"
+                        android:text="@string/category" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginTop="3dp"
+                        android:fontFamily="@font/cookie_run_regular"
+                        android:text="@{vm.clickedCategoryTitle}"
+                        android:textColor="@color/black" />
+                </LinearLayout>
 
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="5dp"
-            android:fontFamily="@font/cookie_run_regular"
-            android:gravity="top"
-            android:hint="@string/post_find_description_hint"
-            app:layout_constraintTop_toBottomOf="@+id/post_find_category_rv" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/post_category_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/post_explain_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/cookie_run_regular"
+                    android:gravity="top"
+                    android:hint="@string/post_description_hint" />
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/post_photos_vp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp" />
+
+
+            </LinearLayout>
+        </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

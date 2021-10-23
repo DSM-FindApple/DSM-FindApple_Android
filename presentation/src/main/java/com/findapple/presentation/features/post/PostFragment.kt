@@ -1,5 +1,6 @@
 package com.findapple.presentation.features.post
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
@@ -30,7 +31,8 @@ class PostFragment : BaseFragment<FragmentPostBinding>(R.layout.fragment_post) {
             postTb.setNavigationOnClickListener {
                 onBackPressed()
             }
-            postFindCategoryRv.run {
+
+            postCategoryRv.run {
                 val layoutManager = LinearLayoutManager(requireContext()).apply {
                     orientation = LinearLayoutManager.HORIZONTAL
                 }
@@ -38,6 +40,8 @@ class PostFragment : BaseFragment<FragmentPostBinding>(R.layout.fragment_post) {
                 setLayoutManager(layoutManager)
             }
             isLost = (arguments?.get("isLost") ?: true) as Boolean?
+
+            postPhotosVp
         }
     }
 
@@ -56,5 +60,9 @@ class PostFragment : BaseFragment<FragmentPostBinding>(R.layout.fragment_post) {
                 }
             })
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
     }
 }

@@ -36,6 +36,8 @@
         <entry key="presentation/src/main/res/layout/item_category.xml" value="1.2743698891721982" />
         <entry key="presentation/src/main/res/layout/item_mypage.xml" value="0.28229166666666666" />
         <entry key="presentation/src/main/res/layout/item_mypage_header.xml" value="0.28229166666666666" />
+        <entry key="presentation/src/main/res/layout/item_photo.xml" value="0.28229166666666666" />
+        <entry key="presentation/src/main/res/layout/item_post_photo.xml" value="0.28229166666666666" />
         <entry key="presentation/src/main/res/layout/item_welcome_auth.xml" value="0.2740740740740741" />
         <entry key="presentation/src/main/res/menu/menu_bottom_nav.xml" value="0.28229166666666666" />
         <entry key="presentation/src/main/res/menu/navigation.xml" value="0.28229166666666666" />
