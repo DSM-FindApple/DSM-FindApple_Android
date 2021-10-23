@@ -12,10 +12,10 @@ import javax.inject.Singleton
 class ApiModule {
 
     companion object {
-        private val baseUrl = "https://"
+        private val baseUrl = "http://3.35.221.104:8080"
         private val postUrl = "${baseUrl}/post"
         private val userUrl = "${baseUrl}/user"
-        private val authUrl = "${baseUrl}/auth"
+        private val authUrl = "${baseUrl}/v1/auth"
     }
 
     @Provides
