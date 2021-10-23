@@ -1,5 +1,6 @@
 package com.findapple.presentation.features.post.viewModel
 
+import android.net.Uri
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.MutableLiveData
 import com.findapple.domain.features.post.usecase.PostFindUseCase
@@ -11,6 +12,7 @@ class PostViewModel(private val postFindUseCase: PostFindUseCase) : BaseViewMode
     var preClickedCategoryIndex = MutableLiveData<Int>()
     val clickedCategoryTitle = MutableLiveData<String>()
 
+    val photoList = MutableLiveData<List<Uri>>()
 
     override fun apply(event: Lifecycle.Event) {
 

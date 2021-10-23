@@ -6,10 +6,12 @@ import androidx.viewpager2.widget.ViewPager2
 
 @BindingAdapter("setPostPhotoItems")
 fun ViewPager2.setPostPhotoItems(
-    images: List<Uri>
+    images: List<Uri>?
 ) {
-    if(adapter == null){
+    if (adapter == null) {
         adapter = PostPhotoAdapter()
     }
-    (adapter as PostPhotoAdapter).updateData(images)
+    if (images != null) {
+        (adapter as? PostPhotoAdapter)?.updateData(images)
+    }
 }

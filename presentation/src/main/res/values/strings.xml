@@ -25,4 +25,7 @@
     <string name="post_lost_title_hint">분실하신 물건의 이름을 적어주세요 ex)에어팟</string>
     <string name="post_description_hint">상세한 설명을 적어주세요 ex) 축구팀 케이스를 끼워뒀고요, 축구팀 마크에 기스가 나있어요</string>
     <string name="category">카테고리</string>
+    <string name="add_photo">사진추가하기</string>
+    <string name="add_photo_with_camera">사진찍기</string>
+    <string name="add_photo_with_gallery">사진선택하기</string>
 </resources>
