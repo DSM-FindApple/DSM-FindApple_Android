@@ -1,8 +1,10 @@
 package com.findapple.presentation.main
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.provider.MediaStore
 import androidx.core.app.ActivityCompat
 import com.findapple.presentation.R
 import dagger.android.support.DaggerAppCompatActivity
@@ -15,7 +17,8 @@ class MainActivity : DaggerAppCompatActivity() {
         requestPermission()
     }
 
-    private val PERMISSION_REQUEST_CODE = 2104
+    private val PERMISSION_REQUEST_CODE = 1
+    val REQUEST_IMAGE_CAPTURE = 2
 
     private fun requestPermission() {
         val permissions = arrayOf(
@@ -33,4 +36,14 @@ class MainActivity : DaggerAppCompatActivity() {
             ActivityCompat.requestPermissions(this, permissions, PERMISSION_REQUEST_CODE)
         }
     }
+
+
+    fun startCamera() {
+        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
+            takePictureIntent.resolveActivity(packageManager)?.also {
+                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
+            }
+        }
+    }
+
 }

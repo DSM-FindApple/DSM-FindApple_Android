@@ -2,14 +2,17 @@ package com.findapple.presentation.features.post
 
 import android.content.Intent
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.findapple.presentation.R
 import com.findapple.presentation.base.BaseFragment
 import com.findapple.presentation.databinding.FragmentPostBinding
+import com.findapple.presentation.features.post.adapter.CategoryAdapter
 import com.findapple.presentation.features.post.viewModel.PostViewModel
 import com.findapple.presentation.features.post.viewModel.PostViewModelFactory
+import com.findapple.presentation.main.MainActivity
 import javax.inject.Inject
 
 class PostFragment : BaseFragment<FragmentPostBinding>(R.layout.fragment_post) {
@@ -24,6 +27,9 @@ class PostFragment : BaseFragment<FragmentPostBinding>(R.layout.fragment_post) {
     private val categoryAdapter by lazy {
         CategoryAdapter(viewModel)
     }
+
+    @Inject
+    lateinit var mainActivity: MainActivity
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -40,8 +46,6 @@ class PostFragment : BaseFragment<FragmentPostBinding>(R.layout.fragment_post) {
                 setLayoutManager(layoutManager)
             }
             isLost = (arguments?.get("isLost") ?: true) as Boolean?
-
-            postPhotosVp
         }
     }
 
@@ -59,10 +63,15 @@ class PostFragment : BaseFragment<FragmentPostBinding>(R.layout.fragment_post) {
                     preClickedCategoryIndex.value = it
                 }
             })
+
+            startCamera.observe(viewLifecycleOwner, {
+                this@PostFragment.startCamera()
+            })
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
+    private fun startCamera() {
+        mainActivity.startCamera()
     }
+
 }

@@ -1,13 +1,16 @@
-package com.findapple.presentation.features.post
+package com.findapple.presentation.features.post.adapter
 
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.databinding.library.baseAdapters.BR
 import androidx.recyclerview.widget.RecyclerView
 import com.findapple.presentation.databinding.ItemPhotoBinding
 import com.findapple.presentation.databinding.ItemPostPhotoBinding
+import com.findapple.presentation.features.post.viewModel.PostViewModel
 
-class PostPhotoAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class PostPhotoAdapter(private val vm: PostViewModel) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val images = mutableListOf<Uri>()
 
@@ -38,14 +41,14 @@ class PostPhotoAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is PostPhotoViewHolder) {
+            holder.binding.setVariable(BR.vm, vm)
 
         } else if (holder is PhotoViewHolder) {
-
         }
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if (position == images.size - 1) ADD_PHOTO else PHOTO
+        return if (position == images.size) ADD_PHOTO else PHOTO
     }
 
     override fun getItemCount(): Int =

@@ -2,9 +2,11 @@ package com.findapple.presentation.features.post.viewModel
 
 import android.net.Uri
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.findapple.domain.features.post.usecase.PostFindUseCase
 import com.findapple.presentation.base.BaseViewModel
+import com.findapple.presentation.base.SingleLiveEvent
 
 class PostViewModel(private val postFindUseCase: PostFindUseCase) : BaseViewModel() {
 
@@ -13,6 +15,9 @@ class PostViewModel(private val postFindUseCase: PostFindUseCase) : BaseViewMode
     val clickedCategoryTitle = MutableLiveData<String>()
 
     val photoList = MutableLiveData<List<Uri>>()
+
+    private val _startCamera = SingleLiveEvent<Unit>()
+    val startCamera: LiveData<Unit> get() = _startCamera
 
     override fun apply(event: Lifecycle.Event) {
 
@@ -29,5 +34,9 @@ class PostViewModel(private val postFindUseCase: PostFindUseCase) : BaseViewMode
             }
         }
 
+    }
+
+    fun startCamera() {
+        _startCamera.call()
     }
 }

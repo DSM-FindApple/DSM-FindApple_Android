@@ -3,77 +3,10 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/blue_100">
+        android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/add_photo_title_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/cookie_run_regular"
-            android:text="@string/add_photo"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/add_photo_camera_cv"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            app:cardBackgroundColor="@color/yellow_100"
-            app:cardCornerRadius="50dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/add_photo_gallery_cv"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/add_photo_title_tv">
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="20dp"
-                app:srcCompat="@drawable/ic_baseline_camera_alt_24" />
-        </androidx.cardview.widget.CardView>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:fontFamily="@font/cookie_run_regular"
-            android:text="@string/add_photo_with_camera"
-            app:layout_constraintEnd_toEndOf="@id/add_photo_camera_cv"
-            app:layout_constraintStart_toStartOf="@id/add_photo_camera_cv"
-            app:layout_constraintTop_toBottomOf="@id/add_photo_camera_cv" />
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/add_photo_gallery_cv"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            app:cardBackgroundColor="@color/yellow_100"
-            app:cardCornerRadius="50dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/add_photo_camera_cv"
-            app:layout_constraintTop_toBottomOf="@+id/add_photo_title_tv">
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="20dp"
-                app:srcCompat="@drawable/ic_baseline_image_search_24" />
-        </androidx.cardview.widget.CardView>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/cookie_run_regular"
-            android:text="@string/add_photo_with_gallery"
-            app:layout_constraintEnd_toEndOf="@id/add_photo_gallery_cv"
-            app:layout_constraintStart_toStartOf="@id/add_photo_gallery_cv"
-            app:layout_constraintTop_toBottomOf="@id/add_photo_gallery_cv" />
-
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

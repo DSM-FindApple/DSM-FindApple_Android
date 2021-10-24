@@ -1,4 +1,4 @@
-package com.findapple.presentation.features.post
+package com.findapple.presentation.features.post.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
