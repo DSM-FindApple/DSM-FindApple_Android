@@ -59,6 +59,7 @@
             android:id="@+id/add_photo_gallery_cv"
             android:layout_width="80dp"
             android:layout_height="80dp"
+            android:onClick="@{()->vm.startGallery()}"
             app:cardBackgroundColor="@color/yellow_100"
             app:cardCornerRadius="50dp"
             app:layout_constraintBottom_toBottomOf="parent"

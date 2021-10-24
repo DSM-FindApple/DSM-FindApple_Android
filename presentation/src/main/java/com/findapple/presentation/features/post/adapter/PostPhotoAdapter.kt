@@ -18,14 +18,10 @@ class PostPhotoAdapter(private val vm: PostViewModel) :
     private val PHOTO = 2
 
     inner class PhotoViewHolder(val binding: ItemPhotoBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-
-    }
+        RecyclerView.ViewHolder(binding.root)
 
     inner class PostPhotoViewHolder(val binding: ItemPostPhotoBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-
-    }
+        RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == ADD_PHOTO) {

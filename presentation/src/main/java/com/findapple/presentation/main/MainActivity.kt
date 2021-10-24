@@ -18,7 +18,6 @@ class MainActivity : DaggerAppCompatActivity() {
     }
 
     private val PERMISSION_REQUEST_CODE = 1
-    val REQUEST_IMAGE_CAPTURE = 2
 
     private fun requestPermission() {
         val permissions = arrayOf(
@@ -34,15 +33,6 @@ class MainActivity : DaggerAppCompatActivity() {
             ) != PackageManager.PERMISSION_GRANTED
         ) {
             ActivityCompat.requestPermissions(this, permissions, PERMISSION_REQUEST_CODE)
-        }
-    }
-
-
-    fun startCamera() {
-        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
-            takePictureIntent.resolveActivity(packageManager)?.also {
-                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
-            }
         }
     }
 

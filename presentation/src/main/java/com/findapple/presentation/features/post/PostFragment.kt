@@ -12,7 +12,6 @@ import com.findapple.presentation.databinding.FragmentPostBinding
 import com.findapple.presentation.features.post.adapter.CategoryAdapter
 import com.findapple.presentation.features.post.viewModel.PostViewModel
 import com.findapple.presentation.features.post.viewModel.PostViewModelFactory
-import com.findapple.presentation.main.MainActivity
 import javax.inject.Inject
 
 class PostFragment : BaseFragment<FragmentPostBinding>(R.layout.fragment_post) {
@@ -27,9 +26,6 @@ class PostFragment : BaseFragment<FragmentPostBinding>(R.layout.fragment_post) {
     private val categoryAdapter by lazy {
         CategoryAdapter(viewModel)
     }
-
-    @Inject
-    lateinit var mainActivity: MainActivity
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -67,11 +63,22 @@ class PostFragment : BaseFragment<FragmentPostBinding>(R.layout.fragment_post) {
             startCamera.observe(viewLifecycleOwner, {
                 this@PostFragment.startCamera()
             })
+            startGallery.observe(viewLifecycleOwner, {
+                this@PostFragment.startGallery()
+            })
         }
     }
 
     private fun startCamera() {
-        mainActivity.startCamera()
+        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
+            startActivityForResult(takePictureIntent, 2)
+        }
+    }
+
+    private fun startGallery() {
+        Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI).also {
+            startActivityForResult(it, 3)
+        }
     }
 
 }

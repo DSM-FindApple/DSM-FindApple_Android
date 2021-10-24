@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import com.findapple.domain.features.post.usecase.PostFindUseCase
 import com.findapple.presentation.base.BaseViewModel
 import com.findapple.presentation.base.SingleLiveEvent
+import io.reactivex.Single
 
 class PostViewModel(private val postFindUseCase: PostFindUseCase) : BaseViewModel() {
 
@@ -18,6 +19,9 @@ class PostViewModel(private val postFindUseCase: PostFindUseCase) : BaseViewMode
 
     private val _startCamera = SingleLiveEvent<Unit>()
     val startCamera: LiveData<Unit> get() = _startCamera
+
+    private val _startGallery = SingleLiveEvent<Unit>()
+    val startGallery: LiveData<Unit> get() = _startGallery
 
     override fun apply(event: Lifecycle.Event) {
 
@@ -38,5 +42,9 @@ class PostViewModel(private val postFindUseCase: PostFindUseCase) : BaseViewMode
 
     fun startCamera() {
         _startCamera.call()
+    }
+
+    fun startGallery() {
+        _startGallery.call()
     }
 }
