@@ -11,4 +11,5 @@ interface AuthRepository {
     fun refreshToken(): Single<Unit>
 
     fun saveUserInfo(user: User): Single<Unit>
+
 }

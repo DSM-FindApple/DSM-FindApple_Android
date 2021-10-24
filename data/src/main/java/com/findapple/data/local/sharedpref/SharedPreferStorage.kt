@@ -40,7 +40,6 @@ class SharedPreferStorage(private val context: Context) : LocalStorage {
     override fun getLong(key: String): Long =
         getPref(context).getLong(key, 1)
 
-
     private fun getPref(context: Context): SharedPreferences =
         PreferenceManager.getDefaultSharedPreferences(context)
 

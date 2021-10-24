@@ -26,6 +26,8 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>(R.layout.fragment_auth) {
         ViewModelProvider(this, viewModelFactory).get(AuthViewModel::class.java)
     }
 
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
