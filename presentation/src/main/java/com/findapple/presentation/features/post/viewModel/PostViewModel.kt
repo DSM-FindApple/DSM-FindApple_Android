@@ -47,4 +47,10 @@ class PostViewModel(private val postFindUseCase: PostFindUseCase) : BaseViewMode
     fun startGallery() {
         _startGallery.call()
     }
+
+    fun deletePhoto(position: Int) {
+        val list: ArrayList<Uri> = photoList.value!!.drop(position) as ArrayList<Uri>
+        photoList.value = list
+    }
+
 }
