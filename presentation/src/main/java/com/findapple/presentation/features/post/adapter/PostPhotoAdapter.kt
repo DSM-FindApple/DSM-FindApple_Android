@@ -14,8 +14,10 @@ class PostPhotoAdapter(private val vm: PostViewModel) :
 
     private val images = mutableListOf<Uri>()
 
-    private val ADD_PHOTO = 1
-    private val PHOTO = 2
+    companion object{
+        private val ADD_PHOTO = 1
+        private val PHOTO = 2
+    }
 
     inner class PhotoViewHolder(val binding: ItemPhotoBinding) :
         RecyclerView.ViewHolder(binding.root)
