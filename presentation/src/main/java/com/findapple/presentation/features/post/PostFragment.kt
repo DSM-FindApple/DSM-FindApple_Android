@@ -1,6 +1,7 @@
 package com.findapple.presentation.features.post
 
 import android.content.Intent
+import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -14,6 +15,7 @@ import com.findapple.presentation.databinding.FragmentPostBinding
 import com.findapple.presentation.features.post.adapter.CategoryAdapter
 import com.findapple.presentation.features.post.viewModel.PostViewModel
 import com.findapple.presentation.features.post.viewModel.PostViewModelFactory
+import com.findapple.presentation.toUri
 import javax.inject.Inject
 
 class PostFragment : BaseFragment<FragmentPostBinding>(R.layout.fragment_post) {
@@ -73,14 +75,15 @@ class PostFragment : BaseFragment<FragmentPostBinding>(R.layout.fragment_post) {
 
     private val getContent =
         registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
-            val list = viewModel.photoList.value
-            list?.add(uri)
-            viewModel.photoList.value = list
+            addPhotoUri(uri)
         }
 
 
-    private val REQUEST_CAMERA_CODE = 2
-    private val RESULT_OK = -1
+    companion object {
+        private val REQUEST_CAMERA_CODE = 2
+        private val RESULT_OK = -1
+    }
+
 
     private fun startCamera() {
         Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { intent ->
@@ -95,6 +98,15 @@ class PostFragment : BaseFragment<FragmentPostBinding>(R.layout.fragment_post) {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_CAMERA_CODE && resultCode == RESULT_OK) {
+            val imageUri = (data?.extras?.get("data") as Bitmap).toUri(requireContext())
+            addPhotoUri(imageUri)
         }
+    }
+
+    private fun addPhotoUri(uri: Uri) {
+        val list = viewModel.photoList.value.apply {
+            this?.add(uri)
+        }
+        viewModel.photoList.value = list
     }
 }
