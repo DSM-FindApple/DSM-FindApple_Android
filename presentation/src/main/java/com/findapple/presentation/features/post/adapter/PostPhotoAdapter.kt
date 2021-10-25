@@ -38,8 +38,12 @@ class PostPhotoAdapter(private val vm: PostViewModel) :
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is PostPhotoViewHolder) {
             holder.binding.setVariable(BR.vm, vm)
-
         } else if (holder is PhotoViewHolder) {
+            holder.binding.run {
+                setVariable(BR.vm, vm)
+                setVariable(BR.position, position)
+                photoIv.setImageURI(images[position])
+            }
         }
     }
 

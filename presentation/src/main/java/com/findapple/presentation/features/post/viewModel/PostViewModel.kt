@@ -15,7 +15,7 @@ class PostViewModel(private val postFindUseCase: PostFindUseCase) : BaseViewMode
     var preClickedCategoryIndex = MutableLiveData<Int>()
     val clickedCategoryTitle = MutableLiveData<String>()
 
-    val photoList = MutableLiveData<List<Uri>>()
+    val photoList = MutableLiveData(ArrayList<Uri>())
 
     private val _startCamera = SingleLiveEvent<Unit>()
     val startCamera: LiveData<Unit> get() = _startCamera

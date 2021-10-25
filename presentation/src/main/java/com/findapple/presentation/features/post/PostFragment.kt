@@ -1,9 +1,11 @@
 package com.findapple.presentation.features.post
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.findapple.presentation.R
@@ -69,16 +71,30 @@ class PostFragment : BaseFragment<FragmentPostBinding>(R.layout.fragment_post) {
         }
     }
 
+    private val getContent =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+            val list = viewModel.photoList.value
+            list?.add(uri)
+            viewModel.photoList.value = list
+        }
+
+
+    private val REQUEST_CAMERA_CODE = 2
+    private val RESULT_OK = -1
+
     private fun startCamera() {
-        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
-            startActivityForResult(takePictureIntent, 2)
+        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { intent ->
+            startActivityForResult(intent, REQUEST_CAMERA_CODE)
         }
     }
 
     private fun startGallery() {
-        Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI).also {
-            startActivityForResult(it, 3)
-        }
+        getContent.launch("image/*")
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_CAMERA_CODE && resultCode == RESULT_OK) {
+        }
+    }
 }
