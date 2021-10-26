@@ -33,13 +33,13 @@ class LostFragment : BaseFragment<FragmentLostBinding>(R.layout.fragment_lost) {
         super.onViewCreated(view, savedInstanceState)
         binding.run {
             lostSpl.panelState = SlidingUpPanelLayout.PanelState.COLLAPSED
-            var touchStartY = 0F
+            var touchStartY = 0
             lostList.setOnTouchListener { view, motionEvent ->
                 if (motionEvent.action == MotionEvent.ACTION_DOWN) {
-                    touchStartY = motionEvent.y
+                    touchStartY = motionEvent.y.toInt()
                 }
                 if (motionEvent.action == MotionEvent.ACTION_MOVE) {
-                    if(touchStartY < motionEvent.y) {
+                    if(touchStartY < motionEvent.y.toInt()) {
                         lostSpl.panelState = SlidingUpPanelLayout.PanelState.HIDDEN
                     }
                 }
