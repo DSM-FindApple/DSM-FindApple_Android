@@ -28,4 +28,6 @@
     <string name="add_photo">사진추가하기</string>
     <string name="add_photo_with_camera">사진찍기</string>
     <string name="add_photo_with_gallery">사진선택하기</string>
+    <string name="lost_post_is_empty">분실물 게시물이 없어요</string>
+    <string name="find_post_is_empty">습득물 게시물이 없어요</string>
 </resources>
