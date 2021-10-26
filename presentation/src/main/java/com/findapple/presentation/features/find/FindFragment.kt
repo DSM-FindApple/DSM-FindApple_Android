@@ -2,6 +2,7 @@ package com.findapple.presentation.features.find
 
 import android.location.Geocoder
 import android.os.Bundle
+import android.view.MotionEvent
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -13,6 +14,7 @@ import com.findapple.presentation.features.find.viewmodel.FindViewModel
 import com.findapple.presentation.features.find.viewmodel.FindViewModelFactory
 import com.findapple.presentation.main.viewmodel.MainViewModel
 import com.google.android.gms.common.util.CollectionUtils
+import com.sothree.slidinguppanel.SlidingUpPanelLayout
 import javax.inject.Inject
 
 class FindFragment : BaseFragment<FragmentFindBinding>(R.layout.fragment_find) {
@@ -30,6 +32,21 @@ class FindFragment : BaseFragment<FragmentFindBinding>(R.layout.fragment_find) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         geocoder = Geocoder(context)
+        binding.run {
+            findSpl.panelState = SlidingUpPanelLayout.PanelState.COLLAPSED
+            var touchStartY = 0
+            findList.setOnTouchListener { view, motionEvent ->
+                if (motionEvent.action == MotionEvent.ACTION_DOWN) {
+                    touchStartY = motionEvent.y.toInt()
+                }
+                if (motionEvent.action == MotionEvent.ACTION_MOVE) {
+                    if (touchStartY < motionEvent.y.toInt()) {
+                        findSpl.panelState = SlidingUpPanelLayout.PanelState.HIDDEN
+                    }
+                }
+                true
+            }
+        }
     }
 
     override fun observeEvent() {
