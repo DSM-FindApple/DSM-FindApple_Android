@@ -41,7 +41,8 @@ class PostPhotoAdapter(private val vm: PostViewModel) :
         if (holder is PostPhotoViewHolder) {
             holder.binding.setVariable(BR.vm, vm)
         } else if (holder is PhotoViewHolder) {
-            holder.binding.run {
+            holder.binding.vm = vm
+            holder.binding.apply {
                 setVariable(BR.vm, vm)
                 setVariable(BR.position, position)
                 photoIv.setImageURI(images[position])

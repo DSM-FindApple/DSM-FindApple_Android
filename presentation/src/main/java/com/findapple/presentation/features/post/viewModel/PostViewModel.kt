@@ -7,7 +7,6 @@ import androidx.lifecycle.MutableLiveData
 import com.findapple.domain.features.post.usecase.PostFindUseCase
 import com.findapple.presentation.base.BaseViewModel
 import com.findapple.presentation.base.SingleLiveEvent
-import io.reactivex.Single
 
 class PostViewModel(private val postFindUseCase: PostFindUseCase) : BaseViewModel() {
 
@@ -22,6 +21,9 @@ class PostViewModel(private val postFindUseCase: PostFindUseCase) : BaseViewMode
 
     private val _startGallery = SingleLiveEvent<Unit>()
     val startGallery: LiveData<Unit> get() = _startGallery
+
+    private val _message = SingleLiveEvent<String>()
+    val message: LiveData<String> get() = _message
 
     override fun apply(event: Lifecycle.Event) {
 
@@ -49,8 +51,10 @@ class PostViewModel(private val postFindUseCase: PostFindUseCase) : BaseViewMode
     }
 
     fun deletePhoto(position: Int) {
-        val list: ArrayList<Uri> = photoList.value!!.drop(position) as ArrayList<Uri>
+        photoList.value!!.removeAt(position)
+        val list = photoList.value
         photoList.value = list
+        _message.value = "삭제되었습니다"
     }
 
 }

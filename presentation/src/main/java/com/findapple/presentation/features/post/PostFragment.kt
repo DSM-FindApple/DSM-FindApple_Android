@@ -70,6 +70,10 @@ class PostFragment : BaseFragment<FragmentPostBinding>(R.layout.fragment_post) {
             startGallery.observe(viewLifecycleOwner, {
                 this@PostFragment.startGallery()
             })
+
+            message.observe(viewLifecycleOwner, {
+                snackBarComment(it)
+            })
         }
     }
 
