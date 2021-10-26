@@ -2,14 +2,10 @@ package com.findapple.presentation.features.lost
 
 import android.location.Geocoder
 import android.os.Bundle
-import android.util.Log
-import android.view.DragEvent
 import android.view.MotionEvent
 import android.view.View
-import androidx.core.view.MotionEventCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import androidx.slidingpanelayout.widget.SlidingPaneLayout
 import com.findapple.domain.entity.Location
 import com.findapple.presentation.R
 import com.findapple.presentation.base.BaseFragment
@@ -37,11 +33,13 @@ class LostFragment : BaseFragment<FragmentLostBinding>(R.layout.fragment_lost) {
         super.onViewCreated(view, savedInstanceState)
         binding.run {
             lostSpl.panelState = SlidingUpPanelLayout.PanelState.COLLAPSED
+            var touchStartY = 0F
             lostList.setOnTouchListener { view, motionEvent ->
-                val currentY = motionEvent.y
+                if (motionEvent.action == MotionEvent.ACTION_DOWN) {
+                    touchStartY = motionEvent.y
+                }
                 if (motionEvent.action == MotionEvent.ACTION_MOVE) {
-                    Log.d("drag", currentY.toString())
-                    if (currentY > 1000) {
+                    if(touchStartY < motionEvent.y) {
                         lostSpl.panelState = SlidingUpPanelLayout.PanelState.HIDDEN
                     }
                 }
