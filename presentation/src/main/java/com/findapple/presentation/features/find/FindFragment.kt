@@ -35,7 +35,7 @@ class FindFragment : BaseFragment<FragmentFindBinding>(R.layout.fragment_find) {
         binding.run {
             findSpl.panelState = SlidingUpPanelLayout.PanelState.COLLAPSED
             var touchStartY = 0
-            findList.setOnTouchListener { view, motionEvent ->
+            findList.setOnTouchListener { _, motionEvent ->
                 if (motionEvent.action == MotionEvent.ACTION_DOWN) {
                     touchStartY = motionEvent.y.toInt()
                 }

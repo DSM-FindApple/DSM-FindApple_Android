@@ -12,15 +12,11 @@ import java.io.File
 import java.util.ArrayList
 
 class MainActivity : DaggerAppCompatActivity() {
-    companion object {
-        lateinit var fileDirection: File
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         requestPermission()
-        fileDirection = filesDir
     }
 
     private val PERMISSION_REQUEST_CODE = 1

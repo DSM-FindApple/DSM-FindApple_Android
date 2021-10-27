@@ -1,20 +1,30 @@
 package com.findapple.data.features.auth.entity
 
 import com.findapple.data.features.auth.dto.request.LoginRequest
-import com.findapple.domain.features.auth.entity.Auth
+import com.findapple.domain.features.auth.parameter.LoginParameter
 
-data class AuthData(val id: Long, val nickname: String, val deviceToken: String)
+data class AuthData(
+    val id: Long,
+    val nickname: String,
+    val deviceToken: String,
+    val latitude: Double,
+    val longitude: Double
+)
 
-fun Auth.toDataEntity(deviceToken: String) =
+fun LoginParameter.toDataEntity(deviceToken: String) =
     AuthData(
-        id = id,
-        nickname = nickname,
-        deviceToken = deviceToken
+        id = auth.id,
+        nickname = auth.nickname,
+        deviceToken = deviceToken,
+        latitude = location.latitude!!,
+        longitude = location.longitude!!
     )
 
 fun AuthData.toLoginRequest() =
     LoginRequest(
         kakaoId = id,
         kakaoNickName = nickname,
-        deviceToken = deviceToken
+        deviceToken = deviceToken,
+        longitude = longitude,
+        latitude = latitude
     )

@@ -21,7 +21,7 @@ abstract class MainActivityModule {
     abstract fun mainFragment(): MainFragment
 
     @FragmentScope
-    @ContributesAndroidInjector(modules = [AuthModule::class, AuthStaticModule::class])
+    @ContributesAndroidInjector(modules = [AuthModule::class, AuthStaticModule::class, MainStaticModule::class])
     abstract fun authFragment(): AuthFragment
 
     @FragmentScope

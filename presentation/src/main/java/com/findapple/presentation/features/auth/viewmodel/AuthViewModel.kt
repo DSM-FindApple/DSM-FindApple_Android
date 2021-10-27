@@ -3,10 +3,12 @@ package com.findapple.presentation.features.auth.viewmodel
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LiveData
 import com.findapple.domain.base.Result
+import com.findapple.domain.entity.Location
 import com.findapple.domain.entity.User
 import com.findapple.domain.errorhandler.Error
 import com.findapple.domain.features.auth.entity.Auth
 import com.findapple.domain.features.auth.entity.Token
+import com.findapple.domain.features.auth.parameter.LoginParameter
 import com.findapple.domain.features.auth.usecase.LoginUseCase
 import com.findapple.domain.features.auth.usecase.SaveUserUseCase
 import com.findapple.presentation.base.BaseViewModel
@@ -27,9 +29,13 @@ class AuthViewModel(
     private val _errorMessage = SingleLiveEvent<String>()
     val errorMessage: LiveData<String> get() = _errorMessage
 
-    fun login(id: Long, nickname: String, profileImageUrl: String) {
+    fun login(id: Long, nickname: String, profileImageUrl: String, location: Location?) {
+        val auth = Auth(id, nickname)
         loginUseCase.execute(
-            Auth(id, nickname),
+            LoginParameter(
+                auth,
+                location ?: Location(127.3635946, 36.3914388)
+            ),
             object : DisposableSingleObserver<Result<Token>>() {
                 override fun onSuccess(t: Result<Token>) {
                     when (t) {

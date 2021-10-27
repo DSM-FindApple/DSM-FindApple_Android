@@ -47,8 +47,8 @@ class NetWorkModule {
     @Singleton
     fun provideRetrofit(gson: Gson, okHttpClient: OkHttpClient): Retrofit.Builder {
         return Retrofit.Builder()
-            .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .client(okHttpClient)
     }
 

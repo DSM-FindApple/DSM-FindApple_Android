@@ -4,5 +4,5 @@ import com.findapple.domain.errorhandler.ErrorHandler
 import com.findapple.domain.base.Result
 import io.reactivex.Single
 
-fun <T> Single<T>.toResult(handler: ErrorHandler): Single<Result<T>> =
-    this.map { Result.Success(it) as Result<T> }.onErrorReturn { Result.Failure(handler.getError(it)) }
+fun <T: Any> Single<T>.toResult(handler: ErrorHandler): Single<Result<T>> =
+    this.map { data -> Result.Success(data) as Result<T> }.onErrorReturn { error -> Result.Failure(handler.getError(error)) }

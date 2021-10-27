@@ -8,6 +8,7 @@ import com.findapple.presentation.base.BaseFragment
 import com.findapple.presentation.databinding.FragmentAuthBinding
 import com.findapple.presentation.features.auth.viewmodel.AuthViewModel
 import com.findapple.presentation.features.auth.viewmodel.AuthViewModelFactory
+import com.findapple.presentation.main.viewmodel.MainViewModel
 import com.google.android.material.tabs.TabLayoutMediator
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.user.UserApiClient
@@ -26,6 +27,8 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>(R.layout.fragment_auth) {
         ViewModelProvider(this, viewModelFactory).get(AuthViewModel::class.java)
     }
 
+    @Inject
+    lateinit var mainViewModel: MainViewModel
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -47,7 +50,8 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>(R.layout.fragment_auth) {
                 viewModel.login(
                     user.id,
                     user.kakaoAccount?.profile?.nickname.toString(),
-                    user.kakaoAccount?.profile?.profileImageUrl.toString()
+                    user.kakaoAccount?.profile?.profileImageUrl.toString(),
+                    mainViewModel.location.value
                 )
             }
         }
