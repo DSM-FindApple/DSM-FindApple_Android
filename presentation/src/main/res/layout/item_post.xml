@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/post_profile_iv"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_fineapple_red_sunglasses" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/post_title_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:fontFamily="@font/cookie_run_regular"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/post_chatting_iv"
+        app:layout_constraintStart_toEndOf="@+id/post_profile_iv"
+        app:layout_constraintTop_toTopOf="@id/post_profile_iv"
+        tools:text="홈팟을 잃어버렸음" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/cookie_run_regular"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="@id/post_profile_iv"
+        app:layout_constraintStart_toEndOf="@id/post_profile_iv"
+        app:layout_constraintTop_toBottomOf="@id/post_title_tv"
+        tools:text="슬픈파인애플" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/post_location_iv"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:padding="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_location_searching_24" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/post_chatting_iv"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="14dp"
+        android:padding="5dp"
+        app:layout_constraintEnd_toStartOf="@id/post_location_iv"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_chatting" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/post_photo_vp"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/post_profile_iv" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/post_comment_iv"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/post_photo_vp"
+        tools:src="@drawable/ic_fineapple_main" />
+
+    <LinearLayout
+        android:id="@+id/post_comment_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/shape_border_comment"
+        android:orientation="vertical"
+        android:padding="5dp"
+        app:layout_constraintStart_toEndOf="@id/post_comment_iv"
+        app:layout_constraintTop_toBottomOf="@id/post_photo_vp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/post_comment_people_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:fontFamily="@font/cookie_run_regular"
+            android:textSize="12sp"
+            tools:text="물건찾은파인애플" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:fontFamily="@font/cookie_run_regular"
+            android:textColor="@color/black"
+            tools:text="여기서 찾은거같아요" />
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/shape_border_start_comment"
+        android:fontFamily="@font/cookie_run_regular"
+        android:paddingHorizontal="10dp"
+        android:text="@string/start_comment"
+        android:textColor="@color/yellow_500"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/post_comment_ll" />
+</androidx.constraintlayout.widget.ConstraintLayout>

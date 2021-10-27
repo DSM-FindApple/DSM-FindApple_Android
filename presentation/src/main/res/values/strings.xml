@@ -30,4 +30,5 @@
     <string name="add_photo_with_gallery">사진선택하기</string>
     <string name="lost_post_is_empty">분실물 게시물이 없어요</string>
     <string name="find_post_is_empty">습득물 게시물이 없어요</string>
+    <string name="start_comment">댓글달기</string>
 </resources>
