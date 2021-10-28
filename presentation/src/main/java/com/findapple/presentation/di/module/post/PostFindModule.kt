@@ -1,4 +1,4 @@
-package com.findapple.presentation.di.module.post.find
+package com.findapple.presentation.di.module.post
 
 import com.findapple.domain.features.post.usecase.PostFindUseCase
 import com.findapple.presentation.di.scope.FragmentScope

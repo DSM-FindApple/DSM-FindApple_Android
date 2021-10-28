@@ -4,8 +4,8 @@ import com.findapple.presentation.di.module.main.MainModule
 import com.findapple.presentation.di.module.auth.AuthModule
 import com.findapple.presentation.di.module.auth.AuthStaticModule
 import com.findapple.presentation.di.module.main.post.PostStaticModule
-import com.findapple.presentation.di.module.post.find.PostFindModule
-import com.findapple.presentation.di.module.post.find.PostFindStaticModule
+import com.findapple.presentation.di.module.post.PostFindModule
+import com.findapple.presentation.di.module.post.PostFindStaticModule
 import com.findapple.presentation.di.scope.FragmentScope
 import com.findapple.presentation.features.auth.AuthFragment
 import com.findapple.presentation.features.post.PostFragment
