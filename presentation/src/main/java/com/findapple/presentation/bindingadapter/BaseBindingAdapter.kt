@@ -2,6 +2,7 @@ package com.findapple.presentation.bindingadapter
 
 import android.webkit.WebView
 import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.findapple.presentation.adapter.RecyclerViewAdapter
 
@@ -9,9 +10,10 @@ import com.findapple.presentation.adapter.RecyclerViewAdapter
 fun RecyclerView.setList(list: List<RecyclerViewItem>?) {
     if (adapter == null) {
         adapter = RecyclerViewAdapter()
+        layoutManager = LinearLayoutManager(context)
     }
 
-    if(list != null) {
+    if (list != null) {
         (adapter as? RecyclerViewAdapter)?.updateData(list)
     }
 }

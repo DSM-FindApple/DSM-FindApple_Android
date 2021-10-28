@@ -13,6 +13,7 @@ import com.findapple.presentation.base.SingleLiveEvent
 import com.findapple.presentation.bindingadapter.RecyclerViewItem
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
+import java.time.LocalDateTime
 
 class LostViewModel(private val getLostListUseCase: GetLostListUseCase) : BaseViewModel() {
 
@@ -36,7 +37,9 @@ class LostViewModel(private val getLostListUseCase: GetLostListUseCase) : BaseVi
         getLostListUseCase.execute(
             Unit, object : DisposableSingleObserver<Result<List<Post>>>() {
                 override fun onSuccess(t: Result<List<Post>>) {
-
+                    if (t is Result.Success) {
+                        lostList.value = t.value.map { LostItemViewModel(it).toRecyclerItem() }
+                    }
                 }
 
                 override fun onError(e: Throwable) {
@@ -64,4 +67,6 @@ class LostViewModel(private val getLostListUseCase: GetLostListUseCase) : BaseVi
 
         }
     }
+
+
 }
