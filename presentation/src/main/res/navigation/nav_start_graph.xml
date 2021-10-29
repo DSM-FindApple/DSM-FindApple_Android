@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.findapple.presentation.features.splash.SplashFragment"
+        android:name="com.findapple.findapple.presentation.features.splash.SplashFragment"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash">
         <action
@@ -18,12 +18,12 @@
     </fragment>
     <fragment
         android:id="@+id/authFragment"
-        android:name="com.findapple.presentation.features.auth.AuthFragment"
+        android:name="com.findapple.findapple.presentation.features.auth.AuthFragment"
         android:label="fragment_auth"
         tools:layout="@layout/fragment_auth" />
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.findapple.presentation.main.MainFragment"
+        android:name="com.findapple.findapple.presentation.main.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main">
         <action
@@ -63,7 +63,7 @@
 
     <fragment
         android:id="@+id/postFragment"
-        android:name="com.findapple.presentation.features.post.PostFragment"
+        android:name="com.findapple.findapple.presentation.features.post.PostFragment"
         android:label="PostFindFragment"
         tools:layout="@layout/fragment_post" />
 </navigation>

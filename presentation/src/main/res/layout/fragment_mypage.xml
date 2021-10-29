@@ -9,7 +9,7 @@
 
         <variable
             name="vm"
-            type="com.findapple.presentation.features.mypage.viewmodel.MyPageViewModel" />
+            type="com.findapple.findapple.presentation.features.mypage.viewmodel.MyPageViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

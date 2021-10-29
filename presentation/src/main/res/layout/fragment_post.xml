@@ -12,7 +12,7 @@
 
         <variable
             name="vm"
-            type="com.findapple.presentation.features.post.viewModel.PostViewModel" />
+            type="com.findapple.findapple.presentation.features.post.viewModel.PostViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

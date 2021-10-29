@@ -5,7 +5,7 @@
 
         <variable
             name="vm"
-            type="com.findapple.presentation.features.post.viewModel.PostViewModel" />
+            type="com.findapple.findapple.presentation.features.post.viewModel.PostViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
