@@ -6,9 +6,9 @@ import io.reactivex.Single
 import retrofit2.http.*
 
 interface AuthApi {
-    @POST("/auth")
+    @POST("auth")
     fun login(@Body body: LoginRequest): Single<LoginResponse>
 
-    @PUT("/auth")
+    @PUT("auth")
     fun refreshToken(): Single<Unit>
 }

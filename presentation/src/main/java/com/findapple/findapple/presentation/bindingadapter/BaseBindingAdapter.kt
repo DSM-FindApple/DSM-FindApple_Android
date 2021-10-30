@@ -24,6 +24,8 @@ fun WebView.setWebView(url: String) {
         settings.run {
             javaScriptEnabled = true
             builtInZoomControls = false
+            loadWithOverviewMode = true
+            useWideViewPort = true
         }
         loadUrl(url)
     }
