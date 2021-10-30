@@ -59,8 +59,13 @@ class FindFragment : BaseFragment<FragmentFindBinding>(R.layout.fragment_find) {
     }
 
     private fun startPost() {
-        requireActivity().findNavController(R.id.main_activity_container)
-            .navigate(R.id.action_mainFragment_to_postFindFragment)
+        if (mainViewModel.hasLogin.value == true) {
+            requireActivity().findNavController(R.id.main_activity_container)
+                .navigate(R.id.action_mainFragment_to_postFragment)
+        } else {
+            viewModel.needLogin.call()
+        }
+
     }
 
     private fun setLocationText(location: Location) {

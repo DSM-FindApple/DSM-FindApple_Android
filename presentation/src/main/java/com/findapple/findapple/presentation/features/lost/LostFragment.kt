@@ -39,7 +39,7 @@ class LostFragment : BaseFragment<FragmentLostBinding>(R.layout.fragment_lost) {
                     touchStartY = motionEvent.y.toInt()
                 }
                 if (motionEvent.action == MotionEvent.ACTION_MOVE) {
-                    if(touchStartY < motionEvent.y.toInt()) {
+                    if (touchStartY < motionEvent.y.toInt()) {
                         lostSpl.panelState = SlidingUpPanelLayout.PanelState.HIDDEN
                     }
                 }
@@ -72,8 +72,13 @@ class LostFragment : BaseFragment<FragmentLostBinding>(R.layout.fragment_lost) {
     }
 
     private fun startPost() {
-        requireActivity().findNavController(R.id.main_activity_container)
-            .navigate(R.id.action_mainFragment_to_postLostFragment)
+        if (mainViewModel.hasLogin.value == true) {
+            requireActivity().findNavController(R.id.main_activity_container)
+                .navigate(R.id.action_mainFragment_to_postLostFragment)
+        } else {
+            viewModel.needLogin.call()
+        }
+
     }
 
 
