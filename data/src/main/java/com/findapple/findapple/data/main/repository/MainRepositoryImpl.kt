@@ -6,7 +6,5 @@ import com.findapple.findapple.domain.main.repository.MainRepository
 import io.reactivex.Single
 
 class MainRepositoryImpl(private val dataSource: MainDataSource) : MainRepository {
-    override fun saveLocation(location: Location): Single<Unit> {
-        TODO("Not yet implemented")
-    }
+    override fun checkLogin(): Single<Boolean> = dataSource.checkLogin()
 }

@@ -62,7 +62,7 @@
             android:padding="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@{vm.isMyPost?@drawable/ic_baseline_more_vert_24:@drawable/ic_baseline_location_searching_24}" />
+            app:srcCompat="@drawable/ic_baseline_location_searching_24" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/post_chatting_iv"

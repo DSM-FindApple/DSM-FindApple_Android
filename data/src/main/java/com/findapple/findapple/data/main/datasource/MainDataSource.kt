@@ -1,7 +1,7 @@
 package com.findapple.findapple.data.main.datasource
 
-import com.findapple.findapple.domain.entity.Location
+import io.reactivex.Single
 
 interface MainDataSource {
-    fun saveLocation(location: Location)
+    fun checkLogin(): Single<Boolean>
 }
