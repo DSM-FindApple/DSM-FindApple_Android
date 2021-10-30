@@ -13,7 +13,8 @@ import javax.inject.Singleton
         (ApiModule::class),
         (LocalModule::class),
         (BaseModule::class),
-        (DatabaseModule::class)
+        (DatabaseModule::class),
+        (FCMServiceModule::class)
     ]
 )
 class AppModule {
