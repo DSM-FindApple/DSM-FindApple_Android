@@ -1,4 +1,4 @@
 rootProject.name = "DSM-FindApple-Android"
-include ':app'
+include ':presentation'
 include ':data'
 include ':domain'
