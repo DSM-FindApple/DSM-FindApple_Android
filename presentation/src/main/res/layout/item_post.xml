@@ -3,6 +3,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="vm"
             type="com.findapple.findapple.presentation.features.post.viewModel.PostItemViewModel" />
@@ -31,6 +33,7 @@
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
             android:fontFamily="@font/cookie_run_regular"
+            android:text="@{vm.post.title}"
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintEnd_toStartOf="@+id/post_chatting_iv"
@@ -43,6 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:fontFamily="@font/cookie_run_regular"
+            android:text="@{vm.post.userName}"
             android:textSize="13sp"
             app:layout_constraintBottom_toBottomOf="@id/post_profile_iv"
             app:layout_constraintStart_toEndOf="@id/post_profile_iv"
@@ -58,7 +62,7 @@
             android:padding="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_baseline_location_searching_24" />
+            app:srcCompat="@{vm.isMyPost?@drawable/ic_baseline_more_vert_24:@drawable/ic_baseline_location_searching_24}" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/post_chatting_iv"
@@ -67,6 +71,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="14dp"
             android:padding="5dp"
+            android:visibility="@{vm.isMyPost?View.GONE:View.VISIBLE}"
             app:layout_constraintEnd_toStartOf="@id/post_location_iv"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_chatting" />
@@ -78,6 +83,7 @@
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/cookie_run_regular"
+            android:text="@{vm.post.detailInfo}"
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -97,6 +103,7 @@
             android:layout_height="28dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
+            android:visibility="@{vm.isMyPost?View.GONE:View.VISIBLE}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/post_photo_vp"
             tools:src="@drawable/ic_fineapple_main" />
@@ -110,6 +117,7 @@
             android:background="@drawable/shape_border_comment"
             android:orientation="vertical"
             android:padding="5dp"
+            android:visibility="@{vm.isMyPost?View.GONE:View.VISIBLE}"
             app:layout_constraintStart_toEndOf="@id/post_comment_iv"
             app:layout_constraintTop_toBottomOf="@id/post_photo_vp">
 
@@ -141,6 +149,7 @@
             android:paddingHorizontal="10dp"
             android:text="@string/start_comment"
             android:textColor="@color/yellow_500"
+            android:visibility="@{vm.isMyPost?View.GONE:View.VISIBLE}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/post_comment_ll" />
     </androidx.constraintlayout.widget.ConstraintLayout>
