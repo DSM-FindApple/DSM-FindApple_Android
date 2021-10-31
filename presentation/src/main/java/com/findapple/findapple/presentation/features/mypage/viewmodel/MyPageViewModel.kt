@@ -6,8 +6,9 @@ import androidx.lifecycle.MutableLiveData
 import com.findapple.findapple.domain.features.mypage.usecase.GetUserUseCase
 import com.findapple.findapple.presentation.base.BaseViewModel
 import com.findapple.findapple.domain.entity.User
+import com.findapple.findapple.domain.features.mypage.entity.UserDetail
 import com.findapple.findapple.domain.features.post.entity.Post
-import com.findapple.findapple.domain.features.mypage.usecase.GetUserPostListUseCase
+import com.findapple.findapple.domain.features.mypage.usecase.GetUserDetailUseCase
 import com.findapple.findapple.presentation.BR
 import com.findapple.findapple.presentation.R
 import com.findapple.findapple.presentation.base.SingleLiveEvent
@@ -17,11 +18,14 @@ import io.reactivex.observers.DisposableSingleObserver
 
 class MyPageViewModel(
     private val getUserUseCase: GetUserUseCase,
-    private val getUserPostListUseCase: GetUserPostListUseCase
+    private val getUserDetailUseCase: GetUserDetailUseCase
 ) : BaseViewModel() {
 
     private val _userProfile = MutableLiveData<User>()
     val userProfile: LiveData<User> get() = _userProfile
+
+    private val _userDetail = MutableLiveData<UserDetail>()
+    val userDetail: LiveData<UserDetail> get() = _userDetail
 
     private val _myPageItems = MutableLiveData<List<RecyclerViewItem>>()
     val myPageItems: LiveData<List<RecyclerViewItem>> get() = _myPageItems
