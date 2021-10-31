@@ -1,4 +1,4 @@
-package com.findapple.findapple.data.local.sharedpref
+package com.findapple.findapple.data.local.localstorage
 
 interface LocalStorage {
     fun saveToken(token: String, access: Boolean)

@@ -1,4 +1,4 @@
-package com.findapple.findapple.data.local.sharedpref
+package com.findapple.findapple.data.local.localstorage
 
 import android.content.Context
 import android.content.SharedPreferences

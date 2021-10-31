@@ -1,6 +1,6 @@
 package com.findapple.findapple.data.base
 
-import com.findapple.findapple.data.local.sharedpref.LocalStorage
+import com.findapple.findapple.data.local.localstorage.LocalStorage
 import okhttp3.Interceptor
 import okhttp3.Response
 

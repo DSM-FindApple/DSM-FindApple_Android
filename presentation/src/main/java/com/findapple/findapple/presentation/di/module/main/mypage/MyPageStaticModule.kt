@@ -5,7 +5,7 @@ import com.findapple.findapple.data.features.mypage.datasource.UserDataSource
 import com.findapple.findapple.data.features.mypage.datasource.UserDataSourceImpl
 import com.findapple.findapple.data.features.mypage.repository.UserRepositoryImpl
 import com.findapple.findapple.data.local.database.dao.UserDao
-import com.findapple.findapple.data.local.sharedpref.LocalStorage
+import com.findapple.findapple.data.local.localstorage.LocalStorage
 import com.findapple.findapple.domain.errorhandler.ErrorHandler
 import com.findapple.findapple.domain.features.mypage.repository.UserRepository
 import com.findapple.findapple.domain.features.mypage.service.UserService

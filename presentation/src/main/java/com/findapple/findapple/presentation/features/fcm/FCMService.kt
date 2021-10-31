@@ -1,6 +1,6 @@
 package com.findapple.findapple.presentation.features.fcm
 
-import com.findapple.findapple.data.local.sharedpref.LocalStorage
+import com.findapple.findapple.data.local.localstorage.LocalStorage
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import dagger.android.AndroidInjection

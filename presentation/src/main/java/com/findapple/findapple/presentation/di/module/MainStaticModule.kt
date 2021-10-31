@@ -1,7 +1,7 @@
 package com.findapple.findapple.presentation.di.module
 
 import androidx.lifecycle.ViewModelProvider
-import com.findapple.findapple.data.local.sharedpref.LocalStorage
+import com.findapple.findapple.data.local.localstorage.LocalStorage
 import com.findapple.findapple.data.main.datasource.MainDataSource
 import com.findapple.findapple.data.main.datasource.MainDataSourceImpl
 import com.findapple.findapple.data.main.repository.MainRepositoryImpl

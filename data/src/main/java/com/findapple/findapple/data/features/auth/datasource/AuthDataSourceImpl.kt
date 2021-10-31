@@ -6,7 +6,7 @@ import com.findapple.findapple.data.features.auth.entity.toLoginRequest
 import com.findapple.findapple.data.features.auth.remote.AuthApi
 import com.findapple.findapple.data.local.database.dao.UserDao
 import com.findapple.findapple.data.local.database.entity.toDatabaseEntity
-import com.findapple.findapple.data.local.sharedpref.LocalStorage
+import com.findapple.findapple.data.local.localstorage.LocalStorage
 import com.findapple.findapple.domain.entity.User
 import io.reactivex.Single
 

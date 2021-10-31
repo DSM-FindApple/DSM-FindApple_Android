@@ -4,7 +4,7 @@ import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 import com.findapple.findapple.data.base.Interceptor
-import com.findapple.findapple.data.local.sharedpref.LocalStorage
+import com.findapple.findapple.data.local.localstorage.LocalStorage
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient

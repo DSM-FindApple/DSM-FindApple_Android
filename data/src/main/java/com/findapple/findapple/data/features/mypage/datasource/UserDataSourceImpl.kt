@@ -4,7 +4,7 @@ import com.findapple.findapple.data.features.mypage.UserApi
 import com.findapple.findapple.data.features.post.dto.response.toEntity
 import com.findapple.findapple.data.local.database.dao.UserDao
 import com.findapple.findapple.data.local.database.entity.toEntity
-import com.findapple.findapple.data.local.sharedpref.LocalStorage
+import com.findapple.findapple.data.local.localstorage.LocalStorage
 import com.findapple.findapple.domain.entity.User
 import com.findapple.findapple.domain.features.post.entity.Post
 import io.reactivex.Single

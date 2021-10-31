@@ -1,6 +1,6 @@
 package com.findapple.findapple.data.main.datasource
 
-import com.findapple.findapple.data.local.sharedpref.LocalStorage
+import com.findapple.findapple.data.local.localstorage.LocalStorage
 import io.reactivex.Single
 
 class MainDataSourceImpl(private val localStorage: LocalStorage) : MainDataSource {
