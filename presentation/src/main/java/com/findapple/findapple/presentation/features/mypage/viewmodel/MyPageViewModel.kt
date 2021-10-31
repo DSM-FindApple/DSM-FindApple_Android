@@ -35,15 +35,6 @@ class MyPageViewModel(
     override fun apply(event: Lifecycle.Event) {
         when (event) {
             Lifecycle.Event.ON_CREATE -> {
-                _myPageItems.value = ArrayList<RecyclerViewItem>().apply {
-                    add(
-                        RecyclerViewItem(
-                            R.layout.item_mypage_header,
-                            MyPageHeaderViewModel(),
-                            BR.vm
-                        )
-                    )
-                }
                 getUserInfo()
             }
         }
@@ -56,6 +47,7 @@ class MyPageViewModel(
 
                 override fun onSuccess(t: User) {
                     _userProfile.value = t
+                    updateMyPageHeader()
                 }
 
                 override fun onError(e: Throwable) {
@@ -68,16 +60,20 @@ class MyPageViewModel(
         )
     }
 
-
-    inner class MyPageHeaderViewModel {
-        val user: LiveData<User> get() = _userProfile
-        fun showFindAppleLevelDetail() {
-            _showFindAppleLevelDetail.call()
+    private fun updateMyPageHeader() {
+        _myPageItems.value = ArrayList<RecyclerViewItem>().apply {
+            add(
+                RecyclerViewItem(
+                    R.layout.item_mypage_header,
+                    this@MyPageViewModel,
+                    BR.vm
+                )
+            )
         }
+    }
 
-        fun startLogin() {
-            this@MyPageViewModel.startLogin()
-        }
+    fun showFindAppleLevelDetail() {
+        _showFindAppleLevelDetail.call()
     }
 
 }

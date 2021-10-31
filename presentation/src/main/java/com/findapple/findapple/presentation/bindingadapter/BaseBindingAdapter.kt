@@ -1,9 +1,15 @@
 package com.findapple.findapple.presentation.bindingadapter
 
+import android.graphics.PorterDuff
 import android.webkit.WebView
+import android.widget.ImageView
+import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
+import com.bumptech.glide.Glide
+import com.findapple.findapple.presentation.R
 import com.findapple.findapple.presentation.adapter.RecyclerViewAdapter
 
 @BindingAdapter("recyclerItems")
@@ -31,3 +37,17 @@ fun WebView.setWebView(url: String) {
     }
 }
 
+@BindingAdapter("loadImage")
+fun ImageView.loadImage(resource: String) {
+    val progressDrawable = CircularProgressDrawable(context).apply {
+        strokeWidth = 10f
+        centerRadius = 40f
+        setColorFilter(ContextCompat.getColor(context, R.color.blue_500), PorterDuff.Mode.SRC_IN)
+        start()
+    }
+
+    Glide.with(context)
+        .load(resource)
+        .placeholder(progressDrawable)
+        .into(this)
+}
