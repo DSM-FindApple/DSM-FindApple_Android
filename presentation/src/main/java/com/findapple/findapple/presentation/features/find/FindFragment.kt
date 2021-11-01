@@ -6,10 +6,10 @@ import android.view.MotionEvent
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import com.findapple.findapple.R
+import com.findapple.findapple.databinding.FragmentFindBinding
 import com.findapple.findapple.domain.entity.Location
-import com.findapple.findapple.presentation.R
 import com.findapple.findapple.presentation.base.BaseFragment
-import com.findapple.findapple.presentation.databinding.FragmentFindBinding
 import com.findapple.findapple.presentation.features.find.viewmodel.FindViewModel
 import com.findapple.findapple.presentation.features.find.viewmodel.FindViewModelFactory
 import com.findapple.findapple.presentation.main.viewmodel.MainViewModel

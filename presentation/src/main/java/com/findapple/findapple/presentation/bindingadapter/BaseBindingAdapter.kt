@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
-import com.findapple.findapple.presentation.R
+import com.findapple.findapple.R
 import com.findapple.findapple.presentation.adapter.RecyclerViewAdapter
 
 @BindingAdapter("recyclerItems")
@@ -38,7 +38,7 @@ fun WebView.setWebView(url: String) {
 }
 
 @BindingAdapter("loadImage")
-fun ImageView.loadImage(resource: String) {
+fun ImageView.loadImage(resource: String?) {
     val progressDrawable = CircularProgressDrawable(context).apply {
         strokeWidth = 10f
         centerRadius = 40f
@@ -49,5 +49,6 @@ fun ImageView.loadImage(resource: String) {
     Glide.with(context)
         .load(resource)
         .placeholder(progressDrawable)
+        .error(R.drawable.ic_fineapple_main)
         .into(this)
 }

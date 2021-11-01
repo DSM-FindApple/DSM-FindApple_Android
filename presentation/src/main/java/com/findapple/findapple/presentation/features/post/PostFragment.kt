@@ -9,9 +9,9 @@ import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.findapple.findapple.presentation.R
+import com.findapple.findapple.R
+import com.findapple.findapple.databinding.FragmentPostBinding
 import com.findapple.findapple.presentation.base.BaseFragment
-import com.findapple.findapple.presentation.databinding.FragmentPostBinding
 import com.findapple.findapple.presentation.features.post.adapter.CategoryAdapter
 import com.findapple.findapple.presentation.features.post.viewModel.PostViewModel
 import com.findapple.findapple.presentation.features.post.viewModel.PostViewModelFactory

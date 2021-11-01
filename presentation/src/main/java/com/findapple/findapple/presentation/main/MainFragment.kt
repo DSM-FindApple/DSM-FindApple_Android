@@ -7,9 +7,9 @@ import android.view.View
 import androidx.core.app.ActivityCompat
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
+import com.findapple.findapple.R
+import com.findapple.findapple.databinding.FragmentMainBinding
 import com.findapple.findapple.domain.entity.Location
-import com.findapple.findapple.presentation.R
-import com.findapple.findapple.presentation.databinding.FragmentMainBinding
 import com.findapple.findapple.presentation.base.BaseFragment
 import com.findapple.findapple.presentation.main.viewmodel.MainViewModel
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -35,7 +35,45 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
         checkLocation()
     }
 
+    companion object {
+        private const val LOCATION_REQUEST_CODE = 1
+    }
+
     private fun checkLocation() {
+        val permissions = arrayOf(
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.ACCESS_COARSE_LOCATION
+        )
+        if (ActivityCompat.checkSelfPermission(
+                requireActivity(),
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                requireActivity(),
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(requireActivity(), permissions, LOCATION_REQUEST_CODE)
+        } else {
+            fusedLocationClient.lastLocation.addOnSuccessListener {
+                if (it != null) {
+                    viewModel.location.value = Location(it.longitude, it.latitude)
+                }
+            }
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == LOCATION_REQUEST_CODE) {
+            getLocation()
+        }
+    }
+
+    private fun getLocation() {
         if (ActivityCompat.checkSelfPermission(
                 requireActivity(),
                 Manifest.permission.ACCESS_FINE_LOCATION
@@ -45,11 +83,10 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
             ) != PackageManager.PERMISSION_GRANTED
         ) {
             return
-        } else {
-            fusedLocationClient.lastLocation.addOnSuccessListener {
-                if(it!=null){
-                    viewModel.location.value = Location(it.longitude, it.latitude)
-                }
+        }
+        fusedLocationClient.lastLocation.addOnSuccessListener {
+            if (it != null) {
+                viewModel.location.value = Location(it.longitude, it.latitude)
             }
         }
     }

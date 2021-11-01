@@ -1,8 +1,8 @@
 package com.findapple.findapple.presentation.features.mypage
 
 import androidx.lifecycle.ViewModelProvider
-import com.findapple.findapple.presentation.R
-import com.findapple.findapple.presentation.databinding.FragmentMypageBinding
+import com.findapple.findapple.R
+import com.findapple.findapple.databinding.FragmentMypageBinding
 import com.findapple.findapple.presentation.base.BaseFragment
 import com.findapple.findapple.presentation.features.mypage.viewmodel.MyPageViewModel
 import com.findapple.findapple.presentation.features.mypage.viewmodel.MyPageViewModelFactory

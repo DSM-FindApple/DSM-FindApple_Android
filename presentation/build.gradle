@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    compileSdk 31
+    compileSdkVersion 30
 
     defaultConfig {
         applicationId "com.findapple.findapple"

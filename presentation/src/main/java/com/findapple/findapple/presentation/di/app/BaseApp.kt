@@ -1,6 +1,6 @@
 package com.findapple.findapple.presentation.di.app
 
-import com.findapple.findapple.presentation.R
+import com.findapple.findapple.R
 import com.findapple.findapple.presentation.di.component.DaggerAppComponent
 import com.kakao.sdk.common.KakaoSdk
 import dagger.android.AndroidInjector

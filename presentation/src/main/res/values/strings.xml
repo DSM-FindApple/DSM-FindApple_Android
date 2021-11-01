@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DSM-FindApple-Android</string>
+    <string name="app_name">FindApple</string>
     <string name="lost">분실물</string>
     <string name="find">습득물</string>
     <string name="chatting">채팅</string>

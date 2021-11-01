@@ -3,9 +3,9 @@ package com.findapple.findapple.presentation.features.auth
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
-import com.findapple.findapple.presentation.R
+import com.findapple.findapple.R
+import com.findapple.findapple.databinding.FragmentAuthBinding
 import com.findapple.findapple.presentation.base.BaseFragment
-import com.findapple.findapple.presentation.databinding.FragmentAuthBinding
 import com.findapple.findapple.presentation.features.auth.viewmodel.AuthViewModel
 import com.findapple.findapple.presentation.features.auth.viewmodel.AuthViewModelFactory
 import com.findapple.findapple.presentation.main.viewmodel.MainViewModel

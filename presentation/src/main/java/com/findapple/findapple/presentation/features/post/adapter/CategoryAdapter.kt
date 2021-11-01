@@ -4,8 +4,8 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.findapple.findapple.presentation.R
-import com.findapple.findapple.presentation.databinding.ItemCategoryBinding
+import com.findapple.findapple.R
+import com.findapple.findapple.databinding.ItemCategoryBinding
 import com.findapple.findapple.presentation.features.post.model.Category
 import com.findapple.findapple.presentation.features.post.viewModel.PostViewModel
 

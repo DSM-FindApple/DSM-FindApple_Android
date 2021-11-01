@@ -5,8 +5,8 @@ import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.findapple.findapple.presentation.R
-import com.findapple.findapple.presentation.databinding.ItemWelcomeAuthBinding
+import com.findapple.findapple.R
+import com.findapple.findapple.databinding.ItemWelcomeAuthBinding
 
 class AuthAdapter : RecyclerView.Adapter<AuthAdapter.AuthViewHolder>() {
 

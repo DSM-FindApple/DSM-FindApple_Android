@@ -11,8 +11,8 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import com.findapple.findapple.presentation.BR
-import com.findapple.findapple.presentation.R
+import com.findapple.findapple.BR
+import com.findapple.findapple.R
 import com.google.android.material.snackbar.Snackbar
 import dagger.android.support.DaggerFragment
 

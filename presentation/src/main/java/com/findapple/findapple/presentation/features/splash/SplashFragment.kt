@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
-import com.findapple.findapple.presentation.R
-import com.findapple.findapple.presentation.databinding.FragmentSplashBinding
+import com.findapple.findapple.R
+import com.findapple.findapple.databinding.FragmentSplashBinding
 import dagger.android.support.DaggerFragment
 
 class SplashFragment : DaggerFragment() {

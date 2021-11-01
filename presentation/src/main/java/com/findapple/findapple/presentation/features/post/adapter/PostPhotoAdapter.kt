@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.library.baseAdapters.BR
 import androidx.recyclerview.widget.RecyclerView
-import com.findapple.findapple.presentation.databinding.ItemPhotoBinding
-import com.findapple.findapple.presentation.databinding.ItemPostPhotoBinding
+import com.findapple.findapple.databinding.ItemPhotoBinding
+import com.findapple.findapple.databinding.ItemPostPhotoBinding
 import com.findapple.findapple.presentation.features.post.viewModel.PostViewModel
 
 class PostPhotoAdapter(private val vm: PostViewModel) :

@@ -3,11 +3,11 @@ package com.findapple.findapple.presentation.features.lost.viewmodel
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.findapple.findapple.R
 import com.findapple.findapple.domain.base.Result
 import com.findapple.findapple.domain.features.post.entity.Post
 import com.findapple.findapple.domain.features.post.usecase.GetLostListUseCase
-import com.findapple.findapple.presentation.BR
-import com.findapple.findapple.presentation.R
+import com.findapple.findapple.BR
 import com.findapple.findapple.presentation.base.BaseViewModel
 import com.findapple.findapple.presentation.base.SingleLiveEvent
 import com.findapple.findapple.presentation.bindingadapter.RecyclerViewItem

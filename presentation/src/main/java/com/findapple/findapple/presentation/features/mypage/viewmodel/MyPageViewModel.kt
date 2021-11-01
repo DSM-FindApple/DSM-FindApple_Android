@@ -3,14 +3,14 @@ package com.findapple.findapple.presentation.features.mypage.viewmodel
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.findapple.findapple.R
 import com.findapple.findapple.domain.features.mypage.usecase.GetUserUseCase
 import com.findapple.findapple.presentation.base.BaseViewModel
 import com.findapple.findapple.domain.entity.User
 import com.findapple.findapple.domain.features.mypage.entity.UserDetail
 import com.findapple.findapple.domain.features.post.entity.Post
 import com.findapple.findapple.domain.features.mypage.usecase.GetUserDetailUseCase
-import com.findapple.findapple.presentation.BR
-import com.findapple.findapple.presentation.R
+import com.findapple.findapple.BR
 import com.findapple.findapple.presentation.base.SingleLiveEvent
 import com.findapple.findapple.presentation.bindingadapter.RecyclerViewItem
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -56,6 +56,7 @@ class MyPageViewModel(
 
                 override fun onError(e: Throwable) {
                     e.printStackTrace()
+                    updateMyPageHeader()
                 }
 
 
