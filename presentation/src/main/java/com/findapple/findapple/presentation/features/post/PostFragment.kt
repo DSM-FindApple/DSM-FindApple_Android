@@ -84,8 +84,8 @@ class PostFragment : BaseFragment<FragmentPostBinding>(R.layout.fragment_post) {
 
 
     companion object {
-        private val REQUEST_CAMERA_CODE = 2
-        private val RESULT_OK = -1
+        private const val REQUEST_CAMERA_CODE = 2
+        private const val RESULT_OK = -1
     }
 
 

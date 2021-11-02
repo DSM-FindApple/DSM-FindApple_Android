@@ -16,6 +16,9 @@ class PostViewModel(private val postFindUseCase: PostFindUseCase) : BaseViewMode
 
     val photoList = MutableLiveData(ArrayList<Uri>())
 
+    val title = MutableLiveData<String>()
+    val detail = MutableLiveData<String>()
+
     private val _startCamera = SingleLiveEvent<Unit>()
     val startCamera: LiveData<Unit> get() = _startCamera
 

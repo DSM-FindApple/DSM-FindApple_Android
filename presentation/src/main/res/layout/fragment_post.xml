@@ -6,6 +6,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="isLost"
             type="Boolean" />
@@ -35,6 +37,17 @@
                 android:text="@{isLost?@string/post_lost:@string/post_find}"
                 android:textColor="@color/black"
                 android:textSize="19sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="7dp"
+                android:fontFamily="@font/cookie_run_bold"
+                android:padding="5dp"
+                android:text="@string/post"
+                android:textColor="@color/white"
+                android:visibility="@{vm.title != null &amp; vm.detail != null?View.VISIBLE:View.GONE}" />
         </androidx.appcompat.widget.Toolbar>
 
         <ScrollView
@@ -58,6 +71,7 @@
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/cookie_run_regular"
                     android:hint="@{isLost?@string/post_lost_title_hint:@string/post_find_title_hint}"
+                    android:text="@={vm.title}"
                     app:layout_constraintTop_toBottomOf="@id/post_tb" />
 
                 <LinearLayout
@@ -99,7 +113,8 @@
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/cookie_run_regular"
                     android:gravity="top"
-                    android:hint="@string/post_description_hint" />
+                    android:hint="@string/post_description_hint"
+                    android:text="@={vm.detail}" />
 
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/post_photos_vp"
