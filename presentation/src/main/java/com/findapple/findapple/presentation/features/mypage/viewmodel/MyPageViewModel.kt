@@ -11,6 +11,7 @@ import com.findapple.findapple.domain.features.mypage.entity.UserDetail
 import com.findapple.findapple.domain.features.post.entity.Post
 import com.findapple.findapple.domain.features.mypage.usecase.GetUserDetailUseCase
 import com.findapple.findapple.BR
+import com.findapple.findapple.domain.base.Result
 import com.findapple.findapple.presentation.base.SingleLiveEvent
 import com.findapple.findapple.presentation.bindingadapter.RecyclerViewItem
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -59,7 +60,6 @@ class MyPageViewModel(
                     updateMyPageHeader()
                 }
 
-
             },
             AndroidSchedulers.mainThread()
         )
@@ -75,6 +75,25 @@ class MyPageViewModel(
                 )
             )
         }
+    }
+
+    private fun getUserDetail() {
+        getUserDetailUseCase.execute(
+            data = Unit,
+            singleObserver = object : DisposableSingleObserver<Result<UserDetail>>() {
+                override fun onSuccess(t: Result<UserDetail>) {
+                    if (t is Result.Success){
+                        _userDetail.value = t.value
+                    }
+                }
+
+                override fun onError(e: Throwable) {
+                    TODO("Not yet implemented")
+                }
+
+            },
+            AndroidSchedulers.mainThread()
+        )
     }
 
     fun showFindAppleLevelDetail() {
