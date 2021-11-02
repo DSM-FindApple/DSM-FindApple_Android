@@ -1,7 +1,6 @@
 package com.findapple.findapple.data.main.repository
 
 import com.findapple.findapple.data.main.datasource.MainDataSource
-import com.findapple.findapple.domain.entity.Location
 import com.findapple.findapple.domain.main.repository.MainRepository
 import io.reactivex.Single
 

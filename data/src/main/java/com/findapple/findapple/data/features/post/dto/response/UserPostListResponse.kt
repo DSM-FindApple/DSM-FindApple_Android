@@ -1,9 +1,7 @@
 package com.findapple.findapple.data.features.post.dto.response
 
 import com.findapple.findapple.domain.entity.Location
-import com.findapple.findapple.domain.features.mypage.entity.UserDetail
 import com.findapple.findapple.domain.features.post.entity.Post
-import io.reactivex.Single
 import java.util.*
 
 data class UserPostListResponse(

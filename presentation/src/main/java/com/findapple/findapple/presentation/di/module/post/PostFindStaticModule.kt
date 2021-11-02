@@ -2,6 +2,7 @@ package com.findapple.findapple.presentation.di.module.post
 
 import com.findapple.findapple.domain.features.post.service.PostService
 import com.findapple.findapple.domain.features.post.usecase.PostFindUseCase
+import com.findapple.findapple.domain.features.post.usecase.PostLostUseCase
 import com.findapple.findapple.presentation.di.scope.FragmentScope
 import dagger.Module
 import dagger.Provides
@@ -15,4 +16,11 @@ class PostFindStaticModule {
         service: PostService,
         compositeDisposable: CompositeDisposable
     ): PostFindUseCase = PostFindUseCase(service, compositeDisposable)
+
+    @FragmentScope
+    @Provides
+    fun providePostLostUseCase(
+        service: PostService,
+        compositeDisposable: CompositeDisposable
+    ): PostLostUseCase = PostLostUseCase(service, compositeDisposable)
 }

@@ -104,7 +104,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
-
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/post_explain_et"
                     android:layout_width="match_parent"

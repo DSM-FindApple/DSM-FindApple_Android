@@ -5,10 +5,14 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.findapple.findapple.domain.features.post.usecase.PostFindUseCase
+import com.findapple.findapple.domain.features.post.usecase.PostLostUseCase
 import com.findapple.findapple.presentation.base.BaseViewModel
 import com.findapple.findapple.presentation.base.SingleLiveEvent
 
-class PostViewModel(private val postFindUseCase: PostFindUseCase) : BaseViewModel() {
+class PostViewModel(
+    private val postFindUseCase: PostFindUseCase,
+    private val postLostUseCase: PostLostUseCase
+) : BaseViewModel() {
 
     val clickedCategoryIndex = MutableLiveData<Int>()
     var preClickedCategoryIndex = MutableLiveData<Int>()
@@ -60,4 +64,7 @@ class PostViewModel(private val postFindUseCase: PostFindUseCase) : BaseViewMode
         _message.value = "삭제되었습니다"
     }
 
+    fun post() {
+
+    }
 }

@@ -1,6 +1,6 @@
 package com.findapple.findapple.data.features.post.dto.request
 
-import com.findapple.findapple.domain.features.post.`object`.PostDataObject
+import com.findapple.findapple.domain.features.post.parameter.PostDataParameter
 import java.io.File
 import java.util.*
 
@@ -14,7 +14,7 @@ data class PostLostRequest(
     val longitude: Double
 )
 
-fun PostDataObject.toLostRequest() =
+fun PostDataParameter.toLostRequest() =
     PostLostRequest(
         title = title,
         detailScript = detail,
