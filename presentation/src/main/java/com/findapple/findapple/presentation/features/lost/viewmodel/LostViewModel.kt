@@ -44,7 +44,6 @@ class LostViewModel(private val getLostListUseCase: GetLostListUseCase) : BaseVi
                 }
 
                 override fun onError(e: Throwable) {
-
                 }
 
             },
