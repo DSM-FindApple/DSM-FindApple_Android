@@ -4,6 +4,7 @@ import android.net.Uri
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.findapple.findapple.domain.features.post.parameter.PostDataParameter
 import com.findapple.findapple.domain.features.post.usecase.PostFindUseCase
 import com.findapple.findapple.domain.features.post.usecase.PostLostUseCase
 import com.findapple.findapple.presentation.base.BaseViewModel
@@ -64,7 +65,31 @@ class PostViewModel(
         _message.value = "삭제되었습니다"
     }
 
-    fun post() {
+    fun post(isLost: Boolean) {
+        if (isLost) {
+            postLost()
+        } else {
+            postFind()
+        }
+    }
 
+    private fun postLost() {
+        val category =
+            when(clickedCategoryIndex.value) {
+                0 -> "EAR_PHONE"
+                1 -> "CELL_PHONE"
+                2 -> "MACHINE"
+                3 -> "CLOTHES"
+                4 -> "ACC"
+                5 -> "WALLET"
+                6 -> "CAR"
+                else -> ""
+            }
+        postLostUseCase.execute(
+            TODO("게시물 올리기")
+        )
+    }
+
+    private fun postFind() {
     }
 }
