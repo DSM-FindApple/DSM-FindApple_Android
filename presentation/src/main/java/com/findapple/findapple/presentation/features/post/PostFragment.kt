@@ -79,7 +79,9 @@ class PostFragment : BaseFragment<FragmentPostBinding>(R.layout.fragment_post) {
 
     private val getContent =
         registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
-            addPhotoUri(uri)
+            if(uri != null){
+                addPhotoUri(uri)
+            }
         }
 
 

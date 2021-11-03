@@ -85,9 +85,6 @@ class PostViewModel(
                 6 -> "CAR"
                 else -> ""
             }
-        postLostUseCase.execute(
-            TODO("게시물 올리기")
-        )
     }
 
     private fun postFind() {

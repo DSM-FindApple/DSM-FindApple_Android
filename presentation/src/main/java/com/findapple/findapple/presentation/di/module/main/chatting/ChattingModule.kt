@@ -10,4 +10,5 @@ class ChattingModule {
     @MainFragmentScope
     @Provides
     fun provideChattingViewModelFactory(): ChattingViewModelFactory = ChattingViewModelFactory()
+
 }
