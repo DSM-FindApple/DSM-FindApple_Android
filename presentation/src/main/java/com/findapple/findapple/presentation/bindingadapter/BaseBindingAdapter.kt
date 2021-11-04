@@ -1,7 +1,9 @@
 package com.findapple.findapple.presentation.bindingadapter
 
 import android.graphics.PorterDuff
+import android.webkit.WebChromeClient
 import android.webkit.WebView
+import android.webkit.WebViewClient
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
@@ -32,6 +34,8 @@ fun WebView.setWebView(url: String) {
             builtInZoomControls = false
             loadWithOverviewMode = true
             useWideViewPort = true
+            webViewClient = WebViewClient()
+            webChromeClient = WebChromeClient()
         }
         loadUrl(url)
     }

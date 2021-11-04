@@ -34,7 +34,7 @@
                     android:id="@+id/lost_wv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:setWebView="@{`http://211.38.86.92:3001/lost`}" />
+                    app:setWebView="@{`http://211.38.86.92:4046/lost`}" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
