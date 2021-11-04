@@ -9,5 +9,5 @@ interface PostRepository {
 
     fun postFeed(request: PostDataParameter, isLost: Boolean): Single<Unit>
 
-    fun userPostList(): Single<Post>
+    fun getRelatedLostPost(title: String): Single<List<Post>>
 }

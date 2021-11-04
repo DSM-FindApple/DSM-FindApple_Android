@@ -17,4 +17,8 @@ class PostServiceImpl(
 
     override fun postFeed(request: PostDataParameter, isLost: Boolean): Single<Result<Unit>> =
         postRepository.postFeed(request, isLost).toResult(errorHandler)
+
+    override fun getRelatedLostPost(title: String): Single<Result<List<Post>>> {
+        TODO("Not yet implemented")
+    }
 }

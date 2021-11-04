@@ -15,7 +15,7 @@ class PostRepositoryImpl(private val dataSource: PostDataSource) : PostRepositor
     override fun postFeed(request: PostDataParameter, isLost: Boolean): Single<Unit> =
         if(isLost) dataSource.postFind(request) else dataSource.postLost(request)
 
-    override fun userPostList(): Single<Post> {
+    override fun getRelatedLostPost(title: String): Single<List<Post>> {
         TODO("Not yet implemented")
     }
 
