@@ -58,16 +58,6 @@ class FindFragment : BaseFragment<FragmentFindBinding>(R.layout.fragment_find) {
         })
     }
 
-    private fun startPost() {
-        if (mainViewModel.hasLogin.value == true) {
-            requireActivity().findNavController(R.id.main_activity_container)
-                .navigate(R.id.action_mainFragment_to_postFragment)
-        } else {
-            viewModel.needLogin.call()
-        }
-
-    }
-
     private fun setLocationText(location: Location) {
         val address = geocoder.getFromLocation(location.latitude!!, location.longitude!!, 1)
         if (!CollectionUtils.isEmpty(address)) {
@@ -79,5 +69,14 @@ class FindFragment : BaseFragment<FragmentFindBinding>(R.layout.fragment_find) {
                 }
             }
         }
+    }
+
+    private fun startPost() {
+        if (mainViewModel.hasLogin.value == true) {
+            moveFragmentByActionId(R.id.action_mainFragment_to_postLostFragment)
+        } else {
+            viewModel.needLogin.call()
+        }
+
     }
 }

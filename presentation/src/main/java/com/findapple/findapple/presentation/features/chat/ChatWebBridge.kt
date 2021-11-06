@@ -5,7 +5,7 @@ import android.webkit.JavascriptInterface
 
 class ChatWebBridge {
     @JavascriptInterface
-    fun startChatDetail(id: Int) {
+    fun startChatDetail(id: String) {
         Log.d("webviewbridge", "id: $id")
     }
 }

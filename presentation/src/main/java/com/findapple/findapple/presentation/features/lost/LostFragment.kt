@@ -72,14 +72,11 @@ class LostFragment : BaseFragment<FragmentLostBinding>(R.layout.fragment_lost) {
     }
 
     private fun startPost() {
-        requireActivity().findNavController(R.id.main_activity_container)
-            .navigate(R.id.action_mainFragment_to_postLostFragment)
-        /*if (mainViewModel.hasLogin.value == true) {
-            requireActivity().findNavController(R.id.main_activity_container)
-                .navigate(R.id.action_mainFragment_to_postLostFragment)
+        if (mainViewModel.hasLogin.value == true) {
+            moveFragmentByActionId(R.id.action_mainFragment_to_postLostFragment)
         } else {
             viewModel.needLogin.call()
-        }*/
+        }
 
     }
 

@@ -34,8 +34,6 @@ fun WebView.setWebView(url: String) {
             builtInZoomControls = false
             loadWithOverviewMode = true
             useWideViewPort = true
-            webViewClient = WebViewClient()
-            webChromeClient = WebChromeClient()
         }
         loadUrl(url)
     }

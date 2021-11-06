@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
+import androidx.annotation.IdRes
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
@@ -73,13 +74,17 @@ abstract class BaseFragment<T : ViewDataBinding>(@LayoutRes private val layoutId
 
     private fun observeLogin() {
         viewModel.needLogin.observe(viewLifecycleOwner, {
-            requireActivity().findNavController(R.id.main_activity_container)
-                .navigate(R.id.action_mainFragment_to_authFragment)
+            moveFragmentByActionId(R.id.action_mainFragment_to_authFragment)
         })
     }
 
     open fun onBackPressed() {
         findNavController().navigateUp()
+    }
+
+    fun moveFragmentByActionId(@IdRes actionId: Int) {
+        requireActivity().findNavController(R.id.main_activity_container)
+            .navigate(actionId)
     }
 
     abstract fun observeEvent()
