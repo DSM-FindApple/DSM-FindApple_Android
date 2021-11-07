@@ -1,11 +1,12 @@
 package com.findapple.findapple.presentation.features.chat
 
-import android.util.Log
 import android.webkit.JavascriptInterface
+import com.findapple.findapple.presentation.features.chat.viewmodel.ChattingViewModel
 
-class ChatWebBridge {
+class ChatWebBridge(private val chattingFragment: ChattingFragment) {
+
     @JavascriptInterface
     fun startChatDetail(id: String) {
-        Log.d("webviewbridge", "id: $id")
+        chattingFragment.moveToChattingDetail(id)
     }
 }
