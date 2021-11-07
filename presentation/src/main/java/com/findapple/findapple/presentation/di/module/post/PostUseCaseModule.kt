@@ -9,7 +9,7 @@ import dagger.Provides
 import io.reactivex.disposables.CompositeDisposable
 
 @Module
-class PostFindStaticModule {
+class PostUseCaseModule {
     @FragmentScope
     @Provides
     fun providePostFindUseCase(

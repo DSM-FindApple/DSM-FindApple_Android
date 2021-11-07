@@ -5,9 +5,10 @@ import com.findapple.findapple.presentation.di.module.auth.AuthModule
 import com.findapple.findapple.presentation.di.module.auth.AuthStaticModule
 import com.findapple.findapple.presentation.di.module.main.post.PostStaticModule
 import com.findapple.findapple.presentation.di.module.post.PostFindModule
-import com.findapple.findapple.presentation.di.module.post.PostFindStaticModule
+import com.findapple.findapple.presentation.di.module.post.PostUseCaseModule
 import com.findapple.findapple.presentation.di.scope.FragmentScope
 import com.findapple.findapple.presentation.features.auth.AuthFragment
+import com.findapple.findapple.presentation.features.chat.ChatDetailFragment
 import com.findapple.findapple.presentation.features.post.PostFragment
 import com.findapple.findapple.presentation.features.splash.SplashFragment
 import com.findapple.findapple.presentation.main.MainFragment
@@ -29,6 +30,10 @@ abstract class MainActivityModule {
     abstract fun splashFragment(): SplashFragment
 
     @FragmentScope
-    @ContributesAndroidInjector(modules = [PostFindModule::class, PostFindStaticModule::class, PostStaticModule::class])
-    abstract fun postFindFragment(): PostFragment
+    @ContributesAndroidInjector(modules = [PostFindModule::class, PostUseCaseModule::class, PostStaticModule::class])
+    abstract fun postFragment(): PostFragment
+
+    @FragmentScope
+    @ContributesAndroidInjector
+    abstract fun chatDetailFragment(): ChatDetailFragment
 }
