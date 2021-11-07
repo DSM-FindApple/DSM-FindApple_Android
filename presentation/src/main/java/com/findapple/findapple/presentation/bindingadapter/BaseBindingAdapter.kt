@@ -1,9 +1,7 @@
 package com.findapple.findapple.presentation.bindingadapter
 
 import android.graphics.PorterDuff
-import android.webkit.WebChromeClient
 import android.webkit.WebView
-import android.webkit.WebViewClient
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
@@ -27,15 +25,17 @@ fun RecyclerView.setList(list: List<RecyclerViewItem>?) {
 }
 
 @BindingAdapter("setWebView")
-fun WebView.setWebView(url: String) {
+fun WebView.setWebView(url: String?) {
     this.run {
-        settings.run {
-            javaScriptEnabled = true
-            builtInZoomControls = false
-            loadWithOverviewMode = true
-            useWideViewPort = true
+        if(url != null) {
+            settings.run {
+                javaScriptEnabled = true
+                builtInZoomControls = false
+                loadWithOverviewMode = true
+                useWideViewPort = true
+            }
+            loadUrl(url)
         }
-        loadUrl(url)
     }
 }
 
