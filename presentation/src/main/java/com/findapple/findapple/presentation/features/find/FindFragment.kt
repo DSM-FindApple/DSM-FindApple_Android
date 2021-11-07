@@ -73,7 +73,7 @@ class FindFragment : BaseFragment<FragmentFindBinding>(R.layout.fragment_find) {
 
     private fun startPost() {
         if (mainViewModel.hasLogin.value == true) {
-            moveFragmentByActionId(R.id.action_mainFragment_to_postLostFragment)
+            moveFragmentByActionId(R.id.action_mainFragment_to_postFindFragment)
         } else {
             viewModel.needLogin.call()
         }

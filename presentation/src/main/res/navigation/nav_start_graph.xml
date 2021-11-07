@@ -35,7 +35,7 @@
             app:popUpToInclusive="false" />
 
         <action
-            android:id="@+id/action_mainFragment_to_postFragment"
+            android:id="@+id/action_mainFragment_to_postLostFragment"
             app:destination="@id/postFragment"
             app:enterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
@@ -45,10 +45,10 @@
                 android:name="isLost"
                 android:defaultValue="false"
                 app:argType="boolean" />
-        </action>
 
+        </action>
         <action
-            android:id="@+id/action_mainFragment_to_postLostFragment"
+            android:id="@+id/action_mainFragment_to_postFindFragment"
             app:destination="@id/postFragment"
             app:enterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
@@ -56,8 +56,21 @@
             app:popUpToInclusive="false">
             <argument
                 android:name="isLost"
-                android:defaultValue="true"
+                android:defaultValue="false"
                 app:argType="boolean" />
+
+        </action>
+
+        <action
+            android:id="@+id/action_mainFragment_to_chatDetailFragment"
+            app:destination="@+id/chatDetailFragment"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/mainFragment"
+            app:popUpToInclusive="false">
+            <argument
+                android:name="chatRoomId"
+                app:argType="java.lang.String" />
         </action>
     </fragment>
 
@@ -66,4 +79,14 @@
         android:name="com.findapple.findapple.presentation.features.post.PostFragment"
         android:label="PostFindFragment"
         tools:layout="@layout/fragment_post" />
+
+    <fragment
+        android:id="@+id/chatDetailFragment"
+        android:name="com.findapple.findapple.presentation.features.chat.ChatDetailFragment"
+        android:label="ChatDetailFragment"
+        tools:layout="@layout/fragment_chat_detail" >
+        <argument
+            android:name="chatRoomId"
+            app:argType="string" />
+    </fragment>
 </navigation>
