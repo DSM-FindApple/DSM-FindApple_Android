@@ -43,7 +43,7 @@
             app:popUpToInclusive="false">
             <argument
                 android:name="isLost"
-                android:defaultValue="false"
+                android:defaultValue="true"
                 app:argType="boolean" />
 
         </action>
@@ -70,7 +70,7 @@
             app:popUpToInclusive="false">
             <argument
                 android:name="chatRoomId"
-                app:argType="java.lang.String" />
+                app:argType="string" />
         </action>
     </fragment>
 
