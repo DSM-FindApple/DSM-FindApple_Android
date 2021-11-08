@@ -115,13 +115,64 @@
                     android:hint="@string/post_description_hint"
                     android:text="@={vm.detail}" />
 
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/cookie_run_regular"
+                    android:text="@{isLost?@string/post_lost_date:@string/post_find_date}" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <NumberPicker
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:setMaxValue="@{0}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:fontFamily="@font/cookie_run_regular"
+                        android:text="@string/year" />
+
+                    <NumberPicker
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:setMaxValue="@{12}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:fontFamily="@font/cookie_run_regular"
+                        android:text="@string/month" />
+
+                    <NumberPicker
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:setMaxValue="@{31}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/cookie_run_regular"
+                        android:text="@string/day" />
+
+                </LinearLayout>
+
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/post_photos_vp"
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
                     android:layout_marginTop="5dp"
-                    app:setPostPhotoItems="@{vm.photoList}"
-                    app:viewModel="@{vm}" />
+                    app:itemsViewModel="@{vm}"
+                    app:setPostPhotoItems="@{vm.photoList}" />
 
             </LinearLayout>
         </ScrollView>
