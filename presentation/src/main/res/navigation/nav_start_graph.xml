@@ -67,11 +67,7 @@
             app:enterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@id/mainFragment"
-            app:popUpToInclusive="false">
-            <argument
-                android:name="chatRoomId"
-                app:argType="string" />
-        </action>
+            app:popUpToInclusive="false" />
     </fragment>
 
     <fragment

@@ -2,7 +2,7 @@ package com.findapple.findapple.presentation.features.chat
 
 import android.os.Bundle
 import android.view.View
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.findNavController
 import com.findapple.findapple.R
 import com.findapple.findapple.databinding.FragmentChattingBinding
 import com.findapple.findapple.presentation.base.BaseFragment
@@ -24,6 +24,6 @@ class ChattingFragment : BaseFragment<FragmentChattingBinding>(R.layout.fragment
 
     fun moveToChattingDetail(id: String) {
         val action = MainFragmentDirections.actionMainFragmentToChatDetailFragment(id)
-        findNavController().navigate(action)
+        requireActivity().findNavController(R.id.main_activity_container).navigate(action)
     }
 }

@@ -11,7 +11,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.findapple.findapple.BR
 import com.findapple.findapple.R
 import com.google.android.material.snackbar.Snackbar
@@ -79,7 +78,7 @@ abstract class BaseFragment<T : ViewDataBinding>(@LayoutRes private val layoutId
     }
 
     open fun onBackPressed() {
-        findNavController().navigateUp()
+        requireActivity().findNavController(R.id.main_activity_container).navigateUp()
     }
 
     fun moveFragmentByActionId(@IdRes actionId: Int) {

@@ -6,16 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.findapple.findapple.R
 import com.findapple.findapple.databinding.FragmentChatDetailBinding
-import com.findapple.findapple.databinding.FragmentChattingBinding
-import com.findapple.findapple.presentation.base.BaseFragment
-import com.findapple.findapple.presentation.base.BaseViewModel
-import com.findapple.findapple.presentation.features.chat.viewmodel.ChattingViewModel
 import dagger.android.support.DaggerFragment
-import javax.inject.Inject
 
 class ChatDetailFragment : DaggerFragment() {
 
@@ -32,12 +28,13 @@ class ChatDetailFragment : DaggerFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.lifecycleOwner = viewLifecycleOwner
 
         val idArg by navArgs<ChatDetailFragmentArgs>()
-        binding.url = "http://211.38.86.92:4046/chat/${idArg.chatRoomId}"
+        binding.url = "http://211.38.86.92:4046/chat?id=${idArg.chatRoomId}"
 
         requireActivity().onBackPressedDispatcher.addCallback {
-            findNavController().navigateUp()
+            requireActivity().findNavController(R.id.main_activity_container).navigateUp()
         }
     }
 }
