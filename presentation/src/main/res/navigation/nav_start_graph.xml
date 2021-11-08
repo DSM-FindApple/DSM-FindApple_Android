@@ -67,7 +67,11 @@
             app:enterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@id/mainFragment"
-            app:popUpToInclusive="false" />
+            app:popUpToInclusive="false">
+            <argument
+                android:name="chatRoomId"
+                app:argType="string" />
+        </action>
     </fragment>
 
     <fragment
@@ -80,7 +84,7 @@
         android:id="@+id/chatDetailFragment"
         android:name="com.findapple.findapple.presentation.features.chat.ChatDetailFragment"
         android:label="ChatDetailFragment"
-        tools:layout="@layout/fragment_chat_detail" >
+        tools:layout="@layout/fragment_chat_detail">
         <argument
             android:name="chatRoomId"
             app:argType="string" />

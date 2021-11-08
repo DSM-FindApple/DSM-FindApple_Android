@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import androidx.activity.addCallback
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.findapple.findapple.R
 import com.findapple.findapple.databinding.FragmentChatDetailBinding
+
 import dagger.android.support.DaggerFragment
 
 class ChatDetailFragment : DaggerFragment() {
