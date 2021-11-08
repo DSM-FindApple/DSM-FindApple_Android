@@ -4,11 +4,13 @@ import android.net.Uri
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.findapple.findapple.domain.entity.Location
 import com.findapple.findapple.domain.features.post.parameter.PostDataParameter
 import com.findapple.findapple.domain.features.post.usecase.PostFindUseCase
 import com.findapple.findapple.domain.features.post.usecase.PostLostUseCase
 import com.findapple.findapple.presentation.base.BaseViewModel
 import com.findapple.findapple.presentation.base.SingleLiveEvent
+import java.io.File
 
 class PostViewModel(
     private val postFindUseCase: PostFindUseCase,
@@ -32,6 +34,15 @@ class PostViewModel(
 
     private val _message = SingleLiveEvent<String>()
     val message: LiveData<String> get() = _message
+
+    val location = MutableLiveData<Location>()
+
+    val year = MutableLiveData<Int>()
+    val month = MutableLiveData<Int>()
+    val day = MutableLiveData<Int>()
+
+    val hour = MutableLiveData<Int>()
+    val minute = MutableLiveData<Int>()
 
     override fun apply(event: Lifecycle.Event) {
 
@@ -77,17 +88,21 @@ class PostViewModel(
                 6 -> "CAR"
                 else -> ""
             }
-        /*val postParam = PostDataParameter(
+
+        val actionTime = "${year.value}-${String.format("%02d", month.value)}-${String.format("%02d", day.value)} ${String.format("%02d", hour.value)}:${String.format("%02d", minute.value)}"
+
+        val postParam = PostDataParameter(
             title = title.value!!,
             detail = detail.value!!,
             category = category,
-
-
-        )*/
+            actionTime = actionTime,
+            images = photoList.value!!.map { File(it.path!!) },
+            locationInfo = location.value?: Location(127.3635946, 36.3914388)
+            )
         if (isLost) {
-            //postLost()
+            postLost(postParam)
         } else {
-            postFind()
+            postFind(postParam)
         }
     }
 
@@ -95,6 +110,6 @@ class PostViewModel(
 
     }
 
-    private fun postFind() {
+    private fun postFind(postParam: PostDataParameter) {
     }
 }

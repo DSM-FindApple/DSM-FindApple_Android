@@ -30,7 +30,7 @@ abstract class MainActivityModule {
     abstract fun splashFragment(): SplashFragment
 
     @FragmentScope
-    @ContributesAndroidInjector(modules = [PostFindModule::class, PostUseCaseModule::class, PostStaticModule::class])
+    @ContributesAndroidInjector(modules = [PostFindModule::class, PostUseCaseModule::class, PostStaticModule::class, MainStaticModule::class])
     abstract fun postFragment(): PostFragment
 
     @FragmentScope

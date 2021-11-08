@@ -15,6 +15,7 @@ import com.findapple.findapple.presentation.base.BaseFragment
 import com.findapple.findapple.presentation.features.post.adapter.CategoryAdapter
 import com.findapple.findapple.presentation.features.post.viewModel.PostViewModel
 import com.findapple.findapple.presentation.features.post.viewModel.PostViewModelFactory
+import com.findapple.findapple.presentation.main.viewmodel.MainViewModel
 import com.findapple.findapple.presentation.toUri
 import javax.inject.Inject
 
@@ -27,12 +28,17 @@ class PostFragment : BaseFragment<FragmentPostBinding>(R.layout.fragment_post) {
         ViewModelProvider(this, viewModelFactory).get(PostViewModel::class.java)
     }
 
+    @Inject
+    lateinit var mainViewModel: MainViewModel
+
     private val categoryAdapter by lazy {
         CategoryAdapter(viewModel)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        viewModel.location.value = mainViewModel.location.value
         binding.run {
             postTb.setNavigationOnClickListener {
                 onBackPressed()
