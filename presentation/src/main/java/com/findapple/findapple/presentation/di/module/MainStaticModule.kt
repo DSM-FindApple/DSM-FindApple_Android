@@ -1,12 +1,17 @@
 package com.findapple.findapple.presentation.di.module
 
 import androidx.lifecycle.ViewModelProvider
+import com.findapple.findapple.data.features.auth.remote.AuthApi
 import com.findapple.findapple.data.local.localstorage.LocalStorage
 import com.findapple.findapple.data.main.datasource.MainDataSource
 import com.findapple.findapple.data.main.datasource.MainDataSourceImpl
 import com.findapple.findapple.data.main.repository.MainRepositoryImpl
+import com.findapple.findapple.domain.errorhandler.ErrorHandler
 import com.findapple.findapple.domain.main.repository.MainRepository
+import com.findapple.findapple.domain.main.service.MainService
+import com.findapple.findapple.domain.main.service.MainServiceImpl
 import com.findapple.findapple.domain.main.usecase.CheckLoginUseCase
+import com.findapple.findapple.domain.main.usecase.RefreshTokenUseCase
 import com.findapple.findapple.presentation.di.scope.FragmentScope
 import com.findapple.findapple.presentation.main.MainActivity
 import com.findapple.findapple.presentation.main.viewmodel.MainViewModel
@@ -19,8 +24,8 @@ import io.reactivex.disposables.CompositeDisposable
 class MainStaticModule {
     @FragmentScope
     @Provides
-    fun provideMainViewModelFactory(checkLoginUseCase: CheckLoginUseCase): MainViewModelFactory =
-        MainViewModelFactory(checkLoginUseCase)
+    fun provideMainViewModelFactory(checkLoginUseCase: CheckLoginUseCase, refreshTokenUseCase: RefreshTokenUseCase): MainViewModelFactory =
+        MainViewModelFactory(checkLoginUseCase, refreshTokenUseCase)
 
     @FragmentScope
     @Provides
@@ -39,13 +44,28 @@ class MainStaticModule {
 
     @FragmentScope
     @Provides
+    fun provideRefreshTokenUseCase(
+        mainService: MainService,
+        compositeDisposable: CompositeDisposable
+    ): RefreshTokenUseCase = RefreshTokenUseCase(mainService, compositeDisposable)
+
+    @FragmentScope
+    @Provides
     fun provideMainRepository(
         datasource: MainDataSource
     ): MainRepository = MainRepositoryImpl(datasource)
 
     @FragmentScope
     @Provides
+    fun provideMainService(
+        repository: MainRepository,
+        errorHandler: ErrorHandler
+    ): MainService = MainServiceImpl(repository, errorHandler)
+
+    @FragmentScope
+    @Provides
     fun provideMainDatasource(
-        localStorage: LocalStorage
-    ): MainDataSource = MainDataSourceImpl(localStorage)
+        localStorage: LocalStorage,
+        authApi: AuthApi
+    ): MainDataSource = MainDataSourceImpl(localStorage, authApi)
 }

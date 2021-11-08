@@ -29,8 +29,7 @@ class AuthAdapter : RecyclerView.Adapter<AuthAdapter.AuthViewHolder>() {
                 }
                 1 -> {
                     setViewPager(
-                        iconSmile, "물론 \n" +
-                                "주운 잃어버린 물건도 찾아줄 수 있답니다!\n" +
+                        iconSmile, "물론 주운 물건도 찾아줄 수 있답니다!\n" +
                                 "\n" +
                                 "주인에게 잃어버린 물건을 찾아주고\n" +
                                 "이달의 습득왕을 노려보세요!"
