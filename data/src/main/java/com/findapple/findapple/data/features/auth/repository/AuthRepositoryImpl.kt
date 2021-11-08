@@ -25,10 +25,6 @@ class AuthRepositoryImpl(
             }
     }
 
-
-    override fun refreshToken(): Single<Unit> =
-        authDataSource.refreshToken()
-
     override fun saveUserInfo(user: User): Single<Unit> =
         authDataSource.saveUserInfo(user)
 

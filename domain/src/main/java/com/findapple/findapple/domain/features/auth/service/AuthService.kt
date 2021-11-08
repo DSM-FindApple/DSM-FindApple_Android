@@ -7,6 +7,4 @@ import io.reactivex.Single
 
 interface AuthService {
     fun login(loginParameterData: LoginParameter): Single<Result<Token>>
-
-    fun refreshToken(): Single<Result<Unit>>
 }

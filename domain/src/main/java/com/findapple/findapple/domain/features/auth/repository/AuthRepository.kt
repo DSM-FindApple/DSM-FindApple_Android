@@ -8,8 +8,6 @@ import io.reactivex.Single
 interface AuthRepository {
     fun login(loginParameter: LoginParameter): Single<Token>
 
-    fun refreshToken(): Single<Unit>
-
     fun saveUserInfo(user: User): Single<Unit>
 
 }

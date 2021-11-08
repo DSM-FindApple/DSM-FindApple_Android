@@ -4,12 +4,16 @@ import android.net.Uri
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.findapple.findapple.domain.base.Result
 import com.findapple.findapple.domain.entity.Location
+import com.findapple.findapple.domain.errorhandler.Error
 import com.findapple.findapple.domain.features.post.parameter.PostDataParameter
 import com.findapple.findapple.domain.features.post.usecase.PostFindUseCase
 import com.findapple.findapple.domain.features.post.usecase.PostLostUseCase
 import com.findapple.findapple.presentation.base.BaseViewModel
 import com.findapple.findapple.presentation.base.SingleLiveEvent
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.observers.DisposableSingleObserver
 import java.io.File
 
 class PostViewModel(
@@ -106,10 +110,46 @@ class PostViewModel(
         }
     }
 
-    private fun postLost(postParam: PostDataParameter) {
+    private val postObserver = object : DisposableSingleObserver<Result<Unit>>() {
+        override fun onSuccess(t: Result<Unit>) {
+            if(t is Result.Success) {
+                _message.value = "게시되었습니다"
+            }
+            else if(t is Result.Failure) {
+                doOnError(t)
+            }
+        }
 
+        override fun onError(e: Throwable) {
+        }
+
+    }
+
+    private fun postLost(postParam: PostDataParameter) {
+        postLostUseCase.execute(
+            postParam,
+            postObserver,
+            AndroidSchedulers.mainThread()
+        )
     }
 
     private fun postFind(postParam: PostDataParameter) {
+        postFindUseCase.execute(
+            postParam,
+            postObserver,
+            AndroidSchedulers.mainThread()
+        )
     }
+
+
+
+    private fun doOnError(reason: Result.Failure<Unit>) {
+        when(reason.reason) {
+            Error.InternalServer -> {
+                _message.value = "서버사용량이 많습니다"
+            }
+        }
+    }
+
+
 }

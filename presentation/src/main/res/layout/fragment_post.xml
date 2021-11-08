@@ -135,6 +135,7 @@
                     <NumberPicker
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:value="@={vm.year}"
                         app:setMaxValue="@{0}" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -147,6 +148,7 @@
                     <NumberPicker
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:value="@={vm.month}"
                         app:setMaxValue="@{12}" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -159,6 +161,7 @@
                     <NumberPicker
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:value="@={vm.day}"
                         app:setMaxValue="@{31}" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -179,6 +182,7 @@
                     <NumberPicker
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:value="@={vm.hour}"
                         app:setMaxValue="@{23}" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -191,6 +195,7 @@
                     <NumberPicker
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:value="@={vm.minute}"
                         app:setMaxValue="@{59}" />
 
                     <androidx.appcompat.widget.AppCompatTextView

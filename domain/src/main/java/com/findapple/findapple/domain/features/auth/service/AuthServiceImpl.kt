@@ -14,7 +14,4 @@ class AuthServiceImpl(
 ) : AuthService {
     override fun login(loginParameterData: LoginParameter): Single<Result<Token>> =
         authRepository.login(loginParameterData).toResult(errorHandler)
-
-    override fun refreshToken(): Single<Result<Unit>> =
-        authRepository.refreshToken().toResult(errorHandler)
 }

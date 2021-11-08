@@ -19,9 +19,6 @@ class AuthDataSourceImpl(
     override fun login(loginRequest: AuthData): Single<LoginResponse> =
         authApi.login(loginRequest.toLoginRequest())
 
-    override fun refreshToken(): Single<Unit> =
-        authApi.refreshToken()
-
     override fun saveUserInfo(user: User): Single<Unit> {
         localStorage.saveLong("user_id", user.id)
         return userDao.saveUserData(user.toDatabaseEntity())
