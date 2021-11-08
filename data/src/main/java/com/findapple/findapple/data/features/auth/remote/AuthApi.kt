@@ -10,5 +10,5 @@ interface AuthApi {
     fun login(@Body body: LoginRequest): Single<LoginResponse>
 
     @PUT("auth")
-    fun refreshToken(): Single<LoginResponse>
+    fun refreshToken(@Header("X-Refresh-Token") refreshToken: String): Single<LoginResponse>
 }

@@ -6,4 +6,7 @@ import io.reactivex.Single
 
 class MainRepositoryImpl(private val dataSource: MainDataSource) : MainRepository {
     override fun checkLogin(): Single<Boolean> = dataSource.checkLogin()
+    override fun refreshToken(): Single<Unit> {
+        TODO("Not yet implemented")
+    }
 }

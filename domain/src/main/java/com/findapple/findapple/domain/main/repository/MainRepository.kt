@@ -4,4 +4,6 @@ import io.reactivex.Single
 
 interface MainRepository {
     fun checkLogin(): Single<Boolean>
+
+    fun refreshToken(): Single<Unit>
 }
