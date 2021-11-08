@@ -66,16 +66,8 @@ class PostViewModel(
     }
 
     fun post(isLost: Boolean) {
-        if (isLost) {
-            postLost()
-        } else {
-            postFind()
-        }
-    }
-
-    private fun postLost() {
         val category =
-            when(clickedCategoryIndex.value) {
+            when (clickedCategoryIndex.value) {
                 0 -> "EAR_PHONE"
                 1 -> "CELL_PHONE"
                 2 -> "MACHINE"
@@ -85,6 +77,22 @@ class PostViewModel(
                 6 -> "CAR"
                 else -> ""
             }
+        /*val postParam = PostDataParameter(
+            title = title.value!!,
+            detail = detail.value!!,
+            category = category,
+
+
+        )*/
+        if (isLost) {
+            //postLost()
+        } else {
+            postFind()
+        }
+    }
+
+    private fun postLost(postParam: PostDataParameter) {
+
     }
 
     private fun postFind() {

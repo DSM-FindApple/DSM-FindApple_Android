@@ -8,7 +8,7 @@ data class PostDataParameter(
     val title: String,
     val detail: String,
     val category: String,
-    val actionTime: Date,
+    val actionTime: String,
     val images: List<File>,
     val locationInfo: Location
 )

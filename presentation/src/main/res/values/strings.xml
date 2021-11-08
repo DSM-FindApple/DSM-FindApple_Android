@@ -23,11 +23,11 @@
     <string name="post_find">습득물 등록</string>
     <string name="post_find_title_hint">습득하신 물건의 이름을 적어주세요 ex)에어팟</string>
     <string name="post_lost_title_hint">분실하신 물건의 이름을 적어주세요 ex)에어팟</string>
-    <string name="post_lost_date">잃어버린 날짜를 입력해주세요</string>
-    <string name="post_find_date">습득하신 날짜를 입력해주세요</string>
+    <string name="post_lost_date">잃어버린 시간을 입력해주세요</string>
+    <string name="post_find_date">습득하신 시간을 입력해주세요</string>
     <string name="post_description_hint">상세한 설명을 적어주세요 ex) 축구팀 케이스를 끼워뒀고요, 축구팀 마크에 기스가 나있어요</string>
     <string name="category">카테고리</string>
-    <string name="add_photo">사진추가하기</string>
+    <string name="add_photo">사진을 첨부해주세요</string>
     <string name="add_photo_with_camera">사진찍기</string>
     <string name="add_photo_with_gallery">사진선택하기</string>
     <string name="lost_post_is_empty">분실물 게시물이 없어요</string>
@@ -37,4 +37,6 @@
     <string name="year">년</string>
     <string name="month">월</string>
     <string name="day">일</string>
+    <string name="hour">시</string>
+    <string name="minute">분</string>
 </resources>

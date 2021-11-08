@@ -7,6 +7,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.findapple.findapple.presentation.features.post.adapter.PostPhotoAdapter
 import com.findapple.findapple.presentation.features.post.viewModel.PostViewModel
 import java.time.LocalDate
+import java.time.LocalDateTime
 
 @BindingAdapter("setPostPhotoItems", "itemsViewModel")
 fun ViewPager2.setPostPhotoItems(
@@ -25,29 +26,44 @@ fun ViewPager2.setPostPhotoItems(
 fun NumberPicker.setNumberPicker(
     max: Int
 ) {
-    wrapSelectorWheel = false
 
-    val now = LocalDate.now()
+    val nowDate = LocalDateTime.now()
     when (max) {
-        0 -> {
-            now.year.run {
+        0 -> { // year
+            nowDate.year.run {
                 maxValue = this
                 minValue = this - 1
                 value = this
             }
         }
 
-        12 -> {
-            now.month.value.run {
+        12 -> { // month
+            nowDate.month.value.run {
                 minValue = 1
                 maxValue = max
                 value = this
             }
         }
 
-        31 -> {
-            now.dayOfMonth.run {
+        31 -> { // day
+            nowDate.dayOfMonth.run {
                 minValue = 1
+                maxValue = max
+                value = this
+            }
+        }
+
+        23 -> { // hour
+            nowDate.hour.run {
+                minValue = 0
+                maxValue = max
+                value = this
+            }
+        }
+
+        59 -> { // minute
+            nowDate.minute.run {
+                minValue = 0
                 maxValue = max
                 value = this
             }

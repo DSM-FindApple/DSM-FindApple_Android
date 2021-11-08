@@ -2,13 +2,12 @@ package com.findapple.findapple.data.features.post.dto.request
 
 import com.findapple.findapple.domain.features.post.parameter.PostDataParameter
 import java.io.File
-import java.util.*
 
 data class PostLostRequest(
     val title: String,
     val detailScript: String,
     val category: String,
-    val lostAt: Date,
+    val lostAt: String,
     val images: List<File>,
     val latitude: Double,
     val longitude: Double

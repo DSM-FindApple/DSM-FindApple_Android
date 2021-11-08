@@ -116,16 +116,19 @@
                     android:text="@={vm.detail}" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
                     android:layout_marginTop="10dp"
+                    android:background="@color/yellow_100"
                     android:fontFamily="@font/cookie_run_regular"
-                    android:text="@{isLost?@string/post_lost_date:@string/post_find_date}" />
+                    android:gravity="center"
+                    android:text="@{isLost?@string/post_lost_date:@string/post_find_date}"
+                    android:textColor="@color/black" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/yellow_100"
                     android:gravity="center"
                     android:orientation="horizontal">
 
@@ -137,7 +140,7 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="10dp"
+                        android:layout_marginEnd="3dp"
                         android:fontFamily="@font/cookie_run_regular"
                         android:text="@string/year" />
 
@@ -149,7 +152,7 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="10dp"
+                        android:layout_marginEnd="3dp"
                         android:fontFamily="@font/cookie_run_regular"
                         android:text="@string/month" />
 
@@ -164,6 +167,37 @@
                         android:fontFamily="@font/cookie_run_regular"
                         android:text="@string/day" />
 
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/yellow_100"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <NumberPicker
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:setMaxValue="@{23}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="3dp"
+                        android:fontFamily="@font/cookie_run_regular"
+                        android:text="@string/hour" />
+
+                    <NumberPicker
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:setMaxValue="@{59}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/cookie_run_regular"
+                        android:text="@string/minute" />
                 </LinearLayout>
 
                 <androidx.viewpager2.widget.ViewPager2
