@@ -14,7 +14,7 @@ class SharedPreferStorage(private val context: Context) : LocalStorage {
 
 
     override fun getToken(access: Boolean): String =
-        "Bearer " + getPref(context).getString(getTokenType(access), "").toString()
+        getPref(context).getString(getTokenType(access), "").toString()
 
     override fun clearToken() {
         getPref(context).edit().clear().apply()
