@@ -48,6 +48,9 @@ class PostViewModel(
     val hour = MutableLiveData<Int>()
     val minute = MutableLiveData<Int>()
 
+    private val _donePost = SingleLiveEvent<Unit>()
+    val donePost: LiveData<Unit> get() = _donePost
+
     override fun apply(event: Lifecycle.Event) {
 
     }
@@ -114,6 +117,7 @@ class PostViewModel(
         override fun onSuccess(t: Result<Unit>) {
             if(t is Result.Success) {
                 _message.value = "게시되었습니다"
+                _donePost.call()
             }
             else if(t is Result.Failure) {
                 doOnError(t)
@@ -140,8 +144,6 @@ class PostViewModel(
             AndroidSchedulers.mainThread()
         )
     }
-
-
 
     private fun doOnError(reason: Result.Failure<Unit>) {
         when(reason.reason) {

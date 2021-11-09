@@ -13,7 +13,7 @@ class PostRepositoryImpl(private val dataSource: PostDataSource) : PostRepositor
             .map { it.toEntity() }
 
     override fun postFeed(request: PostDataParameter, isLost: Boolean): Single<Unit> =
-        if(isLost) dataSource.postFind(request) else dataSource.postLost(request)
+        if(isLost) dataSource.postLost(request) else dataSource.postFind(request)
 
     override fun getRelatedLostPost(title: String): Single<List<Post>> {
         TODO("Not yet implemented")

@@ -6,7 +6,6 @@ import androidx.databinding.BindingAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.findapple.findapple.presentation.features.post.adapter.PostPhotoAdapter
 import com.findapple.findapple.presentation.features.post.viewModel.PostViewModel
-import java.time.LocalDate
 import java.time.LocalDateTime
 
 @BindingAdapter("setPostPhotoItems", "itemsViewModel")

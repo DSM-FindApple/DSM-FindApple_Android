@@ -5,10 +5,8 @@ import com.findapple.findapple.data.features.post.dto.request.PostLostRequest
 import com.findapple.findapple.data.features.post.dto.response.FindListResponse
 import com.findapple.findapple.data.features.post.dto.response.LostListResponse
 import io.reactivex.Single
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Part
+import okhttp3.MultipartBody
+import retrofit2.http.*
 
 interface PostApi {
     @GET("/lostlist")
@@ -18,8 +16,17 @@ interface PostApi {
     fun getFindList(): Single<List<FindListResponse>>
 
     @POST("/find")
-    fun postFind(@Part body: PostFindRequest): Single<Unit> //todo body 바꾸기
+    fun postFind(@Part body: PostFindRequest): Single<Unit>
 
+    @Multipart
     @POST("/lost")
-    fun postLost(@Body body: PostLostRequest): Single<Unit> //todo body 바꾸기
+    fun postLost(
+        @Part("category") category: String,
+        @Part("detail") detail: String,
+        @Part("latitude") latitude: Double,
+        @Part("longitude") longitude: Double,
+        @Part("lostAt") lostAt: String,
+        @Part("title") title: String,
+        @Part images: List<MultipartBody.Part>
+    ): Single<Unit>
 }

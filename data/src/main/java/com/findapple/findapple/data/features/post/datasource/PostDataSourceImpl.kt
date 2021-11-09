@@ -19,8 +19,19 @@ class PostDataSourceImpl(private val postApi: PostApi) : PostDataSource {
     override fun postFind(request: PostDataParameter): Single<Unit> =
         postApi.postFind(request.toFindRequest())
 
-    override fun postLost(request: PostDataParameter): Single<Unit> =
-        postApi.postLost(request.toLostRequest())
+    override fun postLost(request: PostDataParameter): Single<Unit> {
+        val requestData = request.toLostRequest()
+        return postApi.postLost(
+            category = requestData.category,
+            detail = requestData.detailScript,
+            latitude = requestData.latitude,
+            longitude = requestData.longitude,
+            lostAt = requestData.lostAt,
+            title = requestData.title,
+            images = requestData.images
+        )
+    }
+
 
     override fun getRelatedLostPost(): Single<List<Post>> {
         TODO("Not yet implemented")

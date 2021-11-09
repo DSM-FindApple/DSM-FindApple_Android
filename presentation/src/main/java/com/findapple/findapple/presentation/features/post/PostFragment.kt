@@ -80,6 +80,10 @@ class PostFragment : BaseFragment<FragmentPostBinding>(R.layout.fragment_post) {
             message.observe(viewLifecycleOwner, {
                 snackBarComment(it)
             })
+
+            donePost.observe(viewLifecycleOwner, {
+                onBackPressed()
+            })
         }
     }
 
