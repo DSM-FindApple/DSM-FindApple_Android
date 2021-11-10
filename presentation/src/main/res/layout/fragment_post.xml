@@ -137,7 +137,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:value="@={vm.year}"
-                        app:setMaxValue="@{0}" />
+                        app:setMaxValue="@{0}"
+                        app:viewModel="@{vm}" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
@@ -150,7 +151,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:value="@={vm.month}"
-                        app:setMaxValue="@{12}" />
+                        app:setMaxValue="@{12}"
+                        app:viewModel="@{vm}" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
@@ -163,7 +165,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:value="@={vm.day}"
-                        app:setMaxValue="@{31}" />
+                        app:setMaxValue="@{31}"
+                        app:viewModel="@{vm}" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
@@ -184,7 +187,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:value="@={vm.hour}"
-                        app:setMaxValue="@{23}" />
+                        app:setMaxValue="@{23}"
+                        app:viewModel="@{vm}" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
@@ -197,7 +201,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:value="@={vm.minute}"
-                        app:setMaxValue="@{59}" />
+                        app:setMaxValue="@{59}"
+                        app:viewModel="@{vm}" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"

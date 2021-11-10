@@ -14,7 +14,6 @@ import com.findapple.findapple.presentation.base.BaseViewModel
 import com.findapple.findapple.presentation.base.SingleLiveEvent
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
-import java.io.File
 
 class PostViewModel(
     private val postFindUseCase: PostFindUseCase,
@@ -103,7 +102,7 @@ class PostViewModel(
             detail = detail.value!!,
             category = category,
             actionTime = actionTime,
-            images = photoList.value!!.map { File(it.path!!) },
+            images = photoList.value!!,
             locationInfo = location.value?: Location(127.3635946, 36.3914388)
             )
         if (isLost) {

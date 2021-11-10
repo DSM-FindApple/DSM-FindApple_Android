@@ -21,9 +21,10 @@ fun ViewPager2.setPostPhotoItems(
     }
 }
 
-@BindingAdapter("setMaxValue")
+@BindingAdapter("setMaxValue", "viewModel")
 fun NumberPicker.setNumberPicker(
-    max: Int
+    max: Int,
+    viewModel: PostViewModel
 ) {
 
     val nowDate = LocalDateTime.now()
@@ -32,7 +33,7 @@ fun NumberPicker.setNumberPicker(
             nowDate.year.run {
                 maxValue = this
                 minValue = this - 1
-                value = this
+                viewModel.year.value = this
             }
         }
 
@@ -40,7 +41,7 @@ fun NumberPicker.setNumberPicker(
             nowDate.month.value.run {
                 minValue = 1
                 maxValue = max
-                value = this
+                viewModel.month.value = this
             }
         }
 
@@ -48,7 +49,7 @@ fun NumberPicker.setNumberPicker(
             nowDate.dayOfMonth.run {
                 minValue = 1
                 maxValue = max
-                value = this
+                viewModel.day.value = this
             }
         }
 
@@ -56,7 +57,7 @@ fun NumberPicker.setNumberPicker(
             nowDate.hour.run {
                 minValue = 0
                 maxValue = max
-                value = this
+                viewModel.hour.value = this
             }
         }
 
@@ -64,7 +65,7 @@ fun NumberPicker.setNumberPicker(
             nowDate.minute.run {
                 minValue = 0
                 maxValue = max
-                value = this
+                viewModel.minute.value = this
             }
         }
     }
