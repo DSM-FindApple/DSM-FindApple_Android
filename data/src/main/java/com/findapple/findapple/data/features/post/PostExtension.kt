@@ -3,9 +3,11 @@ package com.findapple.findapple.data.features.post
 import android.net.Uri
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
-import okhttp3.RequestBody.Companion.toRequestBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import java.io.File
 
 fun Uri.toMultipartPart(): MultipartBody.Part {
-    val fileBody = this.path!!.toRequestBody("image/jpeg".toMediaTypeOrNull())
+    val file = File(this.path!!)
+    val fileBody = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
     return MultipartBody.Part.createFormData("images", this.path!!, fileBody)
 }
