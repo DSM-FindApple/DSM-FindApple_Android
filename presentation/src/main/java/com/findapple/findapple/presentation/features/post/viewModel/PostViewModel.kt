@@ -121,9 +121,11 @@ class PostViewModel(
             else if(t is Result.Failure) {
                 doOnError(t)
             }
+            dispose()
         }
 
         override fun onError(e: Throwable) {
+            dispose()
         }
 
     }
