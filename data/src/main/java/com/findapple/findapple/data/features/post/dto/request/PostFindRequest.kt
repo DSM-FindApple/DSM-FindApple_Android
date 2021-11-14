@@ -1,5 +1,6 @@
 package com.findapple.findapple.data.features.post.dto.request
 
+import android.net.Uri
 import com.findapple.findapple.domain.features.post.parameter.PostDataParameter
 import java.io.File
 
@@ -8,7 +9,7 @@ data class PostFindRequest(
     val detailScript: String,
     val category: String,
     val findAt: String,
-    val images: List<File>,
+    val images: List<Uri>,
     val latitude: Double,
     val longitude: Double
 )
