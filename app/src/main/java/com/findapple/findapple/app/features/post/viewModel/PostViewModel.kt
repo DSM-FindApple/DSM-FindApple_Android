@@ -83,57 +83,69 @@ class PostViewModel(
     }
 
     fun post(isLost: Boolean) {
-        val category =
-            when (clickedCategoryIndex.value) {
-                0 -> "EAR_PHONE"
-                1 -> "CELL_PHONE"
-                2 -> "MACHINE"
-                3 -> "CLOTHES"
-                4 -> "ACC"
-                5 -> "WALLET"
-                6 -> "CAR"
-                else -> ""
-            }
-
-        val actionTime = "${year.value}-${String.format("%02d", month.value)}-${String.format("%02d", day.value)} ${String.format("%02d", hour.value)}:${String.format("%02d", minute.value)}"
-
-        val postParam = PostDataParameter(
-            title = title.value!!,
-            detail = detail.value!!,
-            category = category,
-            actionTime = actionTime,
-            images = photoList.value!!,
-            locationInfo = location.value?: Location(127.3635946, 36.3914388)
+        if (title.value?.isBlank() == false &&
+            detail.value?.isBlank() == false &&
+            clickedCategoryTitle.value?.isBlank() == false &&
+            photoList.value?.isNotEmpty() == true) {
+            val postParam = PostDataParameter(
+                title = title.value!!,
+                detail = detail.value!!,
+                category = category(),
+                actionTime = actionTime(),
+                images = photoList.value!!,
+                locationInfo = location.value ?: Location(127.3635946, 36.3914388)
             )
-        if (isLost) {
-            postLost(postParam)
+            if (isLost) {
+                postLost(postParam)
+            } else {
+                postFind(postParam)
+            }
         } else {
-            postFind(postParam)
-        }
-    }
-
-    private val postObserver = object : DisposableSingleObserver<Result<Unit>>() {
-        override fun onSuccess(t: Result<Unit>) {
-            if(t is Result.Success) {
-                _message.value = "게시되었습니다"
-                _donePost.call()
-            }
-            else if(t is Result.Failure) {
-                doOnError(t)
-            }
-            dispose()
-        }
-
-        override fun onError(e: Throwable) {
-            dispose()
+            _message.value = "모든 정보를 입력해주세요"
         }
 
     }
+
+    private fun category() =
+        when (clickedCategoryIndex.value) {
+            0 -> "EAR_PHONE"
+            1 -> "CELL_PHONE"
+            2 -> "MACHINE"
+            3 -> "CLOTHES"
+            4 -> "ACC"
+            5 -> "WALLET"
+            6 -> "CAR"
+            else -> ""
+        }
+
+    private fun actionTime() =
+        "${year.value}-${String.format("%02d", month.value)}-${
+            String.format(
+                "%02d",
+                day.value
+            )
+        } ${String.format("%02d", hour.value)}:${String.format("%02d", minute.value)}"
+
 
     private fun postLost(postParam: PostDataParameter) {
         postLostUseCase.execute(
             postParam,
-            postObserver,
+            object : DisposableSingleObserver<Result<Unit>>() {
+                override fun onSuccess(t: Result<Unit>) {
+                    if (t is Result.Success) {
+                        _message.value = "게시되었습니다"
+                        _donePost.call()
+                    } else if (t is Result.Failure) {
+                        doOnError(t)
+                    }
+                    dispose()
+                }
+
+                override fun onError(e: Throwable) {
+                    dispose()
+                }
+
+            },
             AndroidSchedulers.mainThread()
         )
     }
@@ -141,13 +153,28 @@ class PostViewModel(
     private fun postFind(postParam: PostDataParameter) {
         postFindUseCase.execute(
             postParam,
-            postObserver,
+            object : DisposableSingleObserver<Result<Unit>>() {
+                override fun onSuccess(t: Result<Unit>) {
+                    if (t is Result.Success) {
+                        _message.value = "게시되었습니다"
+                        _donePost.call()
+                    } else if (t is Result.Failure) {
+                        doOnError(t)
+                    }
+                    dispose()
+                }
+
+                override fun onError(e: Throwable) {
+                    dispose()
+                }
+
+            },
             AndroidSchedulers.mainThread()
         )
     }
 
     private fun doOnError(reason: Result.Failure<Unit>) {
-        when(reason.reason) {
+        when (reason.reason) {
             Error.InternalServer -> {
                 _message.value = "서버사용량이 많습니다"
             }
