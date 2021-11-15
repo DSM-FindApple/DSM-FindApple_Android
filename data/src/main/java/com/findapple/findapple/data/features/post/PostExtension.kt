@@ -11,3 +11,6 @@ fun Uri.toMultipartPart(): MultipartBody.Part {
     val fileBody = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
     return MultipartBody.Part.createFormData("images", this.path!!, fileBody)
 }
+
+fun List<Uri>.toMultipart(): List<MultipartBody.Part> =
+    this.map { it.toMultipartPart() }

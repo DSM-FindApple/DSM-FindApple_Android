@@ -4,7 +4,7 @@ import com.findapple.findapple.data.features.post.dto.request.toFindRequest
 import com.findapple.findapple.data.features.post.dto.response.FindListResponse
 import com.findapple.findapple.data.features.post.dto.response.LostListResponse
 import com.findapple.findapple.data.features.post.remote.PostApi
-import com.findapple.findapple.data.features.post.toMultipartPart
+import com.findapple.findapple.data.features.post.toMultipart
 import com.findapple.findapple.domain.features.post.entity.Post
 import com.findapple.findapple.domain.features.post.parameter.PostDataParameter
 import io.reactivex.Single
@@ -27,9 +27,7 @@ class PostDataSourceImpl(private val postApi: PostApi) : PostDataSource {
             latitude = request.locationInfo.latitude,
             longitude = request.locationInfo.longitude,
             lostAt = request.actionTime,
-            images = request.images.map {
-                it.toMultipartPart()
-            }
+            images = request.images.toMultipart()
         )
     }
 

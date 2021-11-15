@@ -1,2 +1,2 @@
-include ':presentation', ':data', ':domain'
+include ':app', ':data', ':domain'
 rootProject.name = "DSM-FindApple-Android"

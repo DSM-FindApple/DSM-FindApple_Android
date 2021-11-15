@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.findapple.findapple.app.features.lost.viewmodel.LostViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.sothree.slidinguppanel.SlidingUpPanelLayout
+            android:id="@+id/lost_spl"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            app:umanoDragView="@id/lost_list_cl"
+            app:umanoOverlay="true"
+            app:umanoPanelHeight="150dp"
+            app:umanoShadowHeight="0dp"
+            tools:context=".features.lost.LostFragment">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/lost_back_wv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <WebView
+                    android:id="@+id/lost_wv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:setWebView="@{`http://211.38.86.92:4046/lost`}" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/lost_list_cl"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/shape_border_white">
+
+                <androidx.constraintlayout.utils.widget.ImageFilterView
+                    android:id="@+id/lost_list_empty_iv"
+                    android:layout_width="50dp"
+                    android:layout_height="75dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_fineapple_main" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/cookie_run_regular"
+                    android:text="@string/lost_post_is_empty"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/lost_list_empty_iv" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/lost_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_border_yellow_100"
+                    android:clickable="true"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <View
+                        android:id="@+id/lost_list_v"
+                        android:layout_width="40dp"
+                        android:layout_height="4dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/shape_border_gray_500"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/lost_location_ic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:src="@drawable/ic_baseline_location_searching_24"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/lost_location_tv" />
+
+                    <TextView
+                        android:id="@+id/lost_location_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/cookie_run_bold"
+                        android:text="@{vm.townName}"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toEndOf="@id/lost_location_ic"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="용산구 경기동" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:fontFamily="@font/cookie_run_regular"
+                        android:text="@string/lost_at"
+                        app:layout_constraintBottom_toBottomOf="@id/lost_location_tv"
+                        app:layout_constraintStart_toEndOf="@id/lost_location_tv" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="40dp"
+                        android:layout_height="60dp"
+                        android:layout_marginEnd="15dp"
+                        android:src="@drawable/ic_fineapple_cry"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/cookie_run_regular"
+                        android:text="@{vm.cityName}"
+                        android:textColor="@color/blue_500"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/lost_location_tv"
+                        app:layout_constraintTop_toBottomOf="@id/lost_location_tv"
+                        tools:text="서울특별시" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/lost_list_cl"
+                    app:recyclerItems="@{vm.lostList}" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:backgroundTint="@color/blue_400"
+            android:contentDescription="@string/start_post"
+            android:onClick="@{()->vm.startPost()}"
+            android:src="@drawable/ic_baseline_edit_24"
+            app:borderWidth="0dp"
+            app:elevation="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
