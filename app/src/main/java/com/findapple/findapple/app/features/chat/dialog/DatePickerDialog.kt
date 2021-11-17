@@ -1,4 +1,34 @@
-package com.findapple.findapple.app.features.chat
+package com.findapple.findapple.app.features.chat.dialog
 
-class DatePickerDialog {
+import android.os.Bundle
+import android.view.View
+import com.findapple.findapple.R
+import com.findapple.findapple.app.base.BaseDialog
+import com.findapple.findapple.databinding.DialogDatePickerBinding
+import java.time.LocalDate
+
+class DatePickerDialog : BaseDialog<DialogDatePickerBinding>(R.layout.dialog_date_picker) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val currentTime = LocalDate.now()
+        binding.run {
+            dpYearNp.run {
+                maxValue = currentTime.year
+                minValue = currentTime.year - 1
+                value = currentTime.year
+            }
+
+            dpMonthNp.run {
+                maxValue = 12
+                minValue = 1
+                value = currentTime.monthValue
+            }
+
+            dpDayNp.run {
+                maxValue = 31
+                minValue = 1
+                value = currentTime.dayOfMonth
+            }
+        }
+    }
 }
