@@ -9,13 +9,20 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.findapple.findapple.R
+import com.findapple.findapple.app.features.chat.dialog.DatePickerDialog
+import com.findapple.findapple.app.features.chat.dialog.TimePickerDialog
+import com.findapple.findapple.app.features.chat.viewmodel.ChattingViewModel
 import com.findapple.findapple.databinding.FragmentChatDetailBinding
 
 import dagger.android.support.DaggerFragment
+import javax.inject.Inject
 
 class ChatDetailFragment : DaggerFragment() {
 
     lateinit var binding: FragmentChatDetailBinding
+
+    @Inject
+    lateinit var viewModel: ChattingViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,5 +43,19 @@ class ChatDetailFragment : DaggerFragment() {
         requireActivity().onBackPressedDispatcher.addCallback {
             requireActivity().findNavController(R.id.main_activity_container).navigateUp()
         }
+    }
+
+    fun showDatePickerDialog() {
+        DatePickerDialog(viewModel, this).show(
+            requireActivity().supportFragmentManager,
+            "datePickerDialog"
+        )
+    }
+
+    fun showTimePickerDialog() {
+        TimePickerDialog(viewModel).show(
+            requireActivity().supportFragmentManager,
+            "timePickerDialog"
+        )
     }
 }
