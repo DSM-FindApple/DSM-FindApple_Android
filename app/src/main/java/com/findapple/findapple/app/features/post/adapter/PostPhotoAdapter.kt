@@ -12,7 +12,7 @@ import com.findapple.findapple.app.features.post.viewModel.PostViewModel
 class PostPhotoAdapter(private val vm: PostViewModel) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val images = mutableListOf<Uri>()
+    private val images = mutableListOf<String>()
 
     companion object{
         private const val ADD_PHOTO = 1
@@ -45,7 +45,7 @@ class PostPhotoAdapter(private val vm: PostViewModel) :
             holder.binding.apply {
                 setVariable(BR.vm, vm)
                 setVariable(BR.position, position)
-                photoIv.setImageURI(images[position])
+                image = images[position]
             }
         }
     }
@@ -57,7 +57,7 @@ class PostPhotoAdapter(private val vm: PostViewModel) :
     override fun getItemCount(): Int =
         images.size + 1
 
-    fun updateData(images: List<Uri>) {
+    fun updateData(images: List<String>) {
         this.images.clear()
         this.images.addAll(images)
         notifyDataSetChanged()

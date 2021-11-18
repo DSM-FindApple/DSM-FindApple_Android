@@ -1,6 +1,5 @@
 package com.findapple.findapple.app.features.post.viewModel
 
-import android.net.Uri
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -14,6 +13,7 @@ import com.findapple.findapple.app.base.BaseViewModel
 import com.findapple.findapple.app.base.SingleLiveEvent
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
+import java.io.File
 
 class PostViewModel(
     private val postFindUseCase: PostFindUseCase,
@@ -24,7 +24,7 @@ class PostViewModel(
     var preClickedCategoryIndex = MutableLiveData<Int>()
     val clickedCategoryTitle = MutableLiveData<String>()
 
-    val photoList = MutableLiveData(ArrayList<Uri>())
+    val photoList = MutableLiveData(ArrayList<String>())
 
     val title = MutableLiveData<String>()
     val detail = MutableLiveData<String>()
@@ -92,7 +92,7 @@ class PostViewModel(
                 detail = detail.value!!,
                 category = category(),
                 actionTime = actionTime(),
-                images = photoList.value!!,
+                images = photoList.value!!.map { File(it) },
                 locationInfo = location.value ?: Location(127.3635946, 36.3914388)
             )
             if (isLost) {
