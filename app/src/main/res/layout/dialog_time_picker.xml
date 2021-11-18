@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -28,7 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/cookie_run_regular"
-                android:text="@string/year"
+                android:text="@string/hour"
                 android:textColor="@color/gray_300"
                 app:layout_constraintBottom_toBottomOf="@id/dp_minute_np"
                 app:layout_constraintStart_toEndOf="@id/dp_time_np"
@@ -48,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/cookie_run_regular"
-                android:text="@string/month"
+                android:text="@string/minute"
                 android:textColor="@color/gray_300"
                 app:layout_constraintBottom_toBottomOf="@+id/dp_minute_np"
                 app:layout_constraintStart_toEndOf="@+id/dp_minute_np"

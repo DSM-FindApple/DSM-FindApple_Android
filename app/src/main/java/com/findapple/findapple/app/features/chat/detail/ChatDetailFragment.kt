@@ -1,44 +1,34 @@
-package com.findapple.findapple.app.features.chat
+package com.findapple.findapple.app.features.chat.detail
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.activity.addCallback
-import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.findapple.findapple.R
+import com.findapple.findapple.app.base.BaseFragment
+import com.findapple.findapple.app.features.chat.ChatWebBridge
+import com.findapple.findapple.app.features.chat.detail.viewmodel.ChatDetailViewModel
 import com.findapple.findapple.app.features.chat.dialog.DatePickerDialog
 import com.findapple.findapple.app.features.chat.dialog.TimePickerDialog
-import com.findapple.findapple.app.features.chat.viewmodel.ChattingViewModel
 import com.findapple.findapple.databinding.FragmentChatDetailBinding
-
-import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-class ChatDetailFragment : DaggerFragment() {
-
-    lateinit var binding: FragmentChatDetailBinding
-
+class ChatDetailFragment : BaseFragment<FragmentChatDetailBinding>(R.layout.fragment_chat_detail) {
     @Inject
-    lateinit var viewModel: ChattingViewModel
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_chat_detail, container, false)
-        return binding.root
+    override lateinit var viewModel: ChatDetailViewModel
+    override fun observeEvent() {
     }
-
+    private lateinit var chatRoomId: String
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.lifecycleOwner = viewLifecycleOwner
 
+        binding.chatDetailWv.addJavascriptInterface(ChatWebBridge(this), "ChatDetail")
+
         val idArg by navArgs<ChatDetailFragmentArgs>()
-        binding.url = "http://211.38.86.92:4046/chat?id=${idArg.chatRoomId}"
+        chatRoomId = idArg.chatRoomId
+        binding.url = "http://211.38.86.92:4046/chat?id=$chatRoomId"
 
         requireActivity().onBackPressedDispatcher.addCallback {
             requireActivity().findNavController(R.id.main_activity_container).navigateUp()
@@ -53,9 +43,13 @@ class ChatDetailFragment : DaggerFragment() {
     }
 
     fun showTimePickerDialog() {
-        TimePickerDialog(viewModel).show(
+        TimePickerDialog(viewModel,this).show(
             requireActivity().supportFragmentManager,
             "timePickerDialog"
         )
+    }
+
+    fun finishSelectDate() {
+        binding.chatDetailWv.loadUrl("javascript:LocationChoice(`${viewModel.selectedDateTime}`,`$chatRoomId`)")
     }
 }

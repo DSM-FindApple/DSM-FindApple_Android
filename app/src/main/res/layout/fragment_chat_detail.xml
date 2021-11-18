@@ -10,6 +10,7 @@
     </data>
 
     <WebView
+        android:id="@+id/chat_detail_wv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:setWebView="@{url}" />

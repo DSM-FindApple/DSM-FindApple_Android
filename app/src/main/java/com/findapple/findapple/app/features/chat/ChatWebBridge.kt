@@ -2,6 +2,7 @@ package com.findapple.findapple.app.features.chat
 
 import android.webkit.JavascriptInterface
 import androidx.fragment.app.Fragment
+import com.findapple.findapple.app.features.chat.detail.ChatDetailFragment
 
 class ChatWebBridge(private val fragment: Fragment) {
 
@@ -13,5 +14,10 @@ class ChatWebBridge(private val fragment: Fragment) {
     @JavascriptInterface
     fun startSelectDate() {
         (fragment as ChatDetailFragment).showDatePickerDialog()
+    }
+
+    @JavascriptInterface
+    fun exitChatDetail() {
+        (fragment as ChatDetailFragment).onBackPressed()
     }
 }

@@ -82,7 +82,7 @@
 
     <fragment
         android:id="@+id/chatDetailFragment"
-        android:name="com.findapple.findapple.app.features.chat.ChatDetailFragment"
+        android:name="com.findapple.findapple.app.features.chat.detail.ChatDetailFragment"
         android:label="ChatDetailFragment"
         tools:layout="@layout/fragment_chat_detail">
         <argument

@@ -4,12 +4,13 @@ import android.os.Bundle
 import android.view.View
 import com.findapple.findapple.R
 import com.findapple.findapple.app.base.BaseDialog
-import com.findapple.findapple.app.features.chat.ChatDetailFragment
+import com.findapple.findapple.app.features.chat.detail.ChatDetailFragment
+import com.findapple.findapple.app.features.chat.detail.viewmodel.ChatDetailViewModel
 import com.findapple.findapple.app.features.chat.viewmodel.ChattingViewModel
 import com.findapple.findapple.databinding.DialogDatePickerBinding
 import java.time.LocalDate
 
-class DatePickerDialog(private val chattingViewModel: ChattingViewModel, private val chatDetailFragment: ChatDetailFragment) : BaseDialog<DialogDatePickerBinding>(R.layout.dialog_date_picker) {
+class DatePickerDialog(private val chattingViewModel: ChatDetailViewModel, private val chatDetailFragment: ChatDetailFragment) : BaseDialog<DialogDatePickerBinding>(R.layout.dialog_date_picker) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val currentTime = LocalDate.now()

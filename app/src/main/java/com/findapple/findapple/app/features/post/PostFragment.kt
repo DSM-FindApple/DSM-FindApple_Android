@@ -16,6 +16,7 @@ import com.findapple.findapple.app.features.post.adapter.CategoryAdapter
 import com.findapple.findapple.app.features.post.viewModel.PostViewModel
 import com.findapple.findapple.app.features.post.viewModel.PostViewModelFactory
 import com.findapple.findapple.app.main.viewmodel.MainViewModel
+import com.findapple.findapple.app.realPath
 import com.findapple.findapple.app.toUri
 import javax.inject.Inject
 
@@ -85,18 +86,13 @@ class PostFragment : BaseFragment<FragmentPostBinding>(R.layout.fragment_post) {
                 onBackPressed()
             })
 
-            photoList.observe(viewLifecycleOwner, {
-                if(it.size > 0) {
-                    it[0].path
-                }
-            })
         }
     }
 
     private val getContent =
         registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
             if(uri != null){
-                addPhotoUri(uri)
+                addPhotoUri(uri.realPath(requireContext()))
             }
         }
 
@@ -120,15 +116,17 @@ class PostFragment : BaseFragment<FragmentPostBinding>(R.layout.fragment_post) {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_CAMERA_CODE && resultCode == RESULT_OK) {
-            val imageUri = (data?.extras?.get("data") as Bitmap).toUri(requireContext())
+            val imageUri = (data?.extras?.get("data") as Bitmap).toUri(requireContext()).realPath(requireContext())
             addPhotoUri(imageUri)
         }
     }
 
-    private fun addPhotoUri(uri: Uri) {
-        val list = viewModel.photoList.value.apply {
-            this?.add(uri)
+    private fun addPhotoUri(path: String?) {
+        if(path != null) {
+            val list = viewModel.photoList.value.apply {
+                this?.add(path)
+            }
+            viewModel.photoList.value = list
         }
-        viewModel.photoList.value = list
     }
 }
