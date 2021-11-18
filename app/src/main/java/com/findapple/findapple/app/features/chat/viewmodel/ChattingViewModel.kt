@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.findapple.findapple.app.base.BaseViewModel
 
 class ChattingViewModel : BaseViewModel() {
-    val clickedChatId = MutableLiveData<String>()
+    val selectedDateTime = MutableLiveData<String>()
     override fun apply(event: Lifecycle.Event) {
 
     }
