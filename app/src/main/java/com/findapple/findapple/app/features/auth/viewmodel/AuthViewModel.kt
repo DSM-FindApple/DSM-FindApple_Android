@@ -34,7 +34,8 @@ class AuthViewModel(
         loginUseCase.execute(
             LoginParameter(
                 auth,
-                location ?: Location(127.3635946, 36.3914388)
+                location ?: Location(127.3635946, 36.3914388),
+                profileImageUrl
             ),
             object : DisposableSingleObserver<Result<Token>>() {
                 override fun onSuccess(t: Result<Token>) {

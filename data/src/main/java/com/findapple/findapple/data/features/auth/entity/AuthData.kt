@@ -8,7 +8,8 @@ data class AuthData(
     val nickname: String,
     val deviceToken: String,
     val latitude: Double,
-    val longitude: Double
+    val longitude: Double,
+    val profileUrl: String
 )
 
 fun LoginParameter.toDataEntity(deviceToken: String) =
@@ -16,8 +17,9 @@ fun LoginParameter.toDataEntity(deviceToken: String) =
         id = auth.id,
         nickname = auth.nickname,
         deviceToken = deviceToken,
-        latitude = location.latitude!!,
-        longitude = location.longitude!!
+        latitude = location.latitude,
+        longitude = location.longitude,
+        profileUrl = profileImageUrl
     )
 
 fun AuthData.toLoginRequest() =
@@ -26,5 +28,6 @@ fun AuthData.toLoginRequest() =
         kakaoNickName = nickname,
         deviceToken = deviceToken,
         longitude = longitude,
-        latitude = latitude
+        latitude = latitude,
+        profileUrl = profileUrl
     )

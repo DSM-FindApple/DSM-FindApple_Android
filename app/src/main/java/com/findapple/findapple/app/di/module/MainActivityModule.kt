@@ -3,12 +3,13 @@ package com.findapple.findapple.app.di.module
 import com.findapple.findapple.app.di.module.main.MainModule
 import com.findapple.findapple.app.di.module.auth.AuthModule
 import com.findapple.findapple.app.di.module.auth.AuthStaticModule
+import com.findapple.findapple.app.di.module.main.chatting.ChatDetailModule
 import com.findapple.findapple.app.di.module.main.post.PostStaticModule
 import com.findapple.findapple.app.di.module.post.PostFindModule
 import com.findapple.findapple.app.di.module.post.PostUseCaseModule
 import com.findapple.findapple.app.di.scope.FragmentScope
 import com.findapple.findapple.app.features.auth.AuthFragment
-import com.findapple.findapple.app.features.chat.ChatDetailFragment
+import com.findapple.findapple.app.features.chat.detail.ChatDetailFragment
 import com.findapple.findapple.app.features.post.PostFragment
 import com.findapple.findapple.app.features.splash.SplashFragment
 import com.findapple.findapple.app.main.MainFragment
@@ -34,6 +35,6 @@ abstract class MainActivityModule {
     abstract fun postFragment(): PostFragment
 
     @FragmentScope
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules = [ChatDetailModule::class])
     abstract fun chatDetailFragment(): ChatDetailFragment
 }
