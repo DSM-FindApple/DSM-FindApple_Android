@@ -16,8 +16,8 @@ class DatePickerDialog(private val chattingViewModel: ChatDetailViewModel, priva
         val currentTime = LocalDate.now()
         binding.run {
             dpYearNp.run {
-                maxValue = currentTime.year
-                minValue = currentTime.year - 1
+                maxValue = currentTime.year + 1
+                minValue = currentTime.year
                 value = currentTime.year
             }
 
