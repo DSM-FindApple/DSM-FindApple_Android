@@ -19,6 +19,7 @@ class ChatDetailFragment : BaseFragment<FragmentChatDetailBinding>(R.layout.frag
     override lateinit var viewModel: ChatDetailViewModel
     override fun observeEvent() {
     }
+
     private lateinit var chatRoomId: String
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -43,13 +44,22 @@ class ChatDetailFragment : BaseFragment<FragmentChatDetailBinding>(R.layout.frag
     }
 
     fun showTimePickerDialog() {
-        TimePickerDialog(viewModel,this).show(
+        TimePickerDialog(viewModel, this).show(
             requireActivity().supportFragmentManager,
             "timePickerDialog"
         )
     }
 
     fun finishSelectDate() {
-        binding.chatDetailWv.loadUrl("javascript:LocationChoice(`${viewModel.selectedDateTime}`,`$chatRoomId`)")
+        val method = "LocationChoice(\"${viewModel.selectedDateTime.value}\",\"$chatRoomId\")"
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
+            binding.chatDetailWv.evaluateJavascript(method, null)
+        } else {
+            binding.chatDetailWv.loadUrl("javascript:$method")
+        }
+    }
+
+    fun sendImage() {
+
     }
 }

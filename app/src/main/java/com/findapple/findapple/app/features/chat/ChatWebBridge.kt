@@ -17,6 +17,11 @@ class ChatWebBridge(private val fragment: Fragment) {
     }
 
     @JavascriptInterface
+    fun startGetImage() {
+        (fragment as ChatDetailFragment).sendImage()
+    }
+
+    @JavascriptInterface
     fun exitChatDetail() {
         (fragment as ChatDetailFragment).onBackPressed()
     }
