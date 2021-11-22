@@ -1,7 +1,6 @@
 package com.findapple.findapple.data.features.post.remote
 
 import com.findapple.findapple.data.features.post.dto.request.GetRelatedPostRequest
-import com.findapple.findapple.data.features.post.dto.request.PostFindRequest
 import com.findapple.findapple.data.features.post.dto.response.FindListResponse
 import com.findapple.findapple.data.features.post.dto.response.LostListResponse
 import io.reactivex.Single
@@ -15,8 +14,17 @@ interface PostApi {
     @GET("/find")
     fun getFindList(): Single<List<FindListResponse>>
 
+    @Multipart
     @POST("/find")
-    fun postFind(@Part body: PostFindRequest): Single<Unit>
+    fun postFind(
+        @Query("category") category: String,
+        @Query("detail") detail: String,
+        @Part images: List<MultipartBody.Part>,
+        @Query("latitude") latitude: Double,
+        @Query("longitude") longitude: Double,
+        @Query("findAt") findAt: String,
+        @Query("title") title: String
+    ): Single<Unit>
 
     @Multipart
     @POST("/lost")
