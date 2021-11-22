@@ -29,7 +29,7 @@ class TimePickerDialog(private val chatDetailViewModel: ChatDetailViewModel, pri
 
             dpCompleteTv.setOnClickListener {
                 val date = chatDetailViewModel.selectedDateTime.value
-                chatDetailViewModel.selectedDateTime.value = date + "T${dpTimeNp.value}:${dpMinuteNp.value}"
+                chatDetailViewModel.selectedDateTime.value = date + "T${dpTimeNp.value}:${String.format("%02d", dpMinuteNp.value)}"
                 chatDetailFragment.finishSelectDate()
                 dismiss()
             }

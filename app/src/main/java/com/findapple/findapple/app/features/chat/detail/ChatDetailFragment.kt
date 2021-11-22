@@ -2,8 +2,6 @@ package com.findapple.findapple.app.features.chat.detail
 
 import android.os.Bundle
 import android.view.View
-import androidx.activity.addCallback
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.findapple.findapple.R
 import com.findapple.findapple.app.base.BaseFragment
@@ -31,9 +29,6 @@ class ChatDetailFragment : BaseFragment<FragmentChatDetailBinding>(R.layout.frag
         chatRoomId = idArg.chatRoomId
         binding.url = "http://211.38.86.92:4046/chat?id=$chatRoomId"
 
-        requireActivity().onBackPressedDispatcher.addCallback {
-            requireActivity().findNavController(R.id.main_activity_container).navigateUp()
-        }
     }
 
     fun showDatePickerDialog() {

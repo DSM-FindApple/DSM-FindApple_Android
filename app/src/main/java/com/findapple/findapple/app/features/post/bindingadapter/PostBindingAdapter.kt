@@ -1,5 +1,6 @@
 package com.findapple.findapple.app.features.post.bindingadapter
 
+import android.net.Uri
 import android.widget.NumberPicker
 import androidx.databinding.BindingAdapter
 import androidx.viewpager2.widget.ViewPager2
@@ -9,7 +10,7 @@ import java.time.LocalDateTime
 
 @BindingAdapter("setPostPhotoItems", "itemsViewModel")
 fun ViewPager2.setPostPhotoItems(
-    images: List<String>?,
+    images: List<Uri>?,
     viewModel: PostViewModel
 ) {
     if (adapter == null) {

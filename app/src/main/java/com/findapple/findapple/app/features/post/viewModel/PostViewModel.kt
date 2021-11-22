@@ -1,5 +1,6 @@
 package com.findapple.findapple.app.features.post.viewModel
 
+import android.net.Uri
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -11,23 +12,29 @@ import com.findapple.findapple.domain.features.post.usecase.PostFindUseCase
 import com.findapple.findapple.domain.features.post.usecase.PostLostUseCase
 import com.findapple.findapple.app.base.BaseViewModel
 import com.findapple.findapple.app.base.SingleLiveEvent
+import com.findapple.findapple.domain.features.post.entity.Post
+import com.findapple.findapple.domain.features.post.usecase.GetRelatedLostPostUseCase
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
 import java.io.File
 
 class PostViewModel(
     private val postFindUseCase: PostFindUseCase,
-    private val postLostUseCase: PostLostUseCase
+    private val postLostUseCase: PostLostUseCase,
+    private val gerRelatedLostPostUseCase: GetRelatedLostPostUseCase
 ) : BaseViewModel() {
 
     val clickedCategoryIndex = MutableLiveData<Int>()
     var preClickedCategoryIndex = MutableLiveData<Int>()
     val clickedCategoryTitle = MutableLiveData<String>()
 
-    val photoList = MutableLiveData(ArrayList<String>())
+    val photoList = MutableLiveData(ArrayList<Uri>())
 
     val title = MutableLiveData<String>()
     val detail = MutableLiveData<String>()
+
+    private val _relatedPosts = MutableLiveData<List<Post>>()
+    val relatedPosts: LiveData<List<Post>> get() = _relatedPosts
 
     private val _startCamera = SingleLiveEvent<Unit>()
     val startCamera: LiveData<Unit> get() = _startCamera
@@ -86,13 +93,14 @@ class PostViewModel(
         if (title.value?.isBlank() == false &&
             detail.value?.isBlank() == false &&
             clickedCategoryTitle.value?.isBlank() == false &&
-            photoList.value?.isNotEmpty() == true) {
+            photoList.value?.isNotEmpty() == true
+        ) {
             val postParam = PostDataParameter(
                 title = title.value!!,
                 detail = detail.value!!,
                 category = category(),
                 actionTime = actionTime(),
-                images = photoList.value!!.map { File(it) },
+                images = photoList.value!!.map { File(it.path!!) },
                 locationInfo = location.value ?: Location(127.3635946, 36.3914388)
             )
             if (isLost) {
@@ -174,10 +182,8 @@ class PostViewModel(
     }
 
     private fun doOnError(reason: Result.Failure<Unit>) {
-        when (reason.reason) {
-            Error.InternalServer -> {
-                _message.value = "서버사용량이 많습니다"
-            }
+        if (reason.reason == Error.InternalServer) {
+            _message.value = "서버사용량이 많습니다"
         }
     }
 

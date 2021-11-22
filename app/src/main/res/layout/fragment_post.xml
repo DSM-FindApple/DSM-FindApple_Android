@@ -219,6 +219,12 @@
                     app:itemsViewModel="@{vm}"
                     app:setPostPhotoItems="@{vm.photoList}" />
 
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/post_related_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+
             </LinearLayout>
         </ScrollView>
 
