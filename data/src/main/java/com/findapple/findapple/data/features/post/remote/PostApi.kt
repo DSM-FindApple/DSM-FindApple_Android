@@ -1,5 +1,6 @@
 package com.findapple.findapple.data.features.post.remote
 
+import com.findapple.findapple.data.features.post.dto.request.GetRelatedPostRequest
 import com.findapple.findapple.data.features.post.dto.request.PostFindRequest
 import com.findapple.findapple.data.features.post.dto.response.FindListResponse
 import com.findapple.findapple.data.features.post.dto.response.LostListResponse
@@ -8,7 +9,7 @@ import okhttp3.MultipartBody
 import retrofit2.http.*
 
 interface PostApi {
-    @GET("/lostlist")
+    @GET("/lost/{pageNum}")
     fun getLostList(): Single<List<LostListResponse>>
 
     @GET("/find")
@@ -28,4 +29,11 @@ interface PostApi {
         @Query("lostAt") lostAt: String,
         @Query("title") title: String
     ): Single<Unit>
+
+    @GET("/lost/{pageNum}")
+    fun getRelatedLostPosts(
+        @Path("pageNum") pageNum: Int,
+        @Body body: GetRelatedPostRequest
+    ): Single<List<LostListResponse>>
+
 }
