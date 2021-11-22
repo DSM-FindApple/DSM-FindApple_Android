@@ -45,9 +45,9 @@
                 android:layout_marginEnd="7dp"
                 android:fontFamily="@font/cookie_run_bold"
                 android:onClick="@{()->vm.post(isLost)}"
-                android:padding="5dp"
-                android:text="@string/post"
-                android:textColor="@{vm.title != null &amp; vm.detail != null &amp; vm.clickedCategoryTitle != null &amp; vm.photoList.size() > 0?@color/white:@color/gray_300}" />
+                android:padding="10dp"
+                android:text="@{vm.inProgress?@string/in_loading:@string/post}"
+                android:textColor="@{vm.title != null &amp; vm.detail != null &amp; vm.clickedCategoryTitle != null &amp; vm.photoList.size() > 0 &amp; !vm.inProgress?@color/white:@color/gray_300}" />
         </androidx.appcompat.widget.Toolbar>
 
         <ScrollView

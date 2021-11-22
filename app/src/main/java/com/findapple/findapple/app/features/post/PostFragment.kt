@@ -12,9 +12,11 @@ import com.findapple.findapple.app.features.post.adapter.CategoryAdapter
 import com.findapple.findapple.app.features.post.viewModel.PostViewModel
 import com.findapple.findapple.app.features.post.viewModel.PostViewModelFactory
 import com.findapple.findapple.app.main.viewmodel.MainViewModel
+import com.findapple.findapple.app.toRealPath
 import gun0912.tedimagepicker.builder.TedImagePicker
 import gun0912.tedimagepicker.builder.TedRxImagePicker
 import io.reactivex.android.schedulers.AndroidSchedulers
+import java.io.File
 import javax.inject.Inject
 
 class PostFragment : BaseFragment<FragmentPostBinding>(R.layout.fragment_post) {
@@ -82,6 +84,7 @@ class PostFragment : BaseFragment<FragmentPostBinding>(R.layout.fragment_post) {
                     .startMultiImage()
                     .subscribe({ uri ->
                         photoList.value = photoList.value?.apply { addAll(uri) }
+                        photoRequestList.addAll(uri.map { File(it.toRealPath(requireContext())) })
                     }, Throwable::printStackTrace)
             })
 

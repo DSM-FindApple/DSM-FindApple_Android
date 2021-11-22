@@ -1,40 +1,22 @@
 package com.findapple.findapple.app
 
 import android.content.Context
-import android.graphics.Bitmap
+import android.database.Cursor
 import android.net.Uri
-import android.provider.DocumentsContract
 import android.provider.MediaStore
-import java.io.ByteArrayOutputStream
-import java.util.*
+import androidx.loader.content.CursorLoader
 
-fun Bitmap?.toUri(context: Context): Uri {
-    val bytes = ByteArrayOutputStream()
-    this?.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
-    val path = MediaStore.Images.Media.insertImage(
-        context.contentResolver,
-        this,
-        "Title" + "-" + Calendar.getInstance().time,
-        null
-    )
-    return Uri.parse(path)
-}
+fun Uri.toRealPath(context: Context): String {
+    val proj = arrayOf(MediaStore.Images.Media.DATA)
+    val loader = CursorLoader(context, this, proj, null, null, null)
+    val cursor: Cursor = loader.loadInBackground()!!
 
-fun Uri.realPath(context: Context): String? {
-    if(path?.startsWith("/storage") == true) {
-        return this.path
-    }
+    val columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+    cursor.moveToFirst()
 
-    val id = DocumentsContract.getDocumentId(this).split(":")[1]
+    val result =  cursor.getString(columnIndex)
 
-    val columns = Array(1) { MediaStore.Files.FileColumns.DATA }
-    val selection = MediaStore.Files.FileColumns._ID + "=" + id
-    val cursor = context.contentResolver.query(MediaStore.Files.getContentUri("external"), columns, selection, null, null)
-    cursor.use { cursor ->
-        val columnIndex = cursor!!.getColumnIndex(columns[0])
-        if(cursor.moveToFirst()) {
-            return cursor.getString(columnIndex)
-        }
-    }
-    return null
+    cursor.close()
+
+    return result
 }

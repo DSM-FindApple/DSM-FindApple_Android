@@ -30,6 +30,8 @@ class PostViewModel(
 
     val photoList = MutableLiveData(ArrayList<Uri>())
 
+    val photoRequestList = ArrayList<File>()
+
     val title = MutableLiveData<String>()
     val detail = MutableLiveData<String>()
 
@@ -54,6 +56,10 @@ class PostViewModel(
     private val _donePost = SingleLiveEvent<Unit>()
     val donePost: LiveData<Unit> get() = _donePost
 
+    private val _inProgress = MutableLiveData(false)
+    val inProgress: LiveData<Boolean> get() = _inProgress
+
+
     override fun apply(event: Lifecycle.Event) {
 
     }
@@ -77,12 +83,14 @@ class PostViewModel(
 
     fun deletePhoto(position: Int) {
         photoList.value!!.removeAt(position)
+        photoRequestList.removeAt(position)
         val list = photoList.value
         photoList.value = list
         _message.value = "삭제되었습니다"
     }
 
     fun post(isLost: Boolean) {
+        _inProgress.value = true
         if (title.value?.isBlank() == false &&
             detail.value?.isBlank() == false &&
             clickedCategoryTitle.value?.isBlank() == false &&
@@ -93,7 +101,7 @@ class PostViewModel(
                 detail = detail.value!!,
                 category = category(),
                 actionTime = actionTime(),
-                images = photoList.value!!.map { File(it.path!!) },
+                images = photoRequestList,
                 locationInfo = location.value ?: Location(127.3635946, 36.3914388)
             )
             if (isLost) {
@@ -139,10 +147,12 @@ class PostViewModel(
                     } else if (t is Result.Failure) {
                         doOnError(t)
                     }
+                    _inProgress.value = false
                     dispose()
                 }
 
                 override fun onError(e: Throwable) {
+                    _inProgress.value = false
                     dispose()
                 }
 
@@ -162,10 +172,12 @@ class PostViewModel(
                     } else if (t is Result.Failure) {
                         doOnError(t)
                     }
+                    _inProgress.value = false
                     dispose()
                 }
 
                 override fun onError(e: Throwable) {
+                    _inProgress.value = false
                     dispose()
                 }
 

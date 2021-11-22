@@ -62,6 +62,9 @@ class PostPhotoAdapter(private val vm: PostViewModel) :
         images.size + 1
 
     fun updateData(images: List<Uri>) {
+        if(images.size < this.images.size) {
+            this.images.clear()
+        }
         this.images.addAll(images)
         notifyDataSetChanged()
     }
