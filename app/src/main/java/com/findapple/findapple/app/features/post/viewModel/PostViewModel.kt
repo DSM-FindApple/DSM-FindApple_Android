@@ -36,9 +36,6 @@ class PostViewModel(
     private val _relatedPosts = MutableLiveData<List<Post>>()
     val relatedPosts: LiveData<List<Post>> get() = _relatedPosts
 
-    private val _startCamera = SingleLiveEvent<Unit>()
-    val startCamera: LiveData<Unit> get() = _startCamera
-
     private val _startGallery = SingleLiveEvent<Unit>()
     val startGallery: LiveData<Unit> get() = _startGallery
 
@@ -72,10 +69,6 @@ class PostViewModel(
             }
         }
 
-    }
-
-    fun startCamera() {
-        _startCamera.call()
     }
 
     fun startGallery() {

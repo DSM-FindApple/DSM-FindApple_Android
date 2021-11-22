@@ -51,6 +51,10 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
+    //rxjava
+    implementation 'io.reactivex.rxjava3:rxjava:3.0.3'
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
+
     // 카카오 로그인
     implementation "com.kakao.sdk:v2-user-rx:2.7.0"
 
@@ -86,6 +90,9 @@ dependencies {
     implementation 'com.google.android.gms:play-services-location:18.0.0'
 
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    //ted image picker
+    implementation 'io.github.ParkSangGwon:tedimagepicker:1.2.7'
 
 
     implementation project(':data')

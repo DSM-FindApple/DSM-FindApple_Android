@@ -1,12 +1,8 @@
 package com.findapple.findapple.app.features.post
 
-import android.content.Intent
-import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import android.view.View
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.findapple.findapple.R
@@ -16,7 +12,9 @@ import com.findapple.findapple.app.features.post.adapter.CategoryAdapter
 import com.findapple.findapple.app.features.post.viewModel.PostViewModel
 import com.findapple.findapple.app.features.post.viewModel.PostViewModelFactory
 import com.findapple.findapple.app.main.viewmodel.MainViewModel
-import com.findapple.findapple.app.toUri
+import gun0912.tedimagepicker.builder.TedImagePicker
+import gun0912.tedimagepicker.builder.TedRxImagePicker
+import io.reactivex.android.schedulers.AndroidSchedulers
 import javax.inject.Inject
 
 class PostFragment : BaseFragment<FragmentPostBinding>(R.layout.fragment_post) {
@@ -52,6 +50,7 @@ class PostFragment : BaseFragment<FragmentPostBinding>(R.layout.fragment_post) {
                 setLayoutManager(layoutManager)
             }
             isLost = (arguments?.get("isLost") ?: true) as Boolean?
+
         }
     }
 
@@ -70,13 +69,6 @@ class PostFragment : BaseFragment<FragmentPostBinding>(R.layout.fragment_post) {
                 }
             })
 
-            startCamera.observe(viewLifecycleOwner, {
-                this@PostFragment.startCamera()
-            })
-            startGallery.observe(viewLifecycleOwner, {
-                this@PostFragment.startGallery()
-            })
-
             message.observe(viewLifecycleOwner, {
                 snackBarComment(it)
             })
@@ -85,47 +77,15 @@ class PostFragment : BaseFragment<FragmentPostBinding>(R.layout.fragment_post) {
                 onBackPressed()
             })
 
+            startGallery.observe(viewLifecycleOwner, {
+                TedRxImagePicker.with(requireContext())
+                    .startMultiImage()
+                    .subscribe({ uri ->
+                        photoList.value = photoList.value?.apply { addAll(uri) }
+                    }, Throwable::printStackTrace)
+            })
+
         }
     }
 
-    private val getContent =
-        registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
-            if(uri != null){
-                addPhotoUri(uri)
-            }
-        }
-
-
-    companion object {
-        private const val REQUEST_CAMERA_CODE = 2
-        private const val RESULT_OK = -1
-    }
-
-
-    private fun startCamera() {
-        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { intent ->
-            startActivityForResult(intent, REQUEST_CAMERA_CODE)
-        }
-    }
-
-    private fun startGallery() {
-        getContent.launch("image/*")
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_CAMERA_CODE && resultCode == RESULT_OK) {
-            val imageUri = (data?.extras?.get("data") as Bitmap).toUri(requireContext())
-            addPhotoUri(imageUri)
-        }
-    }
-
-    private fun addPhotoUri(uri: Uri?) {
-        if(uri != null) {
-            val list = viewModel.photoList.value.apply {
-                this?.add(uri)
-            }
-            viewModel.photoList.value = list
-        }
-    }
 }

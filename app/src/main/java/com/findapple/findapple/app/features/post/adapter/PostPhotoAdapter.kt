@@ -20,7 +20,16 @@ class PostPhotoAdapter(private val vm: PostViewModel) :
     }
 
     inner class PhotoViewHolder(val binding: ItemPhotoBinding) :
-        RecyclerView.ViewHolder(binding.root)
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(position: Int) {
+            binding.vm = vm
+            binding.apply {
+                setVariable(BR.vm, vm)
+                setVariable(BR.position, position)
+            }
+            binding.photoIv.setImageURI(images[position])
+        }
+    }
 
     inner class PostPhotoViewHolder(val binding: ItemPostPhotoBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -41,12 +50,7 @@ class PostPhotoAdapter(private val vm: PostViewModel) :
         if (holder is PostPhotoViewHolder) {
             holder.binding.setVariable(BR.vm, vm)
         } else if (holder is PhotoViewHolder) {
-            holder.binding.vm = vm
-            holder.binding.apply {
-                setVariable(BR.vm, vm)
-                setVariable(BR.position, position)
-                holder.binding.photoIv.setImageURI(images[position])
-            }
+            holder.bind(position)
         }
     }
 
@@ -58,7 +62,6 @@ class PostPhotoAdapter(private val vm: PostViewModel) :
         images.size + 1
 
     fun updateData(images: List<Uri>) {
-        this.images.clear()
         this.images.addAll(images)
         notifyDataSetChanged()
     }
