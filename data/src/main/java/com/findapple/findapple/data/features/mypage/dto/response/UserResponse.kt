@@ -19,5 +19,5 @@ fun UserResponse.toEntity() =
         lostPostCount = lostNum,
         findPostCount = findNum,
         findAppleLevel = findapplePoint,
-        postedList = myLosts.map { it.toEntity() }
+        postedList = myLosts.toEntity()
     )

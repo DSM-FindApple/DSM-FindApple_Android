@@ -1,20 +1,24 @@
 package com.findapple.findapple.data.features.post.dto.response
 
+import com.findapple.findapple.data.dto.response.TopCommentResponse
 import com.findapple.findapple.domain.entity.Location
+import com.findapple.findapple.domain.entity.User
 import com.findapple.findapple.domain.features.post.entity.Post
-import java.util.*
 
 data class LostListResponse(
-    val lostId: Int,
-    val title: String,
-    val userName: String,
-    val detailInfo: String,
-    val lostAt: Date,
-    val writeAt: Date,
     val category: String,
+    val detail: String,
+    val kakaoId: Long,
     val latitude: Double,
     val longitude: Double,
-    val images: List<ImageResponse>
+    val lostAt: String,
+    val lostId: Long,
+    val lostImages: List<String>,
+    val lostUser: String,
+    val profileUrl: String,
+    val title: String,
+    val topComment: TopCommentResponse,
+    val writeAt: String
 )
 
 fun List<LostListResponse>.toEntity(): List<Post> =
@@ -25,11 +29,11 @@ fun LostListResponse.toEntity() =
     Post(
         id = lostId,
         title = title,
-        userName = userName,
-        detailInfo = detailInfo,
+        user = User(name = lostUser, id = kakaoId, profileImage = profileUrl),
+        detailInfo = detail,
         actionTime = lostAt,
         writeTime = writeAt,
         category = category,
         location = Location(longitude, latitude),
-        images = images.toStringList()
+        images = lostImages
     )

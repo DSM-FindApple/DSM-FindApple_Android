@@ -9,7 +9,7 @@ data class FindListResponse(
     val category: String,
     val detail: String,
     val findAt: String,
-    val findId: Int,
+    val findId: Long,
     val findImages: List<String>,
     val findUser: String,
     val kakaoId: Long,

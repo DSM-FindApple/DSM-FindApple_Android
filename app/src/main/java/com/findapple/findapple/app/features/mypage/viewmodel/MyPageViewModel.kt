@@ -52,7 +52,6 @@ class MyPageViewModel(
 
                 override fun onSuccess(t: User) {
                     _userProfile.value = t
-                    updateMyPageHeader()
                     getUserDetail()
                 }
 
@@ -86,9 +85,11 @@ class MyPageViewModel(
                     if (t is Result.Success){
                         _userDetail.value = t.value
                     }
+                    updateMyPageHeader()
                 }
 
                 override fun onError(e: Throwable) {
+                    updateMyPageHeader()
                 }
 
             },

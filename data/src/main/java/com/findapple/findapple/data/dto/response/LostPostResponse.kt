@@ -11,7 +11,7 @@ data class LostPostResponse(
     val latitude: Double,
     val longitude: Double,
     val lostAt: String,
-    val lostId: Int,
+    val lostId: Long,
     val lostImages: List<String>,
     val lostUser: String,
     val profileUrl: String,
@@ -19,6 +19,9 @@ data class LostPostResponse(
     val topComment: CommentResponse,
     val writeAt: String
 )
+
+fun List<LostPostResponse>.toEntity() =
+    this.map { it.toEntity() }
 
 fun LostPostResponse.toEntity() =
     Post(
