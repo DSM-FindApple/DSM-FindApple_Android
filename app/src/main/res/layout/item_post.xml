@@ -7,7 +7,7 @@
 
         <variable
             name="vm"
-            type="com.findapple.findapple.app.features.post.viewModel.PostItemViewModel" />
+            type="com.findapple.findapple.app.features.lost.viewmodel.LostViewModel.PostItemViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -22,9 +22,9 @@
             android:layout_height="38dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            app:loadImage="@{vm.post.user.name}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:loadImage="@{vm.post.user.name}"
             tools:src="@drawable/ic_fineapple_red_sunglasses" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -63,7 +63,7 @@
             android:padding="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_baseline_location_searching_24" />
+            android:src="@{vm.isMyPost?@drawable/ic_baseline_more_vert_24:@drawable/ic_baseline_location_searching_24}" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/post_chatting_iv"

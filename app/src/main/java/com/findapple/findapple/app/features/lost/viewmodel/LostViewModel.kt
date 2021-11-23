@@ -11,7 +11,6 @@ import com.findapple.findapple.BR
 import com.findapple.findapple.app.base.BaseViewModel
 import com.findapple.findapple.app.base.SingleLiveEvent
 import com.findapple.findapple.app.bindingadapter.RecyclerViewItem
-import com.findapple.findapple.app.features.post.viewModel.PostItemViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
 
@@ -39,7 +38,7 @@ class LostViewModel(private val getLostListUseCase: GetLostListUseCase) : BaseVi
                 override fun onSuccess(t: Result<List<Post>>) {
                     if (t is Result.Success) {
                         lostList.value =
-                            t.value.map { PostItemViewModel(it, false).toRecyclerItem() }
+                            t.value.map { PostItemViewModel(it).toRecyclerItem() }
                     }
                 }
 
@@ -55,12 +54,15 @@ class LostViewModel(private val getLostListUseCase: GetLostListUseCase) : BaseVi
         RecyclerViewItem(
             data = this,
             variableId = BR.vm,
-            itemLayoutId = R.layout.item_lost_post
+            itemLayoutId = R.layout.item_post
         )
 
     fun startPost() {
         _startPostLost.call()
     }
 
+    inner class PostItemViewModel(val post: Post) {
+        var isMyPost = false
+    }
 
 }

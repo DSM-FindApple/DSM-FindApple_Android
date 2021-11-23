@@ -84,6 +84,19 @@ class MyPageViewModel(
                 override fun onSuccess(t: Result<UserDetail>) {
                     if (t is Result.Success){
                         _userDetail.value = t.value
+                        val postList = t.value.postedList
+                        for (post in postList) {
+                            _myPageItems.value = (_myPageItems.value as ArrayList<RecyclerViewItem>).apply {
+                                add(
+                                    RecyclerViewItem(
+                                        R.layout.item_post,
+                                        data = PostItemViewModel(post),
+                                        variableId = BR.vm
+                                    )
+                                )
+                            }
+                        }
+
                     }
                     updateMyPageHeader()
                 }
@@ -101,4 +114,10 @@ class MyPageViewModel(
         _showFindAppleLevelDetail.call()
     }
 
+    inner class PostItemViewModel(val post: Post) {
+        val isMyPost = true
+        fun startEdit() {
+
+        }
+    }
 }
