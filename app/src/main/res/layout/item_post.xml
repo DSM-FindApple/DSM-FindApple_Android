@@ -22,6 +22,7 @@
             android:layout_height="38dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
+            app:loadImage="@{vm.post.user.name}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/ic_fineapple_red_sunglasses" />
@@ -46,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:fontFamily="@font/cookie_run_regular"
-            android:text="@{vm.post.userName}"
+            android:text="@{vm.post.user.name}"
             android:textSize="13sp"
             app:layout_constraintBottom_toBottomOf="@id/post_profile_iv"
             app:layout_constraintStart_toEndOf="@id/post_profile_iv"

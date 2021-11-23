@@ -18,12 +18,14 @@ class MyPageFragment : BaseFragment<FragmentMypageBinding>(R.layout.fragment_myp
     }
 
     override fun observeEvent() {
-        viewModel.showFindAppleLevelDetail.observe(viewLifecycleOwner, {
-            FindAppleLevelDialog().show(
-                requireActivity().supportFragmentManager,
-                "findapple_level_detail"
-            )
-        })
+        viewModel.run {
+            showFindAppleLevelDetail.observe(viewLifecycleOwner, {
+                FindAppleLevelDialog().show(
+                    requireActivity().supportFragmentManager,
+                    "findapple_level_detail"
+                )
+            })
+        }
     }
 
 }
