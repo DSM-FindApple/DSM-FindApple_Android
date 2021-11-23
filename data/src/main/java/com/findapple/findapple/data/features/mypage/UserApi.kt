@@ -6,9 +6,6 @@ import io.reactivex.Single
 import retrofit2.http.GET
 
 interface UserApi {
-    @GET("/info")
-    fun getUser(): Single<UserResponse>
-
-    @GET("/mypage")
-    fun getUserPostList(): Single<List<UserPostListResponse>>
+    @GET("/user")
+    fun getUserDetail(): Single<UserResponse>
 }

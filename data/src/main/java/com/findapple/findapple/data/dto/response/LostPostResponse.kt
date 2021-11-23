@@ -1,5 +1,9 @@
 package com.findapple.findapple.data.dto.response
 
+import com.findapple.findapple.domain.entity.Location
+import com.findapple.findapple.domain.entity.User
+import com.findapple.findapple.domain.features.post.entity.Post
+
 data class LostPostResponse(
     val category: String,
     val detail: String,
@@ -14,4 +18,17 @@ data class LostPostResponse(
     val title: String,
     val topComment: CommentResponse,
     val writeAt: String
+)
+
+fun LostPostResponse.toEntity() =
+    Post(
+        category = category,
+        detailInfo = detail,
+        user = User(kakaoId, lostUser, profileUrl),
+        location = Location(longitude, latitude),
+        actionTime = lostAt,
+        writeTime = writeAt,
+        images = lostImages,
+        id = lostId,
+        title = title
     )

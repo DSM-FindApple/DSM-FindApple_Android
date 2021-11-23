@@ -1,6 +1,7 @@
 package com.findapple.findapple.data.features.mypage.repository
 
 import com.findapple.findapple.data.features.mypage.datasource.UserDataSource
+import com.findapple.findapple.data.features.mypage.dto.response.toEntity
 import com.findapple.findapple.domain.entity.User
 import com.findapple.findapple.domain.features.mypage.entity.UserDetail
 import com.findapple.findapple.domain.features.mypage.repository.UserRepository
@@ -11,6 +12,6 @@ class UserRepositoryImpl(private val userDataSource: UserDataSource) : UserRepos
         userDataSource.getUserInfo()
 
     override fun getUserDetail(): Single<UserDetail> =
-        userDataSource.getUserDetail()
+        userDataSource.getUserDetail().map { it.toEntity() }
 
 }

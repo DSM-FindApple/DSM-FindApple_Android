@@ -1,11 +1,11 @@
 package com.findapple.findapple.data.features.mypage.datasource
 
+import com.findapple.findapple.data.features.mypage.dto.response.UserResponse
 import com.findapple.findapple.domain.entity.User
-import com.findapple.findapple.domain.features.mypage.entity.UserDetail
 import io.reactivex.Single
 
 interface UserDataSource {
     fun getUserInfo(): Single<User>
 
-    fun getUserDetail(): Single<UserDetail>
+    fun getUserDetail(): Single<UserResponse>
 }
