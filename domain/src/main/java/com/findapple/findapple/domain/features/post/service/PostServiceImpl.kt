@@ -12,8 +12,8 @@ class PostServiceImpl(
     private val postRepository: PostRepository,
     private val errorHandler: ErrorHandler
 ) : PostService {
-    override fun getPostList(isLostList: Boolean): Single<Result<List<Post>>> =
-        postRepository.getPostList(isLostList).toResult(errorHandler)
+    override fun getPostList(page: Int, isLostList: Boolean): Single<Result<List<Post>>> =
+        postRepository.getPostList(page, isLostList).toResult(errorHandler)
 
     override fun postFeed(request: PostDataParameter, isLost: Boolean): Single<Result<Unit>> =
         postRepository.postFeed(request, isLost).toResult(errorHandler)

@@ -11,7 +11,7 @@ class GetLostListUseCase(
     private val postService: PostService,
     compositeDisposable: CompositeDisposable
 ) :
-    UseCase<Unit, Result<List<Post>>>(compositeDisposable) {
-    override fun create(data: Unit): Single<Result<List<Post>>> =
-        postService.getPostList(true)
+    UseCase<Int, Result<List<Post>>>(compositeDisposable) {
+    override fun create(data: Int): Single<Result<List<Post>>> =
+        postService.getPostList(data, true)
 }

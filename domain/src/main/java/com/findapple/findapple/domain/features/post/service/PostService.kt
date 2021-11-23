@@ -7,7 +7,7 @@ import io.reactivex.Single
 
 
 interface PostService {
-    fun getPostList(isLostList: Boolean): Single<Result<List<Post>>>
+    fun getPostList(page: Int, isLostList: Boolean): Single<Result<List<Post>>>
 
     fun postFeed(request: PostDataParameter, isLost: Boolean): Single<Result<Unit>>
 
