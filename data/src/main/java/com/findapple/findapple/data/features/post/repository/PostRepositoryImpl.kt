@@ -8,8 +8,8 @@ import com.findapple.findapple.domain.features.post.repository.PostRepository
 import io.reactivex.Single
 
 class PostRepositoryImpl(private val dataSource: PostDataSource) : PostRepository {
-    override fun getPostList(isLostList: Boolean): Single<List<Post>> =
-        if (isLostList) dataSource.getLostList().map { it.toEntity() } else dataSource.getFindList()
+    override fun getPostList(page: Int, isLostList: Boolean): Single<List<Post>> =
+        if (isLostList) dataSource.getLostList(page).map { it.toEntity() } else dataSource.getFindList(page)
             .map { it.toEntity() }
 
     override fun postFeed(request: PostDataParameter, isLost: Boolean): Single<Unit> =

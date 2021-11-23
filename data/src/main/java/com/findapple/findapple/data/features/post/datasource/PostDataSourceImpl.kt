@@ -9,11 +9,11 @@ import com.findapple.findapple.domain.features.post.parameter.PostDataParameter
 import io.reactivex.Single
 
 class PostDataSourceImpl(private val postApi: PostApi) : PostDataSource {
-    override fun getLostList(): Single<List<LostListResponse>> =
-        postApi.getLostList()
+    override fun getLostList(page: Int): Single<List<LostListResponse>> =
+        postApi.getLostList(page)
 
-    override fun getFindList(): Single<List<FindListResponse>> =
-        postApi.getFindList()
+    override fun getFindList(page: Int): Single<List<FindListResponse>> =
+        postApi.getFindList(page)
 
     override fun postFind(request: PostDataParameter): Single<Unit> =
         postApi.postFind(

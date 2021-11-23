@@ -5,7 +5,7 @@ import com.findapple.findapple.domain.features.post.entity.Post
 import io.reactivex.Single
 
 interface PostRepository {
-    fun getPostList(isLostList: Boolean): Single<List<Post>>
+    fun getPostList(page: Int, isLostList: Boolean): Single<List<Post>>
 
     fun postFeed(request: PostDataParameter, isLost: Boolean): Single<Unit>
 
