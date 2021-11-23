@@ -57,6 +57,8 @@
                 android:layout_marginStart="10dp"
                 android:fontFamily="@font/cookie_run_regular"
                 android:textColor="#795548"
+                app:lost_ct="@{vm.userDetail.lostPostCount}"
+                app:find_ct="@{vm.userDetail.findPostCount}"
                 app:layout_constraintStart_toEndOf="@+id/mypage_header_profile_iv"
                 app:layout_constraintTop_toBottomOf="@+id/mypage_header_profile_name_tv"
                 tools:text="분실물 게시물 : 0개 / 습득물 게시물 : 0개" />

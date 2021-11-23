@@ -53,6 +53,7 @@ class MyPageViewModel(
                 override fun onSuccess(t: User) {
                     _userProfile.value = t
                     updateMyPageHeader()
+                    getUserDetail()
                 }
 
                 override fun onError(e: Throwable) {
