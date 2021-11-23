@@ -63,7 +63,7 @@ class LostFragment : BaseFragment<FragmentLostBinding>(R.layout.fragment_lost) {
 
     private fun setLocationText(location: Location) {
         val geocoder = Geocoder(context)
-        val address = geocoder.getFromLocation(location.latitude!!, location.longitude!!, 1)
+        val address = geocoder.getFromLocation(location.latitude, location.longitude, 1)
         if (!CollectionUtils.isEmpty(address)) {
             val fetchAddress = address[0]
             if (fetchAddress.maxAddressLineIndex > -1) {

@@ -94,7 +94,6 @@ dependencies {
     //ted image picker
     implementation 'io.github.ParkSangGwon:tedimagepicker:1.2.7'
 
-
     implementation project(':data')
     implementation project(':domain')
 }

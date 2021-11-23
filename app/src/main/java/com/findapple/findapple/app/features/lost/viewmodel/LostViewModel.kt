@@ -24,9 +24,13 @@ class LostViewModel(private val getLostListUseCase: GetLostListUseCase) : BaseVi
     private val _startPostLost = SingleLiveEvent<Unit>()
     val startPostLost: LiveData<Unit> get() = _startPostLost
 
+    val page = MutableLiveData<Int>()
+
     override fun apply(event: Lifecycle.Event) {
         when (event) {
             Lifecycle.Event.ON_CREATE -> {
+                lostList.value = null
+                page.value = 1
                 getLostList()
             }
         }
@@ -34,7 +38,7 @@ class LostViewModel(private val getLostListUseCase: GetLostListUseCase) : BaseVi
 
     private fun getLostList() {
         getLostListUseCase.execute(
-            Unit, object : DisposableSingleObserver<Result<List<Post>>>() {
+            page.value ?: 0, object : DisposableSingleObserver<Result<List<Post>>>() {
                 override fun onSuccess(t: Result<List<Post>>) {
                     if (t is Result.Success) {
                         lostList.value =
