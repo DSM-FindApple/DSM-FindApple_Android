@@ -3,6 +3,7 @@ package com.findapple.findapple.app.bindingadapter
 import android.graphics.PorterDuff
 import android.webkit.WebView
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -53,4 +54,9 @@ fun ImageView.loadImage(resource: String?) {
         .placeholder(progressDrawable)
         .error(R.drawable.ic_fineapple_main)
         .into(this)
+}
+
+@BindingAdapter("intText")
+fun TextView.toIntText(int: Int) {
+    text = int.toString()
 }

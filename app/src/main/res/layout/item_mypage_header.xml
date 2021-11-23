@@ -149,6 +149,7 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:visibility="@{vm.userProfile==null?View.GONE:View.VISIBLE}"
+                app:intText="@{vm.userDetail.findAppleLevel}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
