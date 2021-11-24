@@ -1,6 +1,6 @@
 package com.findapple.findapple.app.di.module.main.mypage
 
-import com.findapple.findapple.data.features.mypage.UserApi
+import com.findapple.findapple.data.features.mypage.remote.UserApi
 import com.findapple.findapple.data.features.mypage.datasource.UserDataSource
 import com.findapple.findapple.data.features.mypage.datasource.UserDataSourceImpl
 import com.findapple.findapple.data.features.mypage.repository.UserRepositoryImpl

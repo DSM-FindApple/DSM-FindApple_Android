@@ -1,7 +1,7 @@
 package com.findapple.findapple.app.di.module
 
 import com.findapple.findapple.data.features.auth.remote.AuthApi
-import com.findapple.findapple.data.features.mypage.UserApi
+import com.findapple.findapple.data.features.mypage.remote.UserApi
 import com.findapple.findapple.data.features.post.remote.PostApi
 import dagger.Module
 import dagger.Provides

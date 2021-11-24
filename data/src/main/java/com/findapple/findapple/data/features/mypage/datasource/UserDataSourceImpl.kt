@@ -1,7 +1,7 @@
 package com.findapple.findapple.data.features.mypage.datasource
 
 import com.findapple.findapple.data.features.auth.remote.AuthApi
-import com.findapple.findapple.data.features.mypage.UserApi
+import com.findapple.findapple.data.features.mypage.remote.UserApi
 import com.findapple.findapple.data.features.mypage.dto.response.UserResponse
 import com.findapple.findapple.data.local.database.dao.UserDao
 import com.findapple.findapple.data.local.database.entity.toEntity
