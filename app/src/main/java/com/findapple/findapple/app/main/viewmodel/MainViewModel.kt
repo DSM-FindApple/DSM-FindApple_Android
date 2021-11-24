@@ -34,7 +34,9 @@ class MainViewModel(private val checkLoginUseCase: CheckLoginUseCase, private va
             Unit, object : DisposableSingleObserver<Boolean>() {
                 override fun onSuccess(t: Boolean) {
                     _hasLogin.value = t
-                    refreshToken()
+                    if(t) {
+                        refreshToken()
+                    }
                 }
 
                 override fun onError(e: Throwable) {
