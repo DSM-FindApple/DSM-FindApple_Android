@@ -13,6 +13,7 @@ import com.findapple.findapple.domain.features.mypage.service.UserServiceImpl
 import com.findapple.findapple.domain.features.mypage.usecase.GetUserUseCase
 import com.findapple.findapple.domain.features.mypage.usecase.GetUserDetailUseCase
 import com.findapple.findapple.app.di.scope.MainFragmentScope
+import com.findapple.findapple.data.features.auth.remote.AuthApi
 import dagger.Module
 import dagger.Provides
 import io.reactivex.disposables.CompositeDisposable
@@ -49,5 +50,9 @@ class MyPageStaticModule {
 
     @MainFragmentScope
     @Provides
-    fun provideUserDataSource(api: UserApi, userDao: UserDao, localStorage: LocalStorage): UserDataSource = UserDataSourceImpl(api, userDao, localStorage)
+    fun provideUserDataSource(
+        api: UserApi,
+        authApi: AuthApi,
+        userDao: UserDao,
+        localStorage: LocalStorage): UserDataSource = UserDataSourceImpl(api, authApi, userDao, localStorage)
 }

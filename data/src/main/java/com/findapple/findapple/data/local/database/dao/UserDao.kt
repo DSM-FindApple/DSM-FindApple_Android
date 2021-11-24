@@ -15,4 +15,7 @@ interface UserDao {
 
     @Query("SELECT * FROM UserEntity WHERE id = :id")
     fun getUserData(id: Long): Single<UserEntity>
+
+    @Query("DELETE FROM UserEntity")
+    fun deleteUserData(): Single<Unit>
 }

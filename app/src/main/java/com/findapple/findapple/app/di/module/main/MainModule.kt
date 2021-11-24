@@ -1,6 +1,5 @@
 package com.findapple.findapple.app.di.module.main
 
-import com.findapple.findapple.app.di.module.MainStaticModule
 import com.findapple.findapple.app.di.module.main.chatting.ChattingModule
 import com.findapple.findapple.app.di.module.main.mypage.MyPageModule
 import com.findapple.findapple.app.di.module.main.mypage.MyPageStaticModule

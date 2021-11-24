@@ -13,4 +13,7 @@ class UserServiceImpl(
 ) : UserService {
     override fun getUserDetail(): Single<Result<UserDetail>> =
         repository.getUserDetail().toResult(errorHandler)
+
+    override fun logout(): Single<Result<Unit>> =
+        repository.logout().toResult(errorHandler)
 }

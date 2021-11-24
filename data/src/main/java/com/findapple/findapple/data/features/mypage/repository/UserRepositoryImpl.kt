@@ -14,4 +14,6 @@ class UserRepositoryImpl(private val userDataSource: UserDataSource) : UserRepos
     override fun getUserDetail(): Single<UserDetail> =
         userDataSource.getUserDetail().map { it.toEntity() }
 
+    override fun logout(): Single<Unit> =
+        userDataSource.logout()
 }

@@ -11,4 +11,7 @@ interface AuthApi {
 
     @PUT("auth")
     fun refreshToken(@Header("X-Refresh-Token") refreshToken: String): Single<LoginResponse>
+
+    @DELETE("auth/logout")
+    fun logout(@Header("X-Device-Token") deviceToken: String): Single<Unit>
 }

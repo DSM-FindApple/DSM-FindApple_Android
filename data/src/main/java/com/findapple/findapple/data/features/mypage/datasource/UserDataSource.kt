@@ -8,4 +8,6 @@ interface UserDataSource {
     fun getUserInfo(): Single<User>
 
     fun getUserDetail(): Single<UserResponse>
+
+    fun logout(): Single<Unit>
 }

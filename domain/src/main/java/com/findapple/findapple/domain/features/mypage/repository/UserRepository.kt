@@ -9,4 +9,6 @@ interface UserRepository {
     fun getUserInfo(): Single<User>
 
     fun getUserDetail(): Single<UserDetail>
+
+    fun logout(): Single<Unit>
 }
