@@ -25,6 +25,9 @@ class MyPageFragment : BaseFragment<FragmentMypageBinding>(R.layout.fragment_myp
                     "findapple_level_detail"
                 )
             })
+            startLogout.observe(viewLifecycleOwner, {
+                
+            })
         }
     }
 

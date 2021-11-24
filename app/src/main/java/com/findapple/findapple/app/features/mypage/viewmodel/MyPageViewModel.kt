@@ -38,6 +38,9 @@ class MyPageViewModel(
     private val _showFindAppleLevelDetail = SingleLiveEvent<Unit>()
     val showFindAppleLevelDetail: LiveData<Unit> get() = _showFindAppleLevelDetail
 
+    private val _startLogout = SingleLiveEvent<Unit>()
+    val startLogout: LiveData<Unit> get() = _startLogout
+
     override fun apply(event: Lifecycle.Event) {
         when (event) {
             Lifecycle.Event.ON_CREATE -> {
@@ -109,6 +112,10 @@ class MyPageViewModel(
             },
             AndroidSchedulers.mainThread()
         )
+    }
+
+    fun logout() {
+        _startLogout.call()
     }
 
     fun showFindAppleLevelDetail() {
