@@ -34,7 +34,7 @@
                     android:id="@+id/find_wv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:setWebView="@{`http://211.38.86.92:4046/find`}" />
+                    app:setWebView="@{`https://find-apple.org/find`}" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
