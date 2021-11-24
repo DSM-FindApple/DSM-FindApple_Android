@@ -14,6 +14,7 @@ import com.findapple.findapple.BR
 import com.findapple.findapple.domain.base.Result
 import com.findapple.findapple.app.base.SingleLiveEvent
 import com.findapple.findapple.app.bindingadapter.RecyclerViewItem
+import com.findapple.findapple.app.features.post.viewModel.PostItemViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
 
@@ -90,7 +91,7 @@ class MyPageViewModel(
                                 add(
                                     RecyclerViewItem(
                                         R.layout.item_post,
-                                        data = PostItemViewModel(post),
+                                        data = PostItemViewModel(post).apply { isMyPost = true },
                                         variableId = BR.vm
                                     )
                                 )
@@ -114,10 +115,4 @@ class MyPageViewModel(
         _showFindAppleLevelDetail.call()
     }
 
-    inner class PostItemViewModel(val post: Post) {
-        val isMyPost = true
-        fun startEdit() {
-
-        }
-    }
 }
