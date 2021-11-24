@@ -1,5 +1,6 @@
 package com.findapple.findapple.data.features.post.datasource
 
+import com.findapple.findapple.data.features.post.dto.request.GetPostRequest
 import com.findapple.findapple.data.features.post.dto.request.GetRelatedPostRequest
 import com.findapple.findapple.data.features.post.dto.response.FindListResponse
 import com.findapple.findapple.data.features.post.dto.response.LostListResponse
@@ -9,11 +10,23 @@ import com.findapple.findapple.domain.features.post.parameter.PostDataParameter
 import io.reactivex.Single
 
 class PostDataSourceImpl(private val postApi: PostApi) : PostDataSource {
-    override fun getLostList(page: Int): Single<List<LostListResponse>> =
-        postApi.getLostList(page)
+    override fun getLostList(parameter: GetPostRequest): Single<List<LostListResponse>> =
+        postApi.getLostList(
+            pageNum = parameter.pageNum,
+            endLatitude = parameter.location.latitude.plus(0.1),
+            startLatitude = parameter.location.latitude.minus(0.1),
+            endLongitude = parameter.location.longitude.plus(0.1),
+            startLongitude = parameter.location.longitude.minus(0.1)
+        )
 
-    override fun getFindList(page: Int): Single<List<FindListResponse>> =
-        postApi.getFindList(page)
+    override fun getFindList(parameter: GetPostRequest): Single<List<FindListResponse>> =
+        postApi.getFindList(
+            pageNum = parameter.pageNum,
+            endLatitude = parameter.location.latitude.plus(0.1),
+            startLatitude = parameter.location.latitude.minus(0.1),
+            endLongitude = parameter.location.longitude.plus(0.1),
+            startLongitude = parameter.location.longitude.minus(0.1)
+        )
 
     override fun postFind(request: PostDataParameter): Single<Unit> =
         postApi.postFind(

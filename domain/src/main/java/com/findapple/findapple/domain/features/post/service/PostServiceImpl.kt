@@ -4,6 +4,7 @@ import com.findapple.findapple.domain.base.Result
 import com.findapple.findapple.domain.errorhandler.ErrorHandler
 import com.findapple.findapple.domain.features.post.parameter.PostDataParameter
 import com.findapple.findapple.domain.features.post.entity.Post
+import com.findapple.findapple.domain.features.post.parameter.GetPostParameter
 import com.findapple.findapple.domain.features.post.repository.PostRepository
 import com.findapple.findapple.domain.toResult
 import io.reactivex.Single
@@ -12,7 +13,7 @@ class PostServiceImpl(
     private val postRepository: PostRepository,
     private val errorHandler: ErrorHandler
 ) : PostService {
-    override fun getPostList(page: Int, isLostList: Boolean): Single<Result<List<Post>>> =
+    override fun getPostList(page: GetPostParameter, isLostList: Boolean): Single<Result<List<Post>>> =
         postRepository.getPostList(page, isLostList).toResult(errorHandler)
 
     override fun postFeed(request: PostDataParameter, isLost: Boolean): Single<Result<Unit>> =
