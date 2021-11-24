@@ -11,4 +11,6 @@ class MainRepositoryImpl(private val dataSource: MainDataSource) : MainRepositor
 
     override fun refreshToken(): Single<Token> = dataSource.refreshToken().map { it.toEntity() }
 
+    override fun getUserId(): Long =
+        dataSource.getUserId()
 }

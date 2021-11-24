@@ -19,4 +19,7 @@ class MainDataSourceImpl(private val localStorage: LocalStorage, private val aut
             it
         }
 
+    override fun getUserId(): Long =
+        localStorage.getLong("user_id")
+
 }

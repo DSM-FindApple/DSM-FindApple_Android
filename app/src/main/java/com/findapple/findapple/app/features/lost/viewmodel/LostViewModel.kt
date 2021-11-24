@@ -3,18 +3,19 @@ package com.findapple.findapple.app.features.lost.viewmodel
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.findapple.findapple.R
 import com.findapple.findapple.domain.base.Result
 import com.findapple.findapple.domain.features.post.entity.Post
 import com.findapple.findapple.domain.features.post.usecase.GetLostListUseCase
-import com.findapple.findapple.BR
 import com.findapple.findapple.app.base.BaseViewModel
 import com.findapple.findapple.app.base.SingleLiveEvent
 import com.findapple.findapple.app.bindingadapter.RecyclerViewItem
+import com.findapple.findapple.app.features.post.viewModel.PostItemViewModel
+import com.findapple.findapple.app.features.post.viewModel.toRecyclerItem
+import com.findapple.findapple.domain.main.repository.MainRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
 
-class LostViewModel(private val getLostListUseCase: GetLostListUseCase) : BaseViewModel() {
+class LostViewModel(private val getLostListUseCase: GetLostListUseCase, private val mainRepository: MainRepository) : BaseViewModel() {
 
     val lostList = MutableLiveData<List<RecyclerViewItem>>()
 
@@ -26,23 +27,29 @@ class LostViewModel(private val getLostListUseCase: GetLostListUseCase) : BaseVi
 
     val page = MutableLiveData<Int>()
 
+    var userId: Long = -1
+
     override fun apply(event: Lifecycle.Event) {
         when (event) {
             Lifecycle.Event.ON_CREATE -> {
                 lostList.value = null
                 page.value = 1
+                getUserId()
                 getLostList()
             }
         }
     }
 
+    private fun getUserId() {
+        userId = mainRepository.getUserId()
+    }
     private fun getLostList() {
         getLostListUseCase.execute(
             page.value ?: 0, object : DisposableSingleObserver<Result<List<Post>>>() {
                 override fun onSuccess(t: Result<List<Post>>) {
                     if (t is Result.Success) {
                         lostList.value =
-                            t.value.map { PostItemViewModel(it).toRecyclerItem() }
+                            t.value.map { PostItemViewModel(it).toRecyclerItem(it.user.id == userId) }
                     }
                 }
 
@@ -54,19 +61,7 @@ class LostViewModel(private val getLostListUseCase: GetLostListUseCase) : BaseVi
         )
     }
 
-    private fun PostItemViewModel.toRecyclerItem(): RecyclerViewItem =
-        RecyclerViewItem(
-            data = this,
-            variableId = BR.vm,
-            itemLayoutId = R.layout.item_post
-        )
-
     fun startPost() {
         _startPostLost.call()
     }
-
-    inner class PostItemViewModel(val post: Post) {
-        var isMyPost = false
-    }
-
 }

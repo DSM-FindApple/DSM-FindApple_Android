@@ -7,4 +7,6 @@ interface MainDataSource {
     fun checkLogin(): Single<Boolean>
 
     fun refreshToken(): Single<LoginResponse>
+
+    fun getUserId(): Long
 }

@@ -11,7 +11,7 @@ class GetFindListUseCase(
     private val postService: PostService,
     compositeDisposable: CompositeDisposable
 ) :
-    UseCase<Unit, Result<List<Post>>>(compositeDisposable) {
-    override fun create(data: Unit): Single<Result<List<Post>>> =
-        postService.getPostList(false)
+    UseCase<Int, Result<List<Post>>>(compositeDisposable) {
+    override fun create(data: Int): Single<Result<List<Post>>> =
+        postService.getPostList(data,false)
 }

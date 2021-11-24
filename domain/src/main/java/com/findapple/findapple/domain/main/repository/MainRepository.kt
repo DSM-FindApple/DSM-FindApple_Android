@@ -7,4 +7,6 @@ interface MainRepository {
     fun checkLogin(): Single<Boolean>
 
     fun refreshToken(): Single<Token>
+
+    fun getUserId(): Long
 }
