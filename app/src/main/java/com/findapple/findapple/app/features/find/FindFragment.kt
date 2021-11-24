@@ -50,6 +50,7 @@ class FindFragment : BaseFragment<FragmentFindBinding>(R.layout.fragment_find) {
 
     override fun observeEvent() {
         mainViewModel.location.observe(viewLifecycleOwner, {
+            viewModel.location = it
             setLocationText(it)
         })
         viewModel.startPostFind.observe(viewLifecycleOwner, {
@@ -58,7 +59,7 @@ class FindFragment : BaseFragment<FragmentFindBinding>(R.layout.fragment_find) {
     }
 
     private fun setLocationText(location: Location) {
-        val address = geocoder.getFromLocation(location.latitude!!, location.longitude!!, 1)
+        val address = geocoder.getFromLocation(location.latitude, location.longitude, 1)
         if (!CollectionUtils.isEmpty(address)) {
             val fetchAddress = address[0]
             if (fetchAddress.maxAddressLineIndex > -1) {

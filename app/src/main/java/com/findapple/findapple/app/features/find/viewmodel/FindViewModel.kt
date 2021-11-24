@@ -9,12 +9,17 @@ import com.findapple.findapple.app.bindingadapter.RecyclerViewItem
 import com.findapple.findapple.app.features.post.viewModel.PostItemViewModel
 import com.findapple.findapple.app.features.post.viewModel.toRecyclerItem
 import com.findapple.findapple.domain.base.Result
+import com.findapple.findapple.domain.entity.Location
 import com.findapple.findapple.domain.features.post.entity.Post
+import com.findapple.findapple.domain.features.post.parameter.GetPostParameter
 import com.findapple.findapple.domain.main.repository.MainRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
 
-class FindViewModel(private val getFindListUseCase: GetFindListUseCase, private val mainRepository: MainRepository) : BaseViewModel() {
+class FindViewModel(
+    private val getFindListUseCase: GetFindListUseCase,
+    private val mainRepository: MainRepository
+) : BaseViewModel() {
 
     val findList = MutableLiveData<List<RecyclerViewItem>>()
 
@@ -26,9 +31,11 @@ class FindViewModel(private val getFindListUseCase: GetFindListUseCase, private 
     var userId: Long = -1
 
     val page = MutableLiveData<Int>()
+
+    var location = Location(127.3635946, 36.3914388)
     override fun apply(event: Lifecycle.Event) {
-        when(event){
-            Lifecycle.Event.ON_CREATE->{
+        when (event) {
+            Lifecycle.Event.ON_CREATE -> {
                 findList.value = null
                 page.value = 0
                 getUserId()
@@ -43,7 +50,7 @@ class FindViewModel(private val getFindListUseCase: GetFindListUseCase, private 
 
     private fun getFindList() {
         getFindListUseCase.execute(
-            page.value?:0,
+            GetPostParameter(page.value ?: 0, location),
             object : DisposableSingleObserver<Result<List<Post>>>() {
                 override fun onSuccess(t: Result<List<Post>>) {
                     if (t is Result.Success) {
@@ -60,7 +67,7 @@ class FindViewModel(private val getFindListUseCase: GetFindListUseCase, private 
         )
     }
 
-    fun startPostFind(){
+    fun startPostFind() {
         startPostFind.call()
     }
 }

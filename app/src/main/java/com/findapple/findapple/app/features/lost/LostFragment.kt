@@ -54,6 +54,7 @@ class LostFragment : BaseFragment<FragmentLostBinding>(R.layout.fragment_lost) {
 
     override fun observeEvent() {
         mainViewModel.location.observe(viewLifecycleOwner, {
+            viewModel.location = it
             setLocationText(it)
         })
         viewModel.startPostLost.observe(viewLifecycleOwner, {

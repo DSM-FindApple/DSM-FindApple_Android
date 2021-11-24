@@ -11,6 +11,8 @@ import com.findapple.findapple.app.base.SingleLiveEvent
 import com.findapple.findapple.app.bindingadapter.RecyclerViewItem
 import com.findapple.findapple.app.features.post.viewModel.PostItemViewModel
 import com.findapple.findapple.app.features.post.viewModel.toRecyclerItem
+import com.findapple.findapple.domain.entity.Location
+import com.findapple.findapple.domain.features.post.parameter.GetPostParameter
 import com.findapple.findapple.domain.main.repository.MainRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
@@ -29,6 +31,8 @@ class LostViewModel(private val getLostListUseCase: GetLostListUseCase, private 
 
     var userId: Long = -1
 
+    var location = Location(127.3635946, 36.3914388)
+
     override fun apply(event: Lifecycle.Event) {
         when (event) {
             Lifecycle.Event.ON_CREATE -> {
@@ -43,9 +47,10 @@ class LostViewModel(private val getLostListUseCase: GetLostListUseCase, private 
     private fun getUserId() {
         userId = mainRepository.getUserId()
     }
+
     private fun getLostList() {
         getLostListUseCase.execute(
-            page.value ?: 0, object : DisposableSingleObserver<Result<List<Post>>>() {
+            GetPostParameter(page.value?:0, location), object : DisposableSingleObserver<Result<List<Post>>>() {
                 override fun onSuccess(t: Result<List<Post>>) {
                     if (t is Result.Success) {
                         lostList.value =
