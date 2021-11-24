@@ -97,7 +97,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:visibility="@{vm.userProfile==null?View.GONE:View.VISIBLE}"
-                android:onClick="@{()->vm.logout()}"
+                android:onClick="@{()->vm.logoutClicked()}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_baseline_more_vert_24" />

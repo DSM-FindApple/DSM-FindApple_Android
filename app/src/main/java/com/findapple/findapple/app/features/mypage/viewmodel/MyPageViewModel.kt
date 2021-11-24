@@ -15,12 +15,16 @@ import com.findapple.findapple.domain.base.Result
 import com.findapple.findapple.app.base.SingleLiveEvent
 import com.findapple.findapple.app.bindingadapter.RecyclerViewItem
 import com.findapple.findapple.app.features.post.viewModel.PostItemViewModel
+import com.findapple.findapple.domain.features.mypage.service.UserService
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 
 class MyPageViewModel(
     private val getUserUseCase: GetUserUseCase,
-    private val getUserDetailUseCase: GetUserDetailUseCase
+    private val getUserDetailUseCase: GetUserDetailUseCase,
+    private val userService: UserService,
+    private val compositeDisposable: CompositeDisposable
 ) : BaseViewModel() {
 
     private val _userProfile = MutableLiveData<User>()
@@ -40,6 +44,9 @@ class MyPageViewModel(
 
     private val _startLogout = SingleLiveEvent<Unit>()
     val startLogout: LiveData<Unit> get() = _startLogout
+
+    private val _message = SingleLiveEvent<String>()
+    val message: LiveData<String> get() = _message
 
     override fun apply(event: Lifecycle.Event) {
         when (event) {
@@ -114,9 +121,28 @@ class MyPageViewModel(
         )
     }
 
-    fun logout() {
+    fun logoutClicked() {
         _startLogout.call()
     }
+
+    fun logout() {
+        val logoutObserver = userService.logout()
+            .subscribe { _ ->
+                _message.value = "로그아웃되었습니다"
+                resetUserData()
+            }
+        compositeDisposable.add(logoutObserver)
+    }
+
+    private fun resetUserData() {
+        _userProfile.value = null
+        _userDetail.value = null
+        _userPost.value = null
+        _myPageItems.value = null
+        getUserInfo()
+    }
+
+
 
     fun showFindAppleLevelDetail() {
         _showFindAppleLevelDetail.call()

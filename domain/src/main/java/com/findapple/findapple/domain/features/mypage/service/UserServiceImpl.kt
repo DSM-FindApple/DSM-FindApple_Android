@@ -6,6 +6,8 @@ import com.findapple.findapple.domain.features.mypage.entity.UserDetail
 import com.findapple.findapple.domain.features.mypage.repository.UserRepository
 import com.findapple.findapple.domain.toResult
 import io.reactivex.Single
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 class UserServiceImpl(
     private val repository: UserRepository,
@@ -16,4 +18,6 @@ class UserServiceImpl(
 
     override fun logout(): Single<Result<Unit>> =
         repository.logout().toResult(errorHandler)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
 }

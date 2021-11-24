@@ -28,6 +28,9 @@ class MyPageFragment : BaseFragment<FragmentMypageBinding>(R.layout.fragment_myp
             startLogout.observe(viewLifecycleOwner, {
                 
             })
+            message.observe(viewLifecycleOwner, {
+                snackBarComment(it)
+            })
         }
     }
 
