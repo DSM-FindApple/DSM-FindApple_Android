@@ -9,10 +9,22 @@ import retrofit2.http.*
 
 interface PostApi {
     @GET("/lost/{pageNum}")
-    fun getLostList(@Path("pageNum") pageNum: Int): Single<List<LostListResponse>>
+    fun getLostList(
+        @Path("pageNum") pageNum: Int,
+        @Query("endLatitude") endLatitude: Double,
+        @Query("endLongitude") endLongitude: Double,
+        @Query("startLatitude") startLatitude: Double,
+        @Query("startLongitude") startLongitude: Double
+    ): Single<List<LostListResponse>>
 
     @GET("/find/{pageNum}")
-    fun getFindList(@Path("pageNum") pageNum: Int): Single<List<FindListResponse>>
+    fun getFindList(
+        @Path("pageNum") pageNum: Int,
+        @Query("endLatitude") endLatitude: Double,
+        @Query("endLongitude") endLongitude: Double,
+        @Query("startLatitude") startLatitude: Double,
+        @Query("startLongitude") startLongitude: Double
+    ): Single<List<FindListResponse>>
 
     @Multipart
     @POST("/find")
