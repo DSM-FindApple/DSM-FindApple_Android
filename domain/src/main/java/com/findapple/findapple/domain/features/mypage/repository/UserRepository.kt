@@ -11,4 +11,6 @@ interface UserRepository {
     fun getUserDetail(): Single<UserDetail>
 
     fun logout(): Single<Unit>
+
+    fun resetToken()
 }

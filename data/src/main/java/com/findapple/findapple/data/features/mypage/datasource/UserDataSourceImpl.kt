@@ -25,9 +25,11 @@ class UserDataSourceImpl(
 
     override fun logout(): Single<Unit> {
         val deviceToken = localStorage.getString("device_token")
-        val accessToken = localStorage.getToken(true)
         userDao.deleteUserData()
+        return authApi.logout(deviceToken)
+    }
+
+    override fun resetToken() {
         localStorage.clearToken()
-        return authApi.logout(accessToken, deviceToken)
     }
 }

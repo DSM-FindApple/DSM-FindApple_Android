@@ -4,6 +4,7 @@ import com.findapple.findapple.app.di.scope.MainFragmentScope
 import com.findapple.findapple.domain.features.mypage.usecase.GetUserUseCase
 import com.findapple.findapple.domain.features.mypage.usecase.GetUserDetailUseCase
 import com.findapple.findapple.app.features.mypage.viewmodel.MyPageViewModelFactory
+import com.findapple.findapple.domain.features.mypage.repository.UserRepository
 import com.findapple.findapple.domain.features.mypage.service.UserService
 import dagger.Module
 import dagger.Provides
@@ -17,6 +18,7 @@ class MyPageModule {
         userUseCase: GetUserUseCase,
         userPostUseCase: GetUserDetailUseCase,
         userService: UserService,
+        userRepository: UserRepository,
         compositeDisposable: CompositeDisposable
-    ): MyPageViewModelFactory = MyPageViewModelFactory(userUseCase, userPostUseCase, userService, compositeDisposable)
+    ): MyPageViewModelFactory = MyPageViewModelFactory(userUseCase, userPostUseCase, userService,userRepository, compositeDisposable)
 }

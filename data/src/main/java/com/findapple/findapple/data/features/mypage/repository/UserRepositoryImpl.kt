@@ -16,4 +16,7 @@ class UserRepositoryImpl(private val userDataSource: UserDataSource) : UserRepos
 
     override fun logout(): Single<Unit> =
         userDataSource.logout()
+
+    override fun resetToken() =
+        userDataSource.resetToken()
 }

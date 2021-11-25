@@ -15,6 +15,7 @@ import com.findapple.findapple.domain.base.Result
 import com.findapple.findapple.app.base.SingleLiveEvent
 import com.findapple.findapple.app.bindingadapter.RecyclerViewItem
 import com.findapple.findapple.app.features.post.viewModel.PostItemViewModel
+import com.findapple.findapple.domain.features.mypage.repository.UserRepository
 import com.findapple.findapple.domain.features.mypage.service.UserService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -24,6 +25,7 @@ class MyPageViewModel(
     private val getUserUseCase: GetUserUseCase,
     private val getUserDetailUseCase: GetUserDetailUseCase,
     private val userService: UserService,
+    private val userRepository: UserRepository,
     private val compositeDisposable: CompositeDisposable
 ) : BaseViewModel() {
 
@@ -121,6 +123,7 @@ class MyPageViewModel(
     fun logout() {
         val logoutObserver = userService.logout()
             .subscribe { _ ->
+                userRepository.resetToken()
                 _message.value = "로그아웃되었습니다"
                 resetUserData()
             }

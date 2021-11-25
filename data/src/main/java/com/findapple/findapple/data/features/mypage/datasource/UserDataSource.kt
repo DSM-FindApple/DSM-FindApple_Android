@@ -10,4 +10,6 @@ interface UserDataSource {
     fun getUserDetail(): Single<UserResponse>
 
     fun logout(): Single<Unit>
+
+    fun resetToken()
 }
