@@ -14,7 +14,7 @@ data class UserResponse(
     val myLosts: List<LostPostResponse>,
     val myFinds: List<FindPostResponse>,
     val nickName: String,
-    val profileUrl: String
+    val profileUrl: String?
 )
 
 fun UserResponse.toEntity() =
