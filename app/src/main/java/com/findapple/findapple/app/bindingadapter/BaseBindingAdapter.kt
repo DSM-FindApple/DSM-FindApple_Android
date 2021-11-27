@@ -69,6 +69,22 @@ fun ImageView.loadImage(resource: String?) {
         .into(this)
 }
 
+@BindingAdapter("serverImageUrl")
+fun ImageView.loadServerImage(resource: String?) {
+    val progressDrawable = CircularProgressDrawable(context).apply {
+        strokeWidth = 10f
+        centerRadius = 40f
+        setColorFilter(ContextCompat.getColor(context, R.color.blue_500), PorterDuff.Mode.SRC_IN)
+        start()
+    }
+
+    Glide.with(context)
+        .load("http://3.35.221.104:8080/image/$resource")
+        .placeholder(progressDrawable)
+        .error(R.drawable.ic_fineapple_main)
+        .into(this)
+}
+
 @BindingAdapter("intText")
 fun TextView.toIntText(int: Int) {
     text = int.toString()
