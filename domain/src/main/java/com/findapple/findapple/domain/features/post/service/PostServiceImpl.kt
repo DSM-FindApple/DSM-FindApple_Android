@@ -21,4 +21,7 @@ class PostServiceImpl(
 
     override fun getRelatedLostPost(title: String): Single<Result<List<Post>>> =
         postRepository.getRelatedLostPost(title).toResult(errorHandler)
+
+    override fun getRelatedFindPost(title: String): Single<Result<List<Post>>> =
+        postRepository.getRelatedFindPost(title).toResult(errorHandler)
 }

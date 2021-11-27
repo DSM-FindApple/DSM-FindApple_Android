@@ -40,7 +40,7 @@ class PostDataSourceImpl(private val postApi: PostApi) : PostDataSource {
         )
 
     override fun postLost(request: PostDataParameter): Single<Unit> =
-         postApi.postLost(
+        postApi.postLost(
             title = request.title,
             detail = request.detail,
             category = request.category,
@@ -53,4 +53,7 @@ class PostDataSourceImpl(private val postApi: PostApi) : PostDataSource {
 
     override fun getRelatedLostPost(title: String): Single<List<LostListResponse>> =
         postApi.getRelatedLostPosts(0, GetRelatedPostRequest(title))
+
+    override fun getRelatedFindPost(title: String): Single<List<FindListResponse>> =
+        postApi.getRelatedFindPosts(0, GetRelatedPostRequest(title))
 }

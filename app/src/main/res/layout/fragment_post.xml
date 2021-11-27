@@ -64,7 +64,7 @@
                 android:orientation="vertical">
 
                 <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/post_et"
+                    android:id="@+id/post_title_et"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="5dp"

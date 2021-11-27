@@ -12,9 +12,11 @@ import com.findapple.findapple.app.features.post.viewModel.PostViewModel
 import com.findapple.findapple.app.features.post.viewModel.PostViewModelFactory
 import com.findapple.findapple.app.main.viewmodel.MainViewModel
 import com.findapple.findapple.app.toRealPath
+import com.jakewharton.rxbinding4.widget.textChanges
 import gun0912.tedimagepicker.builder.TedRxImagePicker
 import io.reactivex.disposables.CompositeDisposable
 import java.io.File
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class PostFragment : BaseFragment<FragmentPostBinding>(R.layout.fragment_post) {
@@ -54,6 +56,15 @@ class PostFragment : BaseFragment<FragmentPostBinding>(R.layout.fragment_post) {
             }
             isLost = (arguments?.get("isLost") ?: true) as Boolean?
 
+            postTitleEt.textChanges().debounce(500, TimeUnit.MILLISECONDS).subscribe {
+                if(it.isNotEmpty()) {
+                    if(isLost) {
+                        viewModel.getLostRelation()
+                    } else {
+                        viewModel.getFindRelation()
+                    }
+                }
+            }
         }
     }
 
@@ -89,7 +100,6 @@ class PostFragment : BaseFragment<FragmentPostBinding>(R.layout.fragment_post) {
                     }, Throwable::printStackTrace)
                 compositeDisposable.add(imagePickerObserver)
             })
-
         }
     }
 

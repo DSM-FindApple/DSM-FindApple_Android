@@ -16,4 +16,6 @@ interface PostDataSource {
     fun postLost(request: PostDataParameter): Single<Unit>
 
     fun getRelatedLostPost(title: String): Single<List<LostListResponse>>
+
+    fun getRelatedFindPost(title: String): Single<List<FindListResponse>>
 }

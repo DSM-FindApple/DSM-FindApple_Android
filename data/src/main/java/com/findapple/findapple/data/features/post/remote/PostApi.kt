@@ -56,4 +56,10 @@ interface PostApi {
         @Body body: GetRelatedPostRequest
     ): Single<List<LostListResponse>>
 
+    @GET("/find/{pageNum}")
+    fun getRelatedFindPosts(
+        @Path("pageNum") pageNum: Int,
+        @Body body: GetRelatedPostRequest
+    ): Single<List<FindListResponse>>
+
 }

@@ -21,7 +21,8 @@ import java.io.File
 class PostViewModel(
     private val postFindUseCase: PostFindUseCase,
     private val postLostUseCase: PostLostUseCase,
-    private val gerRelatedLostPostUseCase: GetRelatedLostPostUseCase
+    private val getRelatedLostPostUseCase: GetRelatedLostPostUseCase,
+    private val getRelatedFindPostUseCase: GetRelatedLostPostUseCase
 ) : BaseViewModel() {
 
     val clickedCategoryIndex = MutableLiveData<Int>()
@@ -184,6 +185,27 @@ class PostViewModel(
             },
             AndroidSchedulers.mainThread()
         )
+    }
+
+    fun getLostRelation(title: String) {
+        getRelatedLostPostUseCase.execute(
+            title,
+            object : DisposableSingleObserver<Result<List<Post>>>() {
+                override fun onSuccess(t: Result<List<Post>>) {
+
+                }
+
+                override fun onError(e: Throwable) {
+
+                }
+
+            },
+            AndroidSchedulers.mainThread()
+        )
+    }
+
+    fun getFindRelation() {
+
     }
 
     private fun doOnError(reason: Result.Failure<Unit>) {

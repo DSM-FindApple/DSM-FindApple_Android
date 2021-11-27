@@ -20,4 +20,6 @@ class PostRepositoryImpl(private val dataSource: PostDataSource) : PostRepositor
     override fun getRelatedLostPost(title: String): Single<List<Post>> =
         dataSource.getRelatedLostPost(title).map { it.toEntity() }
 
+    override fun getRelatedFindPost(title: String): Single<List<Post>> =
+        dataSource.getRelatedFindPost(title).map { it.toEntity() }
 }

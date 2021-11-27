@@ -11,4 +11,6 @@ interface PostRepository {
     fun postFeed(request: PostDataParameter, isLost: Boolean): Single<Unit>
 
     fun getRelatedLostPost(title: String): Single<List<Post>>
+
+    fun getRelatedFindPost(title: String): Single<List<Post>>
 }
