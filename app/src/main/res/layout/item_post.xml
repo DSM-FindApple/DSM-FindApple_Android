@@ -97,7 +97,7 @@
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:layout_marginTop="8dp"
-            app:viewPagerItems="@{vm.post.images}"
+            app:viewPagerItems="@{vm.imagesView}"
             app:layout_constraintTop_toBottomOf="@id/post_body_tv" />
 
         <androidx.appcompat.widget.AppCompatImageView

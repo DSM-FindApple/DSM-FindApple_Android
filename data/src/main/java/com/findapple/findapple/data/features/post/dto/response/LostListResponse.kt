@@ -1,6 +1,7 @@
 package com.findapple.findapple.data.features.post.dto.response
 
 import com.findapple.findapple.data.dto.response.TopCommentResponse
+import com.findapple.findapple.data.dto.response.toEntity
 import com.findapple.findapple.domain.entity.Location
 import com.findapple.findapple.domain.entity.User
 import com.findapple.findapple.domain.features.post.entity.Post
@@ -35,5 +36,6 @@ fun LostListResponse.toEntity() =
         writeTime = writeAt,
         category = category,
         location = Location(longitude, latitude),
-        images = lostImages
+        images = lostImages,
+        topComment = topComment.toEntity()
     )
