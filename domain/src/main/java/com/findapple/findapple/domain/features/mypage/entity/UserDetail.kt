@@ -6,5 +6,5 @@ data class UserDetail(
     val lostPostCount: Int,
     val findPostCount: Int,
     val findAppleLevel: Int,
-    val postedList: List<Post>
+    val postedList: List<Post>?
 )

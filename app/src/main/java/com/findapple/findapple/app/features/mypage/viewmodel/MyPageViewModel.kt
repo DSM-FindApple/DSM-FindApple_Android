@@ -95,15 +95,18 @@ class MyPageViewModel(
                     if (t is Result.Success){
                         _userDetail.value = t.value
                         val postList = t.value.postedList
-                        for (post in postList) {
-                            _myPageItems.value = (_myPageItems.value as ArrayList<RecyclerViewItem>).apply {
-                                add(
-                                    RecyclerViewItem(
-                                        R.layout.item_post,
-                                        data = PostItemViewModel(post).apply { isMyPost = true },
-                                        variableId = BR.vm
+                        if (postList != null) {
+                            for (post in postList) {
+                                val addItems: ArrayList<RecyclerViewItem> = if(myPageItems.value != null) myPageItems.value as ArrayList<RecyclerViewItem> else ArrayList()
+                                _myPageItems.value = addItems.apply {
+                                    add(
+                                        RecyclerViewItem(
+                                            R.layout.item_post,
+                                            data = PostItemViewModel(post).apply { isMyPost = true },
+                                            variableId = BR.vm
+                                        )
                                     )
-                                )
+                                }
                             }
                         }
 

@@ -23,5 +23,5 @@ fun User.toDatabaseEntity() =
     UserEntity(
         id = id,
         name = name,
-        profileImageUrl = profileImage
+        profileImageUrl = profileImage ?: ""
     )

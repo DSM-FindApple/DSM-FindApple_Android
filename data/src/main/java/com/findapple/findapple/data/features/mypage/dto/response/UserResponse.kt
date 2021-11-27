@@ -11,10 +11,10 @@ data class UserResponse(
     val lostNum: Int,
     val kakaoId: Int,
     val findapplePoint: Int,
-    val myLosts: List<LostPostResponse>,
-    val myFinds: List<FindPostResponse>,
+    val myLosts: List<LostPostResponse>?,
+    val myFinds: List<FindPostResponse>?,
     val nickName: String,
-    val profileUrl: String?
+    val profileImage: String?
 )
 
 fun UserResponse.toEntity() =
@@ -22,5 +22,5 @@ fun UserResponse.toEntity() =
         lostPostCount = lostNum,
         findPostCount = findNum,
         findAppleLevel = findapplePoint,
-        postedList = myLosts.toEntity()
+        postedList = myLosts?.toEntity()
     )
