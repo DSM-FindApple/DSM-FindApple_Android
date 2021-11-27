@@ -14,7 +14,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
 
 class MainViewModel(private val checkLoginUseCase: CheckLoginUseCase, private val refreshTokenUseCase: RefreshTokenUseCase) : BaseViewModel() {
-    val location = MutableLiveData(Location(127.3635946, 36.3914388))
+    val location = MutableLiveData<Location>()
 
     private val _hasLogin = MutableLiveData<Boolean>()
     val hasLogin: LiveData<Boolean> get() = _hasLogin

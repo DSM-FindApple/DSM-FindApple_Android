@@ -52,8 +52,11 @@ class LostViewModel(private val getLostListUseCase: GetLostListUseCase, private 
             GetPostParameter(page.value?:0, location), object : DisposableSingleObserver<Result<List<Post>>>() {
                 override fun onSuccess(t: Result<List<Post>>) {
                     if (t is Result.Success) {
-                        lostList.value =
-                            t.value.map { PostItemViewModel(it).toRecyclerItem(it.user.id == userId) }
+                        val addItem: ArrayList<RecyclerViewItem> = if(lostList.value != null) lostList.value as ArrayList<RecyclerViewItem> else ArrayList()
+                        lostList.value = addItem.apply {
+                            addAll(t.value.map { PostItemViewModel(it).toRecyclerItem(it.user.id == userId) })
+                        }
+
                     }
                 }
 

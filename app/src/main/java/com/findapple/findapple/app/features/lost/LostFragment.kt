@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
 import com.findapple.findapple.R
 import com.findapple.findapple.databinding.FragmentLostBinding
 import com.findapple.findapple.domain.entity.Location
@@ -34,7 +35,7 @@ class LostFragment : BaseFragment<FragmentLostBinding>(R.layout.fragment_lost) {
         binding.run {
             lostSpl.panelState = SlidingUpPanelLayout.PanelState.COLLAPSED
             var touchStartY = 0
-            lostList.setOnTouchListener { view, motionEvent ->
+            lostList.setOnTouchListener { _, motionEvent ->
                 if (motionEvent.action == MotionEvent.ACTION_DOWN) {
                     touchStartY = motionEvent.y.toInt()
                 }
@@ -45,7 +46,24 @@ class LostFragment : BaseFragment<FragmentLostBinding>(R.layout.fragment_lost) {
                 }
                 true
             }
+            lostRv.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+                    lostSpl.isTouchEnabled = !recyclerView.canScrollVertically(-1)
+                    if(!recyclerView.canScrollVertically(1)) {
+                        readNextPosts()
+                    }
+                }
+            })
         }
+    }
+
+    private fun readNextPosts() {
+        viewModel.run {
+            page.value = viewModel.page.value!! + 1
+            loadLostList()
+        }
+
     }
 
     private fun setLocation(location: Location) {
