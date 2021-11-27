@@ -26,6 +26,20 @@ fun RecyclerView.setList(list: List<RecyclerViewItem>?) {
     }
 }
 
+@BindingAdapter("recyclerItemsHorizontalItems")
+fun RecyclerView.setHorizontalList(list: List<RecyclerViewItem>?) {
+    if(adapter == null) {
+        adapter = RecyclerViewAdapter()
+        layoutManager = LinearLayoutManager(context).apply {
+            orientation = RecyclerView.HORIZONTAL
+        }
+    }
+
+    if (list != null) {
+        (adapter as? RecyclerViewAdapter)?.updateData(list)
+    }
+}
+
 @BindingAdapter("viewPagerItems")
 fun ViewPager2.setList(list: List<RecyclerViewItem>?) {
     if(adapter == null) {

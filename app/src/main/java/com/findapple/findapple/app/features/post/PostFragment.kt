@@ -57,11 +57,11 @@ class PostFragment : BaseFragment<FragmentPostBinding>(R.layout.fragment_post) {
             isLost = (arguments?.get("isLost") ?: true) as Boolean?
 
             postTitleEt.textChanges().debounce(500, TimeUnit.MILLISECONDS).subscribe {
-                if(it.isNotEmpty()) {
-                    if(isLost) {
-                        viewModel.getLostRelation()
+                if (it.isNotEmpty()) {
+                    if (isLost == true) {
+                        viewModel.getLostRelation(it.toString())
                     } else {
-                        viewModel.getFindRelation()
+                        viewModel.getFindRelation(it.toString())
                     }
                 }
             }
