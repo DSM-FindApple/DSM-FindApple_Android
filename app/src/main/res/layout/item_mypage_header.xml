@@ -30,7 +30,6 @@
                 android:layout_height="45dp"
                 android:layout_marginStart="20dp"
                 android:visibility="@{vm.userProfile==null?View.GONE:View.VISIBLE}"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/mypage_header_profile_name_tv"
                 app:imageUrl="@{vm.userProfile.profileImage}"
@@ -46,7 +45,6 @@
                 android:text="@{vm.userProfile.name.length()>0?vm.userProfile.name:`로그인이 필요합니다`}"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/mypage_header_profile_iv"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="김재원" />

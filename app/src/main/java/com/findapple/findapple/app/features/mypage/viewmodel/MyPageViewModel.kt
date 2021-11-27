@@ -35,8 +35,8 @@ class MyPageViewModel(
     private val _userDetail = MutableLiveData<UserDetail>()
     val userDetail: LiveData<UserDetail> get() = _userDetail
 
-    private val _myPageItems = MutableLiveData<List<RecyclerViewItem>>()
-    val myPageItems: LiveData<List<RecyclerViewItem>> get() = _myPageItems
+    private val _myPageItems = MutableLiveData<ArrayList<RecyclerViewItem>>()
+    val myPageItems: LiveData<ArrayList<RecyclerViewItem>> get() = _myPageItems
 
     private val _userPost = MutableLiveData<List<Post>>()
     val userPost: LiveData<List<Post>> get() = _userPost
@@ -97,8 +97,7 @@ class MyPageViewModel(
                         val postList = t.value.postedList
                         if (postList != null) {
                             for (post in postList) {
-                                val addItems: ArrayList<RecyclerViewItem> = if(myPageItems.value != null) myPageItems.value as ArrayList<RecyclerViewItem> else ArrayList()
-                                _myPageItems.value = addItems.apply {
+                                _myPageItems.value = myPageItems.value?.apply {
                                     add(
                                         RecyclerViewItem(
                                             R.layout.item_post,
