@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
 import com.findapple.findapple.R
 import com.findapple.findapple.databinding.FragmentFindBinding
 import com.findapple.findapple.domain.entity.Location
@@ -42,8 +43,24 @@ class FindFragment : BaseFragment<FragmentFindBinding>(R.layout.fragment_find) {
                 }
                 true
             }
+            findRv.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+                    findSpl.isTouchEnabled = !recyclerView.canScrollVertically(-1)
+                    if (!recyclerView.canScrollVertically(1)) {
+                        readNextPosts()
+                    }
+                }
+            })
         }
 
+    }
+
+    private fun readNextPosts() {
+        viewModel.run {
+            page.value = viewModel.page.value!! + 1
+            loadFindList()
+        }
     }
 
     private fun setLocation(location: Location) {
