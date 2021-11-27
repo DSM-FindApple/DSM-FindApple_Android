@@ -39,7 +39,6 @@ class FindViewModel(
                 findList.value = null
                 page.value = 0
                 getUserId()
-                getFindList()
             }
         }
     }
@@ -48,7 +47,7 @@ class FindViewModel(
         userId = mainRepository.getUserId()
     }
 
-    private fun getFindList() {
+    fun loadFindList() {
         getFindListUseCase.execute(
             GetPostParameter(page.value ?: 0, location),
             object : DisposableSingleObserver<Result<List<Post>>>() {

@@ -48,17 +48,24 @@ class LostFragment : BaseFragment<FragmentLostBinding>(R.layout.fragment_lost) {
         }
     }
 
+    private fun setLocation(location: Location) {
+        viewModel.location = location
+        setLocationText(viewModel.location)
+    }
+
     private fun sendToken() {
         binding.lostWv.evaluateJavascript("(function() { window.dispatchEvent(backKeyPressed); })();" ){}
     }
 
     override fun observeEvent() {
+        viewModel.run {
+            startPostLost.observe(viewLifecycleOwner, {
+                this@LostFragment.startPost()
+            })
+        }
         mainViewModel.location.observe(viewLifecycleOwner, {
-            viewModel.location = it
-            setLocationText(it)
-        })
-        viewModel.startPostLost.observe(viewLifecycleOwner, {
-            startPost()
+            setLocation(it)
+            viewModel.loadLostList()
         })
     }
 

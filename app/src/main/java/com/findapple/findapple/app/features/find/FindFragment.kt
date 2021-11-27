@@ -26,11 +26,8 @@ class FindFragment : BaseFragment<FragmentFindBinding>(R.layout.fragment_find) {
     @Inject
     lateinit var mainViewModel: MainViewModel
 
-    lateinit var geocoder: Geocoder
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        geocoder = Geocoder(context)
         binding.run {
             findSpl.panelState = SlidingUpPanelLayout.PanelState.COLLAPSED
             var touchStartY = 0
@@ -46,19 +43,26 @@ class FindFragment : BaseFragment<FragmentFindBinding>(R.layout.fragment_find) {
                 true
             }
         }
+
+    }
+
+    private fun setLocation(location: Location) {
+        viewModel.location = location
+        setLocationText(viewModel.location)
     }
 
     override fun observeEvent() {
-        mainViewModel.location.observe(viewLifecycleOwner, {
-            viewModel.location = it
-            setLocationText(it)
-        })
         viewModel.startPostFind.observe(viewLifecycleOwner, {
             startPost()
+        })
+        mainViewModel.location.observe(viewLifecycleOwner, {
+            setLocation(it)
+            viewModel.loadFindList()
         })
     }
 
     private fun setLocationText(location: Location) {
+        val geocoder = Geocoder(context)
         val address = geocoder.getFromLocation(location.latitude, location.longitude, 1)
         if (!CollectionUtils.isEmpty(address)) {
             val fetchAddress = address[0]

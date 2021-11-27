@@ -39,7 +39,6 @@ class LostViewModel(private val getLostListUseCase: GetLostListUseCase, private 
                 lostList.value = null
                 page.value = 0
                 getUserId()
-                getLostList()
             }
         }
     }
@@ -48,7 +47,7 @@ class LostViewModel(private val getLostListUseCase: GetLostListUseCase, private 
         userId = mainRepository.getUserId()
     }
 
-    private fun getLostList() {
+    fun loadLostList() {
         getLostListUseCase.execute(
             GetPostParameter(page.value?:0, location), object : DisposableSingleObserver<Result<List<Post>>>() {
                 override fun onSuccess(t: Result<List<Post>>) {
