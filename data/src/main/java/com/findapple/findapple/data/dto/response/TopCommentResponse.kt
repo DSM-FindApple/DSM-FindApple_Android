@@ -9,7 +9,8 @@ data class TopCommentResponse(
     val nickName: String,
     val postId: Long,
     val userId: Long,
-    val writeAt: String
+    val writeAt: String,
+    val profileUrl: String
 )
 
 fun TopCommentResponse.toEntity() =
@@ -18,7 +19,7 @@ fun TopCommentResponse.toEntity() =
         user = User(
             userId,
             nickName,
-            "todo:이미지 넣기"
+            profileUrl
         ),
         comment = comment
     )

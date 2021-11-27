@@ -14,7 +14,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/white">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/post_profile_iv"
@@ -22,9 +23,9 @@
             android:layout_height="38dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
+            app:imageUrl="@{vm.post.user.profileImage}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:imageUrl="@{vm.post.user.profileImage}"
             tools:src="@drawable/ic_fineapple_red_sunglasses" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -97,15 +98,16 @@
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:layout_marginTop="8dp"
-            app:viewPagerItems="@{vm.imagesView}"
-            app:layout_constraintTop_toBottomOf="@id/post_body_tv" />
+            app:layout_constraintTop_toBottomOf="@id/post_body_tv"
+            app:viewPagerItems="@{vm.imagesView}" />
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/post_comment_iv"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="9dp"
+            app:imageUrl="@{vm.post.topComment.user.profileImage}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/post_photo_vp"
             tools:src="@drawable/ic_fineapple_main" />
@@ -115,7 +117,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="9dp"
             android:background="@drawable/shape_border_comment"
             android:orientation="vertical"
             android:padding="5dp"
@@ -128,6 +130,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="5dp"
                 android:fontFamily="@font/cookie_run_regular"
+                android:text="@{vm.post.topComment.user.name}"
                 android:textSize="12sp"
                 tools:text="물건찾은파인애플" />
 
@@ -136,6 +139,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="5dp"
                 android:fontFamily="@font/cookie_run_regular"
+                android:text="@{vm.post.topComment.comment}"
                 android:textColor="@color/black"
                 tools:text="여기서 찾은거같아요" />
 
@@ -150,6 +154,8 @@
             android:paddingHorizontal="10dp"
             android:text="@string/start_comment"
             android:textColor="@color/yellow_500"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/post_comment_ll" />
     </androidx.constraintlayout.widget.ConstraintLayout>
