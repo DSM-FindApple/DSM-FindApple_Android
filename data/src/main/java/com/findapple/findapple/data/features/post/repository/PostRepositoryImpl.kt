@@ -11,8 +11,8 @@ import io.reactivex.Single
 
 class PostRepositoryImpl(private val dataSource: PostDataSource) : PostRepository {
     override fun getPostList(parameter: GetPostParameter, isLostList: Boolean): Single<List<Post>> =
-        if (isLostList) dataSource.getLostList(parameter.toDataRequest()).map { it.toEntity() } else dataSource.getFindList(parameter.toDataRequest())
-            .map { it.toEntity() }
+        if (isLostList) dataSource.getLostList(parameter.toDataRequest()).map { it.toEntity() }
+        else dataSource.getFindList(parameter.toDataRequest()).map { it.toEntity() }
 
     override fun postFeed(request: PostDataParameter, isLost: Boolean): Single<Unit> =
         if(isLost) dataSource.postLost(request) else dataSource.postFind(request)

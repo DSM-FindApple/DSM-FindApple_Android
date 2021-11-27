@@ -13,13 +13,17 @@ data class TopCommentResponse(
     val profileUrl: String
 )
 
-fun TopCommentResponse.toEntity() =
-    Comment(
-        id = commentId,
-        user = User(
-            userId,
-            nickName,
-            profileUrl
-        ),
-        comment = comment
-    )
+fun TopCommentResponse?.toEntity() =
+    if(this != null) {
+        Comment(
+            id = commentId,
+            user = User(
+                userId,
+                nickName,
+                profileUrl
+            ),
+            comment = comment
+        )
+    } else {
+        null
+    }

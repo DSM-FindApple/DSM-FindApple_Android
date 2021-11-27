@@ -25,7 +25,6 @@ data class LostListResponse(
 fun List<LostListResponse>.toEntity(): List<Post> =
     this.map { it.toEntity() }
 
-
 fun LostListResponse.toEntity() =
     Post(
         id = lostId,

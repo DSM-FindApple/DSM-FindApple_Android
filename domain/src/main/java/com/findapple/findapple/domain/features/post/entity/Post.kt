@@ -13,5 +13,5 @@ data class Post(
     val category: String,
     val location: Location,
     val images: List<String>,
-    val topComment: Comment
+    val topComment: Comment?
 )

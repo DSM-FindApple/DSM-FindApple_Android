@@ -1,6 +1,5 @@
 package com.findapple.findapple.app.features.post
 
-import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
@@ -13,9 +12,8 @@ import com.findapple.findapple.app.features.post.viewModel.PostViewModel
 import com.findapple.findapple.app.features.post.viewModel.PostViewModelFactory
 import com.findapple.findapple.app.main.viewmodel.MainViewModel
 import com.findapple.findapple.app.toRealPath
-import gun0912.tedimagepicker.builder.TedImagePicker
 import gun0912.tedimagepicker.builder.TedRxImagePicker
-import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
 import java.io.File
 import javax.inject.Inject
 
@@ -30,6 +28,9 @@ class PostFragment : BaseFragment<FragmentPostBinding>(R.layout.fragment_post) {
 
     @Inject
     lateinit var mainViewModel: MainViewModel
+
+    @Inject
+    lateinit var compositeDisposable: CompositeDisposable
 
     private val categoryAdapter by lazy {
         CategoryAdapter(viewModel)
@@ -80,12 +81,13 @@ class PostFragment : BaseFragment<FragmentPostBinding>(R.layout.fragment_post) {
             })
 
             startGallery.observe(viewLifecycleOwner, {
-                TedRxImagePicker.with(requireContext())
+                val imagePickerObserver = TedRxImagePicker.with(requireContext())
                     .startMultiImage()
                     .subscribe({ uri ->
                         photoList.value = photoList.value?.apply { addAll(uri) }
                         photoRequestList.addAll(uri.map { File(it.toRealPath(requireContext())) })
                     }, Throwable::printStackTrace)
+                compositeDisposable.add(imagePickerObserver)
             })
 
         }

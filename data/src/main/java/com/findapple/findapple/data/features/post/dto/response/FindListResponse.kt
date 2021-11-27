@@ -18,7 +18,7 @@ data class FindListResponse(
     val longitude: Double,
     val profileUrl: String,
     val title: String,
-    val topComment: TopCommentResponse,
+    val topComment: TopCommentResponse?,
     val writeAt: String
 )
 
