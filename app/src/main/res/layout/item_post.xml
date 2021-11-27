@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -10,9 +12,7 @@
             type="com.findapple.findapple.app.features.post.viewModel.PostItemViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -43,6 +43,7 @@
             tools:text="홈팟을 잃어버렸음" />
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
@@ -61,9 +62,9 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:padding="5dp"
+            android:src="@{vm.isMyPost?@drawable/ic_baseline_more_vert_24:@drawable/ic_baseline_location_searching_24}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:src="@{vm.isMyPost?@drawable/ic_baseline_more_vert_24:@drawable/ic_baseline_location_searching_24}" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/post_chatting_iv"
@@ -82,13 +83,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:fontFamily="@font/cookie_run_regular"
             android:text="@{vm.post.detailInfo}"
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/post_chatting_iv"
+            app:layout_constraintTop_toBottomOf="@+id/post_profile_iv"
             tools:text="여기서 잃어벼렸는데요 어디있는지 모르겠어요ㅕ 빨리 찾아주세요 제발요 ㅠ" />
 
         <androidx.viewpager2.widget.ViewPager2
