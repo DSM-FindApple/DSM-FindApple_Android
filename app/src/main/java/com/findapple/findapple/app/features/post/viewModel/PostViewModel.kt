@@ -192,11 +192,12 @@ class PostViewModel(
             title,
             object : DisposableSingleObserver<Result<List<Post>>>() {
                 override fun onSuccess(t: Result<List<Post>>) {
-
+                    if(t is Result.Success) {
+                        _relatedPosts.value = t.value
+                    }
                 }
 
                 override fun onError(e: Throwable) {
-
                 }
 
             },
@@ -204,8 +205,22 @@ class PostViewModel(
         )
     }
 
-    fun getFindRelation() {
+    fun getFindRelation(title: String) {
+        getRelatedFindPostUseCase.execute(
+            title,
+            object : DisposableSingleObserver<Result<List<Post>>>() {
+                override fun onSuccess(t: Result<List<Post>>) {
+                    if(t is Result.Success) {
+                        _relatedPosts.value = t.value
+                    }
+                }
 
+                override fun onError(e: Throwable) {
+                }
+
+            },
+            AndroidSchedulers.mainThread()
+        )
     }
 
     private fun doOnError(reason: Result.Failure<Unit>) {
