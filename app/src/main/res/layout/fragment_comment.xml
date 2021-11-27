@@ -33,5 +33,11 @@
                 android:textSize="19sp" />
         </androidx.appcompat.widget.Toolbar>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/comment_tb" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
