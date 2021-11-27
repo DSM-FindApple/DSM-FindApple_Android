@@ -12,5 +12,6 @@ data class Post(
     val writeTime: String,
     val category: String,
     val location: Location,
-    val images: List<String>
+    val images: List<String>,
+    val topComment: Comment
 )

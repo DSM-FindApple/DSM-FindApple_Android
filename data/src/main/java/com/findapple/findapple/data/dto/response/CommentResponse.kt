@@ -9,4 +9,4 @@ data class CommentResponse(
     val reComment: List<ReCommentResponse>,
     val userId: Int,
     val writeAt: String
-    )
+)
