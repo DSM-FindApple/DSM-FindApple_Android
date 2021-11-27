@@ -5,6 +5,6 @@ import com.findapple.findapple.app.base.BaseViewModel
 
 class CommentViewModel: BaseViewModel() {
     override fun apply(event: Lifecycle.Event) {
-        
+
     }
 }
