@@ -9,6 +9,7 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
+import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.findapple.findapple.R
 import com.findapple.findapple.app.adapter.RecyclerViewAdapter
@@ -18,6 +19,18 @@ fun RecyclerView.setList(list: List<RecyclerViewItem>?) {
     if (adapter == null) {
         adapter = RecyclerViewAdapter()
         layoutManager = LinearLayoutManager(context)
+    }
+
+    if (list != null) {
+        (adapter as? RecyclerViewAdapter)?.updateData(list)
+    }
+}
+
+@BindingAdapter("viewPagerItems")
+fun ViewPager2.setList(list: List<RecyclerViewItem>?) {
+    if(adapter == null) {
+        adapter = RecyclerViewAdapter()
+        orientation = ViewPager2.ORIENTATION_HORIZONTAL
     }
 
     if (list != null) {
@@ -40,7 +53,7 @@ fun WebView.setWebView(url: String?) {
     }
 }
 
-@BindingAdapter("loadImage")
+@BindingAdapter("imageUrl")
 fun ImageView.loadImage(resource: String?) {
     val progressDrawable = CircularProgressDrawable(context).apply {
         strokeWidth = 10f
