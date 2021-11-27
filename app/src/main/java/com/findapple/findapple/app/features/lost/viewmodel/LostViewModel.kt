@@ -37,7 +37,7 @@ class LostViewModel(private val getLostListUseCase: GetLostListUseCase, private 
         when (event) {
             Lifecycle.Event.ON_CREATE -> {
                 lostList.value = null
-                page.value = 1
+                page.value = 0
                 getUserId()
                 getLostList()
             }
