@@ -28,6 +28,9 @@ class MyPageFragment : BaseFragment<FragmentMypageBinding>(R.layout.fragment_myp
             message.observe(viewLifecycleOwner, {
                 snackBarComment(it)
             })
+            myPageItems.observe(viewLifecycleOwner, {
+                it
+            })
         }
     }
 

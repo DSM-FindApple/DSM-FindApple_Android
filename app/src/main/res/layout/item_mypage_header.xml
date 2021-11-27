@@ -122,7 +122,6 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginBottom="10dp"
             android:background="@drawable/shape_mypage_header"
             android:elevation="10dp"
             app:layout_constraintBottom_toBottomOf="parent"

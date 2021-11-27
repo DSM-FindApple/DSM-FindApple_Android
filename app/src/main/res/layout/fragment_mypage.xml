@@ -15,6 +15,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/gray_100"
         tools:context=".features.mypage.MyPageFragment">
 
         <androidx.recyclerview.widget.RecyclerView
@@ -30,7 +31,7 @@
             android:layout_width="80dp"
             android:layout_height="100dp"
             android:layout_marginTop="150dp"
-            android:visibility="@{vm.userPost.size()>1?View.GONE:View.VISIBLE}"
+            android:visibility="@{vm.myPageItems.size()>1?View.GONE:View.VISIBLE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -46,7 +47,7 @@
             android:fontFamily="@font/cookie_run_bold"
             android:gravity="center"
             android:text="@string/no_post"
-            android:visibility="@{vm.userPost.size()>1?View.GONE:View.VISIBLE}"
+            android:visibility="@{vm.myPageItems.size()>1?View.GONE:View.VISIBLE}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appCompatImageView" />

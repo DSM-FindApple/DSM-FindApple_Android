@@ -38,9 +38,6 @@ class MyPageViewModel(
     private val _myPageItems = MutableLiveData<ArrayList<RecyclerViewItem>>()
     val myPageItems: LiveData<ArrayList<RecyclerViewItem>> get() = _myPageItems
 
-    private val _userPost = MutableLiveData<List<Post>>()
-    val userPost: LiveData<List<Post>> get() = _userPost
-
     private val _showFindAppleLevelDetail = SingleLiveEvent<Unit>()
     val showFindAppleLevelDetail: LiveData<Unit> get() = _showFindAppleLevelDetail
 
@@ -67,7 +64,7 @@ class MyPageViewModel(
 
                 override fun onError(e: Throwable) {
                     e.printStackTrace()
-                    updateMyPageHeader()
+                    initMyPageHeader()
                 }
 
             },
@@ -75,7 +72,7 @@ class MyPageViewModel(
         )
     }
 
-    private fun updateMyPageHeader() {
+    private fun initMyPageHeader() {
         _myPageItems.value = ArrayList<RecyclerViewItem>().apply {
             add(
                 RecyclerViewItem(
@@ -92,6 +89,7 @@ class MyPageViewModel(
             data = Unit,
             singleObserver = object : DisposableSingleObserver<Result<UserDetail>>() {
                 override fun onSuccess(t: Result<UserDetail>) {
+                    initMyPageHeader()
                     if (t is Result.Success){
                         _userDetail.value = t.value
                         val postList = t.value.postedList
@@ -110,11 +108,10 @@ class MyPageViewModel(
                         }
 
                     }
-                    updateMyPageHeader()
                 }
 
                 override fun onError(e: Throwable) {
-                    updateMyPageHeader()
+                    initMyPageHeader()
                 }
 
             },
@@ -135,7 +132,6 @@ class MyPageViewModel(
     private fun resetUserData() {
         _userProfile.value = null
         _userDetail.value = null
-        _userPost.value = null
         _myPageItems.value = null
         getUserInfo()
     }
