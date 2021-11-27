@@ -6,8 +6,9 @@ import android.view.ViewGroup
 import androidx.databinding.library.baseAdapters.BR
 import androidx.recyclerview.widget.RecyclerView
 import com.findapple.findapple.databinding.ItemPhotoBinding
-import com.findapple.findapple.databinding.ItemPostPhotoBinding
 import com.findapple.findapple.app.features.post.viewModel.PostViewModel
+import com.findapple.findapple.databinding.ItemAddPhotoBinding
+import com.findapple.findapple.databinding.ItemPhotoPostBinding
 
 class PostPhotoAdapter(private val vm: PostViewModel) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -19,7 +20,7 @@ class PostPhotoAdapter(private val vm: PostViewModel) :
         private const val PHOTO = 2
     }
 
-    inner class PhotoViewHolder(val binding: ItemPhotoBinding) :
+    inner class PhotoViewHolder(val binding: ItemPhotoPostBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(position: Int) {
             binding.vm = vm
@@ -31,17 +32,17 @@ class PostPhotoAdapter(private val vm: PostViewModel) :
         }
     }
 
-    inner class PostPhotoViewHolder(val binding: ItemPostPhotoBinding) :
+    inner class PostPhotoViewHolder(val binding: ItemAddPhotoBinding) :
         RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == ADD_PHOTO) {
             val binding =
-                ItemPostPhotoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                ItemAddPhotoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             PostPhotoViewHolder(binding)
         } else {
             val binding =
-                ItemPhotoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                ItemPhotoPostBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             PhotoViewHolder(binding)
         }
     }

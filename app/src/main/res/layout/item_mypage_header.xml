@@ -33,7 +33,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/mypage_header_profile_name_tv"
-                app:loadImage="@{vm.userProfile.profileImage}"
+                app:imageUrl="@{vm.userProfile.profileImage}"
                 tools:src="@drawable/img_fineapple_kingwangjjang" />
 
             <androidx.appcompat.widget.AppCompatTextView

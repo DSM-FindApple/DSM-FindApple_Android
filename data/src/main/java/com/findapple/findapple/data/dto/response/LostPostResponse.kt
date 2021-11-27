@@ -16,7 +16,7 @@ data class LostPostResponse(
     val lostUser: String,
     val profileUrl: String,
     val title: String,
-    val topComment: CommentResponse,
+    val topComment: TopCommentResponse,
     val writeAt: String
 )
 
@@ -33,5 +33,6 @@ fun LostPostResponse.toEntity() =
         writeTime = writeAt,
         images = lostImages,
         id = lostId,
-        title = title
+        title = title,
+        topComment = topComment.toEntity()
     )

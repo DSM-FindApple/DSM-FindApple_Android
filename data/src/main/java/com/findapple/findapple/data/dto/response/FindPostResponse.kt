@@ -33,6 +33,7 @@ fun FindPostResponse.toEntity(): Post {
         writeTime = writeAt,
         category = category,
         location = Location(longitude, latitude),
-        images = findImages
+        images = findImages,
+        topComment = topComment.toEntity()
     )
 }

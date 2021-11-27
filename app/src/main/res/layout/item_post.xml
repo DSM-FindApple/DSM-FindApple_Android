@@ -24,7 +24,7 @@
             android:layout_marginTop="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:loadImage="@{vm.post.user.name}"
+            app:imageUrl="@{vm.post.user.profileImage}"
             tools:src="@drawable/ic_fineapple_red_sunglasses" />
 
         <androidx.appcompat.widget.AppCompatTextView
