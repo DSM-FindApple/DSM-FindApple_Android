@@ -1,5 +1,7 @@
 package com.findapple.findapple.app.features.comment.fragment
 
+import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import com.findapple.findapple.R
 import com.findapple.findapple.app.base.BaseFragment
@@ -17,9 +19,15 @@ class CommentFragment : BaseFragment<FragmentCommentBinding>(R.layout.fragment_c
         ViewModelProvider(this, viewModelFactory).get(CommentViewModel::class.java)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.commentTb.setNavigationOnClickListener {
+            onBackPressed()
+        }
+    }
+
     override fun observeEvent() {
 
     }
-
 
 }
