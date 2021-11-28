@@ -74,7 +74,7 @@ class LostFragment : BaseFragment<FragmentLostBinding>(R.layout.fragment_lost) {
     }
 
     private fun sendToken() {
-        binding.lostWv.evaluateJavascript("(function() { window.dispatchEvent(backKeyPressed); })();" ){}
+        //binding.lostWv.evaluateJavascript("(function() { window.dispatchEvent(backKeyPressed); })();" ){}
     }
 
     override fun observeEvent() {
