@@ -1,7 +1,6 @@
 package com.findapple.findapple.data.features.post.datasource
 
 import com.findapple.findapple.data.features.post.dto.request.GetPostRequest
-import com.findapple.findapple.data.features.post.dto.request.GetRelatedPostRequest
 import com.findapple.findapple.data.features.post.dto.response.FindListResponse
 import com.findapple.findapple.data.features.post.dto.response.LostListResponse
 import com.findapple.findapple.data.features.post.remote.PostApi
@@ -52,8 +51,8 @@ class PostDataSourceImpl(private val postApi: PostApi) : PostDataSource {
 
 
     override fun getRelatedLostPost(title: String): Single<List<LostListResponse>> =
-        postApi.getRelatedLostPosts(0, GetRelatedPostRequest(title))
+        postApi.getRelatedLostPosts(0, title)
 
     override fun getRelatedFindPost(title: String): Single<List<FindListResponse>> =
-        postApi.getRelatedFindPosts(0, GetRelatedPostRequest(title))
+        postApi.getRelatedFindPosts(0, title)
 }
