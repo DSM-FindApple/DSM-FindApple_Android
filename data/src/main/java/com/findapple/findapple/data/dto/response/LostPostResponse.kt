@@ -20,7 +20,7 @@ data class LostPostResponse(
     val writeAt: String
 )
 
-fun List<LostPostResponse>.toEntity() =
+fun List<LostPostResponse>.toEntity(): List<Post> =
     this.map { it.toEntity() }
 
 fun LostPostResponse.toEntity() =

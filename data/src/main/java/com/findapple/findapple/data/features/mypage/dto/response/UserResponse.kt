@@ -22,5 +22,5 @@ fun UserResponse.toEntity() =
         lostPostCount = lostNum,
         findPostCount = findNum,
         findAppleLevel = findapplePoint,
-        postedList = myLosts?.toEntity()
+        postedList = myFinds?.let { myLosts?.toEntity()?.plus(it.toEntity()) }
     )
