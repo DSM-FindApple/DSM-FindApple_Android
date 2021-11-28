@@ -17,6 +17,7 @@ import com.findapple.findapple.app.base.SingleLiveEvent
 import com.findapple.findapple.app.bindingadapter.RecyclerViewItem
 import com.findapple.findapple.domain.features.post.entity.Post
 import com.findapple.findapple.domain.features.post.usecase.GetRelatedLostPostUseCase
+import com.findapple.findapple.domain.features.post.usecase.GetRelatedFindPostUseCase
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
 import java.io.File
@@ -25,7 +26,7 @@ class PostViewModel(
     private val postFindUseCase: PostFindUseCase,
     private val postLostUseCase: PostLostUseCase,
     private val getRelatedLostPostUseCase: GetRelatedLostPostUseCase,
-    private val getRelatedFindPostUseCase: GetRelatedLostPostUseCase
+    private val getRelatedFindPostUseCase: GetRelatedFindPostUseCase
 ) : BaseViewModel() {
 
     val clickedCategoryIndex = MutableLiveData<Int>()

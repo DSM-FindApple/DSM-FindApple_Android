@@ -4,6 +4,7 @@ import com.findapple.findapple.domain.features.post.service.PostService
 import com.findapple.findapple.domain.features.post.usecase.PostFindUseCase
 import com.findapple.findapple.domain.features.post.usecase.PostLostUseCase
 import com.findapple.findapple.app.di.scope.FragmentScope
+import com.findapple.findapple.domain.features.post.usecase.GetRelatedFindPostUseCase
 import com.findapple.findapple.domain.features.post.usecase.GetRelatedLostPostUseCase
 import dagger.Module
 import dagger.Provides
@@ -31,4 +32,11 @@ class PostUseCaseModule {
         service: PostService,
         compositeDisposable: CompositeDisposable
     ): GetRelatedLostPostUseCase = GetRelatedLostPostUseCase(service, compositeDisposable)
+
+    @FragmentScope
+    @Provides
+    fun provideGetRelatedFindPostUseCase(
+        service: PostService,
+        compositeDisposable: CompositeDisposable
+    ): GetRelatedFindPostUseCase = GetRelatedFindPostUseCase(service, compositeDisposable)
 }
