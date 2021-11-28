@@ -9,13 +9,18 @@ import com.findapple.findapple.app.base.BaseViewModel
 import com.findapple.findapple.app.bindingadapter.RecyclerViewItem
 import com.findapple.findapple.domain.base.Result
 import com.findapple.findapple.domain.features.comment.parameter.GetCommentsParameter
+import com.findapple.findapple.domain.features.comment.parameter.PostCommentParameter
 import com.findapple.findapple.domain.features.comment.usecase.GetCommentsUseCase
+import com.findapple.findapple.domain.features.comment.usecase.PostCommentUseCase
 import com.findapple.findapple.domain.features.post.entity.Comment
 import com.findapple.findapple.domain.features.post.entity.Post
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
 
-class CommentViewModel(private val getCommentsUseCase: GetCommentsUseCase) : BaseViewModel() {
+class CommentViewModel(
+    private val getCommentsUseCase: GetCommentsUseCase,
+    private val postCommentUseCase: PostCommentUseCase
+) : BaseViewModel() {
     val post = MutableLiveData<Post>()
 
     private val _comments = MutableLiveData<List<RecyclerViewItem>>()
@@ -52,6 +57,24 @@ class CommentViewModel(private val getCommentsUseCase: GetCommentsUseCase) : Bas
     }
 
     fun sendComment() {
+        if(!comment.value.isNullOrBlank()) {
+            postCommentUseCase.execute(
+                PostCommentParameter(postId, comment.value!!, isLost),
+                object : DisposableSingleObserver<Result<Unit>>() {
+                    override fun onSuccess(t: Result<Unit>) {
+                        if(t is Result.Success) {
+                            comment.value = null
+                            loadComments()
+                        }
+                    }
+
+                    override fun onError(e: Throwable) {
+                    }
+
+                },
+                AndroidSchedulers.mainThread()
+            )
+        }
 
     }
 

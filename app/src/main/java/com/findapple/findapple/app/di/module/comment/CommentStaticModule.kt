@@ -10,6 +10,7 @@ import com.findapple.findapple.domain.features.comment.repository.CommentReposit
 import com.findapple.findapple.domain.features.comment.service.CommentService
 import com.findapple.findapple.domain.features.comment.service.CommentServiceImpl
 import com.findapple.findapple.domain.features.comment.usecase.GetCommentsUseCase
+import com.findapple.findapple.domain.features.comment.usecase.PostCommentUseCase
 import dagger.Module
 import dagger.Provides
 import io.reactivex.disposables.CompositeDisposable
@@ -22,6 +23,13 @@ class CommentStaticModule {
         commentService: CommentService,
         compositeDisposable: CompositeDisposable
     ): GetCommentsUseCase = GetCommentsUseCase(commentService, compositeDisposable)
+
+    @FragmentScope
+    @Provides
+    fun providePostCommentUseCase(
+        commentService: CommentService,
+        compositeDisposable: CompositeDisposable
+    ): PostCommentUseCase = PostCommentUseCase(commentService, compositeDisposable)
 
     @FragmentScope
     @Provides

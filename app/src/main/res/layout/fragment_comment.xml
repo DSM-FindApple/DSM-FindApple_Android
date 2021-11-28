@@ -46,14 +46,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@={vm.comment}"
-            app:layout_constraintEnd_toStartOf="@id/comment_send_btn"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/comment_send_btn"
             app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/comment_send_btn"
             android:layout_width="35dp"
             android:layout_height="35dp"
+            android:onClick="@{()->vm.sendComment()}"
             android:src="@drawable/ic_baseline_send_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
