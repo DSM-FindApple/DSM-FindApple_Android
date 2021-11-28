@@ -45,6 +45,7 @@
             android:id="@+id/comment_et"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:text="@={vm.comment}"
             app:layout_constraintEnd_toStartOf="@id/comment_send_btn"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

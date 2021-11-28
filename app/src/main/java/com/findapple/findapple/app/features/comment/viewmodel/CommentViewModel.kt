@@ -24,6 +24,8 @@ class CommentViewModel(private val getCommentsUseCase: GetCommentsUseCase) : Bas
     var postId: Long = 0
     var isLost = true
 
+    val comment = MutableLiveData<String>()
+
     override fun apply(event: Lifecycle.Event) {
         if(event == Lifecycle.Event.ON_CREATE) {
             loadComments()
@@ -47,6 +49,10 @@ class CommentViewModel(private val getCommentsUseCase: GetCommentsUseCase) : Bas
             },
             AndroidSchedulers.mainThread()
         )
+    }
+
+    fun sendComment() {
+
     }
 
     private fun Comment.toRecyclerViewItem() =
