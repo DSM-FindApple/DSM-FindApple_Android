@@ -72,6 +72,20 @@
                 android:name="chatRoomId"
                 app:argType="string" />
         </action>
+        <action
+            android:id="@+id/action_mainFragment_to_commentFragment"
+            app:destination="@id/commentFragment"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/mainFragment"
+            app:popUpToInclusive="false">
+            <argument
+                android:name="postId"
+                app:argType="Long" />
+            <argument
+                android:name="isLost"
+                app:argType="Boolean" />
+        </action>
     </fragment>
 
     <fragment
@@ -88,5 +102,19 @@
         <argument
             android:name="chatRoomId"
             app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/commentFragment"
+        android:name="com.findapple.findapple.app.features.comment.fragment.CommentFragment"
+        android:label="CommentFragment"
+        tools:layout="@layout/fragment_comment">
+        <argument
+            android:name="postId"
+            app:argType="Long" />
+
+        <argument
+            android:name="isLost"
+            app:argType="Boolean" />
     </fragment>
 </navigation>

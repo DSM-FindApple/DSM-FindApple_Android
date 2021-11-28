@@ -17,7 +17,10 @@ import com.findapple.findapple.domain.main.repository.MainRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
 
-class LostViewModel(private val getLostListUseCase: GetLostListUseCase, private val mainRepository: MainRepository) : BaseViewModel() {
+class LostViewModel(
+    private val getLostListUseCase: GetLostListUseCase,
+    private val mainRepository: MainRepository
+) : BaseViewModel() {
 
     val lostList = MutableLiveData<List<RecyclerViewItem>>()
 
@@ -49,10 +52,12 @@ class LostViewModel(private val getLostListUseCase: GetLostListUseCase, private 
 
     fun loadLostList() {
         getLostListUseCase.execute(
-            GetPostParameter(page.value?:0, location), object : DisposableSingleObserver<Result<List<Post>>>() {
+            GetPostParameter(page.value ?: 0, location),
+            object : DisposableSingleObserver<Result<List<Post>>>() {
                 override fun onSuccess(t: Result<List<Post>>) {
                     if (t is Result.Success) {
-                        val addItem: ArrayList<RecyclerViewItem> = if(lostList.value != null) lostList.value as ArrayList<RecyclerViewItem> else ArrayList()
+                        val addItem: ArrayList<RecyclerViewItem> =
+                            if (lostList.value != null) lostList.value as ArrayList<RecyclerViewItem> else ArrayList()
                         lostList.value = addItem.apply {
                             addAll(t.value.map { PostItemViewModel(it).toRecyclerItem(it.user.id == userId) })
                         }

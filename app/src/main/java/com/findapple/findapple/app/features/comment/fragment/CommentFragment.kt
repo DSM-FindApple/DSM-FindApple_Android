@@ -3,6 +3,7 @@ package com.findapple.findapple.app.features.comment.fragment
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.navArgs
 import com.findapple.findapple.R
 import com.findapple.findapple.app.base.BaseFragment
 import com.findapple.findapple.app.features.comment.viewmodel.CommentViewModel
@@ -20,6 +21,9 @@ class CommentFragment : BaseFragment<FragmentCommentBinding>(R.layout.fragment_c
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val idArgs by navArgs<CommentFragmentArgs>()
+        viewModel.postId = idArgs.postId
+        viewModel.isLost = idArgs.isLost
         super.onViewCreated(view, savedInstanceState)
         binding.commentTb.setNavigationOnClickListener {
             onBackPressed()
