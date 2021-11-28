@@ -26,6 +26,7 @@ fun Uri.toRealPath(context: Context): String {
 
 fun List<String>.toRecyclerViewItem() =
     this.map { it.toImageRecyclerViewItem() }
+
 fun String.toImageRecyclerViewItem() =
     RecyclerViewItem(
         data = this,

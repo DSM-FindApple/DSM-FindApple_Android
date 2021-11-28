@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import com.findapple.findapple.domain.base.Result
 import com.findapple.findapple.domain.features.post.entity.Post
 import com.findapple.findapple.domain.features.post.usecase.GetLostListUseCase
-import com.findapple.findapple.app.base.BaseViewModel
+import com.findapple.findapple.app.base.BasePostViewModel
 import com.findapple.findapple.app.base.SingleLiveEvent
 import com.findapple.findapple.app.bindingadapter.RecyclerViewItem
 import com.findapple.findapple.app.features.post.viewModel.PostItemViewModel
@@ -20,21 +20,12 @@ import io.reactivex.observers.DisposableSingleObserver
 class LostViewModel(
     private val getLostListUseCase: GetLostListUseCase,
     private val mainRepository: MainRepository
-) : BaseViewModel() {
+) : BasePostViewModel() {
 
     val lostList = MutableLiveData<List<RecyclerViewItem>>()
 
-    val townName = MutableLiveData<String>()
-    val cityName = MutableLiveData<String>()
-
     private val _startPostLost = SingleLiveEvent<Unit>()
     val startPostLost: LiveData<Unit> get() = _startPostLost
-
-    val page = MutableLiveData<Int>()
-
-    var userId: Long = -1
-
-    var location = Location(127.3635946, 36.3914388)
 
     override fun apply(event: Lifecycle.Event) {
         when (event) {
@@ -71,6 +62,10 @@ class LostViewModel(
             },
             AndroidSchedulers.mainThread()
         )
+    }
+
+    fun commentClicked(id: Long) {
+
     }
 
     fun startPost() {

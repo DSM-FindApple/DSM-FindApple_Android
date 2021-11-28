@@ -10,6 +10,10 @@
         <variable
             name="vm"
             type="com.findapple.findapple.app.features.post.viewModel.PostItemViewModel" />
+
+        <variable
+            name="postVm"
+            type="com.findapple.findapple.app.base.BaseViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.findapple.findapple.R
 import com.findapple.findapple.databinding.FragmentLostBinding
@@ -12,6 +13,7 @@ import com.findapple.findapple.domain.entity.Location
 import com.findapple.findapple.app.base.BaseFragment
 import com.findapple.findapple.app.features.lost.viewmodel.LostViewModel
 import com.findapple.findapple.app.features.lost.viewmodel.LostViewModelFactory
+import com.findapple.findapple.app.main.MainFragmentDirections
 import com.findapple.findapple.app.main.viewmodel.MainViewModel
 import com.google.android.gms.common.util.CollectionUtils
 import com.sothree.slidinguppanel.SlidingUpPanelLayout
@@ -80,11 +82,19 @@ class LostFragment : BaseFragment<FragmentLostBinding>(R.layout.fragment_lost) {
             startPostLost.observe(viewLifecycleOwner, {
                 this@LostFragment.startPost()
             })
+            clickedCommentId.observe(viewLifecycleOwner, {
+                this@LostFragment.startComment(it)
+            })
         }
         mainViewModel.location.observe(viewLifecycleOwner, {
             setLocation(it)
             viewModel.loadLostList()
         })
+    }
+
+    private fun startComment(id: Long) {
+        val action = MainFragmentDirections.actionMainFragmentToCommentFragment(id, true)
+        requireActivity().findNavController(R.id.main_activity_container).navigate(action)
     }
 
     private fun setLocationText(location: Location) {
