@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.findapple.findapple.domain.features.post.usecase.GetFindListUseCase
 import com.findapple.findapple.app.base.BasePostViewModel
 import com.findapple.findapple.app.base.SingleLiveEvent
-import com.findapple.findapple.app.bindingadapter.RecyclerViewItem
+import com.findapple.findapple.app.bindingadapter.MultipleRecyclerViewItem
 import com.findapple.findapple.app.features.post.viewModel.PostItemViewModel
 import com.findapple.findapple.app.features.post.viewModel.toRecyclerItem
 import com.findapple.findapple.domain.base.Result
@@ -20,7 +20,7 @@ class FindViewModel(
     private val mainRepository: MainRepository
 ) : BasePostViewModel() {
 
-    val findList = MutableLiveData<List<RecyclerViewItem>>()
+    val findList = MutableLiveData<List<MultipleRecyclerViewItem>>()
 
     val startPostFind = SingleLiveEvent<Unit>()
 
@@ -45,7 +45,7 @@ class FindViewModel(
                 override fun onSuccess(t: Result<List<Post>>) {
                     if (t is Result.Success) {
                         findList.value =
-                            t.value.map { PostItemViewModel(it).toRecyclerItem(it.user.id == userId) }
+                            t.value.map { PostItemViewModel(it, this@FindViewModel).toRecyclerItem(it.user.id == userId) }
                     }
                 }
 

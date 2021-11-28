@@ -8,6 +8,7 @@ import com.findapple.findapple.domain.features.post.entity.Post
 import com.findapple.findapple.domain.features.post.usecase.GetLostListUseCase
 import com.findapple.findapple.app.base.BasePostViewModel
 import com.findapple.findapple.app.base.SingleLiveEvent
+import com.findapple.findapple.app.bindingadapter.MultipleRecyclerViewItem
 import com.findapple.findapple.app.bindingadapter.RecyclerViewItem
 import com.findapple.findapple.app.features.post.viewModel.PostItemViewModel
 import com.findapple.findapple.app.features.post.viewModel.toRecyclerItem
@@ -22,7 +23,7 @@ class LostViewModel(
     private val mainRepository: MainRepository
 ) : BasePostViewModel() {
 
-    val lostList = MutableLiveData<List<RecyclerViewItem>>()
+    val lostList = MutableLiveData<List<MultipleRecyclerViewItem>>()
 
     private val _startPostLost = SingleLiveEvent<Unit>()
     val startPostLost: LiveData<Unit> get() = _startPostLost
@@ -47,10 +48,10 @@ class LostViewModel(
             object : DisposableSingleObserver<Result<List<Post>>>() {
                 override fun onSuccess(t: Result<List<Post>>) {
                     if (t is Result.Success) {
-                        val addItem: ArrayList<RecyclerViewItem> =
-                            if (lostList.value != null) lostList.value as ArrayList<RecyclerViewItem> else ArrayList()
+                        val addItem: ArrayList<MultipleRecyclerViewItem> =
+                            if (lostList.value != null) lostList.value as ArrayList<MultipleRecyclerViewItem> else ArrayList()
                         lostList.value = addItem.apply {
-                            addAll(t.value.map { PostItemViewModel(it).toRecyclerItem(it.user.id == userId) })
+                            addAll(t.value.map { PostItemViewModel(it, this@LostViewModel).toRecyclerItem(it.user.id == userId) })
                         }
 
                     }
@@ -64,9 +65,6 @@ class LostViewModel(
         )
     }
 
-    fun commentClicked(id: Long) {
-
-    }
 
     fun startPost() {
         _startPostLost.call()

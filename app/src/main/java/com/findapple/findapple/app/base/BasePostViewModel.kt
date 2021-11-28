@@ -15,4 +15,8 @@ abstract class BasePostViewModel: BaseViewModel() {
 
     val townName = MutableLiveData<String>()
     val cityName = MutableLiveData<String>()
+
+    fun commentClicked(id: Long) {
+        clickedCommentId.value = id
+    }
 }

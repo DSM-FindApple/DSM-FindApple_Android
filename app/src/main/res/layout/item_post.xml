@@ -13,7 +13,7 @@
 
         <variable
             name="postVm"
-            type="com.findapple.findapple.app.base.BaseViewModel" />
+            type="com.findapple.findapple.app.base.BasePostViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -163,6 +163,7 @@
             android:paddingHorizontal="10dp"
             android:text="@string/start_comment"
             android:textColor="@color/yellow_500"
+            android:onClick="@{()->postVm.commentClicked(vm.post.id)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/post_comment_ll" />

@@ -12,6 +12,7 @@ import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.findapple.findapple.R
+import com.findapple.findapple.app.adapter.MultipleRecyclerViewAdapter
 import com.findapple.findapple.app.adapter.RecyclerViewAdapter
 
 @BindingAdapter("recyclerItems")
@@ -28,7 +29,7 @@ fun RecyclerView.setList(list: List<RecyclerViewItem>?) {
 
 @BindingAdapter("recyclerItemsHorizontalItems")
 fun RecyclerView.setHorizontalList(list: List<RecyclerViewItem>?) {
-    if(adapter == null) {
+    if (adapter == null) {
         adapter = RecyclerViewAdapter()
         layoutManager = LinearLayoutManager(context).apply {
             orientation = RecyclerView.HORIZONTAL
@@ -40,9 +41,23 @@ fun RecyclerView.setHorizontalList(list: List<RecyclerViewItem>?) {
     }
 }
 
+@BindingAdapter("multipleRecyclerItems")
+fun RecyclerView.setMultipleList(list: List<MultipleRecyclerViewItem>?) {
+    if (adapter == null) {
+        adapter = MultipleRecyclerViewAdapter()
+        layoutManager = LinearLayoutManager(context).apply {
+            orientation = RecyclerView.HORIZONTAL
+        }
+    }
+
+    if (list != null) {
+        (adapter as? MultipleRecyclerViewAdapter)?.updateData(list)
+    }
+}
+
 @BindingAdapter("viewPagerItems")
 fun ViewPager2.setList(list: List<RecyclerViewItem>?) {
-    if(adapter == null) {
+    if (adapter == null) {
         adapter = RecyclerViewAdapter()
         orientation = ViewPager2.ORIENTATION_HORIZONTAL
     }
@@ -55,7 +70,7 @@ fun ViewPager2.setList(list: List<RecyclerViewItem>?) {
 @BindingAdapter("setWebView")
 fun WebView.setWebView(url: String?) {
     this.run {
-        if(url != null) {
+        if (url != null) {
             settings.run {
                 javaScriptEnabled = true
                 builtInZoomControls = false

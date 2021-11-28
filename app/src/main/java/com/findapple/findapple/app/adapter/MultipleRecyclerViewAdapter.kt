@@ -7,11 +7,10 @@ import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.findapple.findapple.app.bindingadapter.BindingViewHolder
 import com.findapple.findapple.app.bindingadapter.MultipleRecyclerViewItem
-import com.findapple.findapple.app.bindingadapter.RecyclerViewItem
 
-class RecyclerViewAdapter : RecyclerView.Adapter<BindingViewHolder>() {
+class MultipleRecyclerViewAdapter : RecyclerView.Adapter<BindingViewHolder>() {
 
-    private val items = mutableListOf<RecyclerViewItem>()
+    private val items = mutableListOf<MultipleRecyclerViewItem>()
     override fun onCreateViewHolder(parent: ViewGroup, layoutId: Int): BindingViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding: ViewDataBinding = DataBindingUtil.inflate(inflater, layoutId, parent, false)
@@ -31,15 +30,11 @@ class RecyclerViewAdapter : RecyclerView.Adapter<BindingViewHolder>() {
         return items[position].itemLayoutId
     }
 
-    fun updateData(newItems: List<RecyclerViewItem>) {
+    fun updateData(newItems: List<MultipleRecyclerViewItem>) {
         this.items.clear()
         this.items.addAll(newItems)
         notifyDataSetChanged()
     }
 
-    fun addData(newItem: RecyclerViewItem) {
-        this.items.add(newItem)
-        notifyDataSetChanged()
-    }
 }
 
