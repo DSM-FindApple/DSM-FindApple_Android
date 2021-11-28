@@ -45,9 +45,7 @@ fun RecyclerView.setHorizontalList(list: List<RecyclerViewItem>?) {
 fun RecyclerView.setMultipleList(list: List<MultipleRecyclerViewItem>?) {
     if (adapter == null) {
         adapter = MultipleRecyclerViewAdapter()
-        layoutManager = LinearLayoutManager(context).apply {
-            orientation = RecyclerView.HORIZONTAL
-        }
+        layoutManager = LinearLayoutManager(context)
     }
 
     if (list != null) {
