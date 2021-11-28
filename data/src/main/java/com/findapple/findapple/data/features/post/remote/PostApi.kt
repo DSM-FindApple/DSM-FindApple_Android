@@ -49,13 +49,13 @@ interface PostApi {
         @Query("title") title: String
     ): Single<Unit>
 
-    @GET("/lost/{pageNum}")
+    @GET("/lost/relation/{pageNum}")
     fun getRelatedLostPosts(
         @Path("pageNum") pageNum: Int,
         @Query("title") title: String
     ): Single<List<LostListResponse>>
 
-    @GET("/find/{pageNum}")
+    @GET("/find/relation/{pageNum}")
     fun getRelatedFindPosts(
         @Path("pageNum") pageNum: Int,
         @Query("title") title: String
