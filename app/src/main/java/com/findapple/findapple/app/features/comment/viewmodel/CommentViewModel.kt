@@ -3,7 +3,10 @@ package com.findapple.findapple.app.features.comment.viewmodel
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.findapple.findapple.BR
+import com.findapple.findapple.R
 import com.findapple.findapple.app.base.BaseViewModel
+import com.findapple.findapple.app.bindingadapter.RecyclerViewItem
 import com.findapple.findapple.domain.base.Result
 import com.findapple.findapple.domain.features.comment.parameter.GetCommentsParameter
 import com.findapple.findapple.domain.features.comment.usecase.GetCommentsUseCase
@@ -15,8 +18,8 @@ import io.reactivex.observers.DisposableSingleObserver
 class CommentViewModel(private val getCommentsUseCase: GetCommentsUseCase) : BaseViewModel() {
     val post = MutableLiveData<Post>()
 
-    private val _comments = MutableLiveData<List<Comment>>()
-    val comments: LiveData<List<Comment>> get() = _comments
+    private val _comments = MutableLiveData<List<RecyclerViewItem>>()
+    val comments: LiveData<List<RecyclerViewItem>> get() = _comments
 
     var postId: Long = 0
     var isLost = true
@@ -33,7 +36,7 @@ class CommentViewModel(private val getCommentsUseCase: GetCommentsUseCase) : Bas
             object : DisposableSingleObserver<Result<List<Comment>>>() {
                 override fun onSuccess(t: Result<List<Comment>>) {
                     if(t is Result.Success) {
-                        _comments.value = t.value
+                        _comments.value = t.value.map { it.toRecyclerViewItem() }
                     }
                 }
 
@@ -45,4 +48,11 @@ class CommentViewModel(private val getCommentsUseCase: GetCommentsUseCase) : Bas
             AndroidSchedulers.mainThread()
         )
     }
+
+    private fun Comment.toRecyclerViewItem() =
+        RecyclerViewItem(
+            data = this,
+            variableId = BR.comment,
+            itemLayoutId = R.layout.item_comment
+        )
 }
