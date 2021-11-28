@@ -5,4 +5,6 @@ import io.reactivex.Single
 
 interface CommentDatasource {
     fun getComments(id: Long, isLost: Boolean): Single<List<CommentResponse>>
+
+    fun postComment(id: Long, comment: String, isLost: Boolean): Single<Unit>
 }
