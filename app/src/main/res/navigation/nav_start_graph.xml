@@ -81,10 +81,10 @@
             app:popUpToInclusive="false">
             <argument
                 android:name="postId"
-                app:argType="Long" />
+                app:argType="long" />
             <argument
                 android:name="isLost"
-                app:argType="Boolean" />
+                app:argType="boolean" />
         </action>
     </fragment>
 
@@ -111,10 +111,10 @@
         tools:layout="@layout/fragment_comment">
         <argument
             android:name="postId"
-            app:argType="Long" />
+            app:argType="long" />
 
         <argument
             android:name="isLost"
-            app:argType="Boolean" />
+            app:argType="boolean" />
     </fragment>
 </navigation>

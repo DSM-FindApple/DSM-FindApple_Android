@@ -149,7 +149,7 @@
                     android:visibility="@{vm.findList.size()>0?View.VISIBLE:View.GONE}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/find_list"
-                    app:recyclerItems="@{vm.findList}" />
+                    app:multipleRecyclerItems="@{vm.findList}" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

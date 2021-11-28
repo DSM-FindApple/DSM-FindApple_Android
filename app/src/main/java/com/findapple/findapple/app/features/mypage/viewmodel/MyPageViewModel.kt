@@ -11,10 +11,13 @@ import com.findapple.findapple.domain.features.mypage.entity.UserDetail
 import com.findapple.findapple.domain.features.post.entity.Post
 import com.findapple.findapple.domain.features.mypage.usecase.GetUserDetailUseCase
 import com.findapple.findapple.BR
+import com.findapple.findapple.app.base.BasePostViewModel
 import com.findapple.findapple.domain.base.Result
 import com.findapple.findapple.app.base.SingleLiveEvent
+import com.findapple.findapple.app.bindingadapter.MultipleRecyclerViewItem
 import com.findapple.findapple.app.bindingadapter.RecyclerViewItem
 import com.findapple.findapple.app.features.post.viewModel.PostItemViewModel
+import com.findapple.findapple.app.features.post.viewModel.PostViewModel
 import com.findapple.findapple.domain.features.mypage.repository.UserRepository
 import com.findapple.findapple.domain.features.mypage.service.UserService
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -27,7 +30,7 @@ class MyPageViewModel(
     private val userService: UserService,
     private val userRepository: UserRepository,
     private val compositeDisposable: CompositeDisposable
-) : BaseViewModel() {
+) : BasePostViewModel() {
 
     private val _userProfile = MutableLiveData<User>()
     val userProfile: LiveData<User> get() = _userProfile
@@ -35,8 +38,8 @@ class MyPageViewModel(
     private val _userDetail = MutableLiveData<UserDetail>()
     val userDetail: LiveData<UserDetail> get() = _userDetail
 
-    private val _myPageItems = MutableLiveData<ArrayList<RecyclerViewItem>>()
-    val myPageItems: LiveData<ArrayList<RecyclerViewItem>> get() = _myPageItems
+    private val _myPageItems = MutableLiveData<ArrayList<MultipleRecyclerViewItem>>()
+    val myPageItems: LiveData<ArrayList<MultipleRecyclerViewItem>> get() = _myPageItems
 
     private val _showFindAppleLevelDetail = SingleLiveEvent<Unit>()
     val showFindAppleLevelDetail: LiveData<Unit> get() = _showFindAppleLevelDetail
@@ -73,12 +76,14 @@ class MyPageViewModel(
     }
 
     private fun initMyPageHeader() {
-        _myPageItems.value = ArrayList<RecyclerViewItem>().apply {
+        _myPageItems.value = ArrayList<MultipleRecyclerViewItem>().apply {
             add(
-                RecyclerViewItem(
+                MultipleRecyclerViewItem(
                     R.layout.item_mypage_header,
                     this@MyPageViewModel,
-                    BR.vm
+                    BR.vm,
+                    "dd",
+                    BR.image
                 )
             )
         }
@@ -97,10 +102,12 @@ class MyPageViewModel(
                             for (post in postList) {
                                 _myPageItems.value = myPageItems.value?.apply {
                                     add(
-                                        RecyclerViewItem(
+                                        MultipleRecyclerViewItem(
                                             R.layout.item_post,
-                                            data = PostItemViewModel(post).apply { isMyPost = true },
-                                            variableId = BR.vm
+                                            data1 = PostItemViewModel(post, this@MyPageViewModel).apply { isMyPost = true },
+                                            variableId1 = BR.vm,
+                                            data2 = this@MyPageViewModel,
+                                            variableId2 = BR.postVm
                                         )
                                     )
                                 }
