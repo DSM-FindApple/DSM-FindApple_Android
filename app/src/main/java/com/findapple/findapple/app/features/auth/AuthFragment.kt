@@ -81,10 +81,12 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>(R.layout.fragment_auth) {
                     snackBarComment("카카오로그인에 실패했습니다")
                 }
             }
+
         if (UserApiClient.instance.isKakaoTalkLoginAvailable(requireContext())) {
             UserApiClient.rx.loginWithKakaoTalk(requireContext())
                 .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread()).subscribe(kakaoLoginDisposable)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(kakaoLoginDisposable)
         } else {
             UserApiClient.rx.loginWithKakaoAccount(requireContext())
                 .subscribeOn(Schedulers.io())
