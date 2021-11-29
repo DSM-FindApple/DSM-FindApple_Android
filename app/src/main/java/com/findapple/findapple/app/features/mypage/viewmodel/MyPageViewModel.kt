@@ -5,21 +5,18 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.findapple.findapple.R
 import com.findapple.findapple.domain.features.mypage.usecase.GetUserUseCase
-import com.findapple.findapple.app.base.BaseViewModel
 import com.findapple.findapple.domain.entity.User
 import com.findapple.findapple.domain.features.mypage.entity.UserDetail
-import com.findapple.findapple.domain.features.post.entity.Post
 import com.findapple.findapple.domain.features.mypage.usecase.GetUserDetailUseCase
 import com.findapple.findapple.BR
 import com.findapple.findapple.app.base.BasePostViewModel
 import com.findapple.findapple.domain.base.Result
 import com.findapple.findapple.app.base.SingleLiveEvent
 import com.findapple.findapple.app.bindingadapter.MultipleRecyclerViewItem
-import com.findapple.findapple.app.bindingadapter.RecyclerViewItem
 import com.findapple.findapple.app.features.post.viewModel.PostItemViewModel
-import com.findapple.findapple.app.features.post.viewModel.PostViewModel
 import com.findapple.findapple.domain.features.mypage.repository.UserRepository
 import com.findapple.findapple.domain.features.mypage.service.UserService
+import com.findapple.findapple.domain.features.post.service.PostService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
@@ -29,6 +26,7 @@ class MyPageViewModel(
     private val getUserDetailUseCase: GetUserDetailUseCase,
     private val userService: UserService,
     private val userRepository: UserRepository,
+    override val postService: PostService,
     private val compositeDisposable: CompositeDisposable
 ) : BasePostViewModel() {
 
@@ -62,7 +60,7 @@ class MyPageViewModel(
 
                 override fun onSuccess(t: User) {
                     _userProfile.value = t
-                    getUserDetail()
+                    getPosts()
                 }
 
                 override fun onError(e: Throwable) {
@@ -89,7 +87,7 @@ class MyPageViewModel(
         }
     }
 
-    private fun getUserDetail() {
+    override fun getPosts() {
         getUserDetailUseCase.execute(
             data = Unit,
             singleObserver = object : DisposableSingleObserver<Result<UserDetail>>() {

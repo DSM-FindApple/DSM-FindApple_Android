@@ -6,6 +6,7 @@ import com.findapple.findapple.domain.features.mypage.usecase.GetUserDetailUseCa
 import com.findapple.findapple.app.features.mypage.viewmodel.MyPageViewModelFactory
 import com.findapple.findapple.domain.features.mypage.repository.UserRepository
 import com.findapple.findapple.domain.features.mypage.service.UserService
+import com.findapple.findapple.domain.features.post.service.PostService
 import dagger.Module
 import dagger.Provides
 import io.reactivex.disposables.CompositeDisposable
@@ -19,6 +20,7 @@ class MyPageModule {
         userPostUseCase: GetUserDetailUseCase,
         userService: UserService,
         userRepository: UserRepository,
+        postService: PostService,
         compositeDisposable: CompositeDisposable
-    ): MyPageViewModelFactory = MyPageViewModelFactory(userUseCase, userPostUseCase, userService,userRepository, compositeDisposable)
+    ): MyPageViewModelFactory = MyPageViewModelFactory(userUseCase, userPostUseCase, userService, userRepository, postService, compositeDisposable)
 }

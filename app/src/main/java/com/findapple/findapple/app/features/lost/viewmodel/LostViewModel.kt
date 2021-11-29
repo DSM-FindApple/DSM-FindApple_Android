@@ -9,11 +9,10 @@ import com.findapple.findapple.domain.features.post.usecase.GetLostListUseCase
 import com.findapple.findapple.app.base.BasePostViewModel
 import com.findapple.findapple.app.base.SingleLiveEvent
 import com.findapple.findapple.app.bindingadapter.MultipleRecyclerViewItem
-import com.findapple.findapple.app.bindingadapter.RecyclerViewItem
 import com.findapple.findapple.app.features.post.viewModel.PostItemViewModel
 import com.findapple.findapple.app.features.post.viewModel.toRecyclerItem
-import com.findapple.findapple.domain.entity.Location
 import com.findapple.findapple.domain.features.post.parameter.GetPostParameter
+import com.findapple.findapple.domain.features.post.service.PostService
 import com.findapple.findapple.domain.main.repository.MainRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
@@ -23,6 +22,7 @@ class LostViewModel(
     private val mainRepository: MainRepository
 ) : BasePostViewModel() {
 
+    override val postService: PostService = getLostListUseCase.postService
     val lostList = MutableLiveData<List<MultipleRecyclerViewItem>>()
 
     private val _startPostLost = SingleLiveEvent<Unit>()
@@ -42,7 +42,7 @@ class LostViewModel(
         userId = mainRepository.getUserId()
     }
 
-    fun loadLostList() {
+    override fun getPosts() {
         getLostListUseCase.execute(
             GetPostParameter(page.value ?: 0, location),
             object : DisposableSingleObserver<Result<List<Post>>>() {
@@ -51,7 +51,12 @@ class LostViewModel(
                         val addItem: ArrayList<MultipleRecyclerViewItem> =
                             if (lostList.value != null) lostList.value as ArrayList<MultipleRecyclerViewItem> else ArrayList()
                         lostList.value = addItem.apply {
-                            addAll(t.value.map { PostItemViewModel(it, this@LostViewModel).toRecyclerItem(it.user.id == userId) })
+                            addAll(t.value.map {
+                                PostItemViewModel(
+                                    it,
+                                    this@LostViewModel
+                                ).toRecyclerItem(it.user.id == userId)
+                            })
                         }
 
                     }

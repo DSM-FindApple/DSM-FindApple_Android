@@ -59,7 +59,7 @@ class FindFragment : BaseFragment<FragmentFindBinding>(R.layout.fragment_find) {
     private fun readNextPosts() {
         viewModel.run {
             page.value = viewModel.page.value!! + 1
-            loadFindList()
+            getPosts()
         }
     }
 
@@ -74,7 +74,7 @@ class FindFragment : BaseFragment<FragmentFindBinding>(R.layout.fragment_find) {
         })
         mainViewModel.location.observe(viewLifecycleOwner, {
             setLocation(it)
-            viewModel.loadFindList()
+            viewModel.getPosts()
         })
     }
 

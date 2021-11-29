@@ -24,4 +24,7 @@ class PostServiceImpl(
 
     override fun getRelatedFindPost(title: String): Single<Result<List<Post>>> =
         postRepository.getRelatedFindPost(title).toResult(errorHandler)
+
+
+
 }

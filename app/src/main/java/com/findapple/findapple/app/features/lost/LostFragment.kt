@@ -64,7 +64,7 @@ class LostFragment : BaseFragment<FragmentLostBinding>(R.layout.fragment_lost) {
     private fun readNextPosts() {
         viewModel.run {
             page.value = viewModel.page.value!! + 1
-            loadLostList()
+            getPosts()
         }
 
     }
@@ -87,12 +87,12 @@ class LostFragment : BaseFragment<FragmentLostBinding>(R.layout.fragment_lost) {
                 this@LostFragment.startComment(it)
             })
             moreClickedPostId.observe(viewLifecycleOwner, {
-                MorePostDialog().show(requireActivity().supportFragmentManager, "morePostDialog")
+                MorePostDialog(viewModel, it).show(requireActivity().supportFragmentManager, "morePostDialog")
             })
         }
         mainViewModel.location.observe(viewLifecycleOwner, {
             setLocation(it)
-            viewModel.loadLostList()
+            viewModel.getPosts()
         })
     }
 

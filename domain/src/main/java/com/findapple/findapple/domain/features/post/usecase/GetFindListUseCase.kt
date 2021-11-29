@@ -9,7 +9,7 @@ import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 
 class GetFindListUseCase(
-    private val postService: PostService,
+    val postService: PostService,
     compositeDisposable: CompositeDisposable
 ) :
     UseCase<GetPostParameter, Result<List<Post>>>(compositeDisposable) {

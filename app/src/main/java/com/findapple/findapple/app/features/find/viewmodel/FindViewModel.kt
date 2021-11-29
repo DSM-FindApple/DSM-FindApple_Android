@@ -11,6 +11,7 @@ import com.findapple.findapple.app.features.post.viewModel.toRecyclerItem
 import com.findapple.findapple.domain.base.Result
 import com.findapple.findapple.domain.features.post.entity.Post
 import com.findapple.findapple.domain.features.post.parameter.GetPostParameter
+import com.findapple.findapple.domain.features.post.service.PostService
 import com.findapple.findapple.domain.main.repository.MainRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
@@ -20,6 +21,8 @@ class FindViewModel(
     private val mainRepository: MainRepository
 ) : BasePostViewModel() {
 
+    override val postService: PostService
+        get() = getFindListUseCase.postService
     val findList = MutableLiveData<List<MultipleRecyclerViewItem>>()
 
     val startPostFind = SingleLiveEvent<Unit>()
@@ -38,7 +41,7 @@ class FindViewModel(
         userId = mainRepository.getUserId()
     }
 
-    fun loadFindList() {
+    override fun getPosts() {
         getFindListUseCase.execute(
             GetPostParameter(page.value ?: 0, location),
             object : DisposableSingleObserver<Result<List<Post>>>() {
