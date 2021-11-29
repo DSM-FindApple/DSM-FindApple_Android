@@ -36,7 +36,10 @@
                     android:id="@+id/find_wv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:setWebView="@{`https://find-apple.org/find`}" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:setWebView="@{`http://www.findapple.app.s3-website.ap-northeast-2.amazonaws.com/find`}"
+                    tools:layout_editor_absoluteY="0dp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 

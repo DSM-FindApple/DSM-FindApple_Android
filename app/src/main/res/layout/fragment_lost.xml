@@ -36,7 +36,7 @@
                     android:id="@+id/lost_wv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:setWebView="@{`https://find-apple.org/lost`}"
+                    app:setWebView="@{`http://www.findapple.app.s3-website.ap-northeast-2.amazonaws.com/lost`}"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

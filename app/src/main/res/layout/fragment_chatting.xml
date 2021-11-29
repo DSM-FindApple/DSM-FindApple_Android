@@ -14,7 +14,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:setWebView="@{`https://find-apple.org/chatlist`}" />
+            app:setWebView="@{`http://www.findapple.app.s3-website.ap-northeast-2.amazonaws.com/chatlist`}" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

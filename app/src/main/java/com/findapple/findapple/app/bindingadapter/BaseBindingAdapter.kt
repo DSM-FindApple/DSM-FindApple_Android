@@ -1,6 +1,7 @@
 package com.findapple.findapple.app.bindingadapter
 
 import android.graphics.PorterDuff
+import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.widget.ImageView
 import android.widget.TextView
