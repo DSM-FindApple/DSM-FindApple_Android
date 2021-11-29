@@ -16,7 +16,17 @@ abstract class BasePostViewModel: BaseViewModel() {
     val townName = MutableLiveData<String>()
     val cityName = MutableLiveData<String>()
 
+    val moreClickedPostId = SingleLiveEvent<Long>()
+
     fun commentClicked(id: Long) {
         clickedCommentId.value = id
+    }
+
+    fun moreClicked(id: Long) {
+        moreClickedPostId.value = id
+    }
+
+    fun showMap() {
+
     }
 }

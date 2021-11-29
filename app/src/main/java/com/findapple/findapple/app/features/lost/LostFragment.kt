@@ -13,6 +13,7 @@ import com.findapple.findapple.domain.entity.Location
 import com.findapple.findapple.app.base.BaseFragment
 import com.findapple.findapple.app.features.lost.viewmodel.LostViewModel
 import com.findapple.findapple.app.features.lost.viewmodel.LostViewModelFactory
+import com.findapple.findapple.app.features.post.MorePostDialog
 import com.findapple.findapple.app.main.MainFragmentDirections
 import com.findapple.findapple.app.main.viewmodel.MainViewModel
 import com.google.android.gms.common.util.CollectionUtils
@@ -52,7 +53,7 @@ class LostFragment : BaseFragment<FragmentLostBinding>(R.layout.fragment_lost) {
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                     super.onScrolled(recyclerView, dx, dy)
                     lostSpl.isTouchEnabled = !recyclerView.canScrollVertically(-1)
-                    if(!recyclerView.canScrollVertically(1)) {
+                    if (!recyclerView.canScrollVertically(1)) {
                         readNextPosts()
                     }
                 }
@@ -74,7 +75,7 @@ class LostFragment : BaseFragment<FragmentLostBinding>(R.layout.fragment_lost) {
     }
 
     private fun sendToken() {
-        //binding.lostWv.evaluateJavascript("(function() { window.dispatchEvent(backKeyPressed); })();" ){}
+        binding.lostWv.evaluateJavascript("(function() { window.dispatchEvent(backKeyPressed); })();") {}
     }
 
     override fun observeEvent() {
@@ -84,6 +85,9 @@ class LostFragment : BaseFragment<FragmentLostBinding>(R.layout.fragment_lost) {
             })
             clickedCommentId.observe(viewLifecycleOwner, {
                 this@LostFragment.startComment(it)
+            })
+            moreClickedPostId.observe(viewLifecycleOwner, {
+                MorePostDialog().show(requireActivity().supportFragmentManager, "morePostDialog")
             })
         }
         mainViewModel.location.observe(viewLifecycleOwner, {
