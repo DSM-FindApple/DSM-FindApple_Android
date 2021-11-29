@@ -1,8 +1,8 @@
 package com.findapple.findapple.app.bindingadapter
 
 import android.graphics.PorterDuff
-import android.webkit.WebChromeClient
-import android.webkit.WebView
+import android.util.Log
+import android.webkit.*
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
@@ -75,10 +75,12 @@ fun WebView.setWebView(url: String?) {
                 builtInZoomControls = false
                 loadWithOverviewMode = true
                 useWideViewPort = true
+                domStorageEnabled = true
             }
             loadUrl(url)
         }
     }
+
 }
 
 @BindingAdapter("imageUrl")

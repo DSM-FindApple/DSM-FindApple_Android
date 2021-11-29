@@ -34,7 +34,6 @@ class LostFragment : BaseFragment<FragmentLostBinding>(R.layout.fragment_lost) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        sendToken()
         binding.run {
             lostSpl.panelState = SlidingUpPanelLayout.PanelState.COLLAPSED
             var touchStartY = 0
@@ -66,16 +65,11 @@ class LostFragment : BaseFragment<FragmentLostBinding>(R.layout.fragment_lost) {
             page.value = viewModel.page.value!! + 1
             getPosts()
         }
-
     }
 
     private fun setLocation(location: Location) {
         viewModel.location = location
         setLocationText(viewModel.location)
-    }
-
-    private fun sendToken() {
-        binding.lostWv.evaluateJavascript("(function() { window.dispatchEvent(backKeyPressed); })();") {}
     }
 
     override fun observeEvent() {
