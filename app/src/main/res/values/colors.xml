@@ -25,4 +25,6 @@
     <color name="blue_300">#93CFFF</color>
     <color name="blue_400">#81C1F3</color>
     <color name="blue_500">#6CABDD</color>
+
+    <color name="red">#e63232</color>
 </resources>
