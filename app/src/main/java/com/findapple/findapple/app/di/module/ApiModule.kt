@@ -13,7 +13,7 @@ import javax.inject.Singleton
 class ApiModule {
 
     companion object {
-        private const val baseUrl = "http://3.35.221.104:8080/"
+        private const val baseUrl = "https://api.find-apple.org/"
         private const val postUrl = "${baseUrl}post/"
         private const val userUrl = "${baseUrl}user/"
         private const val authUrl = "${baseUrl}v1/"

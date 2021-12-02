@@ -1,6 +1,7 @@
 package com.findapple.findapple.app.base
 
 import androidx.lifecycle.MutableLiveData
+import com.findapple.findapple.domain.base.Result
 import com.findapple.findapple.domain.entity.Location
 import com.findapple.findapple.domain.features.post.entity.Post
 import com.findapple.findapple.domain.features.post.service.PostService
@@ -36,6 +37,11 @@ abstract class BasePostViewModel : BaseViewModel() {
     }
 
     fun deletePost(post: Post) {
-        postService.deletePost(post, post.isLost)
+        postService.deletePost(post, post.isLost).subscribe { result ->
+            if(result is Result.Success) {
+                page.value = 0
+                getPosts()
+            }
+        }
     }
 }

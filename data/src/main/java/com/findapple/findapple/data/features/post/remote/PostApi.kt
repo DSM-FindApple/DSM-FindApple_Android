@@ -7,7 +7,7 @@ import okhttp3.MultipartBody
 import retrofit2.http.*
 
 interface PostApi {
-    @GET("/lost/{pageNum}")
+    @GET("lost/{pageNum}")
     fun getLostList(
         @Path("pageNum") pageNum: Int,
         @Query("endLatitude") endLatitude: Double,
@@ -16,7 +16,7 @@ interface PostApi {
         @Query("startLongitude") startLongitude: Double
     ): Single<List<LostListResponse>>
 
-    @GET("/find/{pageNum}")
+    @GET("find/{pageNum}")
     fun getFindList(
         @Path("pageNum") pageNum: Int,
         @Query("endLatitude") endLatitude: Double,
@@ -26,7 +26,7 @@ interface PostApi {
     ): Single<List<FindListResponse>>
 
     @Multipart
-    @POST("/find")
+    @POST("find")
     fun postFind(
         @Query("category") category: String,
         @Query("detail") detail: String,
@@ -38,7 +38,7 @@ interface PostApi {
     ): Single<Unit>
 
     @Multipart
-    @POST("/lost")
+    @POST("lost")
     fun postLost(
         @Query("category") category: String,
         @Query("detail") detail: String,
@@ -49,21 +49,21 @@ interface PostApi {
         @Query("title") title: String
     ): Single<Unit>
 
-    @GET("/lost/relation/{pageNum}")
+    @GET("lost/relation/{pageNum}")
     fun getRelatedLostPosts(
         @Path("pageNum") pageNum: Int,
         @Query("title") title: String
     ): Single<List<LostListResponse>>
 
-    @GET("/find/relation/{pageNum}")
+    @GET("find/relation/{pageNum}")
     fun getRelatedFindPosts(
         @Path("pageNum") pageNum: Int,
         @Query("title") title: String
     ): Single<List<FindListResponse>>
 
-    @DELETE("/lost/{lostId}")
+    @DELETE("lost/{lostId}")
     fun deleteLostPost(@Path("lostId") id: Long): Single<Unit>
 
-    @DELETE("/find/{find}")
+    @DELETE("find/{find}")
     fun deleteFindPost(@Path("lostId") id: Long): Single<Unit>
 }

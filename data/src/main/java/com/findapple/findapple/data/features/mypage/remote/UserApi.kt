@@ -5,7 +5,6 @@ import io.reactivex.Single
 import retrofit2.http.GET
 
 interface UserApi {
-    @GET("/user")
+    @GET("user")
     fun getUserDetail(): Single<UserResponse>
-
 }

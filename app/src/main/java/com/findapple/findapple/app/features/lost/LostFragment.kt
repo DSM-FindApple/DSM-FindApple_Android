@@ -33,6 +33,7 @@ class LostFragment : BaseFragment<FragmentLostBinding>(R.layout.fragment_lost) {
     lateinit var mainViewModel: MainViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        viewModel.getPosts()
         super.onViewCreated(view, savedInstanceState)
         binding.run {
             lostSpl.panelState = SlidingUpPanelLayout.PanelState.COLLAPSED

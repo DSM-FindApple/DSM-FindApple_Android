@@ -36,7 +36,8 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>(R.layout.fragment_auth) {
 
         binding.run {
             authLoginBtn.setOnClickListener {
-                startKakaoLogin()
+                testLogin()
+                //startKakaoLogin()
             }
             authLoginVp.adapter = AuthAdapter()
             TabLayoutMediator(authLoginTl, authLoginVp) { _, _ ->
@@ -44,15 +45,19 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>(R.layout.fragment_auth) {
         }
     }
 
+    private fun testLogin() {
+        viewModel.login(
+            1034294392,
+            "김재원",
+            "https://",
+            mainViewModel.location.value
+        )
+    }
+
     private fun getUserInfo() {
         UserApiClient.instance.me { user, _ ->
             if (user != null) {
-                viewModel.login(
-                    user.id,
-                    user.kakaoAccount?.profile?.nickname.toString(),
-                    user.kakaoAccount?.profile?.profileImageUrl.toString(),
-                    mainViewModel.location.value
-                )
+
             }
         }
     }

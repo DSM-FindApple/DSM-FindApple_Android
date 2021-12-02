@@ -13,7 +13,7 @@ class MorePostDialog(val viewModel: BasePostViewModel, val post: Post): BaseDial
         super.onViewCreated(view, savedInstanceState)
         binding.run {
             moreDeleteTv.setOnClickListener {
-                viewModel.deletePost()
+                viewModel.deletePost(post)
             }
             moreEditTv.setOnClickListener {
 
