@@ -61,4 +61,9 @@ interface PostApi {
         @Query("title") title: String
     ): Single<List<FindListResponse>>
 
+    @DELETE("/lost/{lostId}")
+    fun deleteLostPost(@Path("lostId") id: Long): Single<Unit>
+
+    @DELETE("/find/{find}")
+    fun deleteFindPost(@Path("lostId") id: Long): Single<Unit>
 }

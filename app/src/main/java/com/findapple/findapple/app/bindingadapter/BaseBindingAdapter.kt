@@ -1,10 +1,12 @@
 package com.findapple.findapple.app.bindingadapter
 
+import android.annotation.SuppressLint
 import android.graphics.PorterDuff
-import android.util.Log
+import android.os.Build
 import android.webkit.*
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -66,6 +68,8 @@ fun ViewPager2.setList(list: List<RecyclerViewItem>?) {
     }
 }
 
+@SuppressLint("SetJavaScriptEnabled")
+@RequiresApi(Build.VERSION_CODES.CUPCAKE)
 @BindingAdapter("setWebView")
 fun WebView.setWebView(url: String?) {
     this.run {
@@ -76,6 +80,18 @@ fun WebView.setWebView(url: String?) {
                 loadWithOverviewMode = true
                 useWideViewPort = true
                 domStorageEnabled = true
+                webChromeClient = object : WebChromeClient() {
+                }
+                webViewClient = object : WebViewClient() {
+                    override fun shouldOverrideUrlLoading(
+                        view: WebView?,
+                        request: WebResourceRequest?
+                    ): Boolean {
+                        view?.stopLoading()
+                        view?.loadUrl(request?.method?:"")
+                        return false
+                    }
+                }
             }
             loadUrl(url)
         }

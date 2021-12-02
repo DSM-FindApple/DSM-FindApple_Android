@@ -22,4 +22,7 @@ class PostRepositoryImpl(private val dataSource: PostDataSource) : PostRepositor
 
     override fun getRelatedFindPost(title: String): Single<List<Post>> =
         dataSource.getRelatedFindPost(title).map { it.toEntity() }
+
+    override fun deletePost(post: Post, isLost: Boolean): Single<Unit> =
+        dataSource.deletePost(post, isLost)
 }

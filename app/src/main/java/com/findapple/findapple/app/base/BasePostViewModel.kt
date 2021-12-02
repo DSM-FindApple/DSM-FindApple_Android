@@ -2,6 +2,7 @@ package com.findapple.findapple.app.base
 
 import androidx.lifecycle.MutableLiveData
 import com.findapple.findapple.domain.entity.Location
+import com.findapple.findapple.domain.features.post.entity.Post
 import com.findapple.findapple.domain.features.post.service.PostService
 
 abstract class BasePostViewModel: BaseViewModel() {
@@ -20,23 +21,21 @@ abstract class BasePostViewModel: BaseViewModel() {
     val townName = MutableLiveData<String>()
     val cityName = MutableLiveData<String>()
 
-    val moreClickedPostId = SingleLiveEvent<Long>()
+    val moreClickedPostId = SingleLiveEvent<Post>()
 
     fun commentClicked(id: Long) {
         clickedCommentId.value = id
     }
 
-    fun moreClicked(id: Long) {
-        moreClickedPostId.value = id
+    fun moreClicked(post: Post) {
+        moreClickedPostId.value = post
     }
 
     fun showMap() {
 
     }
 
-    fun deletePost() {
-        if(moreClickedPostId.value != null) {
-        }
-
+    fun deletePost(post: Post) {
+        postService
     }
 }

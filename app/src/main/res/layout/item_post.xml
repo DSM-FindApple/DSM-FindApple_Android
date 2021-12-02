@@ -67,7 +67,7 @@
             android:layout_height="34dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
-            android:onClick="@{()->vm.isMyPost?postVm.moreClicked(vm.post.id):postVm.showMap()}"
+            android:onClick="@{()->vm.isMyPost?postVm.moreClicked(vm.post):postVm.showMap()}"
             android:padding="5dp"
             android:src="@{vm.isMyPost?@drawable/ic_baseline_more_vert_24:@drawable/ic_baseline_location_searching_24}"
             app:layout_constraintEnd_toEndOf="parent"

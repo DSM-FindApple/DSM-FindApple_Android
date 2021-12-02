@@ -6,8 +6,9 @@ import com.findapple.findapple.R
 import com.findapple.findapple.app.base.BaseDialog
 import com.findapple.findapple.app.base.BasePostViewModel
 import com.findapple.findapple.databinding.DialogMorePostBinding
+import com.findapple.findapple.domain.features.post.entity.Post
 
-class MorePostDialog(val viewModel: BasePostViewModel, val postId: Long): BaseDialog<DialogMorePostBinding>(R.layout.dialog_more_post) {
+class MorePostDialog(val viewModel: BasePostViewModel, val post: Post): BaseDialog<DialogMorePostBinding>(R.layout.dialog_more_post) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.run {

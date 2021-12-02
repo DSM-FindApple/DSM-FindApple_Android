@@ -5,6 +5,7 @@ import com.findapple.findapple.data.features.post.dto.response.FindListResponse
 import com.findapple.findapple.data.features.post.dto.response.LostListResponse
 import com.findapple.findapple.data.features.post.remote.PostApi
 import com.findapple.findapple.data.features.post.toMultipart
+import com.findapple.findapple.domain.features.post.entity.Post
 import com.findapple.findapple.domain.features.post.parameter.PostDataParameter
 import io.reactivex.Single
 
@@ -55,4 +56,7 @@ class PostDataSourceImpl(private val postApi: PostApi) : PostDataSource {
 
     override fun getRelatedFindPost(title: String): Single<List<FindListResponse>> =
         postApi.getRelatedFindPosts(0, title)
+
+    override fun deletePost(post: Post, isLost: Boolean): Single<Unit> =
+        if (isLost) postApi.deleteLostPost(post.id) else postApi.deleteFindPost(post.id)
 }

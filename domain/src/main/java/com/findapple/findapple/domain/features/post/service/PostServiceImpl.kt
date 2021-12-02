@@ -25,6 +25,7 @@ class PostServiceImpl(
     override fun getRelatedFindPost(title: String): Single<Result<List<Post>>> =
         postRepository.getRelatedFindPost(title).toResult(errorHandler)
 
-
+    override fun deletePost(post: Post, isLost: Boolean): Single<Result<Unit>> =
+        postRepository.deletePost(post, isLost).toResult(errorHandler)
 
 }

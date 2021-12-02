@@ -16,4 +16,5 @@ interface PostService {
 
     fun getRelatedFindPost(title: String): Single<Result<List<Post>>>
 
+    fun deletePost(post: Post, isLost: Boolean): Single<Result<Unit>>
 }

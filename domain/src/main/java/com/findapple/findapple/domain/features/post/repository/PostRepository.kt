@@ -13,4 +13,6 @@ interface PostRepository {
     fun getRelatedLostPost(title: String): Single<List<Post>>
 
     fun getRelatedFindPost(title: String): Single<List<Post>>
+
+    fun deletePost(post: Post, isLost: Boolean): Single<Unit>
 }

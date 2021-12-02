@@ -16,7 +16,12 @@ class ChattingFragment : BaseFragment<FragmentChattingBinding>(R.layout.fragment
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.chatWv.addJavascriptInterface(ChatWebBridge(this), "ChatDetail")
+        val webBridge = ChatWebBridge(this)
+        binding.chatWv.addJavascriptInterface(webBridge, "ChatDetail")
+
+        binding.testBtn.setOnClickListener {
+            webBridge.test()
+        }
     }
 
     override fun observeEvent() {

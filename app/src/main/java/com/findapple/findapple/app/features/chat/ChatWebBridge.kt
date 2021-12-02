@@ -25,4 +25,11 @@ class ChatWebBridge(private val fragment: Fragment) {
     fun exitChatDetail() {
         (fragment as ChatDetailFragment).onBackPressed()
     }
+
+    fun test() {
+        val webView = (fragment as ChattingFragment).binding.chatWv
+        webView.post {
+            Runnable { webView.evaluateJavascript("numberAdd()"){} }
+        }
+    }
 }
