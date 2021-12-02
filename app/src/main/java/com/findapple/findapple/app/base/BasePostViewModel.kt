@@ -5,7 +5,7 @@ import com.findapple.findapple.domain.entity.Location
 import com.findapple.findapple.domain.features.post.entity.Post
 import com.findapple.findapple.domain.features.post.service.PostService
 
-abstract class BasePostViewModel: BaseViewModel() {
+abstract class BasePostViewModel : BaseViewModel() {
 
     abstract fun getPosts()
 
@@ -36,6 +36,6 @@ abstract class BasePostViewModel: BaseViewModel() {
     }
 
     fun deletePost(post: Post) {
-        postService
+        postService.deletePost(post, post.isLost)
     }
 }

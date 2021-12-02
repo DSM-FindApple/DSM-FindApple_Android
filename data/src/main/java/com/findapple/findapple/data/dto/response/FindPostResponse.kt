@@ -27,6 +27,7 @@ fun FindPostResponse.toEntity(): Post {
     return Post(
         id = findId,
         title = title,
+        isLost = false,
         user = User(name = findUser, profileImage = profileUrl, id = kakaoId),
         detailInfo = detail,
         actionTime = findAt,

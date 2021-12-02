@@ -27,6 +27,7 @@ fun LostPostResponse.toEntity() =
     Post(
         category = category,
         detailInfo = detail,
+        isLost = true,
         user = User(kakaoId, lostUser, profileUrl),
         location = Location(longitude, latitude),
         actionTime = lostAt,

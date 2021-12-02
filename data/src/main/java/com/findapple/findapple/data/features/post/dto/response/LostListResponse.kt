@@ -29,6 +29,7 @@ fun LostListResponse.toEntity() =
     Post(
         id = lostId,
         title = title,
+        isLost = true,
         user = User(name = lostUser, id = kakaoId, profileImage = profileUrl),
         detailInfo = detail,
         actionTime = lostAt,

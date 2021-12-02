@@ -6,6 +6,7 @@ import com.findapple.findapple.domain.entity.User
 data class Post(
     val id: Long,
     val title: String,
+    val isLost: Boolean,
     val user: User,
     val detailInfo: String,
     val actionTime: String,
