@@ -52,6 +52,7 @@ class FindFragment : BaseFragment<FragmentFindBinding>(R.layout.fragment_find) {
                     }
                 }
             })
+            findWv.loadUrl("javascript:sendToken(`${mainViewModel.token.value}`)")
         }
 
     }

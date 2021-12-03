@@ -57,6 +57,7 @@ class LostFragment : BaseFragment<FragmentLostBinding>(R.layout.fragment_lost) {
                     }
                 }
             })
+            lostWv.loadUrl("javascript:sendToken(`${mainViewModel.token.value}`)")
         }
     }
 
@@ -81,7 +82,10 @@ class LostFragment : BaseFragment<FragmentLostBinding>(R.layout.fragment_lost) {
                 this@LostFragment.startComment(it)
             })
             moreClickedPostId.observe(viewLifecycleOwner, {
-                MorePostDialog(viewModel, it).show(requireActivity().supportFragmentManager, "morePostDialog")
+                MorePostDialog(viewModel, it).show(
+                    requireActivity().supportFragmentManager,
+                    "morePostDialog"
+                )
             })
         }
         mainViewModel.location.observe(viewLifecycleOwner, {
