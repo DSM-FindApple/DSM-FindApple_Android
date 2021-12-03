@@ -86,6 +86,18 @@
                 android:name="isLost"
                 app:argType="boolean" />
         </action>
+
+        <action
+            android:id="@+id/action_mainFragment_to_searchFragment"
+            app:destination="@+id/searchFragment"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/mainFragment"
+            app:popUpToInclusive="false">
+            <argument
+                android:name="type"
+                app:argType="string" />
+        </action>
     </fragment>
 
     <fragment
@@ -116,5 +128,15 @@
         <argument
             android:name="isLost"
             app:argType="boolean" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.findapple.findapple.app.features.search.SearchFragment"
+        android:label="SearchFragment"
+        tools:layout="@layout/fragment_search" >
+        <argument
+            android:name="type"
+            app:argType="string" />
     </fragment>
 </navigation>
