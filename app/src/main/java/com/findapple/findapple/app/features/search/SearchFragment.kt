@@ -17,8 +17,9 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
         super.onViewCreated(view, savedInstanceState)
         val idArgs by navArgs<SearchFragmentArgs>()
         val type = idArgs.type
+        binding.searchWv.addJavascriptInterface(SearchWebBridge(this), "Search")
         binding.url =
-            "http://www.findapple.app.s3-website.ap-northeast-2.amazonaws.com/search/$type"
+            "http://www.findapple.app.s3-website.ap-northeast-2.amazonaws.com/search?type=$type"
     }
 
     override fun observeEvent() {
