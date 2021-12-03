@@ -4,6 +4,8 @@ import android.location.Geocoder
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -55,7 +57,12 @@ class FindFragment : BaseFragment<FragmentFindBinding>(R.layout.fragment_find) {
                 }
             })
             findWv.addJavascriptInterface(FindWebBridge(this@FindFragment), "Find")
-            findWv.loadUrl("javascript:sendToken(`${mainViewModel.token.value}`)")
+            findWv.webViewClient = object : WebViewClient() {
+                override fun onPageFinished(view: WebView?, url: String?) {
+                    super.onPageFinished(view, url)
+                        findWv.loadUrl("javascript:sendToken(`${mainViewModel.token.value}`)")
+                }
+            }
         }
     }
 

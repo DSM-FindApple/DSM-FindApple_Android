@@ -4,6 +4,8 @@ import android.location.Geocoder
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -58,7 +60,12 @@ class LostFragment : BaseFragment<FragmentLostBinding>(R.layout.fragment_lost) {
                 }
             })
             lostWv.addJavascriptInterface(LostWebBridge(this@LostFragment), "Lost")
-            lostWv.loadUrl("javascript:sendToken(`${mainViewModel.token.value}`)")
+            lostWv.webViewClient = object : WebViewClient() {
+                override fun onPageFinished(view: WebView?, url: String?) {
+                    super.onPageFinished(view, url)
+                    lostWv.loadUrl("javascript:sendToken(`${mainViewModel.token.value}`)")
+                }
+            }
         }
     }
 
