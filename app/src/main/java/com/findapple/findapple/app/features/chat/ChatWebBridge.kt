@@ -7,8 +7,8 @@ import com.findapple.findapple.app.features.chat.detail.ChatDetailFragment
 class ChatWebBridge(private val fragment: Fragment) {
 
     @JavascriptInterface
-    fun startChatDetail(id: String) {
-        (fragment as ChattingFragment).moveToChattingDetail(id)
+    fun startChatDetail(id: String, isBan: Boolean, title: String, topMessage: String, targetId: Long) {
+        (fragment as ChattingFragment).moveToChattingDetail(id, isBan, title, topMessage, targetId)
     }
 
     @JavascriptInterface

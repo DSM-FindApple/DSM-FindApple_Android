@@ -28,7 +28,11 @@ class ChatDetailFragment : BaseFragment<FragmentChatDetailBinding>(R.layout.frag
         val idArg by navArgs<ChatDetailFragmentArgs>()
         chatRoomId = idArg.chatRoomId
         binding.url = "http://211.38.86.92:4046/chat?id=$chatRoomId"
-
+        val isBan = idArg.isBan
+        val title = idArg.title
+        val topMessage = idArg.topMessage
+        val targetId = idArg.targetId
+        binding.chatDetailWv.loadUrl("javascript:chatInfo(`$chatRoomId`,`$isBan`,`$title`,`$topMessage`,`$targetId`)")
     }
 
     fun showDatePickerDialog() {

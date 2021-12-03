@@ -71,6 +71,18 @@
             <argument
                 android:name="chatRoomId"
                 app:argType="string" />
+            <argument
+                android:name="isBan"
+                app:argType="boolean" />
+            <argument
+                android:name="title"
+                app:argType="string" />
+            <argument
+                android:name="topMessage"
+                app:argType="string" />
+            <argument
+                android:name="targetId"
+                app:argType="long" />
         </action>
         <action
             android:id="@+id/action_mainFragment_to_commentFragment"
@@ -114,6 +126,18 @@
         <argument
             android:name="chatRoomId"
             app:argType="string" />
+        <argument
+            android:name="isBan"
+            app:argType="boolean" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="topMessage"
+            app:argType="string" />
+        <argument
+            android:name="targetId"
+            app:argType="long" />
     </fragment>
 
     <fragment
@@ -138,5 +162,6 @@
         <argument
             android:name="type"
             app:argType="string" />
+
     </fragment>
 </navigation>

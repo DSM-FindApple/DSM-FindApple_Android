@@ -28,8 +28,8 @@ class ChattingFragment : BaseFragment<FragmentChattingBinding>(R.layout.fragment
     override fun observeEvent() {
     }
 
-    fun moveToChattingDetail(id: String) {
-        val action = MainFragmentDirections.actionMainFragmentToChatDetailFragment(id)
+    fun moveToChattingDetail(id: String, isBan: Boolean, title: String, topMessage: String, targetId: Long) {
+        val action = MainFragmentDirections.actionMainFragmentToChatDetailFragment(id, isBan, title, topMessage, targetId)
         requireActivity().findNavController(R.id.main_activity_container).navigate(action)
     }
 }
