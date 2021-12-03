@@ -76,23 +76,35 @@ fun WebView.setWebView(url: String?) {
         if (url != null) {
             settings.run {
                 javaScriptEnabled = true
+                displayZoomControls = true
                 builtInZoomControls = false
                 loadWithOverviewMode = true
                 useWideViewPort = true
                 domStorageEnabled = true
-                webChromeClient = object : WebChromeClient() {
-                }
+                setSupportZoom(true)
+                allowContentAccess = true
+                saveFormData = true
+                allowUniversalAccessFromFileURLs = true
+                allowFileAccessFromFileURLs = true
+                allowFileAccess = true
+                defaultTextEncodingName = "utf-8"
+                userAgentString = "app"
+                databaseEnabled = true
+                javaScriptCanOpenWindowsAutomatically = true
+                cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
+                webChromeClient = WebChromeClient()
                 webViewClient = object : WebViewClient() {
                     override fun shouldOverrideUrlLoading(
                         view: WebView?,
                         request: WebResourceRequest?
                     ): Boolean {
                         view?.stopLoading()
-                        view?.loadUrl(request?.method?:"")
+                        view?.loadUrl(request?.method ?: "")
                         return false
                     }
                 }
             }
+            clearCache(true)
             loadUrl(url)
         }
     }

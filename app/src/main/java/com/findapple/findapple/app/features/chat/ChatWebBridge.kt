@@ -1,5 +1,6 @@
 package com.findapple.findapple.app.features.chat
 
+import android.os.Handler
 import android.webkit.JavascriptInterface
 import androidx.fragment.app.Fragment
 import com.findapple.findapple.app.features.chat.detail.ChatDetailFragment
@@ -28,8 +29,8 @@ class ChatWebBridge(private val fragment: Fragment) {
 
     fun test() {
         val webView = (fragment as ChattingFragment).binding.chatWv
-        webView.post {
-            Runnable { webView.evaluateJavascript("numberAdd()"){} }
-        }
+            webView.loadUrl("javascript:alert(`될랑말랑`);")
+
+
     }
 }
