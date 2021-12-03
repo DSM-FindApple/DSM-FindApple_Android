@@ -22,7 +22,7 @@ class ChattingFragment : BaseFragment<FragmentChattingBinding>(R.layout.fragment
         super.onViewCreated(view, savedInstanceState)
         val webBridge = ChatWebBridge(this)
         binding.chatWv.addJavascriptInterface(webBridge, "ChatDetail")
-        binding.chatWv.loadUrl("javascript:sendToken(`${mainViewModel.token.value}`);")
+        binding.chatWv.loadUrl("javascript:sendToken(`${mainViewModel.token.value}`)")
     }
 
     override fun observeEvent() {
