@@ -7,6 +7,7 @@ import com.findapple.findapple.app.di.module.comment.CommentModule
 import com.findapple.findapple.app.di.module.comment.CommentStaticModule
 import com.findapple.findapple.app.di.module.main.chatting.ChatDetailModule
 import com.findapple.findapple.app.di.module.main.post.PostStaticModule
+import com.findapple.findapple.app.di.module.main.search.SearchModule
 import com.findapple.findapple.app.di.module.post.PostModule
 import com.findapple.findapple.app.di.module.post.PostUseCaseModule
 import com.findapple.findapple.app.di.scope.FragmentScope
@@ -14,6 +15,7 @@ import com.findapple.findapple.app.features.auth.AuthFragment
 import com.findapple.findapple.app.features.chat.detail.ChatDetailFragment
 import com.findapple.findapple.app.features.comment.fragment.CommentFragment
 import com.findapple.findapple.app.features.post.PostFragment
+import com.findapple.findapple.app.features.search.SearchFragment
 import com.findapple.findapple.app.features.splash.SplashFragment
 import com.findapple.findapple.app.main.MainFragment
 import dagger.Module
@@ -44,4 +46,8 @@ abstract class MainActivityModule {
     @FragmentScope
     @ContributesAndroidInjector(modules = [CommentModule::class, CommentStaticModule::class])
     abstract fun commentFragment(): CommentFragment
+
+    @FragmentScope
+    @ContributesAndroidInjector(modules = [SearchModule::class])
+    abstract fun searchFragment(): SearchFragment
 }
