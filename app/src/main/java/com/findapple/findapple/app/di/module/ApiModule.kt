@@ -15,7 +15,7 @@ class ApiModule {
     companion object {
         private const val baseUrl = "https://api.find-apple.org/"
         private const val postUrl = "${baseUrl}post/"
-        private const val userUrl = "${baseUrl}user/"
+        private const val userUrl = baseUrl
         private const val authUrl = "${baseUrl}v1/"
         private const val commentUrl = "${baseUrl}comment/"
     }
