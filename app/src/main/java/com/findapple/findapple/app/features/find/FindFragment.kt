@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.findapple.findapple.R
 import com.findapple.findapple.databinding.FragmentFindBinding
@@ -12,6 +13,7 @@ import com.findapple.findapple.domain.entity.Location
 import com.findapple.findapple.app.base.BaseFragment
 import com.findapple.findapple.app.features.find.viewmodel.FindViewModel
 import com.findapple.findapple.app.features.find.viewmodel.FindViewModelFactory
+import com.findapple.findapple.app.main.MainFragmentDirections
 import com.findapple.findapple.app.main.viewmodel.MainViewModel
 import com.google.android.gms.common.util.CollectionUtils
 import com.sothree.slidinguppanel.SlidingUpPanelLayout
@@ -55,7 +57,6 @@ class FindFragment : BaseFragment<FragmentFindBinding>(R.layout.fragment_find) {
             findWv.addJavascriptInterface(FindWebBridge(this@FindFragment), "Find")
             findWv.loadUrl("javascript:sendToken(`${mainViewModel.token.value}`)")
         }
-
     }
 
     private fun readNextPosts() {
@@ -101,5 +102,10 @@ class FindFragment : BaseFragment<FragmentFindBinding>(R.layout.fragment_find) {
             viewModel.needLogin.call()
         }
 
+    }
+
+    fun moveToSearch(type: String) {
+        val action = MainFragmentDirections.actionMainFragmentToSearchFragment(type)
+        requireActivity().findNavController(R.id.main_activity_container).navigate(action)
     }
 }

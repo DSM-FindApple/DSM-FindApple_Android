@@ -7,6 +7,6 @@ import com.findapple.findapple.app.features.lost.LostFragment
 class FindWebBridge(private val fragment: Fragment) {
     @JavascriptInterface
     fun startSearch(type: String) {
-        (fragment as LostFragment)
+        (fragment as FindFragment).moveToSearch(type)
     }
 }

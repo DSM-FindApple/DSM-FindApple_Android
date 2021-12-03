@@ -123,5 +123,10 @@ class LostFragment : BaseFragment<FragmentLostBinding>(R.layout.fragment_lost) {
 
     }
 
+    fun moveToSearch(type: String) {
+        val action = MainFragmentDirections.actionMainFragmentToSearchFragment(type)
+        requireActivity().findNavController(R.id.main_activity_container).navigate(action)
+    }
+
 
 }
