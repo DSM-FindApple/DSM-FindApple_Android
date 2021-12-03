@@ -52,6 +52,7 @@ class FindFragment : BaseFragment<FragmentFindBinding>(R.layout.fragment_find) {
                     }
                 }
             })
+            findWv.addJavascriptInterface(FindWebBridge(this@FindFragment), "Find")
             findWv.loadUrl("javascript:sendToken(`${mainViewModel.token.value}`)")
         }
 

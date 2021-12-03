@@ -57,6 +57,7 @@ class LostFragment : BaseFragment<FragmentLostBinding>(R.layout.fragment_lost) {
                     }
                 }
             })
+            lostWv.addJavascriptInterface(LostWebBridge(this@LostFragment), "Lost")
             lostWv.loadUrl("javascript:sendToken(`${mainViewModel.token.value}`)")
         }
     }
