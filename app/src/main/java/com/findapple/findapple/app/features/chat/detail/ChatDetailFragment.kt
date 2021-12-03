@@ -27,7 +27,7 @@ class ChatDetailFragment : BaseFragment<FragmentChatDetailBinding>(R.layout.frag
 
         val idArg by navArgs<ChatDetailFragmentArgs>()
         chatRoomId = idArg.chatRoomId
-        binding.url = "http://211.38.86.92:4046/chat?id=$chatRoomId"
+        binding.url = "http://www.findapple.app.s3-website.ap-northeast-2.amazonaws.com/chat?id=$chatRoomId"
         val isBan = idArg.isBan
         val title = idArg.title
         val topMessage = idArg.topMessage

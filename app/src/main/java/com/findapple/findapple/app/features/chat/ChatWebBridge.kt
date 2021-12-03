@@ -7,7 +7,13 @@ import com.findapple.findapple.app.features.chat.detail.ChatDetailFragment
 class ChatWebBridge(private val fragment: Fragment) {
 
     @JavascriptInterface
-    fun startChatDetail(id: String, isBan: Boolean, title: String, topMessage: String, targetId: Long) {
+    fun startChatDetail(
+        id: String,
+        isBan: Boolean,
+        title: String,
+        topMessage: String,
+        targetId: Long
+    ) {
         (fragment as ChattingFragment).moveToChattingDetail(id, isBan, title, topMessage, targetId)
     }
 
@@ -24,6 +30,11 @@ class ChatWebBridge(private val fragment: Fragment) {
     @JavascriptInterface
     fun exitChatDetail() {
         (fragment as ChatDetailFragment).onBackPressed()
+    }
+
+    fun sendToken(token: String) {
+        val webView = (fragment as ChattingFragment).binding.chatWv
+        webView.loadUrl("javascript:sendToken(`$token`)")
     }
 
 }

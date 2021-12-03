@@ -2,6 +2,9 @@ package com.findapple.findapple.app.features.chat
 
 import android.os.Bundle
 import android.view.View
+import android.webkit.WebChromeClient
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.navigation.findNavController
 import com.findapple.findapple.R
 import com.findapple.findapple.databinding.FragmentChattingBinding
@@ -22,7 +25,13 @@ class ChattingFragment : BaseFragment<FragmentChattingBinding>(R.layout.fragment
         super.onViewCreated(view, savedInstanceState)
         val webBridge = ChatWebBridge(this)
         binding.chatWv.addJavascriptInterface(webBridge, "ChatDetail")
-        binding.chatWv.loadUrl("javascript:sendToken(`${mainViewModel.token.value}`)")
+        binding.chatWv.webViewClient = object : WebViewClient() {
+            override fun onPageFinished(view: WebView?, url: String?) {
+                super.onPageFinished(view, url)
+                webBridge.sendToken(mainViewModel.token.value?:"")
+            }
+        }
+
     }
 
     override fun observeEvent() {
