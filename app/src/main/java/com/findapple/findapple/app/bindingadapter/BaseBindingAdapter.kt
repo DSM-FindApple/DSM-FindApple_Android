@@ -81,11 +81,7 @@ fun WebView.setWebView(url: String?) {
                 loadWithOverviewMode = true
                 useWideViewPort = true
                 domStorageEnabled = true
-                setSupportZoom(true)
                 allowContentAccess = true
-                saveFormData = true
-                allowUniversalAccessFromFileURLs = true
-                allowFileAccessFromFileURLs = true
                 allowFileAccess = true
                 defaultTextEncodingName = "utf-8"
                 userAgentString = "app"

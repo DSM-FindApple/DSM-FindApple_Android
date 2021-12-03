@@ -4,7 +4,7 @@ import com.findapple.findapple.data.features.auth.dto.response.LoginResponse
 import io.reactivex.Single
 
 interface MainDataSource {
-    fun checkLogin(): Single<Boolean>
+    fun checkLogin(): Single<String>
 
     fun refreshToken(): Single<LoginResponse>
 

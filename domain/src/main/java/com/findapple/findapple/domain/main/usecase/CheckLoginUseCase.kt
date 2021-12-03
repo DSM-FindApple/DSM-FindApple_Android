@@ -8,7 +8,7 @@ import io.reactivex.disposables.CompositeDisposable
 class CheckLoginUseCase(
     private val mainRepository: MainRepository,
     compositeDisposable: CompositeDisposable
-) : UseCase<Unit, Boolean>(compositeDisposable) {
-    override fun create(data: Unit): Single<Boolean> =
+) : UseCase<Unit, String>(compositeDisposable) {
+    override fun create(data: Unit): Single<String> =
         mainRepository.checkLogin()
 }

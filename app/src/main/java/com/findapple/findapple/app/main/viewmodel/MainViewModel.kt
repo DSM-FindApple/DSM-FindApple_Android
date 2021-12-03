@@ -19,6 +19,9 @@ class MainViewModel(private val checkLoginUseCase: CheckLoginUseCase, private va
     private val _hasLogin = MutableLiveData<Boolean>()
     val hasLogin: LiveData<Boolean> get() = _hasLogin
 
+    private val _token = MutableLiveData<String>()
+    val token: LiveData<String> get() = _token
+
     val message = SingleLiveEvent<String>()
 
     override fun apply(event: Lifecycle.Event) {
@@ -31,10 +34,11 @@ class MainViewModel(private val checkLoginUseCase: CheckLoginUseCase, private va
 
     private fun checkLogin() {
         checkLoginUseCase.execute(
-            Unit, object : DisposableSingleObserver<Boolean>() {
-                override fun onSuccess(t: Boolean) {
-                    _hasLogin.value = t
-                    if(t) {
+            Unit, object : DisposableSingleObserver<String>() {
+                override fun onSuccess(t: String) {
+                    _token.value = t
+                    _hasLogin.value = t.isNotBlank()
+                    if(hasLogin.value == true) {
                         refreshToken()
                     }
                 }

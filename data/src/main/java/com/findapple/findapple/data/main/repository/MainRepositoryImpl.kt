@@ -7,7 +7,7 @@ import com.findapple.findapple.domain.main.repository.MainRepository
 import io.reactivex.Single
 
 class MainRepositoryImpl(private val dataSource: MainDataSource) : MainRepository {
-    override fun checkLogin(): Single<Boolean> = dataSource.checkLogin()
+    override fun checkLogin(): Single<String> = dataSource.checkLogin()
 
     override fun refreshToken(): Single<Token> = dataSource.refreshToken().map { it.toEntity() }
 

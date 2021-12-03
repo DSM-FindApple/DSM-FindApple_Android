@@ -4,7 +4,7 @@ import com.findapple.findapple.domain.features.auth.entity.Token
 import io.reactivex.Single
 
 interface MainRepository {
-    fun checkLogin(): Single<Boolean>
+    fun checkLogin(): Single<String>
 
     fun refreshToken(): Single<Token>
 

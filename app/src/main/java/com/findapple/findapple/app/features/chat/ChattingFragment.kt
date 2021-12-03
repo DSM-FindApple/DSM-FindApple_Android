@@ -18,10 +18,6 @@ class ChattingFragment : BaseFragment<FragmentChattingBinding>(R.layout.fragment
         super.onViewCreated(view, savedInstanceState)
         val webBridge = ChatWebBridge(this)
         binding.chatWv.addJavascriptInterface(webBridge, "ChatDetail")
-
-        binding.testBtn.setOnClickListener {
-            webBridge.test()
-        }
     }
 
     override fun observeEvent() {

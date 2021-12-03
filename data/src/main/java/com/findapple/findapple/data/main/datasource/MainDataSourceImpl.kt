@@ -7,8 +7,8 @@ import io.reactivex.Single
 
 class MainDataSourceImpl(private val localStorage: LocalStorage, private val authApi: AuthApi) :
     MainDataSource {
-    override fun checkLogin(): Single<Boolean> =
-        Single.just(localStorage.getString("access").isNotEmpty())
+    override fun checkLogin(): Single<String> =
+        Single.just(localStorage.getString("access"))
 
     override fun refreshToken(): Single<LoginResponse> =
         authApi.refreshToken(localStorage.getToken(false)).map {

@@ -9,21 +9,13 @@
         <WebView
             android:id="@+id/chat_wv"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:setWebView="@{`http://www.findapple.app.s3-website.ap-northeast-2.amazonaws.com/test`}" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/test_btn"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:text="test"
+            android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/chat_wv" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:setWebView="@{`http://www.findapple.app.s3-website.ap-northeast-2.amazonaws.com/chatlist`}" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

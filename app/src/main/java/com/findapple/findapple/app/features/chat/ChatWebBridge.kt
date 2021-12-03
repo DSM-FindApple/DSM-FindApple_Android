@@ -26,8 +26,4 @@ class ChatWebBridge(private val fragment: Fragment) {
         (fragment as ChatDetailFragment).onBackPressed()
     }
 
-    fun test() {
-        val webView = (fragment as ChattingFragment).binding.chatWv
-        webView.loadUrl("javascript:alert(`될랑말랑`);")
-    }
 }
