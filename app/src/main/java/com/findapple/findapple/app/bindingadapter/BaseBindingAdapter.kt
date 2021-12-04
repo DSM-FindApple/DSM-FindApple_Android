@@ -89,16 +89,6 @@ fun WebView.setWebView(url: String?) {
                 javaScriptCanOpenWindowsAutomatically = true
                 cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
                 webChromeClient = WebChromeClient()
-                webViewClient = object : WebViewClient() {
-                    override fun shouldOverrideUrlLoading(
-                        view: WebView?,
-                        request: WebResourceRequest?
-                    ): Boolean {
-                        view?.stopLoading()
-                        view?.loadUrl(request?.method ?: "")
-                        return false
-                    }
-                }
             }
             clearCache(true)
             loadUrl(url)

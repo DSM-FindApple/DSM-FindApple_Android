@@ -2,6 +2,8 @@ package com.findapple.findapple.app.features.chat.detail
 
 import android.os.Bundle
 import android.view.View
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.navigation.fragment.navArgs
 import com.findapple.findapple.R
 import com.findapple.findapple.app.base.BaseFragment
@@ -32,7 +34,12 @@ class ChatDetailFragment : BaseFragment<FragmentChatDetailBinding>(R.layout.frag
         val title = idArg.title
         val topMessage = idArg.topMessage
         val targetId = idArg.targetId
-        binding.chatDetailWv.loadUrl("javascript:chatInfo(`$chatRoomId`,`$isBan`,`$title`,`$topMessage`,`$targetId`)")
+        binding.chatDetailWv.webViewClient = object : WebViewClient() {
+            override fun onPageFinished(view: WebView?, url: String?) {
+                super.onPageFinished(view, url)
+                binding.chatDetailWv.loadUrl("javascript:chatInfo(`$chatRoomId`,`$isBan`,`$title`,`$topMessage`,`$targetId`)")
+            }
+        }
     }
 
     fun showDatePickerDialog() {
