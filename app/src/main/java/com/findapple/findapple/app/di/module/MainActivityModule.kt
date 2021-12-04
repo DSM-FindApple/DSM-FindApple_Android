@@ -40,7 +40,7 @@ abstract class MainActivityModule {
     abstract fun postFragment(): PostFragment
 
     @FragmentScope
-    @ContributesAndroidInjector(modules = [ChatDetailModule::class])
+    @ContributesAndroidInjector(modules = [ChatDetailModule::class, MainStaticModule::class])
     abstract fun chatDetailFragment(): ChatDetailFragment
 
     @FragmentScope

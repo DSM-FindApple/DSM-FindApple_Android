@@ -10,7 +10,7 @@
         app:cardCornerRadius="10dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
+            android:layout_width="350dp"
             android:layout_height="wrap_content">
 
             <NumberPicker
@@ -58,13 +58,13 @@
                 android:id="@+id/dp_complete_tv"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
                 android:background="?android:attr/selectableItemBackground"
                 android:fontFamily="@font/cookie_run_regular"
                 android:gravity="center"
                 android:paddingVertical="10dp"
-                android:text="완료"
+                android:text="장소선택하기"
                 android:textColor="@color/yellow_500"
                 android:textSize="17sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -76,8 +76,8 @@
                 android:id="@+id/dp_cancel_tv"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
                 android:background="?android:attr/selectableItemBackground"
                 android:fontFamily="@font/cookie_run_regular"
                 android:gravity="center"

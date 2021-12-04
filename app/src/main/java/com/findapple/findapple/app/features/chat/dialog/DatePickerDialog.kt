@@ -35,7 +35,7 @@ class DatePickerDialog(private val chattingViewModel: ChatDetailViewModel, priva
 
             dpCompleteTv.setOnClickListener {
                 dismiss()
-                chattingViewModel.selectedDateTime.value = "${dpYearNp.value}-${dpMonthNp.value}-${dpDayNp.value}"
+                chattingViewModel.selectedDateTime.value = "${dpYearNp.value}-${String.format("%02d", dpMonthNp.value)}-${String.format("%02d", dpDayNp.value)}"
                 chatDetailFragment.showTimePickerDialog()
             }
 

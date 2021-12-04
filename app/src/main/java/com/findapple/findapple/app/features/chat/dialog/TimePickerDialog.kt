@@ -9,7 +9,10 @@ import com.findapple.findapple.app.features.chat.detail.viewmodel.ChatDetailView
 import com.findapple.findapple.databinding.DialogTimePickerBinding
 import java.time.LocalDateTime
 
-class TimePickerDialog(private val chatDetailViewModel: ChatDetailViewModel, private val chatDetailFragment: ChatDetailFragment): BaseDialog<DialogTimePickerBinding>(R.layout.dialog_time_picker) {
+class TimePickerDialog(
+    private val chatDetailViewModel: ChatDetailViewModel,
+    private val chatDetailFragment: ChatDetailFragment
+) : BaseDialog<DialogTimePickerBinding>(R.layout.dialog_time_picker) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -29,8 +32,18 @@ class TimePickerDialog(private val chatDetailViewModel: ChatDetailViewModel, pri
 
             dpCompleteTv.setOnClickListener {
                 val date = chatDetailViewModel.selectedDateTime.value
-                chatDetailViewModel.selectedDateTime.value = date + "T${dpTimeNp.value}:${String.format("%02d", dpMinuteNp.value)}"
-                chatDetailFragment.finishSelectDate()
+                chatDetailViewModel.selectedDateTime.value =
+                    date + "T${String.format("%02d", dpTimeNp.value)}:${
+                        String.format(
+                            "%02d",
+                            dpMinuteNp.value
+                        )
+                    }"
+                chatDetailFragment.finishSelectDate(
+                    chatDetailFragment.chatRoomId,
+                    chatDetailViewModel.selectedDateTime.value ?: "",
+                    chatDetailFragment.targetId
+                )
                 dismiss()
             }
 

@@ -37,4 +37,8 @@ class ChatWebBridge(private val fragment: Fragment) {
         webView.loadUrl("javascript:sendToken(`$token`)")
     }
 
+    @JavascriptInterface
+    fun refreshChatRoom() {
+        (fragment as ChatDetailFragment).refreshChatRoom()
+    }
 }
