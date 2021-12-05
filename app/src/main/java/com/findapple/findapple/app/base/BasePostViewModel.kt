@@ -34,7 +34,7 @@ abstract class BasePostViewModel : BaseViewModel() {
 
     open fun showMap(post: Post) {}
 
-    open fun startComment(post: Post) {}
+    open fun startChatting(post: Post) {}
 
     fun deletePost(post: Post) {
         postService.deletePost(post, post.isLost).subscribe { result ->

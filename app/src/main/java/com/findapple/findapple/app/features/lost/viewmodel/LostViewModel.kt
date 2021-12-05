@@ -28,8 +28,8 @@ class LostViewModel(
     private val _startPostLost = SingleLiveEvent<Unit>()
     val startPostLost: LiveData<Unit> get() = _startPostLost
 
-    private val _startCommentInfo = SingleLiveEvent<Post>()
-    val startCommentInfo: LiveData<Post> get() = _startCommentInfo
+    private val _startChatInfo = SingleLiveEvent<Post>()
+    val startChatInfo: LiveData<Post> get() = _startChatInfo
 
     override fun apply(event: Lifecycle.Event) {
         when (event) {
@@ -82,7 +82,7 @@ class LostViewModel(
 
     }
 
-    override fun startComment(post: Post) {
-        _startCommentInfo.value = post
+    override fun startChatting(post: Post) {
+        _startChatInfo.value = post
     }
 }

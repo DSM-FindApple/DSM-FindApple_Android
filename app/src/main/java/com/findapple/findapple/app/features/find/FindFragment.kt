@@ -18,6 +18,7 @@ import com.findapple.findapple.app.features.find.viewmodel.FindViewModelFactory
 import com.findapple.findapple.app.features.post.MorePostDialog
 import com.findapple.findapple.app.main.MainFragmentDirections
 import com.findapple.findapple.app.main.viewmodel.MainViewModel
+import com.findapple.findapple.domain.features.post.entity.Post
 import com.google.android.gms.common.util.CollectionUtils
 import com.sothree.slidinguppanel.SlidingUpPanelLayout
 import javax.inject.Inject
@@ -99,11 +100,19 @@ class FindFragment : BaseFragment<FragmentFindBinding>(R.layout.fragment_find) {
                     "morePostDialog"
                 )
             })
+            startChatInfo.observe(viewLifecycleOwner, {
+                startChat(it)
+            })
         }
         mainViewModel.location.observe(viewLifecycleOwner, {
             setLocation(it)
             viewModel.getPosts()
         })
+    }
+
+    private fun startChat(post: Post) {
+        val action = MainFragmentDirections.actionMainFragmentToChatDetailFragment("fff",false,post.user.name, "", post.user.id)
+        requireActivity().findNavController(R.id.main_activity_container).navigate(action)
     }
 
     private fun setLocationText(location: Location) {

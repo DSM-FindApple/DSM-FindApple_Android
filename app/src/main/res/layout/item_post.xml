@@ -80,7 +80,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="14dp"
             android:padding="5dp"
-            android:onClick="@{()->postVm.startComment(vm.post)}"
+            android:onClick="@{()->postVm.startChatting(vm.post)}"
             android:visibility="@{vm.isMyPost?View.GONE:View.VISIBLE}"
             app:layout_constraintEnd_toStartOf="@id/post_location_iv"
             app:layout_constraintTop_toTopOf="parent"

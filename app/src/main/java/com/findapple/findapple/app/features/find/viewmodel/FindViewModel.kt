@@ -1,6 +1,7 @@
 package com.findapple.findapple.app.features.find.viewmodel
 
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.findapple.findapple.domain.features.post.usecase.GetFindListUseCase
 import com.findapple.findapple.app.base.BasePostViewModel
@@ -24,6 +25,9 @@ class FindViewModel(
     override val postService: PostService
         get() = getFindListUseCase.postService
     val findList = MutableLiveData<List<MultipleRecyclerViewItem>>(mutableListOf())
+
+    private val _startChatInfo = SingleLiveEvent<Post>()
+    val startChatInfo: LiveData<Post> get() = _startChatInfo
 
     val startPostFind = SingleLiveEvent<Unit>()
 
@@ -73,5 +77,9 @@ class FindViewModel(
 
     fun startPostFind() {
         startPostFind.call()
+    }
+
+    override fun startChatting(post: Post) {
+        _startChatInfo.value = post
     }
 }
