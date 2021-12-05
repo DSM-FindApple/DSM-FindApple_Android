@@ -117,7 +117,7 @@ fun ImageView.loadServerImage(resource: String?) {
     }
 
     Glide.with(context)
-        .load("http://3.35.221.104:8080/image/$resource")
+        .load("https://api.find-apple.org/image/$resource")
         .placeholder(progressDrawable)
         .error(R.drawable.ic_fineapple_main)
         .into(this)
