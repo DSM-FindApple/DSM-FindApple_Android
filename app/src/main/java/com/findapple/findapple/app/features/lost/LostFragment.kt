@@ -100,6 +100,9 @@ class LostFragment : BaseFragment<FragmentLostBinding>(R.layout.fragment_lost) {
             startChatInfo.observe(viewLifecycleOwner, {
                 startChat(it)
             })
+            showLocationInfo.observe(viewLifecycleOwner, {
+                showMap(it)
+            })
         }
         mainViewModel.location.observe(viewLifecycleOwner, {
             setLocation(it)
@@ -107,8 +110,19 @@ class LostFragment : BaseFragment<FragmentLostBinding>(R.layout.fragment_lost) {
         })
     }
 
+    private fun showMap(location: Location) {
+        binding.lostWv.loadUrl("javascript:currentLocation(${location.latitude}, ${location.longitude})")
+        binding.lostSpl.panelState = SlidingUpPanelLayout.PanelState.HIDDEN
+    }
+
     private fun startChat(post: Post) {
-        val action = MainFragmentDirections.actionMainFragmentToChatDetailFragment("ddd",false,post.user.name, "", post.user.id)
+        val action = MainFragmentDirections.actionMainFragmentToChatDetailFragment(
+            "ddd",
+            false,
+            post.user.name,
+            "",
+            post.user.id
+        )
         requireActivity().findNavController(R.id.main_activity_container).navigate(action)
     }
 
@@ -124,8 +138,10 @@ class LostFragment : BaseFragment<FragmentLostBinding>(R.layout.fragment_lost) {
             val fetchAddress = address[0]
             if (fetchAddress.maxAddressLineIndex > -1) {
                 viewModel.run {
-                    cityName.value = if(fetchAddress.adminArea != null) fetchAddress.adminArea else "대전광역시"
-                    townName.value = if(fetchAddress.thoroughfare != null) fetchAddress.thoroughfare else "장동"
+                    cityName.value =
+                        if (fetchAddress.adminArea != null) fetchAddress.adminArea else "대전광역시"
+                    townName.value =
+                        if (fetchAddress.thoroughfare != null) fetchAddress.thoroughfare else "장동"
                 }
             }
         }

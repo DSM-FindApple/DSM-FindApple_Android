@@ -11,6 +11,7 @@ import com.findapple.findapple.app.base.SingleLiveEvent
 import com.findapple.findapple.app.bindingadapter.MultipleRecyclerViewItem
 import com.findapple.findapple.app.features.post.viewModel.PostItemViewModel
 import com.findapple.findapple.app.features.post.viewModel.toRecyclerItem
+import com.findapple.findapple.domain.entity.Location
 import com.findapple.findapple.domain.features.post.parameter.GetPostParameter
 import com.findapple.findapple.domain.features.post.service.PostService
 import com.findapple.findapple.domain.main.repository.MainRepository
@@ -30,6 +31,9 @@ class LostViewModel(
 
     private val _startChatInfo = SingleLiveEvent<Post>()
     val startChatInfo: LiveData<Post> get() = _startChatInfo
+
+    private val _showLocationInfo = SingleLiveEvent<Location>()
+    val showLocationInfo: LiveData<Location> get() = _showLocationInfo
 
     override fun apply(event: Lifecycle.Event) {
         when (event) {
@@ -79,7 +83,7 @@ class LostViewModel(
     }
 
     override fun showMap(post: Post) {
-
+        _showLocationInfo.value = Location(post.location.longitude, post.location.latitude)
     }
 
     override fun startChatting(post: Post) {
