@@ -17,6 +17,7 @@ import com.findapple.findapple.app.di.scope.FragmentScope
 import com.findapple.findapple.app.main.MainActivity
 import com.findapple.findapple.app.main.viewmodel.MainViewModel
 import com.findapple.findapple.app.main.viewmodel.MainViewModelFactory
+import com.findapple.findapple.data.features.chat.ChatApi
 import dagger.Module
 import dagger.Provides
 import io.reactivex.disposables.CompositeDisposable
@@ -25,7 +26,10 @@ import io.reactivex.disposables.CompositeDisposable
 class MainStaticModule {
     @ActivityScope
     @Provides
-    fun provideMainViewModelFactory(checkLoginUseCase: CheckLoginUseCase, refreshTokenUseCase: RefreshTokenUseCase): MainViewModelFactory =
+    fun provideMainViewModelFactory(
+        checkLoginUseCase: CheckLoginUseCase,
+        refreshTokenUseCase: RefreshTokenUseCase
+    ): MainViewModelFactory =
         MainViewModelFactory(checkLoginUseCase, refreshTokenUseCase)
 
     @ActivityScope
@@ -53,8 +57,9 @@ class MainStaticModule {
     @ActivityScope
     @Provides
     fun provideMainRepository(
-        datasource: MainDataSource
-    ): MainRepository = MainRepositoryImpl(datasource)
+        datasource: MainDataSource,
+        errorHandler: ErrorHandler
+    ): MainRepository = MainRepositoryImpl(datasource, errorHandler)
 
     @ActivityScope
     @Provides
@@ -67,6 +72,7 @@ class MainStaticModule {
     @Provides
     fun provideMainDatasource(
         localStorage: LocalStorage,
-        authApi: AuthApi
-    ): MainDataSource = MainDataSourceImpl(localStorage, authApi)
+        authApi: AuthApi,
+        chatApi: ChatApi
+    ): MainDataSource = MainDataSourceImpl(localStorage, authApi, chatApi)
 }

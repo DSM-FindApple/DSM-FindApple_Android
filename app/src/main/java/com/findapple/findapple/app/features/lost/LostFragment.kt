@@ -13,6 +13,7 @@ import com.findapple.findapple.R
 import com.findapple.findapple.databinding.FragmentLostBinding
 import com.findapple.findapple.domain.entity.Location
 import com.findapple.findapple.app.base.BaseFragment
+import com.findapple.findapple.app.features.chat.ChatRoomData
 import com.findapple.findapple.app.features.lost.viewmodel.LostViewModel
 import com.findapple.findapple.app.features.lost.viewmodel.LostViewModelFactory
 import com.findapple.findapple.app.features.post.MorePostDialog
@@ -115,13 +116,13 @@ class LostFragment : BaseFragment<FragmentLostBinding>(R.layout.fragment_lost) {
         binding.lostSpl.panelState = SlidingUpPanelLayout.PanelState.HIDDEN
     }
 
-    private fun startChat(post: Post) {
+    private fun startChat(data: ChatRoomData) {
         val action = MainFragmentDirections.actionMainFragmentToChatDetailFragment(
-            "ddd",
+            data.chatRoomId,
             false,
-            post.user.name,
+            data.post.user.name,
             "",
-            post.user.id
+            data.post.user.id
         )
         requireActivity().findNavController(R.id.main_activity_container).navigate(action)
     }

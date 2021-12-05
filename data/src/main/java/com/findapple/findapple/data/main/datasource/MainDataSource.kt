@@ -9,4 +9,6 @@ interface MainDataSource {
     fun refreshToken(): Single<LoginResponse>
 
     fun getUserId(): Long
+
+    fun getChatRoomId(id: Long): Single<String>
 }

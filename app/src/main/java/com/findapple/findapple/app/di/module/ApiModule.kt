@@ -1,6 +1,7 @@
 package com.findapple.findapple.app.di.module
 
 import com.findapple.findapple.data.features.auth.remote.AuthApi
+import com.findapple.findapple.data.features.chat.ChatApi
 import com.findapple.findapple.data.features.comment.remote.CommentApi
 import com.findapple.findapple.data.features.mypage.remote.UserApi
 import com.findapple.findapple.data.features.post.remote.PostApi
@@ -39,4 +40,9 @@ class ApiModule {
     @Singleton
     fun provideCommentApi(retrofit: Retrofit.Builder): CommentApi =
         retrofit.baseUrl(commentUrl).build().create(CommentApi::class.java)
+
+    @Provides
+    @Singleton
+    fun provideChatApi(retrofit: Retrofit.Builder): ChatApi =
+        retrofit.baseUrl(baseUrl).build().create(ChatApi::class.java)
 }

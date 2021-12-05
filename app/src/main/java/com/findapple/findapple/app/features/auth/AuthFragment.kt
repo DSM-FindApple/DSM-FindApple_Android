@@ -36,8 +36,8 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>(R.layout.fragment_auth) {
 
         binding.run {
             authLoginBtn.setOnClickListener {
-                testLogin()
-                //startKakaoLogin()
+                //testLogin()
+                startKakaoLogin()
             }
             authLoginVp.adapter = AuthAdapter()
             TabLayoutMediator(authLoginTl, authLoginVp) { _, _ ->

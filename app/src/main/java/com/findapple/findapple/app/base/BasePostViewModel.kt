@@ -15,7 +15,7 @@ abstract class BasePostViewModel : BaseViewModel() {
 
     val page = MutableLiveData<Int>()
 
-    var location = Location(127.3635946, 36.3914388)
+    var location = Location(127.363, 36.391)
 
     val clickedCommentId = SingleLiveEvent<Long>()
 

@@ -48,9 +48,7 @@ class MainActivity : DaggerAppCompatActivity() {
             return
         }
         fusedLocationClient.lastLocation.addOnSuccessListener {
-            if (it != null) {
-                viewModel.location.value = Location(it.longitude, it.latitude)
-            }
+            viewModel.location.value = if (it != null) Location(it.longitude, it.latitude) else Location(127.363, 36.391)
         }
     }
 
@@ -77,7 +75,7 @@ class MainActivity : DaggerAppCompatActivity() {
             )
         } else {
             fusedLocationClient.lastLocation.addOnSuccessListener {
-                viewModel.location.value = if (it != null) Location(it.longitude, it.latitude) else Location(127.3635946, 36.3914388)
+                viewModel.location.value = if (it != null) Location(it.longitude, it.latitude) else Location(127.363, 36.391)
 
             }
         }

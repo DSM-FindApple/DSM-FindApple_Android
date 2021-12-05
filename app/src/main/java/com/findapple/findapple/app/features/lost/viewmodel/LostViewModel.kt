@@ -9,6 +9,7 @@ import com.findapple.findapple.domain.features.post.usecase.GetLostListUseCase
 import com.findapple.findapple.app.base.BasePostViewModel
 import com.findapple.findapple.app.base.SingleLiveEvent
 import com.findapple.findapple.app.bindingadapter.MultipleRecyclerViewItem
+import com.findapple.findapple.app.features.chat.ChatRoomData
 import com.findapple.findapple.app.features.post.viewModel.PostItemViewModel
 import com.findapple.findapple.app.features.post.viewModel.toRecyclerItem
 import com.findapple.findapple.domain.entity.Location
@@ -17,6 +18,7 @@ import com.findapple.findapple.domain.features.post.service.PostService
 import com.findapple.findapple.domain.main.repository.MainRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
+import io.reactivex.schedulers.Schedulers
 
 class LostViewModel(
     private val getLostListUseCase: GetLostListUseCase,
@@ -29,8 +31,8 @@ class LostViewModel(
     private val _startPostLost = SingleLiveEvent<Unit>()
     val startPostLost: LiveData<Unit> get() = _startPostLost
 
-    private val _startChatInfo = SingleLiveEvent<Post>()
-    val startChatInfo: LiveData<Post> get() = _startChatInfo
+    private val _startChatInfo = SingleLiveEvent<ChatRoomData>()
+    val startChatInfo: LiveData<ChatRoomData> get() = _startChatInfo
 
     private val _showLocationInfo = SingleLiveEvent<Location>()
     val showLocationInfo: LiveData<Location> get() = _showLocationInfo
@@ -87,6 +89,13 @@ class LostViewModel(
     }
 
     override fun startChatting(post: Post) {
-        _startChatInfo.value = post
+        mainRepository.getChatRoomId(post.user.id)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe { response ->
+            if(response is Result.Success) {
+                _startChatInfo.value = ChatRoomData(response.value, post)
+            }
+        }
     }
 }
