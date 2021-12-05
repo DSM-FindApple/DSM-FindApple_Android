@@ -96,8 +96,8 @@ class FindFragment : BaseFragment<FragmentFindBinding>(R.layout.fragment_find) {
             val fetchAddress = address[0]
             if (fetchAddress.maxAddressLineIndex > -1) {
                 viewModel.run {
-                    cityName.value = fetchAddress.adminArea
-                    townName.value = fetchAddress.thoroughfare
+                    cityName.value = if(fetchAddress.adminArea != null) fetchAddress.adminArea else "대전광역시"
+                    townName.value = if(fetchAddress.thoroughfare != null) fetchAddress.thoroughfare else "장동"
                 }
             }
         }
