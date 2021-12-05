@@ -1,6 +1,7 @@
 package com.findapple.findapple.app.di.module
 
 import androidx.lifecycle.ViewModelProvider
+import com.findapple.findapple.app.di.scope.ActivityScope
 import com.findapple.findapple.data.features.auth.remote.AuthApi
 import com.findapple.findapple.data.local.localstorage.LocalStorage
 import com.findapple.findapple.data.main.datasource.MainDataSource
@@ -22,12 +23,12 @@ import io.reactivex.disposables.CompositeDisposable
 
 @Module
 class MainStaticModule {
-    @FragmentScope
+    @ActivityScope
     @Provides
     fun provideMainViewModelFactory(checkLoginUseCase: CheckLoginUseCase, refreshTokenUseCase: RefreshTokenUseCase): MainViewModelFactory =
         MainViewModelFactory(checkLoginUseCase, refreshTokenUseCase)
 
-    @FragmentScope
+    @ActivityScope
     @Provides
     fun provideMainViewModel(
         mainViewModelFactory: MainViewModelFactory,
@@ -35,34 +36,34 @@ class MainStaticModule {
     ): MainViewModel =
         ViewModelProvider(mainActivity, mainViewModelFactory).get(MainViewModel::class.java)
 
-    @FragmentScope
+    @ActivityScope
     @Provides
     fun provideCheckLoginUseCase(
         mainRepository: MainRepository,
         compositeDisposable: CompositeDisposable
     ): CheckLoginUseCase = CheckLoginUseCase(mainRepository, compositeDisposable)
 
-    @FragmentScope
+    @ActivityScope
     @Provides
     fun provideRefreshTokenUseCase(
         mainService: MainService,
         compositeDisposable: CompositeDisposable
     ): RefreshTokenUseCase = RefreshTokenUseCase(mainService, compositeDisposable)
 
-    @FragmentScope
+    @ActivityScope
     @Provides
     fun provideMainRepository(
         datasource: MainDataSource
     ): MainRepository = MainRepositoryImpl(datasource)
 
-    @FragmentScope
+    @ActivityScope
     @Provides
     fun provideMainService(
         repository: MainRepository,
         errorHandler: ErrorHandler
     ): MainService = MainServiceImpl(repository, errorHandler)
 
-    @FragmentScope
+    @ActivityScope
     @Provides
     fun provideMainDatasource(
         localStorage: LocalStorage,

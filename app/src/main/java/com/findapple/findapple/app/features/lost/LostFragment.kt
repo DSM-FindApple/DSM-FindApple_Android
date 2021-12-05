@@ -64,6 +64,7 @@ class LostFragment : BaseFragment<FragmentLostBinding>(R.layout.fragment_lost) {
                 override fun onPageFinished(view: WebView?, url: String?) {
                     super.onPageFinished(view, url)
                     lostWv.loadUrl("javascript:sendToken(`${mainViewModel.token.value}`)")
+                    lostWv.loadUrl("javascript:currentLocation(${viewModel.location.latitude}, ${viewModel.location.longitude})")
                 }
             }
         }

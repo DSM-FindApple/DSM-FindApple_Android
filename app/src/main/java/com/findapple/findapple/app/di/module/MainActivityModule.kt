@@ -24,11 +24,11 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class MainActivityModule {
     @FragmentScope
-    @ContributesAndroidInjector(modules = [MainModule::class, MainStaticModule::class, PostStaticModule::class])
+    @ContributesAndroidInjector(modules = [MainModule::class, PostStaticModule::class])
     abstract fun mainFragment(): MainFragment
 
     @FragmentScope
-    @ContributesAndroidInjector(modules = [AuthModule::class, AuthStaticModule::class, MainStaticModule::class])
+    @ContributesAndroidInjector(modules = [AuthModule::class, AuthStaticModule::class])
     abstract fun authFragment(): AuthFragment
 
     @FragmentScope
@@ -36,11 +36,11 @@ abstract class MainActivityModule {
     abstract fun splashFragment(): SplashFragment
 
     @FragmentScope
-    @ContributesAndroidInjector(modules = [PostModule::class, PostUseCaseModule::class, PostStaticModule::class, MainStaticModule::class])
+    @ContributesAndroidInjector(modules = [PostModule::class, PostUseCaseModule::class, PostStaticModule::class])
     abstract fun postFragment(): PostFragment
 
     @FragmentScope
-    @ContributesAndroidInjector(modules = [ChatDetailModule::class, MainStaticModule::class])
+    @ContributesAndroidInjector(modules = [ChatDetailModule::class])
     abstract fun chatDetailFragment(): ChatDetailFragment
 
     @FragmentScope

@@ -60,7 +60,8 @@ class FindFragment : BaseFragment<FragmentFindBinding>(R.layout.fragment_find) {
             findWv.webViewClient = object : WebViewClient() {
                 override fun onPageFinished(view: WebView?, url: String?) {
                     super.onPageFinished(view, url)
-                        findWv.loadUrl("javascript:sendToken(`${mainViewModel.token.value}`)")
+                    findWv.loadUrl("javascript:sendToken(`${mainViewModel.token.value}`)")
+                    findWv.loadUrl("javascript:currentLocation(${viewModel.location.latitude},${viewModel.location.longitude})")
                 }
             }
         }
