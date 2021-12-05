@@ -10,6 +10,7 @@ import com.findapple.findapple.app.bindingadapter.MultipleRecyclerViewItem
 import com.findapple.findapple.app.features.post.viewModel.PostItemViewModel
 import com.findapple.findapple.app.features.post.viewModel.toRecyclerItem
 import com.findapple.findapple.domain.base.Result
+import com.findapple.findapple.domain.entity.Location
 import com.findapple.findapple.domain.features.post.entity.Post
 import com.findapple.findapple.domain.features.post.parameter.GetPostParameter
 import com.findapple.findapple.domain.features.post.service.PostService
@@ -28,6 +29,9 @@ class FindViewModel(
 
     private val _startChatInfo = SingleLiveEvent<Post>()
     val startChatInfo: LiveData<Post> get() = _startChatInfo
+
+    private val _showMapInfo = SingleLiveEvent<Location>()
+    val showMapInfo: LiveData<Location> get() = _showMapInfo
 
     val startPostFind = SingleLiveEvent<Unit>()
 
@@ -77,6 +81,10 @@ class FindViewModel(
 
     fun startPostFind() {
         startPostFind.call()
+    }
+
+    override fun showMap(post: Post) {
+        _showMapInfo.value = post.location
     }
 
     override fun startChatting(post: Post) {

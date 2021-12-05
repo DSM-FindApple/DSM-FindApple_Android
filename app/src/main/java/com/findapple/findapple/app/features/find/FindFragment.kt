@@ -103,11 +103,19 @@ class FindFragment : BaseFragment<FragmentFindBinding>(R.layout.fragment_find) {
             startChatInfo.observe(viewLifecycleOwner, {
                 startChat(it)
             })
+            showMapInfo.observe(viewLifecycleOwner, {
+                showMap(it)
+            })
         }
         mainViewModel.location.observe(viewLifecycleOwner, {
             setLocation(it)
             viewModel.getPosts()
         })
+    }
+    
+    private fun showMap(location: Location) {
+        binding.findWv.loadUrl("javascript:currentLocation(${location.latitude},${location.longitude})")
+        binding.findSpl.panelState = SlidingUpPanelLayout.PanelState.HIDDEN
     }
 
     private fun startChat(post: Post) {
