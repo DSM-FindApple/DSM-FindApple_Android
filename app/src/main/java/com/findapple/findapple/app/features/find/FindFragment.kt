@@ -15,6 +15,7 @@ import com.findapple.findapple.domain.entity.Location
 import com.findapple.findapple.app.base.BaseFragment
 import com.findapple.findapple.app.features.find.viewmodel.FindViewModel
 import com.findapple.findapple.app.features.find.viewmodel.FindViewModelFactory
+import com.findapple.findapple.app.features.post.MorePostDialog
 import com.findapple.findapple.app.main.MainFragmentDirections
 import com.findapple.findapple.app.main.viewmodel.MainViewModel
 import com.google.android.gms.common.util.CollectionUtils
@@ -91,6 +92,12 @@ class FindFragment : BaseFragment<FragmentFindBinding>(R.layout.fragment_find) {
             })
             clickedCommentId.observe(viewLifecycleOwner, {
                 this@FindFragment.startComment(it)
+            })
+            moreClickedPostId.observe(viewLifecycleOwner, {
+                MorePostDialog(viewModel, it).show(
+                    requireActivity().supportFragmentManager,
+                    "morePostDialog"
+                )
             })
         }
         mainViewModel.location.observe(viewLifecycleOwner, {

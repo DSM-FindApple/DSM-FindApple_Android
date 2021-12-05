@@ -32,13 +32,13 @@ abstract class BasePostViewModel : BaseViewModel() {
         moreClickedPostId.value = post
     }
 
-    fun showMap() {
+    open fun showMap(post: Post) {}
 
-    }
+    open fun startComment(post: Post) {}
 
     fun deletePost(post: Post) {
         postService.deletePost(post, post.isLost).subscribe { result ->
-            if(result is Result.Success) {
+            if (result is Result.Success) {
                 page.value = 0
                 getPosts()
             }

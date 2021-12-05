@@ -64,6 +64,6 @@ interface PostApi {
     @DELETE("lost/{lostId}")
     fun deleteLostPost(@Path("lostId") id: Long): Single<Unit>
 
-    @DELETE("find/{find}")
-    fun deleteFindPost(@Path("lostId") id: Long): Single<Unit>
+    @DELETE("find/{findId}")
+    fun deleteFindPost(@Path("findId") id: Long): Single<Unit>
 }
