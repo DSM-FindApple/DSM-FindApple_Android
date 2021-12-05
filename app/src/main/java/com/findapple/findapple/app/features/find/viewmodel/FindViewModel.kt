@@ -23,7 +23,7 @@ class FindViewModel(
 
     override val postService: PostService
         get() = getFindListUseCase.postService
-    val findList = MutableLiveData<List<MultipleRecyclerViewItem>>()
+    val findList = MutableLiveData<List<MultipleRecyclerViewItem>>(mutableListOf())
 
     val startPostFind = SingleLiveEvent<Unit>()
 
@@ -47,8 +47,19 @@ class FindViewModel(
             object : DisposableSingleObserver<Result<List<Post>>>() {
                 override fun onSuccess(t: Result<List<Post>>) {
                     if (t is Result.Success) {
-                        findList.value =
-                            t.value.map { PostItemViewModel(it, this@FindViewModel).toRecyclerItem(it.user.id == userId) }
+                        val addItem: ArrayList<MultipleRecyclerViewItem> =
+                            if (findList.value != null) findList.value as ArrayList<MultipleRecyclerViewItem> else ArrayList()
+                        findList.value = addItem.apply {
+                            addAll(
+                                t.value.map {
+                                    PostItemViewModel(
+                                        it,
+                                        this@FindViewModel
+                                    ).toRecyclerItem(it.user.id == userId)
+                                }
+                            )
+                        }
+
                     }
                 }
 
