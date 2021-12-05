@@ -74,15 +74,25 @@ class FindFragment : BaseFragment<FragmentFindBinding>(R.layout.fragment_find) {
         }
     }
 
+    private fun startComment(id: Long) {
+        val action = MainFragmentDirections.actionMainFragmentToCommentFragment(id, false)
+        requireActivity().findNavController(R.id.main_activity_container).navigate(action)
+    }
+
     private fun setLocation(location: Location) {
         viewModel.location = location
         setLocationText(viewModel.location)
     }
 
     override fun observeEvent() {
-        viewModel.startPostFind.observe(viewLifecycleOwner, {
-            startPost()
-        })
+        viewModel.run {
+            startPostFind.observe(viewLifecycleOwner, {
+                startPost()
+            })
+            clickedCommentId.observe(viewLifecycleOwner, {
+                this@FindFragment.startComment(it)
+            })
+        }
         mainViewModel.location.observe(viewLifecycleOwner, {
             setLocation(it)
             viewModel.getPosts()

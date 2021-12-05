@@ -21,7 +21,7 @@
             android:layout_marginTop="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:serverImageUrl="@{comment.user.profileImage}" />
+            app:imageUrl="@{comment.user.profileImage}" />
 
         <LinearLayout
             android:id="@+id/comment_ll"
