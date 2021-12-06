@@ -53,13 +53,13 @@ interface PostApi {
     fun getRelatedLostPosts(
         @Path("pageNum") pageNum: Int,
         @Query("title") title: String
-    ): Single<List<LostListResponse>>
+    ): Single<List<FindListResponse>>
 
     @GET("find/relation/{pageNum}")
     fun getRelatedFindPosts(
         @Path("pageNum") pageNum: Int,
         @Query("title") title: String
-    ): Single<List<FindListResponse>>
+    ): Single<List<LostListResponse>>
 
     @DELETE("lost/{lostId}")
     fun deleteLostPost(@Path("lostId") id: Long): Single<Unit>

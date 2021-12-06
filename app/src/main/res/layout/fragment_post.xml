@@ -222,51 +222,56 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="유사게시물"
-                    android:visibility="@{vm.relatedPosts != null?View.VISIBLE:View.GONE}"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/cookie_run_regular"
+                    android:text="유사게시물"
                     android:textColor="@color/black"
-                    android:layout_marginTop="10dp" />
+                    android:visibility="@{vm.relatedPosts != null?View.VISIBLE:View.GONE}" />
 
                 <androidx.cardview.widget.CardView
-                    app:cardCornerRadius="10dp"
                     android:layout_width="match_parent"
+                    android:layout_height="150dp"
                     android:visibility="@{vm.relatedPosts != null?View.VISIBLE:View.GONE}"
-                    android:layout_height="150dp">
+                    app:cardCornerRadius="10dp">
+
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@color/blue_100">
+
                         <TextView
                             android:id="@+id/title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/cookie_run_regular"
                             android:text="@{vm.relatedPosts.title}"
                             android:textColor="@color/black"
-                            android:layout_marginTop="10dp"
                             android:textSize="16sp"
-                            android:layout_marginStart="10dp"
-                            android:fontFamily="@font/cookie_run_regular" />
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
                             android:fontFamily="@font/cookie_run_regular"
                             android:text="@{vm.relatedPosts.detailInfo}"
-                            android:layout_marginStart="10dp"
-                            app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/imageFilterView"
+                            app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/title" />
 
                         <androidx.constraintlayout.utils.widget.ImageFilterView
+                            android:id="@+id/imageFilterView"
                             android:layout_width="130dp"
                             android:layout_height="130dp"
+                            android:layout_marginEnd="10dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            android:layout_marginEnd="10dp"
                             app:serverImageUrl="@{vm.relatedPosts.images[0]}" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.cardview.widget.CardView>

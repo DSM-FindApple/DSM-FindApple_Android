@@ -51,10 +51,10 @@ class PostDataSourceImpl(private val postApi: PostApi) : PostDataSource {
         )
 
 
-    override fun getRelatedLostPost(title: String): Single<List<LostListResponse>> =
+    override fun getRelatedLostPost(title: String): Single<List<FindListResponse>> =
         postApi.getRelatedLostPosts(0, title)
 
-    override fun getRelatedFindPost(title: String): Single<List<FindListResponse>> =
+    override fun getRelatedFindPost(title: String): Single<List<LostListResponse>> =
          postApi.getRelatedFindPosts(0, title)
 
     override fun deletePost(post: Post, isLost: Boolean): Single<Unit> =
