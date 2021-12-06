@@ -25,4 +25,8 @@ class PostRepositoryImpl(private val dataSource: PostDataSource) : PostRepositor
 
     override fun deletePost(post: Post, isLost: Boolean): Single<Unit> =
         dataSource.deletePost(post, isLost)
+
+    override fun updatePost(id: Long, parameter: PostDataParameter, isLost: Boolean) {
+        dataSource.updatePost(id, parameter, isLost)
+    }
 }
