@@ -55,7 +55,7 @@ class PostDataSourceImpl(private val postApi: PostApi) : PostDataSource {
         postApi.getRelatedLostPosts(0, title)
 
     override fun getRelatedFindPost(title: String): Single<List<FindListResponse>> =
-        postApi.getRelatedFindPosts(0, title)
+         postApi.getRelatedFindPosts(0, title)
 
     override fun deletePost(post: Post, isLost: Boolean): Single<Unit> =
         if (isLost) postApi.deleteLostPost(post.id) else postApi.deleteFindPost(post.id)
