@@ -10,15 +10,16 @@ import com.findapple.findapple.domain.base.Result
 import com.findapple.findapple.domain.entity.Location
 import com.findapple.findapple.domain.errorhandler.Error
 import com.findapple.findapple.domain.features.post.parameter.PostDataParameter
-import com.findapple.findapple.domain.features.post.usecase.PostFindUseCase
-import com.findapple.findapple.domain.features.post.usecase.PostLostUseCase
 import com.findapple.findapple.app.base.BaseViewModel
 import com.findapple.findapple.app.base.SingleLiveEvent
 import com.findapple.findapple.app.bindingadapter.RecyclerViewItem
+import com.findapple.findapple.app.features.find.viewmodel.FindViewModel
+import com.findapple.findapple.domain.entity.User
+import com.findapple.findapple.domain.features.post.entity.Comment
 import com.findapple.findapple.domain.features.post.entity.Post
-import com.findapple.findapple.domain.features.post.usecase.GetRelatedLostPostUseCase
-import com.findapple.findapple.domain.features.post.usecase.GetRelatedFindPostUseCase
+import com.findapple.findapple.domain.features.post.usecase.*
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import java.io.File
 
@@ -40,8 +41,8 @@ class PostViewModel(
     val title = MutableLiveData<String>()
     val detail = MutableLiveData<String>()
 
-    private val _relatedPosts = MutableLiveData<List<RecyclerViewItem>>()
-    val relatedPosts: LiveData<List<RecyclerViewItem>> get() = _relatedPosts
+    private val _relatedPosts = MutableLiveData<Post>()
+    val relatedPosts: LiveData<Post> get() = _relatedPosts
 
     private val _startGallery = SingleLiveEvent<Unit>()
     val startGallery: LiveData<Unit> get() = _startGallery
@@ -197,12 +198,8 @@ class PostViewModel(
             object : DisposableSingleObserver<Result<List<Post>>>() {
                 override fun onSuccess(t: Result<List<Post>>) {
                     if (t is Result.Success) {
-                        _relatedPosts.value = t.value.map {
-                            RecyclerViewItem(
-                                data = it,
-                                variableId = BR.vm,
-                                itemLayoutId = R.layout.item_post
-                            )
+                        if(t.value.isNotEmpty()) {
+                            _relatedPosts.value = t.value[0]
                         }
                     }
                 }
@@ -221,12 +218,8 @@ class PostViewModel(
             object : DisposableSingleObserver<Result<List<Post>>>() {
                 override fun onSuccess(t: Result<List<Post>>) {
                     if (t is Result.Success) {
-                        _relatedPosts.value = t.value.map {
-                            RecyclerViewItem(
-                                data = it,
-                                variableId = BR.vm,
-                                itemLayoutId = R.layout.item_post
-                            )
+                        if(t.value.isNotEmpty()) {
+                            _relatedPosts.value = t.value[0]
                         }
                     }
                 }

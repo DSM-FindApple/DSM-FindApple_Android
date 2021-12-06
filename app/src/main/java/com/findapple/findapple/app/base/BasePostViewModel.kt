@@ -1,10 +1,13 @@
 package com.findapple.findapple.app.base
 
 import androidx.lifecycle.MutableLiveData
+import com.findapple.findapple.app.features.post.MorePostDialog
 import com.findapple.findapple.domain.base.Result
 import com.findapple.findapple.domain.entity.Location
 import com.findapple.findapple.domain.features.post.entity.Post
 import com.findapple.findapple.domain.features.post.service.PostService
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 abstract class BasePostViewModel : BaseViewModel() {
 
@@ -37,7 +40,10 @@ abstract class BasePostViewModel : BaseViewModel() {
     open fun startChatting(post: Post) {}
 
     fun deletePost(post: Post) {
-        postService.deletePost(post, post.isLost).subscribe { result ->
+        postService.deletePost(post, post.isLost)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe { result ->
             if (result is Result.Success) {
                 page.value = 0
                 getPosts()

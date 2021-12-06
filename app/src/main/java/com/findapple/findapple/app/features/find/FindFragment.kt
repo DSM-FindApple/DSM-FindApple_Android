@@ -13,6 +13,7 @@ import com.findapple.findapple.R
 import com.findapple.findapple.databinding.FragmentFindBinding
 import com.findapple.findapple.domain.entity.Location
 import com.findapple.findapple.app.base.BaseFragment
+import com.findapple.findapple.app.features.chat.ChatRoomData
 import com.findapple.findapple.app.features.find.viewmodel.FindViewModel
 import com.findapple.findapple.app.features.find.viewmodel.FindViewModelFactory
 import com.findapple.findapple.app.features.post.MorePostDialog
@@ -118,8 +119,8 @@ class FindFragment : BaseFragment<FragmentFindBinding>(R.layout.fragment_find) {
         binding.findSpl.panelState = SlidingUpPanelLayout.PanelState.HIDDEN
     }
 
-    private fun startChat(post: Post) {
-        val action = MainFragmentDirections.actionMainFragmentToChatDetailFragment("fff",false,post.user.name, "", post.user.id)
+    private fun startChat(data: ChatRoomData) {
+        val action = MainFragmentDirections.actionMainFragmentToChatDetailFragment(data.chatRoomId,false, data.post.user.name, "", data.post.user.id)
         requireActivity().findNavController(R.id.main_activity_container).navigate(action)
     }
 

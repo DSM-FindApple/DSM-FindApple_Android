@@ -6,5 +6,5 @@ import retrofit2.http.Path
 
 interface ChatApi {
     @POST("chat/{kakaoId}")
-    fun getChatRoomId(@Path("kakaoId")id: Long): Single<ChatRoomResponse>
+    fun getChatRoomId(@Path("kakaoId") id: Long): Single<ChatRoomResponse>
 }

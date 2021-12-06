@@ -6,6 +6,7 @@ import com.findapple.findapple.databinding.FragmentMypageBinding
 import com.findapple.findapple.app.base.BaseFragment
 import com.findapple.findapple.app.features.mypage.viewmodel.MyPageViewModel
 import com.findapple.findapple.app.features.mypage.viewmodel.MyPageViewModelFactory
+import com.findapple.findapple.app.features.post.MorePostDialog
 import javax.inject.Inject
 
 class MyPageFragment : BaseFragment<FragmentMypageBinding>(R.layout.fragment_mypage) {
@@ -27,6 +28,12 @@ class MyPageFragment : BaseFragment<FragmentMypageBinding>(R.layout.fragment_myp
             })
             message.observe(viewLifecycleOwner, {
                 snackBarComment(it)
+            })
+            moreClickedPostId.observe(viewLifecycleOwner,{
+                MorePostDialog(viewModel, it).show(
+                    requireActivity().supportFragmentManager,
+                    "morePostDialog"
+                )
             })
         }
     }

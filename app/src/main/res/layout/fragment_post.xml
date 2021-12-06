@@ -219,13 +219,56 @@
                     app:itemsViewModel="@{vm}"
                     app:setPostPhotoItems="@{vm.photoList}" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/post_related_rv"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:recyclerItemsHorizontalItems="@{vm.relatedPosts}"
-                    />
+                    android:text="유사게시물"
+                    android:fontFamily="@font/cookie_run_regular"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="10dp" />
 
+                <androidx.cardview.widget.CardView
+                    app:cardCornerRadius="10dp"
+                    android:layout_width="match_parent"
+                    android:visibility="@{vm.relatedPosts != null?View.VISIBLE:View.GONE}"
+                    android:layout_height="150dp">
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/blue_100">
+                        <TextView
+                            android:id="@+id/title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:text="@{vm.relatedPosts.title}"
+                            android:textColor="@color/black"
+                            android:layout_marginTop="10dp"
+                            android:textSize="16sp"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/cookie_run_regular" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/cookie_run_regular"
+                            android:text="@{vm.relatedPosts.detailInfo}"
+                            android:layout_marginStart="10dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/title" />
+
+                        <androidx.constraintlayout.utils.widget.ImageFilterView
+                            android:layout_width="130dp"
+                            android:layout_height="130dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:layout_marginEnd="10dp"
+                            app:serverImageUrl="@{vm.relatedPosts.images[0]}" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
 
             </LinearLayout>
         </ScrollView>
