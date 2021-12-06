@@ -21,4 +21,6 @@ interface PostDataSource {
     fun getRelatedFindPost(title: String): Single<List<LostListResponse>>
 
     fun deletePost(post: Post, isLost: Boolean): Single<Unit>
+
+    fun updatePost(id: Long, post: PostDataParameter, isLost: Boolean): Single<Unit>
 }

@@ -1,6 +1,8 @@
 package com.findapple.findapple.data.features.post.datasource
 
 import com.findapple.findapple.data.features.post.dto.request.GetPostRequest
+import com.findapple.findapple.data.features.post.dto.request.toUpdateFindRequest
+import com.findapple.findapple.data.features.post.dto.request.toUpdateLostRequest
 import com.findapple.findapple.data.features.post.dto.response.FindListResponse
 import com.findapple.findapple.data.features.post.dto.response.LostListResponse
 import com.findapple.findapple.data.features.post.remote.PostApi
@@ -59,4 +61,7 @@ class PostDataSourceImpl(private val postApi: PostApi) : PostDataSource {
 
     override fun deletePost(post: Post, isLost: Boolean): Single<Unit> =
         if (isLost) postApi.deleteLostPost(post.id) else postApi.deleteFindPost(post.id)
+
+    override fun updatePost(id: Long, post: PostDataParameter, isLost: Boolean): Single<Unit> =
+        if (isLost) postApi.updateLost(id, post.toUpdateLostRequest()) else postApi.updateFind(id, post.toUpdateFindRequest())
 }

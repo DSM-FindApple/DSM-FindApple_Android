@@ -1,5 +1,7 @@
 package com.findapple.findapple.data.features.post.dto.request
 
+import com.findapple.findapple.domain.features.post.parameter.PostDataParameter
+
 data class UpdateFindPostRequest(
     val category: String,
     val detail: String,
@@ -8,3 +10,13 @@ data class UpdateFindPostRequest(
     val findAt: String,
     val title: String
 )
+
+fun PostDataParameter.toUpdateFindRequest() =
+    UpdateFindPostRequest(
+        category = category,
+        detail = detail,
+        latitude = locationInfo.latitude,
+        longitude = locationInfo.longitude,
+        findAt = actionTime,
+        title = title
+    )
