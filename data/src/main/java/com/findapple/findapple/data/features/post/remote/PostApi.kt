@@ -1,5 +1,6 @@
 package com.findapple.findapple.data.features.post.remote
 
+import com.findapple.findapple.data.features.post.dto.request.UpdateLostPostRequest
 import com.findapple.findapple.data.features.post.dto.response.FindListResponse
 import com.findapple.findapple.data.features.post.dto.response.LostListResponse
 import io.reactivex.Single
@@ -66,4 +67,7 @@ interface PostApi {
 
     @DELETE("find/{findId}")
     fun deleteFindPost(@Path("findId") id: Long): Single<Unit>
+
+    @PUT("lost/{listId}")
+    fun updateLost(@Path("listId") listId: Long, @Body requestBodyLost: UpdateLostPostRequest)
 }
