@@ -15,7 +15,7 @@ class PostRepositoryImpl(private val dataSource: PostDataSource) : PostRepositor
         else dataSource.getFindList(parameter.toDataRequest()).map { it.toEntity() }
 
     override fun postFeed(request: PostDataParameter, isLost: Boolean): Single<Unit> =
-        if(isLost) dataSource.postLost(request) else dataSource.postFind(request)
+        if (isLost) dataSource.postLost(request) else dataSource.postFind(request)
 
     override fun getRelatedLostPost(title: String): Single<List<Post>> =
         dataSource.getRelatedLostPost(title).map { it.toEntity() }
@@ -26,7 +26,7 @@ class PostRepositoryImpl(private val dataSource: PostDataSource) : PostRepositor
     override fun deletePost(post: Post, isLost: Boolean): Single<Unit> =
         dataSource.deletePost(post, isLost)
 
-    override fun updatePost(id: Long, parameter: PostDataParameter, isLost: Boolean) {
+    override fun updatePost(id: Long, parameter: PostDataParameter, isLost: Boolean): Single<Unit> =
         dataSource.updatePost(id, parameter, isLost)
-    }
+
 }

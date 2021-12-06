@@ -5,6 +5,7 @@ import com.findapple.findapple.domain.errorhandler.ErrorHandler
 import com.findapple.findapple.domain.features.post.parameter.PostDataParameter
 import com.findapple.findapple.domain.features.post.entity.Post
 import com.findapple.findapple.domain.features.post.parameter.GetPostParameter
+import com.findapple.findapple.domain.features.post.parameter.UpdateDataParameter
 import com.findapple.findapple.domain.features.post.repository.PostRepository
 import com.findapple.findapple.domain.toResult
 import io.reactivex.Single
@@ -28,4 +29,6 @@ class PostServiceImpl(
     override fun deletePost(post: Post, isLost: Boolean): Single<Result<Unit>> =
         postRepository.deletePost(post, isLost).toResult(errorHandler)
 
+    override fun updatePost(parameter: UpdateDataParameter): Single<Result<Unit>> =
+        postRepository.updatePost(parameter.id, parameter.post, parameter.isLost).toResult(errorHandler)
 }

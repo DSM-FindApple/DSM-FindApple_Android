@@ -16,5 +16,5 @@ interface PostRepository {
 
     fun deletePost(post: Post, isLost: Boolean): Single<Unit>
 
-    fun updatePost(id: Long, parameter: PostDataParameter, isLost: Boolean)
+    fun updatePost(id: Long, parameter: PostDataParameter, isLost: Boolean): Single<Unit>
 }
