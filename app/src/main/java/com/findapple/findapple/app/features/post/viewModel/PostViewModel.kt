@@ -27,7 +27,8 @@ class PostViewModel(
     private val postFindUseCase: PostFindUseCase,
     private val postLostUseCase: PostLostUseCase,
     private val getRelatedLostPostUseCase: GetRelatedLostPostUseCase,
-    private val getRelatedFindPostUseCase: GetRelatedFindPostUseCase
+    private val getRelatedFindPostUseCase: GetRelatedFindPostUseCase,
+    private val updatePostUseCase: UpdatePostUseCase
 ) : BaseViewModel() {
 
     val clickedCategoryIndex = MutableLiveData<Int>()
