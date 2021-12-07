@@ -132,7 +132,7 @@ class PostViewModel(
             )
             updatePost(updateParam)
         } else {
-            _message.value = "모든 정보를 입력해주세"
+            _message.value = "모든 정보를 입력해주세요"
         }
     }
 

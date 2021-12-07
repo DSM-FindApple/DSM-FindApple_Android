@@ -42,4 +42,5 @@
     <string name="minute">분</string>
     <string name="in_loading">로딩중..</string>
     <string name="in_posting">게시중..</string>
+    <string name="related_post">유사게시물</string>
 </resources>
