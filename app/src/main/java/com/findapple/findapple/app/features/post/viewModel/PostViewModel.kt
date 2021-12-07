@@ -4,24 +4,19 @@ import android.net.Uri
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.findapple.findapple.BR
-import com.findapple.findapple.R
 import com.findapple.findapple.domain.base.Result
 import com.findapple.findapple.domain.entity.Location
 import com.findapple.findapple.domain.errorhandler.Error
 import com.findapple.findapple.domain.features.post.parameter.PostDataParameter
 import com.findapple.findapple.app.base.BaseViewModel
 import com.findapple.findapple.app.base.SingleLiveEvent
-import com.findapple.findapple.app.bindingadapter.RecyclerViewItem
-import com.findapple.findapple.app.features.find.viewmodel.FindViewModel
-import com.findapple.findapple.domain.entity.User
-import com.findapple.findapple.domain.features.post.entity.Comment
 import com.findapple.findapple.domain.features.post.entity.Post
+import com.findapple.findapple.domain.features.post.parameter.UpdateDataParameter
 import com.findapple.findapple.domain.features.post.usecase.*
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import java.io.File
+import kotlin.properties.Delegates
 
 class PostViewModel(
     private val postFindUseCase: PostFindUseCase,
@@ -66,6 +61,8 @@ class PostViewModel(
     private val _inProgress = MutableLiveData(false)
     val inProgress: LiveData<Boolean> get() = _inProgress
 
+    var updatePostId by Delegates.notNull<Long>()
+
 
     override fun apply(event: Lifecycle.Event) {
 
@@ -98,11 +95,7 @@ class PostViewModel(
 
     fun post(isLost: Boolean) {
         _inProgress.value = true
-        if (title.value?.isBlank() == false &&
-            detail.value?.isBlank() == false &&
-            clickedCategoryTitle.value?.isBlank() == false &&
-            photoList.value?.isNotEmpty() == true
-        ) {
+        if (checkDone()) {
             val postParam = PostDataParameter(
                 title = title.value!!,
                 detail = detail.value!!,
@@ -121,6 +114,33 @@ class PostViewModel(
         }
 
     }
+
+    fun updatePost(isLost: Boolean) {
+        _inProgress.value = true
+        if (checkDone()) {
+            val updateParam = UpdateDataParameter(
+                id = updatePostId,
+                post = PostDataParameter(
+                    title = title.value!!,
+                    detail = detail.value!!,
+                    category = category(),
+                    actionTime = actionTime(),
+                    images = photoRequestList,
+                    locationInfo = location.value ?: Location(127.3635946, 36.3914388)
+                ),
+                isLost = isLost
+            )
+            updatePost(updateParam)
+        } else {
+            _message.value = "모든 정보를 입력해주세"
+        }
+    }
+
+    private fun checkDone(): Boolean =
+        title.value?.isBlank() == false &&
+                detail.value?.isBlank() == false &&
+                clickedCategoryTitle.value?.isBlank() == false &&
+                photoList.value?.isNotEmpty() == true
 
     private fun category() =
         when (clickedCategoryIndex.value) {
@@ -193,13 +213,38 @@ class PostViewModel(
         )
     }
 
+    private fun updatePost(updatePostDataParameter: UpdateDataParameter) {
+        updatePostUseCase.execute(
+            updatePostDataParameter,
+            object : DisposableSingleObserver<Result<Unit>>() {
+                override fun onSuccess(t: Result<Unit>) {
+                    if(t is Result.Success) {
+                        _message.value = "수정되었습니다"
+                        _donePost.call()
+                    } else if (t is Result.Failure) {
+                        doOnError(t)
+                    }
+                    _inProgress.value = false
+                    dispose()
+                }
+
+                override fun onError(e: Throwable) {
+                    _inProgress.value = false
+                    dispose()
+                }
+
+            },
+            AndroidSchedulers.mainThread()
+        )
+    }
+
     fun getLostRelation(title: String) {
         getRelatedLostPostUseCase.execute(
             title,
             object : DisposableSingleObserver<Result<List<Post>>>() {
                 override fun onSuccess(t: Result<List<Post>>) {
                     if (t is Result.Success) {
-                        if(t.value.isNotEmpty()) {
+                        if (t.value.isNotEmpty()) {
                             _relatedPosts.value = t.value[0]
                         }
                     }
@@ -219,7 +264,7 @@ class PostViewModel(
             object : DisposableSingleObserver<Result<List<Post>>>() {
                 override fun onSuccess(t: Result<List<Post>>) {
                     if (t is Result.Success) {
-                        if(t.value.isNotEmpty()) {
+                        if (t.value.isNotEmpty()) {
                             _relatedPosts.value = t.value[0]
                         }
                     }
