@@ -3,7 +3,6 @@ package com.findapple.findapple.app.features.post
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.findapple.findapple.R
 import com.findapple.findapple.databinding.FragmentPostBinding
