@@ -78,7 +78,7 @@ abstract class BaseFragment<T : ViewDataBinding>(@LayoutRes private val layoutId
     }
 
     open fun onBackPressed() {
-        requireActivity().findNavController(R.id.main_activity_container).navigateUp()
+        requireActivity().findNavController(R.id.main_activity_container).popBackStack()
     }
 
     fun moveFragmentByActionId(@IdRes actionId: Int) {
