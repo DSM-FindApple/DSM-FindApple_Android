@@ -72,6 +72,15 @@
                 android:name="isLost"
                 android:defaultValue="false"
                 app:argType="boolean" />
+            <argument
+                android:name="title"
+                app:argType="string" />
+            <argument
+                android:name="category"
+                app:argType="string" />
+            <argument
+                android:name="detail"
+                app:argType="string" />
 
         </action>
 
@@ -131,7 +140,18 @@
         android:name="com.findapple.findapple.app.features.post.PostFragment"
         android:label="PostFindFragment"
         tools:layout="@layout/fragment_post" >
-
+        <argument
+            android:name="isLost"
+            app:argType="boolean" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="category"
+            app:argType="string" />
+        <argument
+            android:name="detail"
+            app:argType="string" />
     </fragment>
 
     <fragment
