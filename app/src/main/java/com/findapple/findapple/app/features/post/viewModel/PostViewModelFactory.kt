@@ -13,7 +13,7 @@ class PostViewModelFactory(
 ) :
     ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T =
-        modelClass.getConstructor(PostFindUseCase::class.java, PostLostUseCase::class.java, GetRelatedLostPostUseCase::class.java, GetRelatedFindPostUseCase::class.java)
+        modelClass.getConstructor(PostFindUseCase::class.java, PostLostUseCase::class.java, GetRelatedLostPostUseCase::class.java, GetRelatedFindPostUseCase::class.java, UpdatePostUseCase::class.java)
             .newInstance(postFindUseCase, postLostUseCase, getRelatedLostPostUseCase, getRelatedFindPostUseCase, updatePostUseCase)
 
 }
