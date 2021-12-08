@@ -3,6 +3,7 @@ package com.findapple.findapple.app.features.post
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.findapple.findapple.R
 import com.findapple.findapple.databinding.FragmentPostBinding
@@ -42,6 +43,7 @@ class PostFragment : BaseFragment<FragmentPostBinding>(R.layout.fragment_post) {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.location.value = mainViewModel.location.value
+
         binding.run {
             postTb.setNavigationOnClickListener {
                 onBackPressed()

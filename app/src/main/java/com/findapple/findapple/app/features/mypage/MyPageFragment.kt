@@ -45,7 +45,7 @@ class MyPageFragment : BaseFragment<FragmentMypageBinding>(R.layout.fragment_myp
     }
 
     private fun startEditPost(post: Post) {
-        val action = MainFragmentDirections.actionMainFragmentToEditPostFragment(post.isLost)
+        val action = MainFragmentDirections.actionMainFragmentToEditPostFragment(post.isLost, post.title, post.category, post.detailInfo)
         findNavController().navigate(action)
     }
 
