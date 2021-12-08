@@ -62,6 +62,20 @@
         </action>
 
         <action
+            android:id="@+id/action_mainFragment_to_editPostFragment"
+            app:destination="@id/postFragment"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/mainFragment"
+            app:popUpToInclusive="false">
+            <argument
+                android:name="isLost"
+                android:defaultValue="false"
+                app:argType="boolean" />
+
+        </action>
+
+        <action
             android:id="@+id/action_mainFragment_to_chatDetailFragment"
             app:destination="@+id/chatDetailFragment"
             app:enterAnim="@anim/nav_default_pop_enter_anim"
@@ -116,7 +130,9 @@
         android:id="@+id/postFragment"
         android:name="com.findapple.findapple.app.features.post.PostFragment"
         android:label="PostFindFragment"
-        tools:layout="@layout/fragment_post" />
+        tools:layout="@layout/fragment_post" >
+
+    </fragment>
 
     <fragment
         android:id="@+id/chatDetailFragment"

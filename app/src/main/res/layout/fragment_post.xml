@@ -44,7 +44,7 @@
                 android:layout_gravity="end"
                 android:layout_marginEnd="7dp"
                 android:fontFamily="@font/cookie_run_bold"
-                android:onClick="@{()->vm.updatePostId != null ? vm.post(isLost):vm.updatePost(isLost)}"
+                android:onClick="@{()->vm.updatePost != null ? vm.post(isLost):vm.updatePost(isLost)}"
                 android:padding="10dp"
                 android:text="@{vm.inProgress?@string/in_posting:@string/post}"
                 android:textColor="@{vm.title != null &amp; vm.detail != null &amp; vm.clickedCategoryTitle != null &amp; vm.photoList.size() > 0 &amp; !vm.inProgress?@color/white:@color/gray_300}" />

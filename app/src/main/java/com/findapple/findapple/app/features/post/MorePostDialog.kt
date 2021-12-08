@@ -16,7 +16,7 @@ class MorePostDialog(val viewModel: BasePostViewModel, val post: Post): BaseDial
                 viewModel.deletePost(post)
             }
             moreEditTv.setOnClickListener {
-
+                viewModel.editPost.value = post
             }
         }
 

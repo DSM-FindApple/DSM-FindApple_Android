@@ -61,8 +61,7 @@ class PostViewModel(
     private val _inProgress = MutableLiveData(false)
     val inProgress: LiveData<Boolean> get() = _inProgress
 
-    var updatePostId by Delegates.notNull<Long>()
-
+    var updatePost by Delegates.notNull<Post>()
 
     override fun apply(event: Lifecycle.Event) {
 
@@ -78,7 +77,6 @@ class PostViewModel(
                 clickedCategoryIndex.value = null
             }
         }
-
     }
 
     fun startGallery() {
@@ -119,7 +117,7 @@ class PostViewModel(
         _inProgress.value = true
         if (checkDone()) {
             val updateParam = UpdateDataParameter(
-                id = updatePostId,
+                id = updatePost.id,
                 post = PostDataParameter(
                     title = title.value!!,
                     detail = detail.value!!,

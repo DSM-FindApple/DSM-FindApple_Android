@@ -27,6 +27,8 @@ abstract class BasePostViewModel : BaseViewModel() {
 
     val moreClickedPostId = SingleLiveEvent<Post>()
 
+    val editPost = SingleLiveEvent<Post>()
+
     fun commentClicked(id: Long) {
         clickedCommentId.value = id
     }
