@@ -1,9 +1,11 @@
 package com.findapple.findapple.app.base
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.activity.addCallback
 import androidx.annotation.IdRes
 import androidx.annotation.LayoutRes
@@ -79,6 +81,7 @@ abstract class BaseFragment<T : ViewDataBinding>(@LayoutRes private val layoutId
 
     open fun onBackPressed() {
         requireActivity().findNavController(R.id.main_activity_container).popBackStack()
+        hideKeyBoard()
     }
 
     fun moveFragmentByActionId(@IdRes actionId: Int) {
@@ -90,6 +93,11 @@ abstract class BaseFragment<T : ViewDataBinding>(@LayoutRes private val layoutId
 
     private fun notifyEvent(event: Lifecycle.Event) {
         lifeCycleOwner.notifyEvent(event)
+    }
+
+    fun hideKeyBoard() {
+        val inputManager: InputMethodManager = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputManager.hideSoftInputFromWindow(view?.windowToken, 0)
     }
 
     fun snackBarComment(comment: String) {
